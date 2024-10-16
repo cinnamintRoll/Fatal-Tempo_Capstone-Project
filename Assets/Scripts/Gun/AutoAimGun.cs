@@ -11,8 +11,8 @@ public class AutoAimGun : MonoBehaviour
     public FiringMode currentFiringMode = FiringMode.SemiAuto;
 
     // Hand side (Left or Right)
-    public enum HandSide { LeftHand, RightHand }
-    public HandSide currentHandSide = HandSide.RightHand;
+
+    public BNG.ControllerHand HandSide = ControllerHand.Right;
 
     // Public variables for customization
     public float aimRange = 50f;
@@ -35,8 +35,6 @@ public class AutoAimGun : MonoBehaviour
     public Vector3 recoilAmount = new Vector3(0.05f, 0.05f, -0.1f);
     public Vector3 recoilTiltAmount = new Vector3(-5f, 2f, 0); // Tilt rotation for recoil (x for pitch, y for yaw, z for roll)
     private Quaternion originalRotation;
-    public Grabber thisGrabber;
-
     public float triggerThreshold = 0.5f;
     private Transform closestEnemy;
     private bool canFire = true; // Semi-auto control
@@ -88,7 +86,7 @@ public class AutoAimGun : MonoBehaviour
     bool IsTriggerPressed()
     {
         // Detect trigger press based on current hand side
-        if (currentHandSide == HandSide.RightHand)
+        if (HandSide == ControllerHand.Right)
         {
             return InputBridge.Instance.RightTrigger > triggerThreshold;
         }
@@ -266,7 +264,7 @@ public class AutoAimGun : MonoBehaviour
 
         recoilCoroutine = StartCoroutine(RecoilAnimation());
 
-        input.VibrateController(0.5f, 1f, 0.05f, thisGrabber.HandSide);
+        input.VibrateController(0.5f, 1f, 0.05f, HandSide);
     }
 
     private IEnumerator RecoilAnimation()

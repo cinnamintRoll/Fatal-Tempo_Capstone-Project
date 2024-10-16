@@ -34,7 +34,41 @@ public class PathFollowerEditor : Editor
         {
             AddNewPointAtEnd();
         }
+
+        // Add "Generate Spawn Triggers" button
+        if (GUILayout.Button("Generate Spawn Triggers"))
+        {
+            GenerateSpawnTriggers();
+        }
     }
+
+    private void GenerateSpawnTriggers()
+    {
+        // Ensure path points exist
+        if (pathFollower.pathPoints == null || pathFollower.pathPoints.Length < 2) return;
+
+        // Create a parent for spawn triggers if it doesn't exist
+        Transform spawnParent = new GameObject("SpawnTriggers").transform;
+        spawnParent.parent = pathFollower.transform; // Parent it to the PathFollower for organization
+
+        // Iterate through path points to place spawn triggers
+        for (int i = 0; i < pathFollower.pathPoints.Length - 1; i++)
+        {
+            Vector3 position = (pathFollower.pathPoints[i].position + pathFollower.pathPoints[i + 1].position) / 2; // Midpoint between two points
+
+            // Create an empty GameObject at the position
+            GameObject spawnTrigger = new GameObject($"SpawnTrigger {i + 1}");
+            spawnTrigger.transform.position = position;
+            spawnTrigger.transform.parent = spawnParent; // Set parent to spawn triggers
+
+            // Optional: Add a component or script to handle spawning here
+            // spawnTrigger.AddComponent<YourSpawnScript>();
+        }
+
+        // Mark the path follower as dirty to save changes
+        EditorUtility.SetDirty(pathFollower);
+    }
+
 
     void OnSceneGUI()
     {

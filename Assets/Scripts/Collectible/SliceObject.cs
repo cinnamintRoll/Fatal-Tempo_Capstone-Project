@@ -16,8 +16,7 @@ public class SliceObject : MonoBehaviour
     // Reference to a material used for the cross-section (cut faces)
     public Material crossSectionMaterial;
 
-    public Grabber thisGrabber;
-    public enum HandSide { LeftHand, RightHand }
+    public BNG.ControllerHand HandSide = ControllerHand.Right;
 
     // Adjust this value as needed for the force of the cut
     public float cutForce = 2000f;
@@ -70,7 +69,7 @@ public class SliceObject : MonoBehaviour
 
     if (slicedObject != null)
     {
-        input.VibrateController(0.5f, 1f, 0.05f, thisGrabber.HandSide);
+        input.VibrateController(0.5f, 1f, 0.05f, HandSide);
 
         PlaySliceSound();
 
