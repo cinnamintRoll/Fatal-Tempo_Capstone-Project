@@ -41,6 +41,7 @@ public class MusicManager : MonoBehaviour
 
         // Calculate the seconds per beat based on BPM
         secondsPerBeat = 60f / bpm;
+        PlayMusic();
     }
 
     public void PlayMusic()

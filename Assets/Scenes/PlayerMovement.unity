@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 196014559}
-  musicClip: {fileID: 0}
+  musicClip: {fileID: 8300000, guid: b95977dd1fa1707469a8dbd1e3aff96a, type: 3}
   bpm: 120
   vibrationDuration: 0.1
   vibrationStrength: 0.5
@@ -2102,7 +2102,7 @@ PrefabInstance:
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
@@ -2111,12 +2111,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1267544833}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 196014558}
+    - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
@@ -2126,12 +2141,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MusicManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4357152876020998389, guid: ba9f46a71c4f96749b3d89eb23e5812a,
