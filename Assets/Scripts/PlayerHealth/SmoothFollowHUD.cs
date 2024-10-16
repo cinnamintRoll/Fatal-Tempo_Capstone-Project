@@ -33,13 +33,13 @@ public class SmoothFollowHUD : MonoBehaviour
         }
 
         // Smoothly move the UI to the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smoothSpeed);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.unscaledDeltaTime * smoothSpeed);
 
         // Apply tilt to the HUD by rotating around the right axis (X-axis)
         Quaternion tiltRotation = Quaternion.Euler(tiltOffset, 0, 0);
 
         // Smoothly rotate the UI to face the same direction as the player's camera, with tilt offset
         Quaternion targetRotation = Quaternion.LookRotation(playerCamera.forward) * tiltRotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.unscaledDeltaTime * rotationSpeed);
     }
 }

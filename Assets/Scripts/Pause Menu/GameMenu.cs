@@ -107,6 +107,13 @@ public class GameMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = originalFixedDelta;
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void TriggerDeathMenu()
     {
         ShowMenu(MenuType.Death);

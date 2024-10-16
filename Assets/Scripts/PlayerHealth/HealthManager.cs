@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip damageClip;
     [SerializeField] private AudioClip healClip;
+
+    [SerializeField] private UnityEvent OnDeath;
 
     void Awake()
     {
@@ -140,5 +143,6 @@ public class PlayerHealth : MonoBehaviour
     public void PlayerDeath()
     {
         gameMenu.TriggerDeathMenu();
+        OnDeath.Invoke();
     }
 }

@@ -1,17 +1,20 @@
 using BNG;
 using System.Collections;
-using UnityEngine; // Ensure you have the VR Interaction Framework namespace
+using UnityEngine;
 
-public class BeatTiming : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
-    public static BeatTiming Instance { get; private set; } // Singleton instance
+    public static MusicManager Instance { get; private set; } // Singleton instance
 
+    public AudioSource musicSource; // AudioSource for the music
+    public AudioClip musicClip; // The music clip to be played
     public float bpm = 120f; // Beats per minute
     public float vibrationDuration = 0.1f; // Duration of the vibration
     public float vibrationStrength = 1f; // Vibration strength (0 to 1)
 
     private float secondsPerBeat; // Time in seconds for each beat
     private InputBridge inputBridge;
+    private bool isPlaying = false; // Track if music is playing
 
     private void Awake()
     {
@@ -29,14 +32,40 @@ public class BeatTiming : MonoBehaviour
 
     private void Start()
     {
+        // Initialize AudioSource and music clip
+        if (musicSource == null)
+        {
+            musicSource = gameObject.AddComponent<AudioSource>();
+        }
+        musicSource.clip = musicClip;
+
         // Calculate the seconds per beat based on BPM
         secondsPerBeat = 60f / bpm;
-        StartCoroutine(VibrateOnBeat());
+    }
+
+    public void PlayMusic()
+    {
+        if (musicClip != null && !isPlaying)
+        {
+            musicSource.Play();
+            StartCoroutine(VibrateOnBeat());
+            isPlaying = true;
+        }
+    }
+
+    public void StopMusic()
+    {
+        if (isPlaying)
+        {
+            musicSource.Stop();
+            StopAllCoroutines();
+            isPlaying = false;
+        }
     }
 
     private IEnumerator VibrateOnBeat()
     {
-        while (true)
+        while (musicSource.isPlaying)
         {
             // Wait for the duration of one beat
             yield return new WaitForSeconds(secondsPerBeat);
@@ -60,7 +89,6 @@ public class BeatTiming : MonoBehaviour
         // Vibrate the right controller
         inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, ControllerHand.Right);
     }
-
 
     // Optional: Method to change BPM during runtime
     public void SetBPM(float newBPM)
