@@ -11,10 +11,13 @@ public class MusicManager : MonoBehaviour
     public float bpm = 120f; // Beats per minute
     public float vibrationDuration = 0.1f; // Duration of the vibration
     public float vibrationStrength = 1f; // Vibration strength (0 to 1)
+    public float startDelay = 0f; // Delay before everything starts
+    public float musicOffset = 0f; // Offset for when the music starts (can be negative or positive)
 
     private float secondsPerBeat; // Time in seconds for each beat
     private InputBridge inputBridge;
     private bool isPlaying = false; // Track if music is playing
+    private float startTime; // To track when the music starts in game time
 
     private void Awake()
     {
@@ -44,14 +47,44 @@ public class MusicManager : MonoBehaviour
         PlayMusic();
     }
 
+    private void Update()
+    {
+        // Sync music speed with game time scale
+        musicSource.pitch = Time.timeScale;
+
+        // If music is playing, sync beats with game time
+        if (isPlaying)
+        {
+            SyncBeatsToGameTime();
+        }
+    }
+
     public void PlayMusic()
     {
         if (musicClip != null && !isPlaying)
         {
-            musicSource.Play();
-            StartCoroutine(VibrateOnBeat());
+            StartCoroutine(StartEverythingWithDelay());
             isPlaying = true;
         }
+    }
+
+    private IEnumerator StartEverythingWithDelay()
+    {
+        // Wait for the start delay before anything starts
+        if (startDelay > 0f)
+        {
+            yield return new WaitForSeconds(startDelay);
+        }
+
+        // Start the music with an offset
+        if (musicOffset != 0f)
+        {
+            yield return new WaitForSeconds(musicOffset); // Offset the music start
+        }
+
+        // Record the actual start time
+        startTime = Time.time;
+        musicSource.Play(); // Play music at the correct offset
     }
 
     public void StopMusic()
@@ -64,14 +97,18 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private IEnumerator VibrateOnBeat()
+    // Sync the vibrations to the game time instead of relying on WaitForSeconds
+    private void SyncBeatsToGameTime()
     {
-        while (musicSource.isPlaying)
-        {
-            // Wait for the duration of one beat
-            yield return new WaitForSeconds(secondsPerBeat);
+        float elapsedTime = Time.time - startTime; // Time since music started
+        float musicTime = musicSource.time; // Current music playback time
 
-            // Start vibration for both controllers in parallel
+        // Calculate how many beats have passed since start
+        float beatsPassed = elapsedTime / secondsPerBeat;
+
+        // If we're at or past a beat, trigger the vibration
+        if (Mathf.FloorToInt(beatsPassed) > Mathf.FloorToInt((elapsedTime - Time.deltaTime) / secondsPerBeat))
+        {
             StartCoroutine(VibrateController(ControllerHand.Left));
             StartCoroutine(VibrateController(ControllerHand.Right));
         }
@@ -90,7 +127,6 @@ public class MusicManager : MonoBehaviour
 
         yield return null; // Optional: adjust this to control vibration timing
     }
-
 
     // Optional: Method to change BPM during runtime
     public void SetBPM(float newBPM)

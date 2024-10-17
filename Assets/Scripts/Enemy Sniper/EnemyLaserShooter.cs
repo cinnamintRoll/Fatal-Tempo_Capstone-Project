@@ -42,6 +42,13 @@ public class EnemyLaserShooter : MonoBehaviour
        // StartCoroutine(StartAimingAfterDelay());
     }
 
+    private void Update()
+    {
+        if (visuals == null) {
+            DestroyObject();
+        }
+    }
+
     public void StartShooting()
     {
         if(this)
@@ -184,6 +191,11 @@ public class EnemyLaserShooter : MonoBehaviour
         AudioSource.PlayClipAtPoint(deflectionSound, deflectPoint);
 
         // Destroy the enemy object after a short delay for sound to play
+        Destroy(gameObject, 0.5f);
+    }
+
+    private void DestroyObject()
+    {
         Destroy(gameObject, 0.5f);
     }
 

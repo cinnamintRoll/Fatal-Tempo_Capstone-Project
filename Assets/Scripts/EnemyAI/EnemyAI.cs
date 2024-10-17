@@ -228,7 +228,7 @@ public class EnemyAI : MonoBehaviour
     public void MoveToPoint(Transform targetPoint)
     {
         pointToMove = targetPoint;
-        TransitionToState(EnemyState.MoveToPoint);
+        navMeshAgent.SetDestination(pointToMove.position);
     }
 
     // Perform attack logic based on the enemy type
