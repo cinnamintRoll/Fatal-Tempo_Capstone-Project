@@ -71,25 +71,26 @@ public class MusicManager : MonoBehaviour
             // Wait for the duration of one beat
             yield return new WaitForSeconds(secondsPerBeat);
 
-            // Vibrate both controllers
-            VibrateControllers();
+            // Start vibration for both controllers in parallel
+            StartCoroutine(VibrateController(ControllerHand.Left));
+            StartCoroutine(VibrateController(ControllerHand.Right));
         }
     }
 
-    private void VibrateControllers()
+    private IEnumerator VibrateController(ControllerHand hand)
     {
-        // Clamp the vibration strength to be between 0 and 1
+        // Clamp the vibration strength and duration
         float clampedVibrationStrength = Mathf.Clamp(vibrationStrength, 0f, 1f);
-        // Clamp the vibration duration to be non-negative
         float clampedVibrationDuration = Mathf.Max(vibrationDuration, 0f);
 
-        Debug.Log($"Vibration Strength: {clampedVibrationStrength}, Duration: {clampedVibrationDuration}");
+        Debug.Log($"Vibration Strength: {clampedVibrationStrength}, Duration: {clampedVibrationDuration}, Hand: {hand}");
 
-        // Vibrate the left controller
-        inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, ControllerHand.Left);
-        // Vibrate the right controller
-        inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, ControllerHand.Right);
+        // Vibrate the controller for the given hand
+        inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, hand);
+
+        yield return null; // Optional: adjust this to control vibration timing
     }
+
 
     // Optional: Method to change BPM during runtime
     public void SetBPM(float newBPM)

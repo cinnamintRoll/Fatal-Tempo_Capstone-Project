@@ -13,7 +13,7 @@ public class PathFollower : MonoBehaviour
     public float bpm = 120f; // Beats per minute
     public float timingLineWidth = 0.1f; // Width of timing lines
 
-    private float timingLineSpacing; // Calculated spacing for timing lines
+    public float timingLineSpacing; // Calculated spacing for timing lines
     public bool enableCurving = true; // Toggle for curving
 
     void Start()
@@ -116,7 +116,7 @@ public class PathFollower : MonoBehaviour
         timingLineSpacing = speed * beatDuration; // Adjust this calculation based on your requirements
     }
 
-    private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+    public Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
         Vector3 a = 2f * p1;
         Vector3 b = p2 - p0;
@@ -126,7 +126,7 @@ public class PathFollower : MonoBehaviour
         return 0.5f * (a + (b * t) + (c * t * t) + (d * t * t * t));
     }
 
-    private Vector3 GetControlPoint(int index)
+    public Vector3 GetControlPoint(int index)
     {
         if (index < 0)
             return pathPoints[0].position;

@@ -44,30 +44,46 @@ public class PathFollowerEditor : Editor
 
     private void GenerateSpawnTriggers()
     {
-        // Ensure path points exist
         if (pathFollower.pathPoints == null || pathFollower.pathPoints.Length < 2) return;
 
-        // Create a parent for spawn triggers if it doesn't exist
-        Transform spawnParent = new GameObject("SpawnTriggers").transform;
-        spawnParent.parent = pathFollower.transform; // Parent it to the PathFollower for organization
-
-        // Iterate through path points to place spawn triggers
         for (int i = 0; i < pathFollower.pathPoints.Length - 1; i++)
         {
-            Vector3 position = (pathFollower.pathPoints[i].position + pathFollower.pathPoints[i + 1].position) / 2; // Midpoint between two points
+            float segmentLength = Vector3.Distance(pathFollower.pathPoints[i].position, pathFollower.pathPoints[i + 1].position);
+            int samples = Mathf.CeilToInt(segmentLength / pathFollower.timingLineSpacing); // Assuming timingLineSpacing is accessible
 
-            // Create an empty GameObject at the position
-            GameObject spawnTrigger = new GameObject($"SpawnTrigger {i + 1}");
-            spawnTrigger.transform.position = position;
-            spawnTrigger.transform.parent = spawnParent; // Set parent to spawn triggers
+            for (int j = 0; j <= samples; j++)
+            {
+                float t = (float)j / samples;
+                Vector3 pointOnCurve;
 
-            // Optional: Add a component or script to handle spawning here
-            // spawnTrigger.AddComponent<YourSpawnScript>();
+                if (pathFollower.enableCurving) // Assuming enableCurving is accessible
+                {
+                    pointOnCurve = pathFollower.CatmullRom(
+                        pathFollower.GetControlPoint(i - 1),
+                        pathFollower.pathPoints[i].position,
+                        pathFollower.pathPoints[i + 1].position,
+                        pathFollower.GetControlPoint(i + 2),
+                        t
+                    );
+                }
+                else
+                {
+                    pointOnCurve = Vector3.Lerp(pathFollower.pathPoints[i].position, pathFollower.pathPoints[i + 1].position, t);
+                }
+
+                // Create a new empty GameObject at the timing line position
+                GameObject spawnTrigger = new GameObject("SpawnTrigger");
+                spawnTrigger.transform.position = pointOnCurve; // Position at the timing line
+                spawnTrigger.transform.parent = pathFollower.pathParent; // Set parent for organization
+
+                // Optionally, add a component or setup as needed
+                spawnTrigger.AddComponent<BoxCollider>().isTrigger = true; // Example: adding a trigger collider
+            }
         }
 
-        // Mark the path follower as dirty to save changes
         EditorUtility.SetDirty(pathFollower);
     }
+
 
 
     void OnSceneGUI()

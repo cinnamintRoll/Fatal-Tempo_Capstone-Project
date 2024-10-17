@@ -37,9 +37,14 @@ public class Collectible : MonoBehaviour
     [Tooltip("Optional event to be called when the item is collected.")]
     public UnityEvent onCollected;
 
-    private bool isCollected = false; // Track if the item has been collected
+    [Header("Sound Settings")]
+    [Tooltip("List of audio clips to randomly choose from when collected.")]
+    public List<AudioClip> grabSounds;
 
-    
+    [Tooltip("Audio source for playing the grab sound.")]
+    public AudioSource audioSource;
+
+    private bool isCollected = false; // Track if the item has been collected
 
     private void Start()
     {
@@ -89,6 +94,9 @@ public class Collectible : MonoBehaviour
 
         isCollected = true; // Mark as collected
 
+        // Play a random grab sound
+        PlayRandomGrabSound();
+
         // Invoke the collected event
         onCollected?.Invoke();
         Debug.Log("Collected Item!");
@@ -99,11 +107,32 @@ public class Collectible : MonoBehaviour
         // Destroy or respawn logic
         if (DestroyOnCollect)
         {
-            Destroy(gameObject);
+            // Delay the destruction until the sound finishes playing, if a clip is selected
+            if (audioSource != null && audioSource.clip != null)
+            {
+                Destroy(gameObject, audioSource.clip.length);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         else if (Respawn)
         {
             StartCoroutine(RespawnCoin(RespawnTime));
+        }
+    }
+
+    private void PlayRandomGrabSound()
+    {
+        if (grabSounds.Count > 0 && audioSource != null)
+        {
+            // Choose a random clip from the list
+            AudioClip randomClip = grabSounds[Random.Range(0, grabSounds.Count)];
+
+            // Assign it to the audio source and play it
+            audioSource.clip = randomClip;
+            audioSource.Play();
         }
     }
 
