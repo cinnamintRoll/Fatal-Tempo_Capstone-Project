@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     // Reference to the player's transform
     [SerializeField]private Transform playerTransform;
+    [SerializeField] private Transform baseTransform;
 
     // Public getter for the player's transform
     public Transform PlayerTransform
@@ -18,6 +19,18 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning("Player Transform is not set!");
             }
             return playerTransform;
+        }
+    }
+
+    public Transform BaseTransform
+    {
+        get
+        {
+            if (baseTransform == null)
+            {
+                Debug.LogWarning("Base Transform is not set!");
+            }
+            return baseTransform;
         }
     }
 
@@ -40,5 +53,10 @@ public class GameManager : MonoBehaviour
     public void SetPlayerTransform(Transform player)
     {
         playerTransform = player;
+    }
+
+    public void SetBaseTransform(Transform transform)
+    {
+        baseTransform = transform;
     }
 }

@@ -153,7 +153,7 @@ public class EnemyAI : MonoBehaviour
             SetRandomChaseUpdateInterval(); // Randomize the next interval
             MoveToPoint(player); // Update destination
         }
-        if (distanceToPlayer <= attackRange)
+        if (IsEnemyBehindPlayer())
         {
             switch (enemyAIType)
             {
@@ -251,6 +251,18 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    bool IsEnemyBehindPlayer()
+    {
+        Transform baseTransform = GameManager.Instance.BaseTransform;
+        // Get the direction from the player to the enemy
+        Vector3 directionToEnemy = (transform.position - baseTransform.position).normalized;
+
+        // Check the dot product of the player's forward direction and the direction to the enemy
+        float dotProduct = Vector3.Dot(baseTransform.forward, directionToEnemy);
+
+        // If dotProduct is less than 0, the enemy is behind the player
+        return dotProduct < 0;
+    }
     // Simulate shooting a projectile (for ranged and sniper enemies)
     void ShootProjectile()
     {

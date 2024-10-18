@@ -90,8 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8659d261df59924eaa4cf4f8d01f593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HandSide: 2
   CollectorVelocity: {x: 0, y: 0, z: 0}
   TotalItemsCollected: 0
+  vibrationDuration: 0.1
+  vibrationStrength: 1
 --- !u!135 &876359269448207632
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -158,8 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8659d261df59924eaa4cf4f8d01f593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HandSide: 2
   CollectorVelocity: {x: 0, y: 0, z: 0}
   TotalItemsCollected: 0
+  vibrationDuration: 0.1
+  vibrationStrength: 1
 --- !u!135 &6880393732178394349
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -247,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81da483d3fdafa24188bc2ca2031aa12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageCooldown: 1
 --- !u!1001 &145063849961785600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -447,8 +454,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8659d261df59924eaa4cf4f8d01f593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HandSide: 2
   CollectorVelocity: {x: 0, y: 0, z: 0}
   TotalItemsCollected: 0
+  vibrationDuration: 0.1
+  vibrationStrength: 1
 --- !u!4 &5652793607487925185 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5508358760186487489, guid: fc6809c84706df94ab308fa6561a2fa1,

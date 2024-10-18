@@ -29,6 +29,10 @@ public class EnemyLaserShooter : MonoBehaviour
     private bool isShooting = false;
     private Vector3 laserOffset; // Fixed laser offset
 
+    // Variables for the capsule cast
+    [SerializeField] private float capsuleRadius = 0.5f; // Radius of the capsule
+    [SerializeField] private float capsuleHeight = 2f; // Height of the capsule
+
     void Start()
     {
         if (!player)
@@ -38,21 +42,20 @@ public class EnemyLaserShooter : MonoBehaviour
         // Initialize the laser appearance
         laser.startColor = laserColorNormal; // Set the initial color of the laser
         laser.endColor = laserColorNormal;
-
-       // StartCoroutine(StartAimingAfterDelay());
     }
 
     private void Update()
     {
-        if (visuals == null) {
+        if (visuals == null)
+        {
             DestroyObject();
         }
     }
 
     public void StartShooting()
     {
-        if(this)
-        StartCoroutine(StartAimingAfterDelay());
+        if (this)
+            StartCoroutine(StartAimingAfterDelay());
     }
 
     void SetPlayer(GameObject playerObject)
@@ -78,6 +81,7 @@ public class EnemyLaserShooter : MonoBehaviour
 
             AimAtPlayer();
             UpdateLaser();
+            CheckForDeflection(); // Check for deflection using capsule cast
             if (!isShooting && !isDeflected)
             {
                 StartCoroutine(ShootAfterDelay());
@@ -85,6 +89,7 @@ public class EnemyLaserShooter : MonoBehaviour
             yield return null; // Wait for the next frame
         }
     }
+
     // Aim the enemy towards the player with an offset
     void AimAtPlayer()
     {
@@ -102,7 +107,6 @@ public class EnemyLaserShooter : MonoBehaviour
         }
     }
 
-
     // Update the laser to point towards the player
     void UpdateLaser()
     {
@@ -116,7 +120,6 @@ public class EnemyLaserShooter : MonoBehaviour
         }
     }
 
-
     // Coroutine to shoot after a delay
     IEnumerator ShootAfterDelay()
     {
@@ -124,28 +127,28 @@ public class EnemyLaserShooter : MonoBehaviour
         if (!isDeflected)
         {
             // Start playing the charging sound on loop
-        audioSource.clip = chargeSound;
-        audioSource.loop = true;
-        audioSource.Play();
+            audioSource.clip = chargeSound;
+            audioSource.loop = true;
+            audioSource.Play();
 
-        // Charge up effect
-        float chargeElapsed = 0f;
-        while (chargeElapsed < aimDuration)
-        {
-            chargeElapsed += Time.deltaTime;
-            float t = chargeElapsed / aimDuration;
+            // Charge up effect
+            float chargeElapsed = 0f;
+            while (chargeElapsed < aimDuration)
+            {
+                chargeElapsed += Time.deltaTime;
+                float t = chargeElapsed / aimDuration;
 
-            // Adjust laser color based on charge
-            laser.startColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
-            laser.endColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
+                // Adjust laser color based on charge
+                laser.startColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
+                laser.endColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
 
-            // Gradually increase the laser width during the charge-up phase
-            float currentWidth = Mathf.Lerp(initialLaserWidth, chargeLaserWidth, t);
-            laser.startWidth = currentWidth;
-            laser.endWidth = currentWidth;
+                // Gradually increase the laser width during the charge-up phase
+                float currentWidth = Mathf.Lerp(initialLaserWidth, chargeLaserWidth, t);
+                laser.startWidth = currentWidth;
+                laser.endWidth = currentWidth;
 
-            yield return null; // Wait for the next frame
-        }
+                yield return null; // Wait for the next frame
+            }
 
             // Stop the charging sound before shooting
             if (!isDeflected)
@@ -167,9 +170,9 @@ public class EnemyLaserShooter : MonoBehaviour
 
             isShooting = false;
         }
-        else if(isDeflected)
-        { 
-                audioSource.Stop();
+        else if (isDeflected)
+        {
+            audioSource.Stop();
         }
     }
 
@@ -199,6 +202,7 @@ public class EnemyLaserShooter : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
 
+    // Coroutine to animate the laser beam shooting effect
     IEnumerator AnimateShootBeam()
     {
         float expandTime = 0.1f; // Time to expand the beam
@@ -240,14 +244,24 @@ public class EnemyLaserShooter : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    // Function to check for deflection using a capsule cast
+    private void CheckForDeflection()
     {
-        if (((1 << other.gameObject.layer) & deflectLayer) != 0)
+        Vector3 capsuleStart = gunMuzzle.position;
+        Vector3 capsuleEnd = gunMuzzle.position + gunMuzzle.forward * capsuleHeight;
+
+        // Perform the capsule cast
+        RaycastHit hit;
+        bool hitDeflectable = Physics.CapsuleCast(capsuleStart, capsuleEnd, capsuleRadius, gunMuzzle.forward, out hit, laserRange, deflectLayer);
+
+        // Check if a deflectable object was hit
+        if (hitDeflectable)
         {
-            // Deflect the shot if it hits the player's weapon
-            if(!isDeflected)
-            DeflectShot(other.transform.position);
+            if (!isDeflected)
+            {
+                DeflectShot(hit.point);
+                isDeflected = true;
+            }
         }
-        Debug.Log(other.name);
     }
 }

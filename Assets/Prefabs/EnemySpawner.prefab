@@ -59,7 +59,7 @@ MonoBehaviour:
   player: {fileID: 0}
   pointToMove: {fileID: 6703420398490604162}
   chaseRange: 10
-  attackRange: 2
+  attackRange: 1.7
   rangedAttackRange: 15
   attackCooldown: 1.5
   SniperScript: {fileID: 257860668715290660}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 8579803415256636672}
   - component: {fileID: 6460372813773261601}
   - component: {fileID: 165531213220802198}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,6 +587,11 @@ PrefabInstance:
       objectReference: {fileID: 5297418878896294469}
     - target: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
+      propertyPath: capsuleRadius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
+        type: 3}
       propertyPath: aimRotationOffset.x
       value: -0.7
       objectReference: {fileID: 0}
@@ -690,7 +695,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.007
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3514603933804737496, guid: 51e4372ec740e7c42bd84bf1e83e96b0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -125,17 +125,22 @@ public class AutoAimGun : MonoBehaviour
         float angleUp = Vector3.Angle(gunBarrel.forward, Vector3.up);
         float angleDown = Vector3.Angle(gunBarrel.forward, Vector3.down);
 
-        if ((angleUp <= reloadAngleThreshold || angleDown <= reloadAngleThreshold) && !hasReloaded && Time.time >= nextReloadTime)
+        // Add a dead zone to prevent accidental reloads (tolerance for angles close to the threshold)
+        float reloadDeadZone = 10f;
+
+        if ((angleUp <= reloadAngleThreshold - reloadDeadZone || angleDown <= reloadAngleThreshold - reloadDeadZone)
+            && !hasReloaded && Time.time >= nextReloadTime)
         {
             Reload();
             hasReloaded = true;
             nextReloadTime = Time.time + reloadCooldown;
         }
-        else if (angleUp > reloadAngleThreshold && angleDown > reloadAngleThreshold)
+        else if (angleUp > reloadAngleThreshold + reloadDeadZone && angleDown > reloadAngleThreshold + reloadDeadZone)
         {
             hasReloaded = false;
         }
     }
+
 
     void FindClosestEnemy()
     {
