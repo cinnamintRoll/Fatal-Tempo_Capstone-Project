@@ -501,6 +501,7 @@ GameObject:
   - component: {fileID: 6650253833669046562}
   - component: {fileID: 1130994561340828520}
   - component: {fileID: 2364059167081347731}
+  - component: {fileID: 2278614154108654069}
   m_Layer: 12
   m_Name: Slice
   m_TagString: Untagged
@@ -572,6 +573,40 @@ CapsuleCollider:
   m_Height: 0.64
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2278614154108654069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885425192092278654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6de38f13d6b1443b2c5a5a20ac08d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
+  SelfDestruct: 0
+  SelfDestructDelay: 0.1
+  SpawnOnDeath: {fileID: 0}
+  ActivateGameObjectsOnDeath: []
+  DeactivateGameObjectsOnDeath: []
+  DeactivateCollidersOnDeath: []
+  DestroyOnDeath: 1
+  DropOnDeath: 0
+  DestroyDelay: 0
+  Respawn: 0
+  RespawnTime: 10
+  RemoveBulletHolesOnDeath: 1
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &3185129065574958792
 PrefabInstance:
   m_ObjectHideFlags: 0
