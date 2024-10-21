@@ -27,7 +27,8 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 2f; // Melee attack range
     public float rangedAttackRange = 15f; // Ranged or sniper attack range
     public float attackCooldown = 1.5f;
-
+    // Define a threshold distance for detecting enemies behind the player
+    public float behindDistanceThreshold = 2f;
     public EnemyLaserShooter SniperScript;
 
     [SerializeField] private NavMeshAgent navMeshAgent;
@@ -61,6 +62,11 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         SetRandomChaseUpdateInterval(); // Set a random initial update interval
         PlayerHealth = PlayerHealth.Instance;
+
+        if(enemyAIType == EnemyType.Sniper && currentState == EnemyState.Attack)
+        {
+            navMeshAgent.enabled = false;
+        }
     }
 
     void Update()
@@ -201,7 +207,7 @@ public class EnemyAI : MonoBehaviour
             
         }
         // Optionally, destroy the enemy object after a delay
-        Destroy(gameObject, 2f); // Adjust the delay as needed
+        Destroy(gameObject, 0.5f); // Adjust the delay as needed
     }
 
     void Despawn()
@@ -254,15 +260,22 @@ public class EnemyAI : MonoBehaviour
     bool IsEnemyBehindPlayer()
     {
         Transform baseTransform = GameManager.Instance.BaseTransform;
+
         // Get the direction from the player to the enemy
         Vector3 directionToEnemy = (transform.position - baseTransform.position).normalized;
+
+        // Get the distance from the player to the enemy
+        float distanceToEnemy = Vector3.Distance(transform.position, baseTransform.position);
 
         // Check the dot product of the player's forward direction and the direction to the enemy
         float dotProduct = Vector3.Dot(baseTransform.forward, directionToEnemy);
 
-        // If dotProduct is less than 0, the enemy is behind the player
-        return dotProduct < 0;
+         // Adjust this value as needed
+
+        // If the dotProduct is less than 0 and the distance is greater than the threshold, the enemy is behind and far enough
+        return dotProduct < 0 && distanceToEnemy > behindDistanceThreshold;
     }
+
     // Simulate shooting a projectile (for ranged and sniper enemies)
     void ShootProjectile()
     {

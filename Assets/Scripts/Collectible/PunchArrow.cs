@@ -12,6 +12,7 @@ public class PunchArrow : MonoBehaviour
     public float maxDistance = 3.0f; // Maximum distance before it's considered a miss
     public float maxAllowedAngle = 40f; // Maximum angle deviation (in degrees) for a valid hit
     public Transform ObjectVisuals;
+    public GameObject Bullethit;
     private bool hitRegistered = false;
 
     // External transform to represent the desired punch angle
@@ -19,6 +20,20 @@ public class PunchArrow : MonoBehaviour
 
     // Unity Event to trigger on hit
     public UnityEvent onHit;
+
+
+    private void FixedUpdate()
+    {
+        if (ObjectVisuals == null)
+        {
+            Destroy(gameObject);
+        }
+
+        if (Bullethit == null)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -53,6 +68,10 @@ public class PunchArrow : MonoBehaviour
             }
 
             hitRegistered = true; // Prevent multiple hits from being registered
+            if (ObjectVisuals == null)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

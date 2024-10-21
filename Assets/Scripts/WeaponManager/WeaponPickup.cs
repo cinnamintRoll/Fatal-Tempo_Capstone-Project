@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public WeaponType weaponType;  // The type of weapon this pickup represents
-    public Transform targetPosition;  // The position where the weapon will float to (usually the player's weapon position)
-    public float moveSpeed = 2f;  // Speed at which the weapon floats to the player
-    public float floatingSpeed = 1f;  // Speed of the idle floating effect
-    public float floatingAmplitude = 0.2f;  // Amplitude of the floating effect
+    [Tooltip("The type of weapon this pickup represents.")]
+    public WeaponType weaponType;
+
+    [Tooltip("The position where the weapon will float to (usually the player's weapon position).")]
+    public Transform targetPosition;
+
+    [Tooltip("Speed at which the weapon floats to the player.")]
+    public float moveSpeed = 2f;
+
+    [Tooltip("Speed of the idle floating effect (how fast it moves up and down).")]
+    public float floatingSpeed = 1f;
+
+    [Tooltip("Amplitude of the floating effect (how far it moves up and down).")]
+    public float floatingAmplitude = 0.2f;
     private bool isPickedUp = false;  // To check if the player has triggered the pickup
     [SerializeField] private GameObject objectOffset;
     private Vector3 originalPosition;  // Original position for floating animation

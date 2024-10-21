@@ -199,7 +199,8 @@ public class EnemyLaserShooter : MonoBehaviour
 
     private void DestroyObject()
     {
-        Destroy(gameObject, 0.5f);
+        laser.enabled = false;
+        Destroy(gameObject, 0.2f);
     }
 
     // Coroutine to animate the laser beam shooting effect
