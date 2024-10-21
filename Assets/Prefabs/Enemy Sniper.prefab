@@ -348,7 +348,7 @@ MonoBehaviour:
   gunMuzzle: {fileID: 3463262009099617377}
   laser: {fileID: 8993609155406428589}
   laserRange: 50
-  aimDuration: 2
+  aimDuration: 3
   playerDamage: 10
   deflectionSound: {fileID: 8300000, guid: 83dc0287d0634ed4cb587d44b592210c, type: 3}
   chargeSound: {fileID: 8300000, guid: c134a11450fb62e45b1f282d277c7c9a, type: 3}
@@ -368,6 +368,8 @@ MonoBehaviour:
   deflectLayer:
     serializedVersion: 2
     m_Bits: 8192
+  capsuleRadius: 0.5
+  capsuleHeight: 2
 --- !u!136 &3514603933804737496
 CapsuleCollider:
   m_ObjectHideFlags: 0
