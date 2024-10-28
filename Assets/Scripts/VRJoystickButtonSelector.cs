@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class VRJoystickButtonSelector : MonoBehaviour
 {
+    [SerializeField] private GameObject LowPowerScreen;
     public BNG.JoystickControl joystick; // Reference to the custom JoystickControl script
     public EventSystem eventSystem; // Event system that manages UI interactions
     public float inputDelay = 0.2f; // Delay to avoid rapid navigation for buttons/sliders
@@ -36,46 +37,48 @@ public class VRJoystickButtonSelector : MonoBehaviour
 
         // Get the current UI selection
         GameObject currentSelected = eventSystem.currentSelectedGameObject;
-
-        if (currentSelected != null)
+        if (!LowPowerScreen.activeInHierarchy)
         {
-            // Use the LeverVector from JoystickControl
-            Vector2 joystickVector = joystick.LeverVector;
-
-            // Get the SingleSelectModeComponent from the currently selected UI element
-            SingleSelectModeComponent singleSelectComponent = currentSelected.GetComponent<SingleSelectModeComponent>();
-
-            bool isSingleSelectMode = singleSelectComponent != null ? singleSelectComponent.singleSelectMode : true;
-
-            // If the current element is a scrollbar, handle continuous scrolling
-            Scrollbar selectedScrollbar = currentSelected.GetComponent<Scrollbar>();
-            if (selectedScrollbar != null)
+            if (currentSelected != null)
             {
-                HandleContinuousScrollbar(selectedScrollbar, joystickVector);
-                lastInputTime = Time.time; // Reset input delay only for buttons/sliders
-            }
-            else
-            {
-                // Handle single-select mode or continuous-select for other elements like sliders and buttons
-                if (isSingleSelectMode)
+                // Use the LeverVector from JoystickControl
+                Vector2 joystickVector = joystick.LeverVector;
+
+                // Get the SingleSelectModeComponent from the currently selected UI element
+                SingleSelectModeComponent singleSelectComponent = currentSelected.GetComponent<SingleSelectModeComponent>();
+
+                bool isSingleSelectMode = singleSelectComponent != null ? singleSelectComponent.singleSelectMode : true;
+
+                // If the current element is a scrollbar, handle continuous scrolling
+                Scrollbar selectedScrollbar = currentSelected.GetComponent<Scrollbar>();
+                if (selectedScrollbar != null)
                 {
-                    // Trigger selection only when crossing the threshold, not continuously
-                    if (ShouldSelect(joystickVector, lastJoystickVector))
+                    HandleContinuousScrollbar(selectedScrollbar, joystickVector);
+                    lastInputTime = Time.time; // Reset input delay only for buttons/sliders
+                }
+                else
+                {
+                    // Handle single-select mode or continuous-select for other elements like sliders and buttons
+                    if (isSingleSelectMode)
                     {
+                        // Trigger selection only when crossing the threshold, not continuously
+                        if (ShouldSelect(joystickVector, lastJoystickVector))
+                        {
+                            HandleSelection(currentSelected, joystickVector);
+                            lastInputTime = Time.time;
+                        }
+                    }
+                    else
+                    {
+                        // Navigate continuously
                         HandleSelection(currentSelected, joystickVector);
                         lastInputTime = Time.time;
                     }
                 }
-                else
-                {
-                    // Navigate continuously
-                    HandleSelection(currentSelected, joystickVector);
-                    lastInputTime = Time.time;
-                }
-            }
 
-            // Update the lastJoystickVector for the next comparison
-            lastJoystickVector = joystickVector;
+                // Update the lastJoystickVector for the next comparison
+                lastJoystickVector = joystickVector;
+            }
         }
     }
 
