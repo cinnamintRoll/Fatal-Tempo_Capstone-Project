@@ -8235,6 +8235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a5b1dbc9f6b81459fc18216b51a8b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LowPowerScreen: {fileID: 1710791290}
   joystick: {fileID: 1243755232}
   eventSystem: {fileID: 278306294}
   inputDelay: 0
@@ -8270,6 +8271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 278306294}
+  LowPowerScreen: {fileID: 1710791290}
 --- !u!82 &977966793
 AudioSource:
   m_ObjectHideFlags: 0
