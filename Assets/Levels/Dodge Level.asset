@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc8eff28b50f1c4d8f73daaf8834644, type: 3}
   m_Name: Dodge Level
   m_EditorClassIdentifier: 
-  songName: Sword
+  songName: Dodge Demo
+  songDescription: This level only contains the dodge part of the demo.
   songClip: {fileID: 8300000, guid: b95977dd1fa1707469a8dbd1e3aff96a, type: 3}
-  sceneName: Sword
+  sceneName: Player Dodge

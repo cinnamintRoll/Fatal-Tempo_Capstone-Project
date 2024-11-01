@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc8eff28b50f1c4d8f73daaf8834644, type: 3}
   m_Name: Sword Level
   m_EditorClassIdentifier: 
-  songName: Sword
+  songName: Sword Demo
+  songDescription: This demo only contains the sword, which lets you test out slicing
+    and deflecting enemies in the level.
   songClip: {fileID: 8300000, guid: b95977dd1fa1707469a8dbd1e3aff96a, type: 3}
   sceneName: Sword
