@@ -10,15 +10,31 @@ public class LevelSelectManager : MonoBehaviour
     public Text songNameText;           // UI Text to display the selected song name
     public Text songDescriptionText;    // UI Text to display the song description
     public ScreenFader screenFader;     // Reference to the ScreenFader script
+    public Image albumCover;
     private SongData selectedSong;      // Currently selected song data
 
+    private void OnEnable()
+    {
+        if (albumCover.sprite == null)
+        {
+            setAlbumAlpha(0f);
+        }
+    }
+
+    public void setAlbumAlpha(float alpha)
+    {
+        var tempcolor = albumCover.color;
+        tempcolor.a = alpha;
+        albumCover.color = tempcolor;
+    }
     // Call this method when a song button is clicked
     public void SelectSong(SongData song)
     {
         selectedSong = song;
         songNameText.text = song.songName;
         songDescriptionText.text = song.songDescription;  // Display the song description
-
+        albumCover.sprite = song.AlbumCover;
+        setAlbumAlpha(1f);
         // Play the song preview
         if (audioSource.isPlaying) audioSource.Stop();
         audioSource.clip = song.songClip;
