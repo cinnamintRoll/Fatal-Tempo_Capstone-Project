@@ -198,8 +198,8 @@ public class AutoAimGun : MonoBehaviour
                     damageEnemy.DealDamage(bulletDamage);
                     
                 }
-                if (PlayerHealth)
-                    PlayerHealth.KillEnemy();
+                //if (PlayerHealth)
+                //    PlayerHealth.KillEnemy();
             }
             hitPoint = hit.point;
         }

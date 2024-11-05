@@ -19,6 +19,7 @@ public class LevelSelectManager : MonoBehaviour
         {
             setAlbumAlpha(0f);
         }
+        songNameText.gameObject.SetActive(false);
     }
 
     public void setAlbumAlpha(float alpha)
@@ -31,6 +32,7 @@ public class LevelSelectManager : MonoBehaviour
     public void SelectSong(SongData song)
     {
         selectedSong = song;
+        songNameText.gameObject.SetActive(true);
         songNameText.text = song.songName;
         songDescriptionText.text = song.songDescription;  // Display the song description
         albumCover.sprite = song.AlbumCover;
