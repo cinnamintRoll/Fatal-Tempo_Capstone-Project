@@ -1,11 +1,38 @@
 using BNG;
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class Intervals 
+{
+    [SerializeField] private float _steps;
+    [SerializeField] private UnityEvent _trigger;
+    private int _lastInterval;
+     public float GetIntervalLength(float bpm)
+    {
+        return 16f /(bpm * _steps);
+    }
+
+    public bool CheckForNewInterval(float interval)
+    {
+        if(Mathf.FloorToInt(interval) != _lastInterval)
+        {
+            _lastInterval = Mathf.FloorToInt(interval); 
+            _trigger.Invoke();  
+            return true;
+        }
+        return false;
+    }
+}
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance { get; private set; } // Singleton instance
-
+    [SerializeField] private Intervals[] _objectIntervals;
+    [SerializeField] private Intervals _songInterval;
     public AudioSource musicSource; // AudioSource for the music
     public AudioClip musicClip; // The music clip to be played
     public float bpm = 120f; // Beats per minute
@@ -13,12 +40,11 @@ public class MusicManager : MonoBehaviour
     public float vibrationStrength = 1f; // Vibration strength (0 to 1)
     public float startDelay = 0f; // Delay before everything starts
     public float musicOffset = 0f; // Offset for when the music starts (can be negative or positive)
-
     private float secondsPerBeat; // Time in seconds for each beat
     private InputBridge inputBridge;
     private bool isPlaying = false; // Track if music is playing
     private float startTime; // To track when the music starts in game time
-
+    public UnityEvent OnIntervalPassed;
     private void Awake()
     {
         // Implement the Singleton pattern
@@ -31,6 +57,7 @@ public class MusicManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); // Optional: keep this instance across scenes
 
         inputBridge = InputBridge.Instance;
+        OnIntervalPassed = new UnityEvent();
     }
 
     private void Start()
@@ -53,10 +80,23 @@ public class MusicManager : MonoBehaviour
         musicSource.pitch = Time.timeScale;
 
         // If music is playing, sync beats with game time
-        if (isPlaying)
+        /*if (isPlaying)
         {
             SyncBeatsToGameTime();
+        }*/
+        float sampledTime = (musicSource.timeSamples / (musicSource.clip.frequency * _songInterval.GetIntervalLength(bpm)));
+        if (_songInterval.CheckForNewInterval(sampledTime))
+        {
+            OnIntervalPassed.Invoke();
+            StartCoroutine(VibrateController(ControllerHand.Left));
+            StartCoroutine(VibrateController(ControllerHand.Right));
         }
+        foreach (Intervals interval in _objectIntervals)
+        {
+            float intervalSampledTime = (musicSource.timeSamples / (musicSource.clip.frequency * interval.GetIntervalLength(bpm)));
+            interval.CheckForNewInterval(intervalSampledTime);
+        }
+        
     }
 
     public void PlayMusic()
@@ -74,12 +114,6 @@ public class MusicManager : MonoBehaviour
         if (startDelay > 0f)
         {
             yield return new WaitForSeconds(startDelay);
-        }
-
-        // Start the music with an offset
-        if (musicOffset != 0f)
-        {
-            yield return new WaitForSeconds(musicOffset); // Offset the music start
         }
 
         // Record the actual start time
