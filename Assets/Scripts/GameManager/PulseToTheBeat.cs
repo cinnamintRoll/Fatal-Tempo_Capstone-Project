@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Properties;
 using UnityEngine;
 
 public class PulseToTheBeat : MonoBehaviour
@@ -10,6 +8,7 @@ public class PulseToTheBeat : MonoBehaviour
     [SerializeField] private float _pulseSize = 1.15f;
     [SerializeField] private float _returnSpeed = 5f;
     private Vector3 _startSize;
+    private Coroutine _returnToStartSizeCoroutine;
 
     private void Start()
     {
@@ -25,14 +24,36 @@ public class PulseToTheBeat : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        transform.localScale = Vector3.Lerp(transform.localScale, _startSize, Time.deltaTime * _returnSpeed);
-    }
-
     public void Pulse()
     {
+        // Set the object to the pulsed size
         transform.localScale = _startSize * _pulseSize;
+
+        // If a coroutine is already running to return to the original size, stop it
+        if (_returnToStartSizeCoroutine != null)
+        {
+            StopCoroutine(_returnToStartSizeCoroutine);
+        }
+
+        // Start a new coroutine to return to the original size
+        _returnToStartSizeCoroutine = StartCoroutine(ReturnToStartSize());
+    }
+
+    private IEnumerator ReturnToStartSize()
+    {
+        while (transform.localScale != _startSize)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, _startSize, Time.deltaTime * _returnSpeed);
+
+            // Break out of the loop if scale is close enough to _startSize to prevent continuous adjustments
+            if (Vector3.Distance(transform.localScale, _startSize) < 0.01f)
+            {
+                transform.localScale = _startSize;
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 
     private IEnumerator TestBeat()
@@ -52,5 +73,3 @@ public class PulseToTheBeat : MonoBehaviour
         }
     }
 }
-
-

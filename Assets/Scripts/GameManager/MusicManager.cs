@@ -50,11 +50,12 @@ public class MusicManager : MonoBehaviour
         // Implement the Singleton pattern
         if (Instance != null && Instance != this)
         {
+            Debug.LogWarning("Duplicate MusicManager instance detected and will be destroyed.");
             Destroy(gameObject); // Destroy duplicate instance
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Optional: keep this instance across scenes
+        //DontDestroyOnLoad(gameObject); // Optional: keep this instance across scenes
 
         inputBridge = InputBridge.Instance;
         OnIntervalPassed = new UnityEvent();
