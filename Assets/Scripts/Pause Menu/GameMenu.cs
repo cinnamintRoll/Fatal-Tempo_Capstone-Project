@@ -1,5 +1,6 @@
 using BNG;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
@@ -16,6 +17,7 @@ public class GameMenu : MonoBehaviour
     private bool isPaused = false; // Tracks if the game is paused
     private AudioSource audioSource;
     private float originalFixedDelta;
+    [SerializeField] private UIPointer pointer;
     [SerializeField] private float heightOffset;
 
     [Tooltip("If true, will set Time.fixedDeltaTime to the device refresh rate")]
@@ -23,6 +25,12 @@ public class GameMenu : MonoBehaviour
 
     public enum MenuType { None, Pause, Death }
     private MenuType activeMenu = MenuType.None;
+
+    // Unity Events for showing and hiding menus
+    public UnityEvent onShowPauseMenu;
+    public UnityEvent onHidePauseMenu;
+    public UnityEvent onShowDeathMenu;
+    public UnityEvent onHideDeathMenu;
 
     private void Start()
     {
@@ -66,6 +74,7 @@ public class GameMenu : MonoBehaviour
                 MoveMenuToPlayer(pauseMenuUI);
                 PlayAudio(pauseClip);
                 activeMenu = MenuType.Pause;
+                onShowPauseMenu?.Invoke();  // Trigger event when showing the pause menu
                 break;
 
             case MenuType.Death:
@@ -73,7 +82,12 @@ public class GameMenu : MonoBehaviour
                 MoveMenuToPlayer(deathMenuUI);
                 PlayAudio(deathClip);
                 activeMenu = MenuType.Death;
+                onShowDeathMenu?.Invoke();  // Trigger event when showing the death menu
                 break;
+        }
+        if (pointer != null)
+        {
+            pointer.HidePointerIfNoObjectsFound = false;
         }
         Time.timeScale = 0;
         Time.fixedDeltaTime = originalFixedDelta * Time.timeScale;
@@ -85,14 +99,19 @@ public class GameMenu : MonoBehaviour
         if (activeMenu == MenuType.Pause)
         {
             pauseMenuUI.SetActive(false);
+            onHidePauseMenu?.Invoke();  // Trigger event when hiding the pause menu
         }
         else if (activeMenu == MenuType.Death)
         {
             deathMenuUI.SetActive(false);
+            onHideDeathMenu?.Invoke();  // Trigger event when hiding the death menu
         }
-
-        // Resume the game
-        Time.timeScale = 1;
+        if (pointer != null)
+        {
+            pointer.HidePointerIfNoObjectsFound = true;
+        }
+            // Resume the game
+            Time.timeScale = 1;
         Time.fixedDeltaTime = originalFixedDelta;
 
         PlayAudio(resumeClip);
