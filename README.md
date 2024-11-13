@@ -31,12 +31,12 @@
 ---
 
 ## **Controls**
-- **Movement**: Use the left controller to move, jump, and dodge.
-- **Actions**:
-  - **Swing/Attack**: 
-  - **Dodge**: 
-  - **Pause**: 
-  - **Menu Navigation**:
+- **Movement**
+- **Actions**
+  - **Swing/Attack**
+  - **Dodge**
+  - **Pause**
+  - **Menu Navigation**
 
 ---
 
