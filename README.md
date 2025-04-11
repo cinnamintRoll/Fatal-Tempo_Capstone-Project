@@ -53,6 +53,7 @@
 
 ## **Credits**
 - **Producer**: Adrielle Casem
+- **Game Designer**: Adrielle Casem
 - **Main Programmer**: Kyle Logdat
 - **Artist**: Sam Aguirre
 - **Game Design**: Adrielle Casem
