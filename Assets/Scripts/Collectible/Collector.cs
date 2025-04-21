@@ -16,6 +16,8 @@ public class Collector : MonoBehaviour
 
     public float vibrationDuration = 0.1f; // Duration of the vibration
     public float vibrationStrength = 1f; // Vibration strength (0 to 1)
+
+    [SerializeField] private BeatScoringSystem beatScoringSystem;
     public void CollectItem(int itemValue)
     {
         float clampedVibrationStrength = Mathf.Clamp(vibrationStrength, 0f, 1f);
@@ -27,6 +29,12 @@ public class Collector : MonoBehaviour
             inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, HandSide);
         }
         TotalItemsCollected += itemValue;
+
+        if (beatScoringSystem != null)
+        {
+            beatScoringSystem.OnItemCollected(itemValue);
+        }
+
         Debug.Log("Collected Item! Total Items: " + TotalItemsCollected);
     }
     private void Start()
