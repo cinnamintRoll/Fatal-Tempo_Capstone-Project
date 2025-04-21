@@ -4,6 +4,7 @@ using TMPro;
 public class BeatScoringSystem : MonoBehaviour
 {
     public bool useMusicManager = true;
+
     [Header("UI References")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text multiplierText;
@@ -14,6 +15,14 @@ public class BeatScoringSystem : MonoBehaviour
     private int currentMultiplier = 1;
     private int hitStreak = 0;
     private int totalScore = 0;
+    private int bestCombo = 0;
+
+    // Scoring windows
+    [SerializeField] private int perfectWindow = 80; // in ms
+    [SerializeField] private int maxWindow = 200;    // in ms
+
+    public int PerfectWindow => perfectWindow;
+    public int MaxWindow => maxWindow;
 
     private void Start()
     {
@@ -28,7 +37,6 @@ public class BeatScoringSystem : MonoBehaviour
         if (PlayerHealth.Instance != null)
         {
             PlayerHealth.Instance.OnDamage.AddListener(OnMissOrHitByEnemy);
-
             PlayerHealth.Instance.OnKillEnemy.AddListener(OnHitEnemy);
         }
 
@@ -54,12 +62,8 @@ public class BeatScoringSystem : MonoBehaviour
 
         float distanceMS = distanceToBeat * 1000f;
 
-        // Adjust these values to tune how forgiving the scoring is
-        float perfectWindow = 80f; // max distance (in ms) for a perfect hit
-        float maxWindow = 200f;    // max distance (in ms) to still get a score
-
         if (distanceMS <= perfectWindow)
-            return 300;
+            return maxWindow;
 
         if (distanceMS > maxWindow)
             return 0; // Miss
@@ -68,7 +72,6 @@ public class BeatScoringSystem : MonoBehaviour
         float t = (distanceMS - perfectWindow) / (maxWindow - perfectWindow);
         return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
     }
-
 
     public void OnHitEnemy()
     {
@@ -89,9 +92,9 @@ public class BeatScoringSystem : MonoBehaviour
         Debug.Log("Missed! Multiplier reset.");
         UpdateScoreDisplay();
     }
+
     public void OnItemCollected(int itemValue)
     {
-        // Add item value to the total score (can add multiplier logic here as well if needed)
         totalScore += itemValue * currentMultiplier;
 
         Debug.Log($"Item Collected! Total Score: {totalScore}");
@@ -104,6 +107,11 @@ public class BeatScoringSystem : MonoBehaviour
         if (successfulHit)
         {
             hitStreak++;
+
+            if (hitStreak > bestCombo)
+            {
+                bestCombo = hitStreak;
+            }
 
             if (hitStreak == 4)
                 currentMultiplier = 8;
@@ -131,4 +139,8 @@ public class BeatScoringSystem : MonoBehaviour
             multiplierText.text = $"{currentMultiplier}x";
     }
 
+    public void SaveScore()
+    {
+        PlayerPrefs.SetInt("SongScore", totalScore);
+    }
 }

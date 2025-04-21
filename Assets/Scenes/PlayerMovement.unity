@@ -5061,6 +5061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 178434747}
+  - component: {fileID: 178434748}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -5465,6 +5466,18 @@ Transform:
   - {fileID: 472639250}
   m_Father: {fileID: 918210020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &178434748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178434746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e2adc6633f0a44e8aed581b74aaddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &178841289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21536,6 +21549,7 @@ GameObject:
   - component: {fileID: 703343767}
   - component: {fileID: 703343769}
   - component: {fileID: 703343768}
+  - component: {fileID: 703343770}
   m_Layer: 2
   m_Name: SpawnTrigger (148)
   m_TagString: Untagged
@@ -21597,6 +21611,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.72, y: 2, z: 0.3}
   m_Center: {x: 0, y: 1, z: 0.14}
+--- !u!114 &703343770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703343766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121fe0de305b3b54cb6e3dc79e20c51e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &704208974
 GameObject:
   m_ObjectHideFlags: 0
@@ -27238,6 +27267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894930507}
+  - component: {fileID: 894930508}
   m_Layer: 0
   m_Name: Collectibles
   m_TagString: Untagged
@@ -27279,6 +27309,18 @@ Transform:
   - {fileID: 1294808084}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &894930508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894930506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e2adc6633f0a44e8aed581b74aaddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &897242042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49152,6 +49194,16 @@ PrefabInstance:
       propertyPath: baseTransform
       value: 
       objectReference: {fileID: 263928687}
+    - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: TotalCollectibles
+      value: 
+      objectReference: {fileID: 894930508}
+    - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: TotalEnemyCounter
+      value: 
+      objectReference: {fileID: 178434748}
     - target: {fileID: 3920503169281182194, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target

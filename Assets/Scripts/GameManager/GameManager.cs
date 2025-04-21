@@ -1,3 +1,4 @@
+using System.Drawing.Text;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform baseTransform;
     [SerializeField] private BeatScoringSystem scoringSystem;
 
+    [SerializeField] private ChildCounter TotalEnemyCounter;
+    [SerializeField] private ChildCounter TotalCollectibles;
     // Public getter for the player's transform
     public Transform PlayerTransform
     {
@@ -64,5 +67,28 @@ public class GameManager : MonoBehaviour
     public void CalculateScore()
     {
         scoringSystem.GetHitScore();
+    }
+
+    public int getTotalSongs()
+    {
+        int TotalEnemies = TotalEnemyCounter.CountNestedChildren();
+        int totalCollectibles = TotalCollectibles.CountDirectChildren();
+        return TotalEnemies + totalCollectibles;
+    }
+    public int GetTotalSongScore()
+    {
+        int TotalEnemies = TotalEnemyCounter.CountNestedChildren();
+        int totalCollectibles = TotalCollectibles.CountDirectChildren();
+
+        int maxKillpoints = scoringSystem.MaxWindow;
+        int maxCollectiblePoints = 150;
+
+        int total = (TotalEnemies * maxKillpoints) + (totalCollectibles * maxCollectiblePoints);
+        return total;
+    }
+    public void SaveSongScore()
+    {
+        PlayerPrefs.SetInt("TotalMaxPoints",GetTotalSongScore());
+        scoringSystem.SaveScore();
     }
 }
