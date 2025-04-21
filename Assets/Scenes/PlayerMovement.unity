@@ -14431,6 +14431,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 458677564}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &461094162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1965666752923199300, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1669216838}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90591792220107343967e9b9c15ef8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &466389626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49125,6 +49137,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 263928687}
     m_Modifications:
+    - target: {fileID: 482747458699027333, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: beatScoringSystem
+      value: 
+      objectReference: {fileID: 461094162}
+    - target: {fileID: 1917110760761935543, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: beatScoringSystem
+      value: 
+      objectReference: {fileID: 461094162}
     - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: baseTransform

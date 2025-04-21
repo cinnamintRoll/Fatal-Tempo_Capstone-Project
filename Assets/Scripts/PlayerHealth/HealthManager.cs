@@ -23,8 +23,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip damageClip;
     [SerializeField] private AudioClip healClip;
 
-    [SerializeField] private UnityEvent OnDeath;
-
+    [SerializeField] public UnityEvent OnDeath;
+    [SerializeField] public UnityEvent OnDamage;
+    [SerializeField] public UnityEvent OnKillEnemy;
+    [SerializeField] private BeatScoringSystem BeatScoringSystem;
     void Awake()
     {
         if (Instance == null)
@@ -68,9 +70,11 @@ public class PlayerHealth : MonoBehaviour
         killsRemainingText.text = $"{killsToRestoreLife - currentKillCount}";
     }
 
-    // Damage instantly removes a full life
+    // Damage instantly  removes a full life
     public void TakeDamage()
     {
+        OnDamage.Invoke();
+
         if (currentLives > 0)
         {
             currentLives--;
@@ -97,6 +101,7 @@ public class PlayerHealth : MonoBehaviour
     // Killing enemies slowly fills up the current life
     public void KillEnemy()
     {
+        OnKillEnemy.Invoke();
         if (currentLives < maxLives)
         {
             currentKillCount++;
@@ -113,6 +118,8 @@ public class PlayerHealth : MonoBehaviour
             }
 
             UpdateSliders();
+
+            
         }
     }
 

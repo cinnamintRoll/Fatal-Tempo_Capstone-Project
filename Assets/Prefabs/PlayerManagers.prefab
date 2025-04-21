@@ -144,6 +144,7 @@ Transform:
   - {fileID: 5322019056858534459}
   - {fileID: 35121247056094204}
   - {fileID: 2408443560535500868}
+  - {fileID: 680913421902866249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146897785073434141
@@ -279,7 +280,7 @@ GameObject:
   - component: {fileID: 2950355360177511603}
   - component: {fileID: 4153468773097186407}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Multiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,6 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 3
+  currentLives: 0
   lifeSliders:
   - {fileID: 8247427434316859468}
   - {fileID: 8006961467327766189}
@@ -1236,6 +1238,16 @@ MonoBehaviour:
   killsToRestoreLife: 5
   gameMenu: {fileID: 7919784037555516910}
   DamageAnimator: {fileID: 0}
+  audioSource: {fileID: 0}
+  damageClip: {fileID: 0}
+  healClip: {fileID: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  BeatScoringSystem: {fileID: 0}
 --- !u!1 &7643537928328398844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1459,54 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7956621981248258670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680913421902866249}
+  - component: {fileID: 8387222490823233241}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680913421902866249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956621981248258670}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.011750713, z: 0.598}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7778916929767366613}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8387222490823233241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956621981248258670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90591792220107343967e9b9c15ef8a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMusicManager: 1
+  health: {fileID: 6434088917865832559}
+  scoreText: {fileID: 3865784836217458682}
+  multiplierText: {fileID: 4153468773097186407}
 --- !u!1 &8129322224807711891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1519,7 @@ GameObject:
   - component: {fileID: 3537587988951494068}
   - component: {fileID: 3865784836217458682}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

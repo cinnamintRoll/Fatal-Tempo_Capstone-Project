@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // Reference to the player's transform
     [SerializeField]private Transform playerTransform;
     [SerializeField] private Transform baseTransform;
+    [SerializeField] private BeatScoringSystem scoringSystem;
 
     // Public getter for the player's transform
     public Transform PlayerTransform
@@ -58,5 +59,10 @@ public class GameManager : MonoBehaviour
     public void SetBaseTransform(Transform transform)
     {
         baseTransform = transform;
+    }
+
+    public void CalculateScore()
+    {
+        scoringSystem.GetHitScore();
     }
 }
