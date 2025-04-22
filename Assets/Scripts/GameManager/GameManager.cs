@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour
 
     public void CalculateScore()
     {
-        scoringSystem.GetHitScore();
+        scoringSystem.OnHitEnemy();
     }
 
-    public int getTotalSongs()
+    public int GetTotalCombo()
     {
         int TotalEnemies = TotalEnemyCounter.CountNestedChildren();
         int totalCollectibles = TotalCollectibles.CountDirectChildren();
@@ -78,17 +78,28 @@ public class GameManager : MonoBehaviour
     public int GetTotalSongScore()
     {
         int TotalEnemies = TotalEnemyCounter.CountNestedChildren();
-        int totalCollectibles = TotalCollectibles.CountDirectChildren();
 
         int maxKillpoints = scoringSystem.MaxWindow;
-        int maxCollectiblePoints = 150;
 
-        int total = (TotalEnemies * maxKillpoints) + (totalCollectibles * maxCollectiblePoints);
+        int total = (TotalEnemies * maxKillpoints);
         return total;
     }
     public void SaveSongScore()
     {
+        
+        if (MusicManager.Instance != null)
+        {
+            /*
+            SongData songDataSave = MusicManager.Instance.song;
+
+            songDataSave.FullCombo = getTotalSongs();
+            songDataSave.maxPoints = GetTotalSongScore();
+            */
+            string SongName = MusicManager.Instance.song.songName;
+            PlayerPrefs.SetString("SongName", SongName);
+        }
         PlayerPrefs.SetInt("TotalMaxPoints",GetTotalSongScore());
+        PlayerPrefs.SetInt("FullCombo", GetTotalCombo());
         scoringSystem.SaveScore();
     }
 }

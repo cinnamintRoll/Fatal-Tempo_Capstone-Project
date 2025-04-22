@@ -45,6 +45,7 @@ public class MusicManager : MonoBehaviour
     private bool isPlaying = false; // Track if music is playing
     private float startTime; // To track when the music starts in game time
     public UnityEvent OnIntervalPassed;
+    public SongData song;
     private void Awake()
     {
         // Implement the Singleton pattern
