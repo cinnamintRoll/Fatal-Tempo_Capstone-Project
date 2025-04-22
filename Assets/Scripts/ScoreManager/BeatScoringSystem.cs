@@ -17,6 +17,9 @@ public class BeatScoringSystem : MonoBehaviour
     private int totalScore = 0;
     private int bestCombo = 0;
 
+    private int totalCollected = 0;
+    private int totalHits = 0;
+
     // Scoring windows
     [SerializeField] private int perfectWindow = 80; // in ms
     [SerializeField] private int maxWindow = 200;    // in ms
@@ -76,10 +79,11 @@ public class BeatScoringSystem : MonoBehaviour
     public void OnHitEnemy()
     {
         int baseScore = GetHitScore();
-        UpdateMultiplier(true);
+        //UpdateMultiplier(true);
         int scoreToAdd = baseScore * currentMultiplier;
 
         totalScore += scoreToAdd;
+        totalHits++;
 
         Debug.Log($"Scored: {baseScore} x{currentMultiplier} = {scoreToAdd}");
 
@@ -88,7 +92,7 @@ public class BeatScoringSystem : MonoBehaviour
 
     public void OnMissOrHitByEnemy()
     {
-        ResetMultiplier();
+        //ResetMultiplier();
         Debug.Log("Missed! Multiplier reset.");
         UpdateScoreDisplay();
     }
@@ -96,6 +100,7 @@ public class BeatScoringSystem : MonoBehaviour
     public void OnItemCollected(int itemValue)
     {
         totalScore += itemValue * currentMultiplier;
+        totalCollected++;
 
         Debug.Log($"Item Collected! Total Score: {totalScore}");
 
@@ -142,5 +147,12 @@ public class BeatScoringSystem : MonoBehaviour
     public void SaveScore()
     {
         PlayerPrefs.SetInt("SongScore", totalScore);
+        PlayerPrefs.SetInt("TotalCollected", totalCollected);
+        PlayerPrefs.SetInt("TotalHits", totalHits);
+        PlayerPrefs.SetInt("BestCombo", bestCombo);
     }
+
+    // Optional getters
+    public int GetTotalCollected() => totalCollected;
+    public int GetTotalHits() => totalHits;
 }

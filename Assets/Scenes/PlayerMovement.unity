@@ -5063,7 +5063,7 @@ GameObject:
   - component: {fileID: 178434747}
   - component: {fileID: 178434748}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Beats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5461,7 +5461,6 @@ Transform:
   - {fileID: 968849681}
   - {fileID: 2132926482}
   - {fileID: 1022462962}
-  - {fileID: 412230706}
   - {fileID: 778901164}
   - {fileID: 472639250}
   m_Father: {fileID: 918210020}
@@ -12721,11 +12720,11 @@ Transform:
   m_GameObject: {fileID: 412230705}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07419866, y: -1.61, z: 379.54654}
+  m_LocalPosition: {x: -0.0003388226, y: 0, z: -0.9977722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 178434747}
+  m_Father: {fileID: 778901164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &412230707
 BoxCollider:
@@ -21588,7 +21587,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  SceneName: Main Menu
+  SceneName: Level Select
   fadeInDelay: 1
 --- !u!65 &703343769
 BoxCollider:
@@ -24022,7 +24021,8 @@ Transform:
   m_LocalPosition: {x: 0.074537486, y: -1.61, z: 380.5443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 412230706}
   m_Father: {fileID: 178434747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &778901165
@@ -46022,6 +46022,7 @@ MonoBehaviour:
   OnIntervalPassed:
     m_PersistentCalls:
       m_Calls: []
+  song: {fileID: 11400000, guid: e8cb7cfb28042944f8739473f6b42abf, type: 2}
 --- !u!1001 &1569573425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49184,6 +49185,16 @@ PrefabInstance:
       propertyPath: beatScoringSystem
       value: 
       objectReference: {fileID: 461094162}
+    - target: {fileID: 1170187154449722093, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170187154449722093, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -111
+      objectReference: {fileID: 0}
     - target: {fileID: 1917110760761935543, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: beatScoringSystem
@@ -49292,6 +49303,11 @@ PrefabInstance:
     - target: {fileID: 8121141671869476322, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: minHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780653151479248381, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
