@@ -6,12 +6,20 @@ using UnityEngine.UI;
 
 public class LevelSelectManager : MonoBehaviour
 {
-    public AudioSource audioSource;     // Reference to AudioSource to play song previews
-    public Text songNameText;           // UI Text to display the selected song name
-    public Text songDescriptionText;    // UI Text to display the song description
-    public ScreenFader screenFader;     // Reference to the ScreenFader script
+    public AudioSource audioSource;
+    public Text songNameText;
+    public Text songDescriptionText;
+    public ScreenFader screenFader;
     public Image albumCover;
-    private SongData selectedSong;      // Currently selected song data
+
+    // NEW: Score-related UI fields
+    public Text playerScoreText;
+    public Text gradeText;
+    public Text highestComboText;
+    public Text fullComboText;
+    public Text maxPointsText;
+
+    private SongData selectedSong;
 
     private void OnEnable()
     {
@@ -28,22 +36,35 @@ public class LevelSelectManager : MonoBehaviour
         tempcolor.a = alpha;
         albumCover.color = tempcolor;
     }
-    // Call this method when a song button is clicked
+
     public void SelectSong(SongData song)
     {
         selectedSong = song;
+
         songNameText.gameObject.SetActive(true);
         songNameText.text = song.songName;
-        songDescriptionText.text = song.songDescription;  // Display the song description
+        songDescriptionText.text = song.songDescription;
         albumCover.sprite = song.AlbumCover;
         setAlbumAlpha(1f);
+
         // Play the song preview
         if (audioSource.isPlaying) audioSource.Stop();
         audioSource.clip = song.songClip;
         audioSource.Play();
+
+        // Show or hide score and grade based on stored score
+        bool hasScore = song.playerScore > 0;
+
+        playerScoreText.gameObject.SetActive(hasScore);
+        gradeText.gameObject.SetActive(hasScore);
+
+        if (hasScore)
+        {
+            playerScoreText.text = $"{song.playerScore}";
+            gradeText.text = $"{song.letterGrade}";
+        }
     }
 
-    // Call this method when the Start button is pressed
     public void StartSelectedLevel()
     {
         if (selectedSong != null)
@@ -52,31 +73,28 @@ public class LevelSelectManager : MonoBehaviour
         }
     }
 
-    // Coroutine to handle fade-out and scene loading
     private IEnumerator FadeAndLoadScene()
     {
         if (screenFader != null)
         {
-            screenFader.DoFadeIn();  // Trigger fade-in (screen darkening)
-            yield return new WaitForSeconds(1f / screenFader.FadeInSpeed);  // Wait for fade-in to complete
+            screenFader.DoFadeIn();
+            yield return new WaitForSeconds(1f / screenFader.FadeInSpeed);
         }
 
         SceneManager.LoadScene(selectedSong.sceneName);
     }
 
-    // Call this method when the Back button is pressed
     public void GoBack()
     {
         StartCoroutine(FadeAndLoadPreviousScene());
     }
 
-    // Coroutine for fading out before going back to the previous scene
     private IEnumerator FadeAndLoadPreviousScene()
     {
         if (screenFader != null)
         {
-            screenFader.DoFadeIn();  // Trigger fade-in (screen darkening)
-            yield return new WaitForSeconds(1f / screenFader.FadeInSpeed);  // Wait for fade-in to complete
+            screenFader.DoFadeIn();
+            yield return new WaitForSeconds(1f / screenFader.FadeInSpeed);
         }
 
         if (SceneManager.GetActiveScene().buildIndex > 0)
