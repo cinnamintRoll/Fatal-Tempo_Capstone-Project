@@ -130,7 +130,7 @@ public class GameMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = originalFixedDelta;
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Level Select");
     }
 
     public void TriggerDeathMenu()
