@@ -21,8 +21,8 @@ public class BeatScoringSystem : MonoBehaviour
     private int totalHits = 0;
 
     // Scoring windows
-    [SerializeField] private int perfectWindow = 80; // in ms
-    [SerializeField] private int maxWindow = 200;    // in ms
+    [SerializeField] private int perfectWindow = 100; // in ms
+    [SerializeField] private int maxWindow = 300;    // in ms
 
     public int PerfectWindow => perfectWindow;
     public int MaxWindow => maxWindow;
@@ -57,29 +57,32 @@ public class BeatScoringSystem : MonoBehaviour
         float currentIntervalSec = beatIntervalMS / 1000f;
         float timeSinceLastPulse = hitTime - lastPulseTime;
 
-        float distanceToBeat = Mathf.Abs(timeSinceLastPulse % currentIntervalSec);
-        float halfInterval = currentIntervalSec / 2f;
+        // Calculate signed offset to the nearest beat
+        float rawOffset = timeSinceLastPulse % currentIntervalSec;
+        if (rawOffset > currentIntervalSec / 2f)
+            rawOffset -= currentIntervalSec;
 
-        if (distanceToBeat > halfInterval)
-            distanceToBeat = currentIntervalSec - distanceToBeat;
+        float distanceMS = rawOffset * 1000f;
 
-        float distanceMS = distanceToBeat * 1000f;
+        // Debug info: Show early/late timing with +/- sign
+        Debug.Log($"Hit offset: {(distanceMS >= 0f ? "+" : "")}{distanceMS:F1} ms");
 
-        if (distanceMS <= perfectWindow)
-            return maxWindow;
+        float absDistanceMS = Mathf.Abs(distanceMS);
 
-        if (distanceMS > maxWindow)
-            return 0; // Miss
+        if (absDistanceMS <= perfectWindow)
+            return 300;
 
-        // Linear falloff between perfectWindow and maxWindow
-        float t = (distanceMS - perfectWindow) / (maxWindow - perfectWindow);
+        // Linear falloff: beyond perfectWindow, score decreases toward 0
+        float t = (absDistanceMS - perfectWindow) / perfectWindow; // falloff rate
+        t = Mathf.Clamp01(t); // keep score from going negative
         return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
     }
+
 
     public void OnHitEnemy()
     {
         int baseScore = GetHitScore();
-        //UpdateMultiplier(true);
+        UpdateMultiplier(true);
         int scoreToAdd = baseScore * currentMultiplier;
 
         totalScore += scoreToAdd;
@@ -99,7 +102,7 @@ public class BeatScoringSystem : MonoBehaviour
 
     public void OnItemCollected(int itemValue)
     {
-        totalScore += itemValue * currentMultiplier;
+        totalScore += itemValue;
         totalCollected++;
 
         Debug.Log($"Item Collected! Total Score: {totalScore}");
@@ -117,7 +120,7 @@ public class BeatScoringSystem : MonoBehaviour
             {
                 bestCombo = hitStreak;
             }
-
+            /*
             if (hitStreak == 4)
                 currentMultiplier = 8;
             else if (hitStreak == 3)
@@ -126,6 +129,7 @@ public class BeatScoringSystem : MonoBehaviour
                 currentMultiplier = 2;
             else
                 currentMultiplier = 1;
+            */
         }
     }
 
