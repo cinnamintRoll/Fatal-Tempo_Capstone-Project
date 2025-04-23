@@ -49207,6 +49207,11 @@ PrefabInstance:
       objectReference: {fileID: 263928687}
     - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: scoringSystem
+      value: 
+      objectReference: {fileID: 461094162}
+    - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: TotalCollectibles
       value: 
       objectReference: {fileID: 894930508}
