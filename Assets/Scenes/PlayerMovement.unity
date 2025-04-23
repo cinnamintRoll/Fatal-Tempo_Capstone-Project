@@ -49200,6 +49200,11 @@ PrefabInstance:
       propertyPath: beatScoringSystem
       value: 
       objectReference: {fileID: 461094162}
+    - target: {fileID: 3185618541126964492, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: baseTransform
