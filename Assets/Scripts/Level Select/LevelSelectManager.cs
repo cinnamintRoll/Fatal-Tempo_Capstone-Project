@@ -11,6 +11,7 @@ public class LevelSelectManager : MonoBehaviour
     public Text songDescriptionText;
     public ScreenFader screenFader;
     public Image albumCover;
+    public SongData DefaultSong;
 
     // NEW: Score-related UI fields
     public Text playerScoreText;
@@ -28,6 +29,10 @@ public class LevelSelectManager : MonoBehaviour
             setAlbumAlpha(0f);
         }
         songNameText.gameObject.SetActive(false);
+        if(DefaultSong != null)
+        {
+            SelectSong(DefaultSong);
+        }
     }
 
     public void setAlbumAlpha(float alpha)
