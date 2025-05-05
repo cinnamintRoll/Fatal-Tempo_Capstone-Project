@@ -1,0 +1,41 @@
+using UnityEditor;
+using UnityEngine;
+
+[CustomEditor(typeof(GeneralSpawner))]
+public class GeneralSpawnerEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        SerializedProperty spawnablesProp = serializedObject.FindProperty("Spawnables");
+        SerializedProperty spawnIndexProp = serializedObject.FindProperty("spawnIndex");
+
+        GeneralSpawner spawner = (GeneralSpawner)target;
+
+        // Draw spawnables list
+        EditorGUILayout.PropertyField(spawnablesProp, true);
+
+        // Show dynamic dropdown based on spawnables list
+        if (spawner.Spawnables != null && spawner.Spawnables.Count > 0)
+        {
+            string[] names = new string[spawner.Spawnables.Count];
+            for (int i = 0; i < names.Length; i++)
+            {
+                GameObject go = spawner.Spawnables[i];
+                names[i] = go != null ? go.name : "[Missing]";
+            }
+
+            spawnIndexProp.intValue = EditorGUILayout.Popup("Spawn Type", spawnIndexProp.intValue, names);
+        }
+        else
+        {
+            EditorGUILayout.LabelField("No spawnables assigned.");
+        }
+
+        // Draw other default fields except the ones we handled manually
+        DrawPropertiesExcluding(serializedObject, "Spawnables", "spawnIndex");
+
+        serializedObject.ApplyModifiedProperties();
+    }
+}
