@@ -132,17 +132,20 @@ public class EnemyAI : MonoBehaviour
     // Handle MoveToPoint State
     void HandleMoveToPoint()
     {
-        float distanceToDestination = Vector3.Distance(transform.position, pointToMove.position);
-        chaseUpdateTimer += Time.deltaTime;
-        if (chaseUpdateTimer >= chaseUpdateInterval)
+        if (pointToMove != null)
         {
-            chaseUpdateTimer = 0f; // Reset the timer
-            SetRandomChaseUpdateInterval(); // Randomize the next interval
-            MoveToPoint(); // Update destination
-        }
-        if (distanceToDestination <= 1f)
-        {
-            TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
+            float distanceToDestination = Vector3.Distance(transform.position, pointToMove.position);
+            chaseUpdateTimer += Time.deltaTime;
+            if (chaseUpdateTimer >= chaseUpdateInterval)
+            {
+                chaseUpdateTimer = 0f; // Reset the timer
+                SetRandomChaseUpdateInterval(); // Randomize the next interval
+                MoveToPoint(); // Update destination
+            }
+            if (distanceToDestination <= 1f)
+            {
+                TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
+            }
         }
     }
 
@@ -292,5 +295,13 @@ public class EnemyAI : MonoBehaviour
     void SetRandomChaseUpdateInterval()
     {
         chaseUpdateInterval = UnityEngine.Random.Range(minChaseUpdateInterval, maxChaseUpdateInterval);
+    }
+    public void PickRandomEnemyType()
+    {
+        // Get all possible enemy types
+        Array types = Enum.GetValues(typeof(EnemyType));
+
+        // Choose one at random
+        enemyAIType = (EnemyType)types.GetValue(UnityEngine.Random.Range(0, types.Length));
     }
 }

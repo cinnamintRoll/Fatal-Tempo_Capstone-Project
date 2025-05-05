@@ -8,8 +8,6 @@ public class DespawnAfterSlice : MonoBehaviour
     public float despawnThreshold = 0.01f;  // Threshold at which the object is considered despawned
     public float delayBeforeShrink = 1f; // Optional delay before starting to shrink
 
-    private bool isDespawning = false;
-
     void Start()
     {
         // Start the despawn process after the specified delay
@@ -27,7 +25,6 @@ public class DespawnAfterSlice : MonoBehaviour
 
     void StartShrinking()
     {
-        isDespawning = true;
         StartCoroutine(ShrinkAndDespawn());
     }
 
