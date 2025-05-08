@@ -38,4 +38,44 @@ public class GeneralSpawnerEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
+
+    // Custom scene view handling
+    private void OnSceneGUI()
+    {
+        // Only run in Edit mode and in the Scene view
+        if (Application.isPlaying || !SceneView.currentDrawingSceneView)
+            return;
+
+        GeneralSpawner spawner = (GeneralSpawner)target;
+
+        if (spawner.spawnPoint != null)
+        {
+            EditorGUI.BeginChangeCheck();
+            Vector3 newPosition = Handles.PositionHandle(spawner.spawnPoint.position, spawner.spawnPoint.rotation);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(spawner.spawnPoint, "Move Spawn Point");
+                spawner.spawnPoint.position = newPosition;
+            }
+
+            // Preview the selected spawnable
+            if (spawner.Spawnables.Count > 0 && spawner.Spawnables[spawner.spawnIndex] != null)
+            {
+                GameObject previewObject = spawner.Spawnables[spawner.spawnIndex];
+                if (previewObject != null)
+                {
+                    Renderer renderer = previewObject.GetComponentInChildren<Renderer>();
+                    if (renderer != null)
+                    {
+                        Vector3 objectWorldPosition = spawner.spawnPoint.position;
+                        objectWorldPosition.y = renderer.bounds.center.y;
+
+                        Handles.color = new Color(1f, 0f, 0f, 0.5f);
+                        Handles.DrawWireCube(objectWorldPosition, renderer.bounds.size);
+                    }
+                }
+            }
+        }
+    }
+
 }
