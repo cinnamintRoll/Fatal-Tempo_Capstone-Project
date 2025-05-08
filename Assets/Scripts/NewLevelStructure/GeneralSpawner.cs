@@ -20,7 +20,15 @@ public class GeneralSpawner : MonoBehaviour
             player = gameManager.PlayerTransform;
         enemy.player = player;
         enemy.pointToMove = movepoint;
-        
+
+        for (int i = Spawnables.Count - 1; i >= 0; i--)
+        {
+            if (i != spawnIndex)
+            {
+                DestroyImmediate(Spawnables[i],true);
+                Spawnables.RemoveAt(i);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -29,34 +37,22 @@ public class GeneralSpawner : MonoBehaviour
         {
             if (canSpawn)
             spawnAnim.SetTrigger("Spawn");
+            canSpawn = false;
             //Spawn();
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            canSpawn = false;
-        }
-    }
 
     public void Spawn()
     {
-        if (spawnIndex >= 0 && spawnIndex < Spawnables.Count)
-        {
-            GameObject toSpawn = Spawnables[spawnIndex];
+
+            GameObject toSpawn = Spawnables[0];
             if (toSpawn != null)
             {
                 toSpawn.transform.position = spawnPoint.position;
                 toSpawn.transform.rotation = spawnPoint.rotation;
                 toSpawn.SetActive(true);
             }
-        }
-        else
-        {
-            Debug.LogWarning("Invalid spawn index or missing spawnable in list.");
-        }
     }
 
     public void RandomlyPickSpawn()

@@ -12,7 +12,7 @@ public class PathFollower : MonoBehaviour
     public Transform pathParent; // Parent transform for path points
     public float bpm = 120f; // Beats per minute
     public float timingLineWidth = 0.1f; // Width of timing lines
-
+    public GameObject spawnTriggerPrefab;
     public float timingLineSpacing; // Calculated spacing for timing lines
     public bool enableCurving = true; // Toggle for curving
 

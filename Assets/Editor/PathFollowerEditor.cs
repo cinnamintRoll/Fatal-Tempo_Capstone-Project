@@ -8,7 +8,7 @@ public class PathFollowerEditor : Editor
     private PathFollower pathFollower;
     private bool isEditing = false;
     private bool isStraightening = false;
-
+    
     private void OnEnable()
     {
         pathFollower = (PathFollower)target;
@@ -45,18 +45,23 @@ public class PathFollowerEditor : Editor
     private void GenerateSpawnTriggers()
     {
         if (pathFollower.pathPoints == null || pathFollower.pathPoints.Length < 2) return;
+        if (pathFollower.spawnTriggerPrefab == null)
+        {
+            Debug.LogError("Spawn Trigger Prefab is not assigned in PathFollower.");
+            return;
+        }
 
         for (int i = 0; i < pathFollower.pathPoints.Length - 1; i++)
         {
             float segmentLength = Vector3.Distance(pathFollower.pathPoints[i].position, pathFollower.pathPoints[i + 1].position);
-            int samples = Mathf.CeilToInt(segmentLength / pathFollower.timingLineSpacing); // Assuming timingLineSpacing is accessible
+            int samples = Mathf.CeilToInt(segmentLength / pathFollower.timingLineSpacing);
 
             for (int j = 0; j <= samples; j++)
             {
                 float t = (float)j / samples;
                 Vector3 pointOnCurve;
 
-                if (pathFollower.enableCurving) // Assuming enableCurving is accessible
+                if (pathFollower.enableCurving)
                 {
                     pointOnCurve = pathFollower.CatmullRom(
                         pathFollower.GetControlPoint(i - 1),
@@ -71,13 +76,23 @@ public class PathFollowerEditor : Editor
                     pointOnCurve = Vector3.Lerp(pathFollower.pathPoints[i].position, pathFollower.pathPoints[i + 1].position, t);
                 }
 
-                // Create a new empty GameObject at the timing line position
-                GameObject spawnTrigger = new GameObject("SpawnTrigger");
-                spawnTrigger.transform.position = pointOnCurve; // Position at the timing line
-                spawnTrigger.transform.parent = pathFollower.pathParent; // Set parent for organization
+                // Instantiate the spawn trigger prefab
+                GameObject spawnTrigger = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.spawnTriggerPrefab);
+                spawnTrigger.transform.position = pointOnCurve;
+                spawnTrigger.transform.parent = pathFollower.pathParent;
 
-                // Optionally, add a component or setup as needed
-                spawnTrigger.AddComponent<BoxCollider>().isTrigger = true; // Example: adding a trigger collider
+                // Access the GeneralSpawner component and call RandomlyPickSpawn
+                GeneralSpawner spawner = spawnTrigger.GetComponent<GeneralSpawner>();
+                if (spawner != null)
+                {
+                    spawner.RandomlyPickSpawn();
+                }
+                else
+                {
+                    Debug.LogWarning("Spawn trigger prefab does not have a GeneralSpawner component.");
+                }
+
+                Undo.RegisterCreatedObjectUndo(spawnTrigger, "Create Spawn Trigger");
             }
         }
 

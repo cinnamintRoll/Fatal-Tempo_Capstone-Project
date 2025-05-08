@@ -9,7 +9,7 @@ using static Enemies;
 public class Enemies
 {
     public string EnemyName;
-    public enum EnemyType { Melee, Ranged, Sniper }
+    public enum EnemyType { Melee, Sniper }
     public EnemyType enemyType;
     public GameObject EnemyObject;
 }
@@ -170,7 +170,6 @@ public class EnemyAI : MonoBehaviour
                     TransitionToState(EnemyState.Attack); // Melee attack when close
                     break;
 
-                case EnemyType.Ranged:
                 case EnemyType.Sniper:
                     TransitionToState(EnemyState.Attack); // Ranged attack at distance or Sniper attack at long range
                     break;
@@ -249,10 +248,6 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Enemy performs a melee attack!");
                 PlayerHealth.Instance.TakeDamage(); // Example of damaging the player
                 break;
-            case EnemyType.Ranged:
-                Debug.Log("Enemy performs a ranged attack!");
-                ShootProjectile();
-                break;
             case EnemyType.Sniper:
                 Debug.Log("Enemy performs a sniper attack!");
                 SniperScript.StartShooting();
@@ -277,12 +272,6 @@ public class EnemyAI : MonoBehaviour
 
         // If the dotProduct is less than 0 and the distance is greater than the threshold, the enemy is behind and far enough
         return dotProduct < 0 && distanceToEnemy > behindDistanceThreshold;
-    }
-
-    // Simulate shooting a projectile (for ranged and sniper enemies)
-    void ShootProjectile()
-    {
-        Debug.Log("Enemy shoots a projectile at the player!");
     }
 
     // Public function to make the enemy idle
