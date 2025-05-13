@@ -64,10 +64,7 @@ public class GameManager : MonoBehaviour
         baseTransform = transform;
     }
 
-    public void CalculateScore()
-    {
-        scoringSystem.OnHitEnemy();
-    }
+    
 
     public int GetTotalCombo()
     {

@@ -203,7 +203,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (!isDead)
             {
-                PlayerHealth.KillEnemy();
+                PlayerHealth.KillEnemy(this.transform);
                 isDead = true;
             }
             

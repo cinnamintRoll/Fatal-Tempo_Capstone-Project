@@ -76,7 +76,7 @@ public class BeatScoringSystem : MonoBehaviour
         return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
     }
 
-    public void OnHitEnemy()
+    public void OnHitEnemy(Transform enemy)
     {
         int baseScore = GetHitScore();
         totalScore += baseScore;
@@ -88,7 +88,7 @@ public class BeatScoringSystem : MonoBehaviour
             bestCombo = hitStreak;
         }
 
-        Debug.Log($"Scored: {baseScore}");
+        Debug.Log($"Scored: {baseScore} on {enemy.gameObject.transform}");
 
         UpdateScoreDisplay();
     }

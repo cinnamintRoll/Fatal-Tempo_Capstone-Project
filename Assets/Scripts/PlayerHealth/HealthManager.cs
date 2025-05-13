@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] public UnityEvent OnDeath;
     [SerializeField] public UnityEvent OnDamage;
-    [SerializeField] public UnityEvent OnKillEnemy;
+    [SerializeField] public UnityEvent<Transform> OnKillEnemy;
     [SerializeField] private BeatScoringSystem BeatScoringSystem;
     void Awake()
     {
@@ -99,9 +99,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Killing enemies slowly fills up the current life
-    public void KillEnemy()
+    public void KillEnemy(Transform enemyTransform)
     {
-        OnKillEnemy.Invoke();
+        OnKillEnemy.Invoke(enemyTransform);
         if (currentLives < maxLives)
         {
             currentKillCount++;
@@ -144,7 +144,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void DebugKillEnemy()
     {
-        KillEnemy();  // Simulate killing an enemy
+        KillEnemy(this.transform);  // Simulate killing an enemy
     }
 
     public void PlayerDeath()
