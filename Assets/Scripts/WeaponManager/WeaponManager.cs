@@ -1,134 +1,176 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Enum representing the different weapons, including Fist (No Weapon)
 public enum WeaponType
 {
-    Fist,   // No weapon equipped, or using fists
-    Pistol,
+    Fist,
+    Gun,
     Sword
+}
+
+public enum HandType
+{
+    Left,
+    Right
 }
 
 public class WeaponManager : MonoBehaviour
 {
-    // Singleton instance
     public static WeaponManager Instance { get; private set; }
 
-    // Dictionary to map WeaponType to weapon GameObjects
-    public Dictionary<WeaponType, GameObject> weaponMap = new Dictionary<WeaponType, GameObject>();
+    [Header("Weapon Parent Transforms")]
+    [SerializeField] private Transform leftHandWeaponParent;
+    [SerializeField] private Transform rightHandWeaponParent;
 
-    // Assign the corresponding weapons in the Inspector
-    public GameObject fist;
-    public GameObject pistol;
-    public GameObject sword;
+    private Dictionary<WeaponType, GameObject> leftHandWeaponMap = new();
+    private Dictionary<WeaponType, GameObject> rightHandWeaponMap = new();
 
-    [SerializeField] private WeaponType currentWeapon;
+    [SerializeField] private WeaponType currentLeftWeapon = WeaponType.Fist;
+    [SerializeField] private WeaponType currentRightWeapon = WeaponType.Fist;
 
-    // Audio handling
-    [SerializeField] private AudioSource audioSource;  // AudioSource component for playing sounds
-    [SerializeField] private AudioClip swapWeaponSound;  // Sound effect for swapping weapons
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip swapWeaponSound;
 
-    private bool onStart = false;
+    private bool hasStarted = false;
+
     private void Awake()
     {
-        // Ensure that only one instance of WeaponManager exists
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
         {
-            Destroy(gameObject); // Destroy the duplicate
+            Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject); // Keep the singleton across scenes
-    }
-
-    public GameObject GetWeaponGameObject(WeaponType weaponType)
-    {
-        if (weaponMap.ContainsKey(weaponType))
-        {
-            return weaponMap[weaponType];
-        }
-        return null;
     }
 
     void Start()
     {
-        // Initialize the weapon map
-        weaponMap.Add(WeaponType.Fist, fist);  // Fist or No Weapon has a GameObject now
-        weaponMap.Add(WeaponType.Pistol, pistol);
-        weaponMap.Add(WeaponType.Sword, sword);
+        AutoMapWeapons(leftHandWeaponParent, leftHandWeaponMap);
+        AutoMapWeapons(rightHandWeaponParent, rightHandWeaponMap);
 
-        // Disable all weapons except the default one (Fist)
-        foreach (var weapon in weaponMap)
-        {
-            if (weapon.Value != null)
-                weapon.Value.SetActive(false);  // Only disable actual GameObjects
-        }
-        SwapWeapon(currentWeapon);
+        // Disable all weapons initially
+        foreach (var weapon in leftHandWeaponMap.Values)
+            if (weapon) weapon.SetActive(false);
+        foreach (var weapon in rightHandWeaponMap.Values)
+            if (weapon) weapon.SetActive(false);
+
+        SwapWeapon(currentLeftWeapon, HandType.Left);
+        SwapWeapon(currentRightWeapon, HandType.Right);
     }
 
-    // Call this method when the player touches the floating item to swap the weapon
-    public void SwapWeapon(WeaponType newWeapon)
+    private void AutoMapWeapons(Transform parent, Dictionary<WeaponType, GameObject> map)
     {
-        // Disable the current weapon if it's not "Fist"
-        if (weaponMap[currentWeapon] != null)
+        map.Clear();
+        foreach (Transform child in parent)
         {
-            weaponMap[currentWeapon].SetActive(false);
+            if (System.Enum.TryParse(child.name, out WeaponType type))
+            {
+                map[type] = child.gameObject;
+            }
+            else
+            {
+                Debug.LogWarning($"Weapon '{child.name}' does not match any WeaponType enum.");
+            }
+        }
+    }
+
+    public void SwapWeapon(WeaponType newWeapon, HandType hand)
+    {
+        var currentMap = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
+        var currentWeapon = hand == HandType.Left ? currentLeftWeapon : currentRightWeapon;
+
+        // Reset the other hand to Fist if this hand is trying to equip a non-Fist weapon
+        if (newWeapon != WeaponType.Fist)
+        {
+            if (hand == HandType.Left && currentRightWeapon != WeaponType.Fist)
+            {
+                SwapWeapon(WeaponType.Fist, HandType.Right);
+            }
+            else if (hand == HandType.Right && currentLeftWeapon != WeaponType.Fist)
+            {
+                SwapWeapon(WeaponType.Fist, HandType.Left);
+            }
         }
 
-        // Enable the new weapon if it's not "Fist"
-        if (weaponMap[newWeapon] != null)
-        {
-            weaponMap[newWeapon].SetActive(true);
-        }
+        if (currentMap.TryGetValue(currentWeapon, out var oldWeapon) && oldWeapon != null)
+            oldWeapon.SetActive(false);
 
-        // Play weapon swap sound effect
-        if (onStart)
-        {
-            PlayWeaponSwapSound();
-        }
+        if (currentMap.TryGetValue(newWeapon, out var newWeaponGO) && newWeaponGO != null)
+            newWeaponGO.SetActive(true);
+
+        if (hasStarted)
+            PlayWeaponSwapSound(hand);
         else
-        {
-            onStart = true;
-        }
+            hasStarted = true;
 
-        // Update current weapon
-        currentWeapon = newWeapon;
+        if (hand == HandType.Left)
+            currentLeftWeapon = newWeapon;
+        else
+            currentRightWeapon = newWeapon;
     }
 
-    // Example method for automatic weapon swap (e.g., after a certain action or event)
-    public void AutoSwapNextWeapon()
+    public void AutoSwapNextWeapon(HandType hand)
     {
-        // Disable the current weapon if it's not "Fist"
-        if (weaponMap[currentWeapon] != null)
+        var currentMap = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
+        var currentWeapon = hand == HandType.Left ? currentLeftWeapon : currentRightWeapon;
+
+        if (currentMap.TryGetValue(currentWeapon, out var oldWeapon) && oldWeapon != null)
+            oldWeapon.SetActive(false);
+
+        WeaponType[] weaponTypes = (WeaponType[])System.Enum.GetValues(typeof(WeaponType));
+        int nextIndex = ((int)currentWeapon + 1) % weaponTypes.Length;
+        WeaponType nextWeapon = weaponTypes[nextIndex];
+
+        // If next weapon is not Fist, reset the opposite hand
+        if (nextWeapon != WeaponType.Fist)
         {
-            weaponMap[currentWeapon].SetActive(false);
+            if (hand == HandType.Left && currentRightWeapon != WeaponType.Fist)
+            {
+                SwapWeapon(WeaponType.Fist, HandType.Right);
+            }
+            else if (hand == HandType.Right && currentLeftWeapon != WeaponType.Fist)
+            {
+                SwapWeapon(WeaponType.Fist, HandType.Left);
+            }
         }
 
-        // Get the next weapon type in the enum (loop back to the first weapon if at the end)
-        currentWeapon = (WeaponType)(((int)currentWeapon + 1) % System.Enum.GetValues(typeof(WeaponType)).Length);
+        if (currentMap.TryGetValue(nextWeapon, out var newWeaponGO) && newWeaponGO != null)
+            newWeaponGO.SetActive(true);
 
-        // Enable the new weapon if it's not "Fist"
-        if (weaponMap[currentWeapon] != null)
-        {
-            weaponMap[currentWeapon].SetActive(true);
-        }
+        PlayWeaponSwapSound(hand);
 
-        // Play weapon swap sound effect
-        PlayWeaponSwapSound();
+        if (hand == HandType.Left)
+            currentLeftWeapon = nextWeapon;
+        else
+            currentRightWeapon = nextWeapon;
     }
 
-    // Method to play the swap weapon sound
-    private void PlayWeaponSwapSound()
+
+    private void PlayWeaponSwapSound(HandType controlhand)
     {
         if (audioSource != null && swapWeaponSound != null)
         {
+            // Set the audio source's position and rotation to match the correct controller
+            if (controlhand == HandType.Left)
+            {
+                audioSource.transform.position = ControllerLocator.Instance.GetLeftHand().position;
+            }
+            else if (controlhand == HandType.Right)
+            {
+                audioSource.transform.position = ControllerLocator.Instance.GetRightHand().position;
+            }
+
             audioSource.clip = swapWeaponSound;
             audioSource.Play();
         }
+    }
+
+
+    public GameObject GetWeaponGameObject(WeaponType weaponType, HandType hand)
+    {
+        var map = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
+        return map.ContainsKey(weaponType) ? map[weaponType] : null;
     }
 }

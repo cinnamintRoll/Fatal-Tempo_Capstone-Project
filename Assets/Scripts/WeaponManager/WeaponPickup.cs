@@ -1,72 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BNG;
 
 public class WeaponPickup : MonoBehaviour
 {
-    [Tooltip("The type of weapon this pickup represents.")]
     public WeaponType weaponType;
-
-    [Tooltip("The position where the weapon will float to (usually the player's weapon position).")]
-    public Transform targetPosition;
-
-    [Tooltip("Speed at which the weapon floats to the player.")]
     public float moveSpeed = 2f;
-
-    [Tooltip("Speed of the idle floating effect (how fast it moves up and down).")]
     public float floatingSpeed = 1f;
-
-    [Tooltip("Amplitude of the floating effect (how far it moves up and down).")]
     public float floatingAmplitude = 0.2f;
-    private bool isPickedUp = false;  // To check if the player has triggered the pickup
+
     [SerializeField] private GameObject objectOffset;
-    private Vector3 originalPosition;  // Original position for floating animation
+
+    private Vector3 originalPosition;
+    private bool isPickedUp = false;
+    private bool hasSwapped = false;
+    private ControllerHand targetHand;
+    private Transform targetHandTransform;
 
     void Start()
     {
-        originalPosition = transform.position;  // Store the starting position for the floating effect
+        originalPosition = transform.position;
     }
 
     void Update()
     {
         if (!isPickedUp)
         {
-            // Apply floating animation (simple up and down movement)
             float newY = originalPosition.y + Mathf.Sin(Time.time * floatingSpeed) * floatingAmplitude;
             transform.position = new Vector3(originalPosition.x, newY, originalPosition.z);
         }
-        else
+        else if (targetHandTransform != null)
         {
-            // Get the target weapon GameObject and its transform
-            GameObject targetWeapon = WeaponManager.Instance.GetWeaponGameObject(weaponType);
-            if (targetWeapon != null)
+            transform.position = Vector3.MoveTowards(transform.position, targetHandTransform.position, moveSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetHandTransform.rotation, Time.deltaTime * moveSpeed);
+
+            if (!hasSwapped && Vector3.Distance(transform.position, targetHandTransform.position) < 0.1f)
             {
-                targetPosition = targetWeapon.transform;
+                // Swap the weapon in the correct hand
+                HandType handType = targetHand == ControllerHand.Left ? HandType.Left : HandType.Right;
+                WeaponManager.Instance.SwapWeapon(weaponType, handType);
+                hasSwapped = true;
 
-                // Move the weapon towards the player's weapon position
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, moveSpeed * Time.deltaTime);
-
-                // Smoothly rotate the pickup to match the target weapon's rotation
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetPosition.rotation, Time.deltaTime * moveSpeed);
-
-                // When the weapon reaches the target, swap the weapon in the WeaponManager
-                if (Vector3.Distance(transform.position, targetPosition.position) < 0.1f)
+                if (objectOffset != null)
                 {
-                    WeaponManager.Instance.SwapWeapon(weaponType);  // Call the WeaponManager to swap the weapon
-                    Destroy(objectOffset);  // Destroy the floating weapon pickup object once the weapon is swapped
+                    Destroy(objectOffset);
                 }
+
+                // Optionally destroy the pickup object
+                Destroy(gameObject);
             }
         }
     }
 
-
-    // This method will be triggered when the player touches the floating weapon (using VR hand or collider)
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the layer of the other object is the "Hand" layer
-        if (((1 << other.gameObject.layer) & 13) != 0)
+        if (isPickedUp) return;
+        if (!isPickedUp && ((1 << other.gameObject.layer) & 13) != 0) return;
+        Transform rightHand = ControllerLocator.Instance.GetRightHand();
+        Transform leftHand = ControllerLocator.Instance.GetLeftHand();
+
+        if (leftHand == null || rightHand == null) return;
+        float distLeft = Vector3.Distance(transform.position, leftHand.position);
+        float distRight = Vector3.Distance(transform.position, rightHand.position);
+
+        if (distLeft < distRight)
         {
-            isPickedUp = true;  // Start the floating toward player behavior
+            targetHand = ControllerHand.Left;
+            targetHandTransform = leftHand;
         }
+        else
+        {
+            targetHand = ControllerHand.Right;
+            targetHandTransform = rightHand;
+   
+        }
+
+        isPickedUp = true;
+        
     }
 }
