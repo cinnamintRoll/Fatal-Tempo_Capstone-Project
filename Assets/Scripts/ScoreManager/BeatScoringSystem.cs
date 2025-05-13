@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using static UnityEditor.FilePathAttribute;
 
 public class BeatScoringSystem : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class BeatScoringSystem : MonoBehaviour
     [SerializeField] private int perfectWindow = 100; // in ms
     [SerializeField] private int maxWindow = 300;    // in ms
 
+    [SerializeField] private GameObject scorePopupPrefab;
     public int PerfectWindow => perfectWindow;
     public int MaxWindow => maxWindow;
 
@@ -76,7 +78,7 @@ public class BeatScoringSystem : MonoBehaviour
         return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
     }
 
-    public void OnHitEnemy(Transform enemy)
+    public void OnHitEnemy(Vector3 enemy)
     {
         int baseScore = GetHitScore();
         totalScore += baseScore;
@@ -88,7 +90,24 @@ public class BeatScoringSystem : MonoBehaviour
             bestCombo = hitStreak;
         }
 
-        Debug.Log($"Scored: {baseScore} on {enemy.gameObject.transform}");
+        Debug.Log($"Scored: {baseScore} on {enemy}");
+
+        Vector3 popupPosition = enemy + Vector3.up * 1.5f;
+        SpawnScorePopup(popupPosition, baseScore);
+
+        UpdateScoreDisplay();
+    }
+    public void OnHitEnemy()
+    {
+        int baseScore = GetHitScore();
+        totalScore += baseScore;
+        totalHits++;
+
+        hitStreak++;
+        if (hitStreak > bestCombo)
+        {
+            bestCombo = hitStreak;
+        }
 
         UpdateScoreDisplay();
     }
@@ -115,6 +134,20 @@ public class BeatScoringSystem : MonoBehaviour
         if (scoreText != null)
             scoreText.text = $"{totalScore.ToString("D7")}";
     }
+
+    public void SpawnScorePopup(Vector3 position, int score)
+    {
+        GameObject popup = Instantiate(scorePopupPrefab, transform.forward, Quaternion.identity);
+        ScorePopup scorePopup = popup.GetComponent<ScorePopup>();
+        Debug.DrawRay(position, popup.transform.position, Color.red, 2f);
+
+        if (scorePopup != null)
+        {
+            scorePopup.setlocation(position);
+            scorePopup.SetText(score.ToString());
+        }
+    }
+
 
     public void SaveScore()
     {

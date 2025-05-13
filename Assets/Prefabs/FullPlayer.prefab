@@ -10341,6 +10341,12 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8387222490823233241, guid: 56442c6149ad12944b39214abec6d29a,
+        type: 3}
+      propertyPath: scorePopupPrefab
+      value: 
+      objectReference: {fileID: 2751024255575125711, guid: 7302c7de738611645a7de8d2659cb57f,
+        type: 3}
     - target: {fileID: 9160112803964814192, guid: 56442c6149ad12944b39214abec6d29a,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
