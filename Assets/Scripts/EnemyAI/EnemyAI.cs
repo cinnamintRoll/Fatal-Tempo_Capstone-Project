@@ -113,6 +113,7 @@ public class EnemyAI : MonoBehaviour
                 navMeshAgent.isStopped = false;
                 break;
             case EnemyState.Attack:
+                if(navMeshAgent.isOnNavMesh)
                 navMeshAgent.isStopped = true;
                 break;
             case EnemyState.Death:

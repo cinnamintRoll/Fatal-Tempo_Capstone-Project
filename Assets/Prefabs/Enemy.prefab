@@ -384,6 +384,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
+        type: 3}
       propertyPath: aimRotationOffset.x
       value: -0.7
       objectReference: {fileID: 0}
