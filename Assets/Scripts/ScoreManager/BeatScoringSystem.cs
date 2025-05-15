@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using static UnityEditor.FilePathAttribute;
 
 public class BeatScoringSystem : MonoBehaviour
 {
@@ -9,8 +8,8 @@ public class BeatScoringSystem : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_Text scoreText;
 
-    private float beatIntervalMS;
-    private float lastPulseTime;
+    private float beatIntervalSec; // seconds per beat
+    private float lastPulseMusicTime; // time of last beat in music time (AudioSource.time)
 
     private int hitStreak = 0;
     private int totalScore = 0;
@@ -19,11 +18,12 @@ public class BeatScoringSystem : MonoBehaviour
     private int totalCollected = 0;
     private int totalHits = 0;
 
-    // Scoring windows
-    [SerializeField] private int perfectWindow = 100; // in ms
-    [SerializeField] private int maxWindow = 300;    // in ms
+    // Scoring windows in milliseconds
+    [SerializeField] private int perfectWindow = 100; // ms
+    [SerializeField] private int maxWindow = 300;     // ms
 
     [SerializeField] private GameObject scorePopupPrefab;
+
     public int PerfectWindow => perfectWindow;
     public int MaxWindow => maxWindow;
 
@@ -32,9 +32,10 @@ public class BeatScoringSystem : MonoBehaviour
         if (useMusicManager && MusicManager.Instance != null)
         {
             float bpm = MusicManager.Instance.bpm;
-            beatIntervalMS = 60000f / bpm;
+            beatIntervalSec = 60f / bpm;
 
             MusicManager.Instance.OnIntervalPassed.AddListener(OnPulse);
+            lastPulseMusicTime = 0f; // initialize
         }
 
         if (PlayerHealth.Instance != null)
@@ -48,34 +49,56 @@ public class BeatScoringSystem : MonoBehaviour
 
     private void OnPulse()
     {
-        lastPulseTime = Time.time;
+        // Capture the precise music time at the beat interval
+        if (MusicManager.Instance != null && MusicManager.Instance.musicSource != null)
+        {
+            lastPulseMusicTime = MusicManager.Instance.musicSource.time;
+        }
     }
 
     public int GetHitScore()
     {
-        float hitTime = Time.time;
-        float currentIntervalSec = beatIntervalMS / 1000f;
-        float timeSinceLastPulse = hitTime - lastPulseTime;
+        if (MusicManager.Instance == null || MusicManager.Instance.musicSource == null)
+        {
+            Debug.LogWarning("MusicManager or AudioSource missing.");
+            return 0;
+        }
 
-        // Calculate signed offset to the nearest beat
-        float rawOffset = timeSinceLastPulse % currentIntervalSec;
-        if (rawOffset > currentIntervalSec / 2f)
-            rawOffset -= currentIntervalSec;
+        // Get current music playback time
+        float currentMusicTime = MusicManager.Instance.musicSource.time;
 
-        float distanceMS = rawOffset * 1000f;
+        // Calculate offset from last pulse in seconds
+        float timeSinceLastPulse = currentMusicTime - lastPulseMusicTime;
 
-        // Debug info: Show early/late timing with +/- sign
-        Debug.Log($"Hit offset: {(distanceMS >= 0f ? "+" : "")}{distanceMS:F1} ms");
+        // Wrap offset so it lies within [-beatIntervalSec/2, +beatIntervalSec/2]
+        float halfBeat = beatIntervalSec / 2f;
+        float offset = timeSinceLastPulse;
 
-        float absDistanceMS = Mathf.Abs(distanceMS);
+        if (offset > halfBeat)
+            offset -= beatIntervalSec;
+        else if (offset < -halfBeat)
+            offset += beatIntervalSec;
 
-        if (absDistanceMS <= perfectWindow)
+        float offsetMS = offset * 1000f; // convert to milliseconds
+        float absOffsetMS = Mathf.Abs(offsetMS);
+
+        Debug.Log($"Hit offset: {(offsetMS >= 0f ? "+" : "")}{offsetMS:F1} ms");
+
+        // Scoring logic: 300 for perfect (<= perfectWindow), linearly down to 100 at maxWindow
+        if (absOffsetMS <= perfectWindow)
+        {
             return 300;
-
-        // Linear falloff: beyond perfectWindow, score decreases toward 0
-        float t = (absDistanceMS - perfectWindow) / perfectWindow;
-        t = Mathf.Clamp01(t);
-        return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
+        }
+        else if (absOffsetMS <= maxWindow)
+        {
+            // Linear interpolation from 300 down to 100 between perfectWindow and maxWindow
+            float t = (absOffsetMS - perfectWindow) / (maxWindow - perfectWindow);
+            return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
+        }
+        else
+        {
+            return 0; // Missed the timing window
+        }
     }
 
     public void OnHitEnemy(Vector3 enemy)
@@ -97,6 +120,7 @@ public class BeatScoringSystem : MonoBehaviour
 
         UpdateScoreDisplay();
     }
+
     public void OnHitEnemy()
     {
         int baseScore = GetHitScore();
@@ -137,17 +161,14 @@ public class BeatScoringSystem : MonoBehaviour
 
     public void SpawnScorePopup(Vector3 position, int score)
     {
-        GameObject popup = Instantiate(scorePopupPrefab, transform.forward, Quaternion.identity);
+        GameObject popup = Instantiate(scorePopupPrefab, position, Quaternion.identity);
         ScorePopup scorePopup = popup.GetComponent<ScorePopup>();
-        Debug.DrawRay(position, popup.transform.position, Color.red, 2f);
-
         if (scorePopup != null)
         {
             scorePopup.setlocation(position);
             scorePopup.SetText(score.ToString());
         }
     }
-
 
     public void SaveScore()
     {
@@ -157,7 +178,6 @@ public class BeatScoringSystem : MonoBehaviour
         PlayerPrefs.SetInt("BestCombo", bestCombo);
     }
 
-    // Optional getters
     public int GetTotalCollected() => totalCollected;
     public int GetTotalHits() => totalHits;
 }

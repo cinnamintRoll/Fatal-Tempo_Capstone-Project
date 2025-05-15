@@ -40,7 +40,7 @@ public class MusicManager : MonoBehaviour
     public float vibrationStrength = 1f; // Vibration strength (0 to 1)
     public float startDelay = 0f; // Delay before everything starts
     public float musicOffset = 0f; // Offset for when the music starts (can be negative or positive)
-    private float secondsPerBeat; // Time in seconds for each beat
+    public float secondsPerBeat; // Time in seconds for each beat
     private InputBridge inputBridge;
     private bool isPlaying = false; // Track if music is playing
     private float startTime; // To track when the music starts in game time
@@ -81,25 +81,35 @@ public class MusicManager : MonoBehaviour
         // Sync music speed with game time scale
         musicSource.pitch = Time.timeScale;
 
-        // If music is playing, sync beats with game time
-        /*if (isPlaying)
+        // Calculate the current time in seconds from the start of the music
+        float elapsedTime = musicSource.time + musicOffset; // Add music offset to sync if needed
+
+        // Calculate how many beats have passed
+        float beatsPassed = elapsedTime / secondsPerBeat;
+
+        // If a new beat has passed (by comparing to the previous beat)
+        if (Mathf.FloorToInt(beatsPassed) > Mathf.FloorToInt((elapsedTime - Time.deltaTime) / secondsPerBeat))
         {
-            SyncBeatsToGameTime();
-        }*/
+            // Trigger vibrations (you can trigger them here or in the interval system)
+            StartCoroutine(VibrateController(ControllerHand.Left));
+            StartCoroutine(VibrateController(ControllerHand.Right));
+        }
+
+        // Sync intervals based on beats
         float sampledTime = (musicSource.timeSamples / (musicSource.clip.frequency * _songInterval.GetIntervalLength(bpm)));
         if (_songInterval.CheckForNewInterval(sampledTime))
         {
             OnIntervalPassed.Invoke();
-            StartCoroutine(VibrateController(ControllerHand.Left));
-            StartCoroutine(VibrateController(ControllerHand.Right));
+            // Trigger vibrations or actions based on the interval
         }
+
         foreach (Intervals interval in _objectIntervals)
         {
             float intervalSampledTime = (musicSource.timeSamples / (musicSource.clip.frequency * interval.GetIntervalLength(bpm)));
             interval.CheckForNewInterval(intervalSampledTime);
         }
-        
     }
+
 
     public void PlayMusic()
     {
