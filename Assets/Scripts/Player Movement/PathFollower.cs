@@ -3,31 +3,34 @@ using System.Collections.Generic;
 
 public class PathFollower : MonoBehaviour
 {
-    public Transform[] pathPoints;  // Array of waypoints
+    public Transform[] pathPoints;  // Should always be length 2
     public float speed = 5.0f;      // Speed at which to move along the path
     private List<Vector3> samplePoints = new List<Vector3>(); // Precomputed path points
     private int currentPointIndex = 0; // Current point index
     public int sampleCount = 100; // Number of samples along the path
+    public float startDelay = 0f; // Delay in seconds before music starts
 
     public Transform pathParent; // Parent transform for path points
-    public float bpm = 120f; // Beats per minute
-    public float timingLineWidth = 0.1f; // Width of timing lines
+
+    public AudioClip musicClip; // The music clip to base path length on
     public GameObject spawnTriggerPrefab;
     public float timingLineSpacing; // Calculated spacing for timing lines
-    public bool enableCurving = true; // Toggle for curving
+    public float bpm = 120f; // Beats per minute
+    public float timingLineWidth = 0.1f; // Width of timing lines
 
     void Start()
     {
-        //CreatePathParent();
+        SetupTwoPointPath();
+        UpdateSecondPointPosition(); // [MODIFIED]
         ComputeSamplePoints();
         CalculateTimingLineSpacing();
     }
 
     private void OnValidate()
     {
-        // Recalculate sample points and timing line spacing when parameters change in the Inspector
-        if (pathPoints != null && pathPoints.Length > 1)
+        if (pathPoints != null && pathPoints.Length == 2)
         {
+            UpdateSecondPointPosition(); // [MODIFIED]
             ComputeSamplePoints();
             CalculateTimingLineSpacing();
         }
@@ -37,17 +40,15 @@ public class PathFollower : MonoBehaviour
     {
         if (samplePoints.Count < 2)
         {
-            Debug.LogError("You need at least 2 points to follow the path.");
+            Debug.LogError("You need at least 2 sample points to follow the path.");
             return;
         }
 
-        // Move towards the next sample point
         if (currentPointIndex < samplePoints.Count - 1)
         {
             Vector3 targetPoint = samplePoints[currentPointIndex + 1];
             transform.position = Vector3.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
 
-            // Check if we reached the target point
             if (transform.position == targetPoint)
             {
                 currentPointIndex++;
@@ -55,185 +56,131 @@ public class PathFollower : MonoBehaviour
         }
     }
 
-    private void CreatePathParent()
+    public void SetupTwoPointPath()
     {
+        if (pathPoints == null || pathPoints.Length != 2)
+        {
+            pathPoints = new Transform[2];
+        }
+
         if (pathParent == null)
         {
             GameObject parent = new GameObject("PathPoints");
-            parent.transform.parent = transform; // Set the path points as children of this object
-            pathParent = parent.transform; // Store the parent for future reference
+            parent.transform.parent = transform;
+            pathParent = parent.transform;
         }
 
-        // Automatically populate pathPoints with the children of pathParent
-        List<Transform> children = new List<Transform>();
-
-        foreach (Transform child in pathParent)
+        if (pathPoints[0] == null)
         {
-            children.Add(child); // Add each child of pathParent to the list
+            GameObject startPoint = new GameObject("Point 0");
+            startPoint.transform.parent = pathParent;
+            startPoint.transform.position = transform.position;
+            pathPoints[0] = startPoint.transform;
+        }
+        else
+        {
+            pathPoints[0].position = transform.position;
         }
 
-        pathPoints = children.ToArray(); // Convert list to array and assign it to pathPoints
+        if (pathPoints[1] == null)
+        {
+            GameObject endPoint = new GameObject("Point 1");
+            endPoint.transform.parent = pathParent;
+            pathPoints[1] = endPoint.transform;
+        }
+
+        UpdateSecondPointPosition(); // [MODIFIED]
     }
 
+    private void UpdateSecondPointPosition() // [NEW]
+    {
+        if (pathPoints == null || pathPoints.Length != 2 || pathPoints[1] == null || pathPoints[0] == null)
+            return;
+
+        float pathLength = 10f;
+
+        if (musicClip != null)
+        {
+            pathLength = musicClip.length * speed;
+        }
+
+        pathPoints[1].position = pathPoints[0].position + Vector3.forward * pathLength;
+    }
 
     private void ComputeSamplePoints()
     {
-        samplePoints.Clear(); // Clear any previous sample points
-        for (int i = 0; i < pathPoints.Length - 1; i++)
+        samplePoints.Clear();
+
+        if (pathPoints == null || pathPoints.Length != 2)
         {
-            int segmentSamples = sampleCount / (pathPoints.Length - 1);
-            for (int j = 0; j <= segmentSamples; j++)
-            {
-                float t = (float)j / segmentSamples;
-                Vector3 point;
+            Debug.LogError("Path must have exactly 2 points.");
+            return;
+        }
 
-                if (enableCurving)
-                {
-                    point = CatmullRom(
-                        GetControlPoint(i - 1),
-                        pathPoints[i].position,
-                        pathPoints[i + 1].position,
-                        GetControlPoint(i + 2),
-                        t
-                    );
-                }
-                else
-                {
-                    point = Vector3.Lerp(pathPoints[i].position, pathPoints[i + 1].position, t);
-                }
-
-                samplePoints.Add(point);
-            }
+        for (int i = 0; i <= sampleCount; i++)
+        {
+            float t = (float)i / sampleCount;
+            Vector3 point = Vector3.Lerp(pathPoints[0].position, pathPoints[1].position, t);
+            samplePoints.Add(point);
         }
     }
 
     private void CalculateTimingLineSpacing()
     {
-        // Calculate the duration of one beat in seconds
         float beatDuration = 60f / bpm;
-
-        // Calculate the spacing based on the speed and beat duration
-        timingLineSpacing = speed * beatDuration; // Adjust this calculation based on your requirements
-    }
-
-    public Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
-    {
-        Vector3 a = 2f * p1;
-        Vector3 b = p2 - p0;
-        Vector3 c = 2f * p0 - 5f * p1 + 4f * p2 - p3;
-        Vector3 d = -p0 + 3f * p1 - 3f * p2 + p3;
-
-        return 0.5f * (a + (b * t) + (c * t * t) + (d * t * t * t));
-    }
-
-    public Vector3 GetControlPoint(int index)
-    {
-        if (index < 0)
-            return pathPoints[0].position;
-        if (index >= pathPoints.Length)
-            return pathPoints[pathPoints.Length - 1].position;
-
-        return pathPoints[index].position;
+        timingLineSpacing = speed * beatDuration;
     }
 
     private void OnDrawGizmos()
     {
-        if (pathPoints != null && pathPoints.Length >= 2)
+        if (pathPoints == null || pathPoints.Length != 2)
+            return;
+
+        Gizmos.color = Color.red;
+
+        Vector3 previousPoint = pathPoints[0].position;
+        int samples = sampleCount;
+
+        for (int i = 1; i <= samples; i++)
         {
-            Gizmos.color = Color.red;
-
-            // Draw Catmull-Rom splines between the points
-            for (int i = 0; i < pathPoints.Length - 1; i++)
-            {
-                Vector3 previousPosition = pathPoints[i].position;
-                int segmentSamples = sampleCount / (pathPoints.Length - 1);
-                for (int j = 0; j <= segmentSamples; j++)
-                {
-                    float t = (float)j / segmentSamples;
-                    Vector3 point;
-
-                    if (enableCurving)
-                    {
-                        point = CatmullRom(
-                            GetControlPoint(i - 1),
-                            pathPoints[i].position,
-                            pathPoints[i + 1].position,
-                            GetControlPoint(i + 2),
-                            t
-                        );
-                    }
-                    else
-                    {
-                        point = Vector3.Lerp(pathPoints[i].position, pathPoints[i + 1].position, t);
-                    }
-
-                    Gizmos.DrawLine(previousPosition, point);
-                    previousPosition = point;
-                }
-            }
-
-            // Draw debug timing lines
-            DrawTimingLines();
+            float t = (float)i / samples;
+            Vector3 currentPoint = Vector3.Lerp(pathPoints[0].position, pathPoints[1].position, t);
+            Gizmos.DrawLine(previousPoint, currentPoint);
+            previousPoint = currentPoint;
         }
+
+        DrawTimingLines();
     }
 
     private void DrawTimingLines()
     {
-        Gizmos.color = Color.blue; // Change color for timing lines
+        Gizmos.color = Color.blue;
 
-        // Iterate over the segments
-        for (int i = 0; i < pathPoints.Length - 1; i++)
+        float segmentLength = Vector3.Distance(pathPoints[0].position, pathPoints[1].position);
+
+        // Offset distance from delay
+        float delayOffset = startDelay * speed;
+
+        // Start after delayOffset, then every timingLineSpacing
+        int totalLines = Mathf.CeilToInt((segmentLength - delayOffset) / timingLineSpacing);
+
+        for (int i = 0; i <= totalLines; i++)
         {
-            float segmentLength = Vector3.Distance(pathPoints[i].position, pathPoints[i + 1].position);
-            int samples = Mathf.CeilToInt(segmentLength / timingLineSpacing);
+            float distanceAlongPath = delayOffset + i * timingLineSpacing;
+            float t = distanceAlongPath / segmentLength;
 
-            for (int j = 0; j <= samples; j++)
-            {
-                float t = (float)j / samples;
-                Vector3 pointOnCurve;
+            if (t > 1f) break; // Avoid overshooting the path
 
-                if (enableCurving)
-                {
-                    pointOnCurve = CatmullRom(
-                        GetControlPoint(i - 1),
-                        pathPoints[i].position,
-                        pathPoints[i + 1].position,
-                        GetControlPoint(i + 2),
-                        t
-                    );
-                }
-                else
-                {
-                    pointOnCurve = Vector3.Lerp(pathPoints[i].position, pathPoints[i + 1].position, t);
-                }
+            Vector3 pointOnLine = Vector3.Lerp(pathPoints[0].position, pathPoints[1].position, t);
 
-                // Calculate direction along the curve
-                Vector3 nextPointOnCurve;
+            Vector3 direction = (pathPoints[1].position - pathPoints[0].position).normalized;
+            Vector3 perpendicular = new Vector3(-direction.z, 0, direction.x);
 
-                if (enableCurving)
-                {
-                    nextPointOnCurve = CatmullRom(
-                        GetControlPoint(i - 1),
-                        pathPoints[i].position,
-                        pathPoints[i + 1].position,
-                        GetControlPoint(i + 2),
-                        Mathf.Min(t + (1f / samples), 1f)
-                    );
-                }
-                else
-                {
-                    nextPointOnCurve = Vector3.Lerp(pathPoints[i].position, pathPoints[i + 1].position, Mathf.Min(t + (1f / samples), 1f));
-                }
+            Vector3 lineStart = pointOnLine + perpendicular * (timingLineWidth / 2);
+            Vector3 lineEnd = pointOnLine - perpendicular * (timingLineWidth / 2);
 
-                // Calculate the direction vector and the perpendicular vector
-                Vector3 direction = (nextPointOnCurve - pointOnCurve).normalized;
-                Vector3 perpendicularDirection = new Vector3(-direction.z, 0, direction.x); // Perpendicular vector
-
-                // Draw the centered perpendicular line
-                Vector3 lineStart = pointOnCurve + perpendicularDirection * (timingLineWidth / 2);
-                Vector3 lineEnd = pointOnCurve - perpendicularDirection * (timingLineWidth / 2);
-                Gizmos.DrawLine(lineStart, lineEnd); // Draw the line centered along the path
-            }
+            Gizmos.DrawLine(lineStart, lineEnd);
         }
     }
+
 }

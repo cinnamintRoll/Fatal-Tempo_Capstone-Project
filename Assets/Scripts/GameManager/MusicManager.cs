@@ -6,22 +6,23 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class Intervals 
+public class Intervals
 {
     [SerializeField] private float _steps;
     [SerializeField] private UnityEvent _trigger;
     private int _lastInterval;
-     public float GetIntervalLength(float bpm)
+
+    public float GetIntervalLength(float bpm)
     {
-        return 16f /(bpm * _steps);
+        return 16f / (bpm * _steps);
     }
 
     public bool CheckForNewInterval(float interval)
     {
-        if(Mathf.FloorToInt(interval) != _lastInterval)
+        if (Mathf.FloorToInt(interval) != _lastInterval)
         {
-            _lastInterval = Mathf.FloorToInt(interval); 
-            _trigger.Invoke();  
+            _lastInterval = Mathf.FloorToInt(interval);
+            _trigger.Invoke();
             return true;
         }
         return false;
@@ -30,77 +31,68 @@ public class Intervals
 
 public class MusicManager : MonoBehaviour
 {
-    public static MusicManager Instance { get; private set; } // Singleton instance
+    public static MusicManager Instance { get; private set; }
     [SerializeField] private Intervals[] _objectIntervals;
     [SerializeField] private Intervals _songInterval;
-    public AudioSource musicSource; // AudioSource for the music
-    public AudioClip musicClip; // The music clip to be played
-    public float bpm = 120f; // Beats per minute
-    public float vibrationDuration = 0.1f; // Duration of the vibration
-    public float vibrationStrength = 1f; // Vibration strength (0 to 1)
-    public float startDelay = 0f; // Delay before everything starts
-    public float musicOffset = 0f; // Offset for when the music starts (can be negative or positive)
-    public float secondsPerBeat; // Time in seconds for each beat
+    public AudioSource musicSource;
+    public AudioClip musicClip;
+    public float bpm = 120f;
+    public float vibrationDuration = 0.1f;
+    public float vibrationStrength = 1f;
+    public float startDelay = 0f;
+    public float musicOffset = 0f;
+    public float secondsPerBeat;
     private InputBridge inputBridge;
-    private bool isPlaying = false; // Track if music is playing
-    private float startTime; // To track when the music starts in game time
+    private bool isPlaying = false;
+    private float startTime;
     public UnityEvent OnIntervalPassed;
     public SongData song;
+
+    private float _lastSongIntervalTime = 0f;
+
     private void Awake()
     {
-        // Implement the Singleton pattern
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning("Duplicate MusicManager instance detected and will be destroyed.");
-            Destroy(gameObject); // Destroy duplicate instance
+            Destroy(gameObject);
             return;
         }
         Instance = this;
-        //DontDestroyOnLoad(gameObject); // Optional: keep this instance across scenes
-
         inputBridge = InputBridge.Instance;
         OnIntervalPassed = new UnityEvent();
     }
 
     private void Start()
     {
-        // Initialize AudioSource and music clip
         if (musicSource == null)
         {
             musicSource = gameObject.AddComponent<AudioSource>();
         }
         musicSource.clip = musicClip;
-
-        // Calculate the seconds per beat based on BPM
         secondsPerBeat = 60f / bpm;
         PlayMusic();
     }
 
     private void Update()
     {
-        // Sync music speed with game time scale
         musicSource.pitch = Time.timeScale;
 
-        // Calculate the current time in seconds from the start of the music
-        float elapsedTime = musicSource.time + musicOffset; // Add music offset to sync if needed
+        float currentTime = musicSource.time + musicOffset;
+        float intervalLength = _songInterval.GetIntervalLength(bpm);
 
-        // Calculate how many beats have passed
-        float beatsPassed = elapsedTime / secondsPerBeat;
-
-        // If a new beat has passed (by comparing to the previous beat)
-        if (Mathf.FloorToInt(beatsPassed) > Mathf.FloorToInt((elapsedTime - Time.deltaTime) / secondsPerBeat))
+        while (currentTime >= _lastSongIntervalTime + intervalLength)
         {
-            // Trigger vibrations (you can trigger them here or in the interval system)
+            _lastSongIntervalTime += intervalLength;
+            OnIntervalPassed.Invoke();
             StartCoroutine(VibrateController(ControllerHand.Left));
             StartCoroutine(VibrateController(ControllerHand.Right));
         }
 
-        // Sync intervals based on beats
-        float sampledTime = (musicSource.timeSamples / (musicSource.clip.frequency * _songInterval.GetIntervalLength(bpm)));
-        if (_songInterval.CheckForNewInterval(sampledTime))
+        float beatsPassed = currentTime / secondsPerBeat;
+        if (Mathf.FloorToInt(beatsPassed) > Mathf.FloorToInt((currentTime - Time.deltaTime) / secondsPerBeat))
         {
-            OnIntervalPassed.Invoke();
-            // Trigger vibrations or actions based on the interval
+            
         }
 
         foreach (Intervals interval in _objectIntervals)
@@ -109,7 +101,6 @@ public class MusicManager : MonoBehaviour
             interval.CheckForNewInterval(intervalSampledTime);
         }
     }
-
 
     public void PlayMusic()
     {
@@ -122,15 +113,12 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator StartEverythingWithDelay()
     {
-        // Wait for the start delay before anything starts
         if (startDelay > 0f)
         {
             yield return new WaitForSeconds(startDelay);
         }
-
-        // Record the actual start time
         startTime = Time.time;
-        musicSource.Play(); // Play music at the correct offset
+        musicSource.Play();
     }
 
     public void StopMusic()
@@ -143,41 +131,20 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    // Sync the vibrations to the game time instead of relying on WaitForSeconds
-    private void SyncBeatsToGameTime()
-    {
-        float elapsedTime = Time.time - startTime; // Time since music started
-        float musicTime = musicSource.time; // Current music playback time
-
-        // Calculate how many beats have passed since start
-        float beatsPassed = elapsedTime / secondsPerBeat;
-
-        // If we're at or past a beat, trigger the vibration
-        if (Mathf.FloorToInt(beatsPassed) > Mathf.FloorToInt((elapsedTime - Time.deltaTime) / secondsPerBeat))
-        {
-            StartCoroutine(VibrateController(ControllerHand.Left));
-            StartCoroutine(VibrateController(ControllerHand.Right));
-        }
-    }
-
     private IEnumerator VibrateController(ControllerHand hand)
     {
-        // Clamp the vibration strength and duration
         float clampedVibrationStrength = Mathf.Clamp(vibrationStrength, 0f, 1f);
         float clampedVibrationDuration = Mathf.Max(vibrationDuration, 0f);
 
         Debug.Log($"Vibration Strength: {clampedVibrationStrength}, Duration: {clampedVibrationDuration}, Hand: {hand}");
 
-        // Vibrate the controller for the given hand
         inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, hand);
-
-        yield return null; // Optional: adjust this to control vibration timing
+        yield return null;
     }
 
-    // Optional: Method to change BPM during runtime
     public void SetBPM(float newBPM)
     {
         bpm = newBPM;
-        secondsPerBeat = 60f / bpm; // Recalculate the seconds per beat
+        secondsPerBeat = 60f / bpm;
     }
 }

@@ -51,10 +51,20 @@ MonoBehaviour:
   halfCirclePrefab: {fileID: 1989418651633067673, guid: 69ffda05f2ff7864e82c6e8ded5d2fc9,
     type: 3}
   poolSize: 10
-  startSpacing: 200
+  startSpacing: 350
   endSpacing: 0
-  moveDuration: 0.2
   spawnParent: {fileID: 6280076661538385154}
+  beatsVisibleAhead: 4
+  EarlyLateThreshold: 0.04
+  alphaStartThreshold: 0.25
+  lingerFadeDuration: 0.5
+  indicationFadeDuration: 1
+  indicationDelay: 0.2
+  perfectWindow: 100
+  maxWindow: 300
+  tooEarlyColor: {r: 1, g: 0, b: 0, a: 1}
+  perfectColor: {r: 0, g: 1, b: 0, a: 1}
+  lateColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1001 &4531983711221226476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +98,11 @@ PrefabInstance:
       propertyPath: multiplierText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2455227665062381901, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: FadeOutSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3185618541126964492, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: m_IsActive
@@ -98,6 +113,11 @@ PrefabInstance:
       propertyPath: scoringSystem
       value: 
       objectReference: {fileID: 2712192080385080488}
+    - target: {fileID: 4081536959797229546, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: _useMusicManager
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4357152876020998389, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
       propertyPath: m_Name
@@ -162,6 +182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lives
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610334967591533323, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
+      propertyPath: _useMusicManager
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6759676072527868770, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
