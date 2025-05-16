@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
         SetRandomChaseUpdateInterval(); // Set a random initial update interval
         PlayerHealth = PlayerHealth.Instance;
 
-        if(enemyAIType == EnemyType.Sniper && currentState == EnemyState.Attack)
+        if(currentState == EnemyState.Attack)
         {
             navMeshAgent.enabled = false;
         }
@@ -190,8 +190,9 @@ public class EnemyAI : MonoBehaviour
         switch (enemyAIType)
         {
             case EnemyType.Melee:
-            case EnemyType.Sniper:
                 TransitionToState(EnemyState.Idle);
+                break;
+            case EnemyType.Sniper:
                 break;
         }
     }
@@ -199,18 +200,17 @@ public class EnemyAI : MonoBehaviour
     // Handle Death State
     void HandleDeath()
     {
-        Debug.Log("Enemy has died");
-        if (PlayerHealth)
+        if (!isDead)
         {
-            if (!isDead)
+            Debug.Log("Enemy has died");
+            if (PlayerHealth)
             {
-                PlayerHealth.KillEnemy(this.transform.position);
-                isDead = true;
+                    PlayerHealth.KillEnemy(this.transform.position);
+                    isDead = true;
             }
-            
+            // Optionally, destroy the enemy object after a delay
+            Destroy(gameObject, 0.5f); // Adjust the delay as needed
         }
-        // Optionally, destroy the enemy object after a delay
-        Destroy(gameObject, 0.5f); // Adjust the delay as needed
     }
 
     void Despawn()

@@ -9,7 +9,7 @@ public class BeatScoringSystem : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
 
     private float beatIntervalSec; // seconds per beat
-    private float lastPulseMusicTime; // time of last beat in music time (AudioSource.time)
+    private float timeSinceLastPulse; 
 
     private int hitStreak = 0;
     private int totalScore = 0;
@@ -17,7 +17,7 @@ public class BeatScoringSystem : MonoBehaviour
 
     private int totalCollected = 0;
     private int totalHits = 0;
-
+    private bool pulseReceived = false;
     // Scoring windows in milliseconds
     [SerializeField] private int perfectWindow = 100; // ms
     [SerializeField] private int maxWindow = 300;     // ms
@@ -35,7 +35,7 @@ public class BeatScoringSystem : MonoBehaviour
             beatIntervalSec = 60f / bpm;
 
             MusicManager.Instance.OnIntervalPassed.AddListener(OnPulse);
-            lastPulseMusicTime = 0f; // initialize
+            timeSinceLastPulse = 0f; // initialize
         }
 
         if (PlayerHealth.Instance != null)
@@ -47,59 +47,57 @@ public class BeatScoringSystem : MonoBehaviour
         UpdateScoreDisplay();
     }
 
+    private void Update()
+    {
+        if (pulseReceived)
+        {
+            timeSinceLastPulse += Time.deltaTime;
+        }
+    }
+
     private void OnPulse()
     {
-        // Capture the precise music time at the beat interval
-        if (MusicManager.Instance != null && MusicManager.Instance.musicSource != null)
-        {
-            lastPulseMusicTime = MusicManager.Instance.musicSource.time;
-        }
+        Debug.Log("Pulsed");
+        timeSinceLastPulse = 0f;
+        pulseReceived = true;
     }
 
     public int GetHitScore()
     {
-        if (MusicManager.Instance == null || MusicManager.Instance.musicSource == null)
+        if (!pulseReceived)
         {
-            Debug.LogWarning("MusicManager or AudioSource missing.");
+            Debug.LogWarning("No pulse received yet, cannot score.");
             return 0;
         }
 
-        // Get current music playback time
-        float currentMusicTime = MusicManager.Instance.musicSource.time;
-
-        // Calculate offset from last pulse in seconds
-        float timeSinceLastPulse = currentMusicTime - lastPulseMusicTime;
-
-        // Wrap offset so it lies within [-beatIntervalSec/2, +beatIntervalSec/2]
         float halfBeat = beatIntervalSec / 2f;
+
         float offset = timeSinceLastPulse;
+
 
         if (offset > halfBeat)
             offset -= beatIntervalSec;
-        else if (offset < -halfBeat)
-            offset += beatIntervalSec;
 
-        float offsetMS = offset * 1000f; // convert to milliseconds
+        float offsetMS = offset * 1000f;
         float absOffsetMS = Mathf.Abs(offsetMS);
 
         Debug.Log($"Hit offset: {(offsetMS >= 0f ? "+" : "")}{offsetMS:F1} ms");
 
-        // Scoring logic: 300 for perfect (<= perfectWindow), linearly down to 100 at maxWindow
         if (absOffsetMS <= perfectWindow)
         {
             return 300;
         }
         else if (absOffsetMS <= maxWindow)
         {
-            // Linear interpolation from 300 down to 100 between perfectWindow and maxWindow
             float t = (absOffsetMS - perfectWindow) / (maxWindow - perfectWindow);
-            return Mathf.RoundToInt(Mathf.Lerp(300, 100, t));
+            return Mathf.RoundToInt(Mathf.Lerp(300, 1, t));
         }
         else
         {
-            return 0; // Missed the timing window
+            return 0;
         }
     }
+
 
     public void OnHitEnemy(Vector3 enemy)
     {

@@ -99358,6 +99358,11 @@ PrefabInstance:
       propertyPath: TotalEnemyCounter
       value: 
       objectReference: {fileID: 178434748}
+    - target: {fileID: 2086978214914413217, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: FadeOutSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6410796599436775075, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -99382,21 +99387,6 @@ PrefabInstance:
         type: 3}
       propertyPath: startSpacing
       value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560835001770492290, guid: 695052bf1470b6d4faf96024b3f0222a,
-        type: 3}
-      propertyPath: beatsVisibleAhead
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560835001770492290, guid: 695052bf1470b6d4faf96024b3f0222a,
-        type: 3}
-      propertyPath: EarlyLateThreshold
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560835001770492290, guid: 695052bf1470b6d4faf96024b3f0222a,
-        type: 3}
-      propertyPath: visibilityStartPercent
-      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -148,6 +148,11 @@ PrefabInstance:
       propertyPath: pointToMove
       value: 
       objectReference: {fileID: 6703420398490604162}
+    - target: {fileID: 932368166429764901, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
+        type: 3}
+      propertyPath: Enemies.Array.data[1].enemyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2157934674974318020, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
         type: 3}
       propertyPath: m_Name

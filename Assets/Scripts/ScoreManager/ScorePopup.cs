@@ -23,6 +23,6 @@ public class ScorePopup : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(this.transform.position);
+        //Debug.Log(this.transform.position);
     }
 }

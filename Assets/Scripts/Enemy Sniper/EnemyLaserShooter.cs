@@ -50,7 +50,7 @@ public class EnemyLaserShooter : MonoBehaviour
         laser.endColor = laserColorNormal;
 
         // Start the shooting routine
-        StartCoroutine(StartShootingRoutine());
+        //StartCoroutine(StartShootingRoutine());
     }
 
     void SetPlayer(GameObject playerObject)
@@ -65,6 +65,7 @@ public class EnemyLaserShooter : MonoBehaviour
             DestroyObject();
         }
     }
+
 
     private IEnumerator StartShootingRoutine()
     {
@@ -81,23 +82,13 @@ public class EnemyLaserShooter : MonoBehaviour
             UpdateLaser();
             CheckForDeflection();
 
-            // Track beats from the MusicManager
-            float currentBPM = musicManager.bpm; // Get the current BPM
-            float beatsElapsed = musicManager.musicSource.time / (60f / currentBPM); // Calculate how many beats have passed
 
-            // Increment the beat count every interval
-            int newBeat = Mathf.FloorToInt(beatsElapsed);
-
-            if (newBeat > currentBeat)
-            {
-                currentBeat = newBeat;
-
-                // Only trigger the charge sequence if the beat is divisible by beatsBetweenShoots
-                if (currentBeat % beatsBetweenShoots == 0 && !isShooting)
+       
+                if (!isShooting)
                 {
                     StartCoroutine(ChargeAndShootLaser());
                 }
-            }
+
 
             yield return null;
         }
@@ -138,17 +129,16 @@ public class EnemyLaserShooter : MonoBehaviour
 
         // Start charging sound
         audioSource.clip = chargeSound;
-        audioSource.loop = true;
         audioSource.Play();
 
-        void OnBeat()
+        void OnShootBeat()
         {
             beatCount++;
 
             float t = (float)beatCount / chargeBeats;
             float targetWidth = Mathf.Lerp(initialLaserWidth, chargeLaserWidth, t);
             Color targetColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
-
+            if (laser == null) return;
             laser.startWidth = targetWidth;
             laser.endWidth = targetWidth;
             laser.startColor = targetColor;
@@ -156,14 +146,14 @@ public class EnemyLaserShooter : MonoBehaviour
         }
 
         // Subscribe
-        musicManager.OnIntervalPassed.AddListener(OnBeat);
+        musicManager.OnIntervalPassed.AddListener(OnShootBeat);
 
         // Wait until all charge beats are done
         while (beatCount < chargeBeats)
             yield return null;
 
         // Unsubscribe
-        musicManager.OnIntervalPassed.RemoveListener(OnBeat);
+        musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
 
         // Play shoot sound and shoot
         audioSource.PlayOneShot(shootSound);
@@ -252,7 +242,7 @@ public class EnemyLaserShooter : MonoBehaviour
         Vector3 capsuleEnd = gunMuzzle.position + gunMuzzle.forward * 2f;
 
         RaycastHit hit;
-        bool hitDeflectable = Physics.CapsuleCast(capsuleStart, capsuleEnd, 0.5f, gunMuzzle.forward, out hit, laserRange, deflectLayer);
+        bool hitDeflectable = Physics.CapsuleCast(capsuleStart, capsuleEnd, 0.2f, gunMuzzle.forward, out hit, laserRange, deflectLayer);
 
         if (hitDeflectable && !isDeflected)
         {
