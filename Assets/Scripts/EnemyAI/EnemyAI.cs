@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using static Enemies;
 
 [Serializable]
@@ -30,7 +31,6 @@ public class EnemyAI : MonoBehaviour
     // Define a threshold distance for detecting enemies behind the player
     public float behindDistanceThreshold = 2f;
     public EnemyLaserShooter SniperScript;
-
     [SerializeField] private NavMeshAgent navMeshAgent;
     private float lastAttackTime = 0f;
     private GameObject EnemyVisuals;
@@ -44,6 +44,7 @@ public class EnemyAI : MonoBehaviour
     private PlayerHealth PlayerHealth;
 
     private bool isDead = false;
+    public UnityEvent OnDeath;
 
     void OnEnable()
     {
