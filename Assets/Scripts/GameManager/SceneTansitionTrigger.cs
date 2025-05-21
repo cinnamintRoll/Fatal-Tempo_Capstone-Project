@@ -17,11 +17,17 @@ public class SceneTansitionTrigger : MonoBehaviour
 
     }
 
-    void MoveBacktoHomeScreen()
+    void MoveBacktoHomeScreen(Transform triggeringObject)
     {
-        // Start the fade in (to black) and wait until it's done before loading the main menu scene
+        // If no screenFader is assigned, try to find one in the triggering object's children
+        if (screenFader == null && triggeringObject != null)
+        {
+            screenFader = triggeringObject.GetComponentInChildren<ScreenFader>();
+        }
+
         StartCoroutine(FadeAndLoadScene());
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,7 +35,7 @@ public class SceneTansitionTrigger : MonoBehaviour
         if (((1 << other.gameObject.layer) & layerMask.value) != 0)
         {
             // Trigger the fade in (to black) and scene change
-            MoveBacktoHomeScreen();
+            MoveBacktoHomeScreen(other.transform);
         }
     }
 

@@ -27,9 +27,10 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private WeaponType currentLeftWeapon = WeaponType.Fist;
     [SerializeField] private WeaponType currentRightWeapon = WeaponType.Fist;
-    private WeaponType LastWeapon= WeaponType.Fist;
+    private WeaponType lastLeftWeapon = WeaponType.Fist;
+    private WeaponType lastRightWeapon = WeaponType.Fist;
 
-    [Header("Audio")] 
+    [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip swapWeaponSound;
 
@@ -82,6 +83,10 @@ public class WeaponManager : MonoBehaviour
         var currentMap = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
         var currentWeapon = hand == HandType.Left ? currentLeftWeapon : currentRightWeapon;
 
+        if (hand == HandType.Left)
+            lastLeftWeapon = currentLeftWeapon;
+        else
+            lastRightWeapon = currentRightWeapon;
         // Reset the other hand to Fist if this hand is trying to equip a non-Fist weapon
         if (newWeapon != WeaponType.Fist)
         {
@@ -168,6 +173,17 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public void SwapBack()
+    {
+        if (currentLeftWeapon != WeaponType.Fist)
+        {
+            SwapWeapon(lastLeftWeapon, HandType.Left);
+        }
+        else if (currentRightWeapon != WeaponType.Fist)
+        {
+            SwapWeapon(lastRightWeapon, HandType.Right);
+        }
+    }
 
     public GameObject GetWeaponGameObject(WeaponType weaponType, HandType hand)
     {
@@ -177,6 +193,9 @@ public class WeaponManager : MonoBehaviour
 
     public void ResetToFist()
     {
+            lastLeftWeapon = currentLeftWeapon;
+            lastRightWeapon = currentRightWeapon;
+
         SwapWeapon(WeaponType.Fist, HandType.Left);
         SwapWeapon(WeaponType.Fist, HandType.Right);
 
