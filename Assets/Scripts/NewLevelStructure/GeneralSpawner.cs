@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class GeneralSpawner : MonoBehaviour
 {
@@ -60,5 +61,10 @@ public class GeneralSpawner : MonoBehaviour
         if (Spawnables.Count == 0) return;
         spawnIndex = Random.Range(0, Spawnables.Count);
         enemy.PickRandomEnemyType();
+    }
+
+    public void OnDespawn()
+    {
+        Destroy(this.gameObject, 5f);
     }
 }

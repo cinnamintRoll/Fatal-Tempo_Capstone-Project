@@ -441,8 +441,21 @@ MonoBehaviour:
   pauseClip: {fileID: 0}
   resumeClip: {fileID: 0}
   deathClip: {fileID: 0}
+  pointer: {fileID: 0}
   heightOffset: 0
   SetFixedDelta: 0
+  onShowPauseMenu:
+    m_PersistentCalls:
+      m_Calls: []
+  onHidePauseMenu:
+    m_PersistentCalls:
+      m_Calls: []
+  onShowDeathMenu:
+    m_PersistentCalls:
+      m_Calls: []
+  onHideDeathMenu:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4234048366691326281
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7712602078901433228
 Transform:
   m_ObjectHideFlags: 0
@@ -1337,7 +1350,7 @@ PrefabInstance:
     - target: {fileID: 4022682966460557082, guid: 58c031bb2ee566743859cfdddea051a9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5436430172453480150, guid: 58c031bb2ee566743859cfdddea051a9,
         type: 3}
@@ -3194,6 +3207,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3917244860501517789, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4454524920431384481, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
         type: 3}
       propertyPath: m_Layer
@@ -3232,7 +3250,7 @@ PrefabInstance:
     - target: {fileID: 5385305708475918459, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5436705778694773031, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
         type: 3}
@@ -3279,10 +3297,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9112889654201822134, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112889654201822134, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.285
+      objectReference: {fileID: 0}
     - target: {fileID: 9112889654201822135, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
         type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112889654201822135, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9112889654472267417, guid: 8a70b6ef2260a1848b78f80fbf4e786d,
         type: 3}

@@ -27,8 +27,9 @@ public class WeaponManager : MonoBehaviour
 
     [SerializeField] private WeaponType currentLeftWeapon = WeaponType.Fist;
     [SerializeField] private WeaponType currentRightWeapon = WeaponType.Fist;
+    private WeaponType LastWeapon= WeaponType.Fist;
 
-    [Header("Audio")]
+    [Header("Audio")] 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip swapWeaponSound;
 
@@ -172,5 +173,12 @@ public class WeaponManager : MonoBehaviour
     {
         var map = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
         return map.ContainsKey(weaponType) ? map[weaponType] : null;
+    }
+
+    public void ResetToFist()
+    {
+        SwapWeapon(WeaponType.Fist, HandType.Left);
+        SwapWeapon(WeaponType.Fist, HandType.Right);
+
     }
 }

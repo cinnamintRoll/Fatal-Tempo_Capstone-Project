@@ -20,15 +20,15 @@ public class PathFollower : MonoBehaviour
 
     void Start()
     {
-        SetupTwoPointPath();
-        UpdateSecondPointPosition(); // [MODIFIED]
-        ComputeSamplePoints();
-        CalculateTimingLineSpacing();
+        //SetupTwoPointPath();
+        //UpdateSecondPointPosition(); // [MODIFIED]
+        //ComputeSamplePoints();
+        //CalculateTimingLineSpacing();
     }
 
     private void OnValidate()
     {
-        if (pathPoints != null && pathPoints.Length == 2)
+        if (pathPoints != null && pathPoints.Length == 2 && pathPoints[0] != null && pathPoints[1] != null)
         {
             UpdateSecondPointPosition(); // [MODIFIED]
             ComputeSamplePoints();
