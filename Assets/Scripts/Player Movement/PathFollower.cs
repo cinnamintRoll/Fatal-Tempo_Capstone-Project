@@ -9,7 +9,7 @@ public class PathFollower : MonoBehaviour
     private int currentPointIndex = 0; // Current point index
     public int sampleCount = 100; // Number of samples along the path
     public float startDelay = 0f; // Delay in seconds before music starts
-
+    [SerializeField] private MusicManager manager;
     public Transform pathParent; // Parent transform for path points
 
     public AudioClip musicClip; // The music clip to base path length on
@@ -20,6 +20,7 @@ public class PathFollower : MonoBehaviour
 
     void Start()
     {
+
         //SetupTwoPointPath();
         //UpdateSecondPointPosition(); // [MODIFIED]
         //ComputeSamplePoints();
@@ -28,6 +29,11 @@ public class PathFollower : MonoBehaviour
 
     private void OnValidate()
     {
+        if (manager != null)
+        {
+            musicClip = manager.musicClip;
+            bpm = manager.bpm;
+        }
         if (pathPoints != null && pathPoints.Length == 2 && pathPoints[0] != null && pathPoints[1] != null)
         {
             UpdateSecondPointPosition(); // [MODIFIED]

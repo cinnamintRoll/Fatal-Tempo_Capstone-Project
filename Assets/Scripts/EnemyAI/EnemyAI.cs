@@ -98,7 +98,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     // Transition to a new state
-    void TransitionToState(EnemyState newState)
+    public void TransitionToState(EnemyState newState)
     {
         currentState = newState;
         switch (newState)
@@ -214,7 +214,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void Despawn()
+    public void Despawn()
     {
         Destroy(gameObject, 4f);
     }

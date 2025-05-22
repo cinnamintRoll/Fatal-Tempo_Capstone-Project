@@ -544,6 +544,11 @@ PrefabInstance:
       propertyPath: baseTransform
       value: 
       objectReference: {fileID: 3627058543498318064}
+    - target: {fileID: 1355935348185091808, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6410796599436775075, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_AnchorMax.x

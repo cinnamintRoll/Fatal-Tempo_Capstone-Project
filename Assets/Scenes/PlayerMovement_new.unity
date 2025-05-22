@@ -12014,7 +12014,7 @@ PrefabInstance:
         type: 3}
       propertyPath: screenFader
       value: 
-      objectReference: {fileID: 2107147838}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31730,81 +31730,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 276333170328915508, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1217708481126307134, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1666858523}
-    - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2811212122937556065, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3411713172828237071, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+    - target: {fileID: 5336089992900569180, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
-      propertyPath: onHidePauseMenu.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3411713172828237071, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+    - target: {fileID: 5336089992900569180, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
-      propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3411713172828237071, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+    - target: {fileID: 5440653054999258163, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
-      propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440653054999258163, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: manager
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5336089992900569180, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5336089992900569180, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440653054999258163, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440653054999258163, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1408966279}
     - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: pathParent
@@ -31871,10 +31831,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3338974644191256480, guid: 8906fde655c51b74fb7393f8f84dd3c0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8906fde655c51b74fb7393f8f84dd3c0, type: 3}
+--- !u!114 &1408966279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7717205260082810105, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1408966278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58630be2aaaacb34daf6315a198dccd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1409853964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51023,18 +50996,6 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
---- !u!114 &2107147838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1117107160474073137, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1408966278}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac09bf699d4234448aa42c086c9f964c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2111982661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5730840332023436454, guid: fec5e215aee1ee14d81a8a322acb5ade,
@@ -56000,7 +55961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &7368347502354308509
 PrefabInstance:
   m_ObjectHideFlags: 0
