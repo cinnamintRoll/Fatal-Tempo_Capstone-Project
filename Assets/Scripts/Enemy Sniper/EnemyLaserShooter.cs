@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyLaserShooter : MonoBehaviour
 {
@@ -27,12 +28,13 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private LayerMask deflectLayer;
     private bool isShooting = false;
     private Vector3 laserOffset; // Fixed laser offset
-
+    [SerializeField] private EnemyAI AIScript;
     // Adjustable Beats for Charging and Firing
     [SerializeField] private int beatsBetweenShoots = 3; // Adjustable beats to shoot
     private int currentBeat = 0; // Track the current beat for the laser charge cycle
     private bool isCharging = false;
 
+    public UnityEvent OnDeflect;
     // Reference to the MusicManager
     private MusicManager musicManager;
 
@@ -188,13 +190,22 @@ public class EnemyLaserShooter : MonoBehaviour
     public void DeflectShot(Vector3 deflectPoint)
     {
         isDeflected = true;
+        OnDeflect.Invoke();
         laser.enabled = false;
-        Destroy(visuals);
         AudioSource.PlayClipAtPoint(deflectionSound, deflectPoint);
-        Destroy(gameObject, 0.5f);
+        /*if (AIScript != null)
+        {
+            AIScript.TransitionToState(EnemyAI.EnemyState.Death);
+        }
+        else
+        {
+            Destroy(visuals);
+            
+            Destroy(gameObject, 0.5f);
+        }*/
     }
 
-    private void DestroyObject()
+    public void DestroyObject()
     {
         laser.enabled = false;
         Destroy(gameObject, 0.2f);

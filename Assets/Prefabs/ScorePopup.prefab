@@ -125,6 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 9214702580174271990}
+  animator: {fileID: 1951081998824078333}
+  triggerName: Play
+  playAnimationOnStart: 1
 --- !u!1 &3477877613831903466
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e579b7f73034324d958b489b8532320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   player: {fileID: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1417043513786135180

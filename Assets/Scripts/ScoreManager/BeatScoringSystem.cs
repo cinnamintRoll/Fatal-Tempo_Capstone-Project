@@ -160,10 +160,10 @@ public class BeatScoringSystem : MonoBehaviour
     public void SpawnScorePopup(Vector3 position, int score)
     {
         GameObject popup = Instantiate(scorePopupPrefab, position, Quaternion.identity);
-        ScorePopup scorePopup = popup.GetComponent<ScorePopup>();
+        Popup scorePopup = popup.GetComponent<Popup>();
         if (scorePopup != null)
         {
-            scorePopup.setlocation(position);
+            scorePopup.SetLocation(position);
             scorePopup.SetText(score.ToString());
         }
     }
