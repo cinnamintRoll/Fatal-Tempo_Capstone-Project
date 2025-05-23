@@ -3,9 +3,10 @@ Shader "Custom/ChromaKeyObject"
     Properties
     {
         _MainTex ("Base (RGB)", 2D) = "white" {}
+        _Color ("Tint", Color) = (1,1,1,1)
         _thresh ("Threshold", Range(0, 1)) = 0.2
         _slope ("Slope", Range(0, 1)) = 0.1
-        _keyingColor ("Key Colour", Color) = (0,1,0,1) // Default green screen
+        _keyingColor ("Key Colour", Color) = (0,1,0,1)
     }
 
     SubShader
@@ -27,6 +28,7 @@ Shader "Custom/ChromaKeyObject"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _Color; // This enables SpriteRenderer.color support
             float4 _keyingColor;
             float _thresh;
             float _slope;
@@ -53,11 +55,16 @@ Shader "Custom/ChromaKeyObject"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float3 col = tex2D(_MainTex, i.uv).rgb;
-                float d = distance(_keyingColor.rgb, col);
+                float4 texColor = tex2D(_MainTex, i.uv);
+                float d = distance(_keyingColor.rgb, texColor.rgb);
                 float edge0 = _thresh * (1.0 - _slope);
                 float alpha = smoothstep(edge0, _thresh, d);
-                return float4(col, alpha);
+
+                // Apply SpriteRenderer tint color
+                float4 finalColor = texColor * _Color;
+                finalColor.a *= alpha;
+
+                return finalColor;
             }
             ENDCG
         }
