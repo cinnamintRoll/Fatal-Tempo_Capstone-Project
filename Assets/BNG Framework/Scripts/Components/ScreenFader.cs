@@ -141,23 +141,27 @@ namespace BNG {
             StartCoroutine(fadeRoutine);
         }
 
-        IEnumerator doFade(float alphaFrom, float alphaTo) {
-
+        IEnumerator doFade(float alphaFrom, float alphaTo)
+        {
             float alpha = alphaFrom;
 
             updateImageAlpha(alpha);
 
-            while (alpha != alphaTo) {
-
-                if (alphaFrom < alphaTo) {
-                    alpha += Time.deltaTime * FadeInSpeed;
-                    if (alpha > alphaTo) {
+            while (alpha != alphaTo)
+            {
+                if (alphaFrom < alphaTo)
+                {
+                    alpha += Time.unscaledDeltaTime * FadeInSpeed;
+                    if (alpha > alphaTo)
+                    {
                         alpha = alphaTo;
                     }
                 }
-                else {
-                    alpha -= Time.deltaTime * FadeOutSpeed;
-                    if (alpha < alphaTo) {
+                else
+                {
+                    alpha -= Time.unscaledDeltaTime * FadeOutSpeed;
+                    if (alpha < alphaTo)
+                    {
                         alpha = alphaTo;
                     }
                 }
@@ -169,9 +173,9 @@ namespace BNG {
 
             yield return new WaitForEndOfFrame();
 
-            // Ensure alpha is always applied
             updateImageAlpha(alphaTo);
         }
+
 
         protected virtual void updateImageAlpha(float alphaValue) {
 

@@ -1,7 +1,9 @@
 using BNG;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class GameMenu : MonoBehaviour
 {
@@ -19,7 +21,8 @@ public class GameMenu : MonoBehaviour
     private float originalFixedDelta;
     [SerializeField] private UIPointer pointer;
     [SerializeField] private float heightOffset;
-
+    [SerializeField] private VideoPlayer player;
+    [SerializeField] ScreenFader screenFader;
     [Tooltip("If true, will set Time.fixedDeltaTime to the device refresh rate")]
     public bool SetFixedDelta = false;
 
@@ -47,6 +50,11 @@ public class GameMenu : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         originalFixedDelta = Time.fixedDeltaTime;
+
+        if (player != null)
+        {
+            player.loopPointReached += OnDeathVideoEnd;
+        }
     }
 
     void Update()
@@ -62,6 +70,28 @@ public class GameMenu : MonoBehaviour
             {
                 ShowMenu(MenuType.Pause);
             }
+        }
+    }
+
+    private void OnDeathVideoEnd(VideoPlayer vp)
+    {
+        StartCoroutine(WaitAndReturnToMainMenu());
+    }
+
+    private IEnumerator WaitAndReturnToMainMenu()
+    {
+        screenFader.DoFadeIn();
+
+        yield return new WaitForSecondsRealtime(2f); // Waits 2 seconds in real time even if timeScale is 0
+
+        ReturnToMainMenu();
+    }
+
+    private void OnDestroy()
+    {
+        if (player != null)
+        {
+            player.loopPointReached -= OnDeathVideoEnd;
         }
     }
 
@@ -83,6 +113,11 @@ public class GameMenu : MonoBehaviour
                 PlayAudio(deathClip);
                 activeMenu = MenuType.Death;
                 onShowDeathMenu?.Invoke();  // Trigger event when showing the death menu
+
+                if (player != null)
+                {
+                    player.Play();
+                }
                 break;
         }
         if (pointer != null)
