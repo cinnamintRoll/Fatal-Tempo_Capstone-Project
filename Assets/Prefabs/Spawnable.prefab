@@ -244,21 +244,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36712e13cd23e449851e2f16ec42212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8512368455037900012}
-        m_TargetAssemblyTypeName: GeneralSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  namedEvents:
+  - eventName: Spawn
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8512368455037900012}
+          m_TargetAssemblyTypeName: GeneralSpawner, Assembly-CSharp
+          m_MethodName: Spawn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!65 &586145397955231962
 BoxCollider:
   m_ObjectHideFlags: 0
