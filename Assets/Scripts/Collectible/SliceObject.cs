@@ -8,6 +8,7 @@ using BNG;
 
 public class SliceObject : MonoBehaviour
 {
+    [SerializeField] private Collector _collector;
     // Reference to the start and end points of the blade (assign in the inspector or dynamically)
     public Transform bladeStart;
     public Transform bladeEnd;
@@ -59,6 +60,13 @@ public class SliceObject : MonoBehaviour
 
     IEnumerator SliceAsync(GameObject sliceableObject)
 {
+    if (sliceableObject != null)
+        {
+            SliceSegment segment = sliceableObject.GetComponent<SliceSegment>();
+            if (segment != null) {
+                _collector.CollectItem(segment.SegmentValue);
+            }
+        }
     yield return new WaitForEndOfFrame(); // Defer slicing to the end of the frame
 
     Vector3 velocity = velocityEstimator.GetVelocityEstimate();
