@@ -10,7 +10,7 @@ using static Enemies;
 public class Enemies
 {
     public string EnemyName;
-    public enum EnemyType { Melee, Sniper }
+    public enum EnemyType { Melee, Sniper}
     public EnemyType enemyType;
     public GameObject EnemyObject;
 }
