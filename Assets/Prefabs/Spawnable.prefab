@@ -368,6 +368,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChainEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6192737737306253434, guid: 0a025a44717f9054eb612f1997d18c4e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -441,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 2157934674974318020, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6379196026096721819, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
         type: 3}

@@ -53,6 +53,10 @@ public class PathFollowerEditor : Editor
             AlignBeatsToPoints();
         }
 
+        if (GUILayout.Button("Reshuffle Spawners"))
+        {
+            ReshuffleSpawners();
+        }
     }
 
     private void GenerateSpawnTriggers()
@@ -96,6 +100,23 @@ public class PathFollowerEditor : Editor
             }
 
             Undo.RegisterCreatedObjectUndo(spawnTrigger, "Create Spawn Trigger");
+        }
+
+        EditorUtility.SetDirty(pathFollower);
+    }
+
+    private void ReshuffleSpawners()
+    {
+        if (pathFollower.pathParent == null) return;
+
+        foreach (Transform child in pathFollower.pathParent)
+        {
+            GeneralSpawner spawner = child.GetComponent<GeneralSpawner>();
+            if (spawner != null)
+            {
+                Undo.RecordObject(spawner, "Reshuffle Spawner");
+                spawner.RandomlyPickSpawn();
+            }
         }
 
         EditorUtility.SetDirty(pathFollower);
