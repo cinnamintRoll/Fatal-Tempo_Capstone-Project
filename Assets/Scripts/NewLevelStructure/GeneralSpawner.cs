@@ -29,6 +29,10 @@ public class GeneralSpawner : MonoBehaviour
                 DestroyImmediate(Spawnables[i],true);
                 Spawnables.RemoveAt(i);
             }
+            else
+            {
+                Spawnables[i].gameObject.SetActive(false);
+            }
         }
     }
 
@@ -60,8 +64,35 @@ public class GeneralSpawner : MonoBehaviour
     {
         if (Spawnables.Count == 0) return;
         spawnIndex = Random.Range(0, Spawnables.Count);
+        for (int i = 0; i < Spawnables.Count; i++)
+        {
+            if (Spawnables[i] != null)
+            {
+                Spawnables[i].SetActive(i == spawnIndex);
+            }
+
+        }
         enemy.PickRandomEnemyType();
     }
+
+    private void OnValidate()
+    {
+        if (Spawnables == null || Spawnables.Count == 0)
+            return;
+
+        // Clamp the spawnIndex to prevent out-of-range issues
+        spawnIndex = Mathf.Clamp(spawnIndex, 0, Spawnables.Count - 1);
+
+        for (int i = 0; i < Spawnables.Count; i++)
+        {
+            if (Spawnables[i] != null)
+            {
+                Spawnables[i].SetActive(i == spawnIndex);
+            }
+
+        }
+    }
+
 
     public void OnDespawn()
     {
