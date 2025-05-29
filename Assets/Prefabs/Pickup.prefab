@@ -94,12 +94,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82cdf7269a49dc45b4974a3f743fb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
-  targetPosition: {fileID: 0}
+  weaponVisuals:
+  - weaponType: 0
+    visualPrefab: {fileID: 9157159191556515790}
+  - weaponType: 1
+    visualPrefab: {fileID: 4444180087211675707}
+  - weaponType: 2
+    visualPrefab: {fileID: 6723757543113360418}
+  pickupMode: 0
+  singleWeaponType: 0
+  dualLeftWeaponType: 0
+  dualRightWeaponType: 1
   moveSpeed: 3
   floatingSpeed: 1
   floatingAmplitude: 0.2
-  objectOffset: {fileID: 7810531834554812124}
+  leftVisual: {fileID: 9157159191556515790}
+  rightVisual: {fileID: 0}
+  DuplicateSpawn: {x: 0, y: 0.046, z: -0.045}
+  lastSingleWeaponType: 0
+  lastDualLeftWeaponType: 0
+  lastDualRightWeaponType: 0
 --- !u!135 &5626507028684623192
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1062,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7276ff191256962448d44af85114a1f7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7276ff191256962448d44af85114a1f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1109,6 +1123,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7276ff191256962448d44af85114a1f7, type: 3}
+--- !u!1 &6723757543113360418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 7276ff191256962448d44af85114a1f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6723757543113458306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6723757543113857026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7276ff191256962448d44af85114a1f7,
@@ -1241,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100052, guid: 95ce9f4c6f9d92a46b626a353c690dac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100054, guid: 95ce9f4c6f9d92a46b626a353c690dac, type: 3}
       propertyPath: m_Layer

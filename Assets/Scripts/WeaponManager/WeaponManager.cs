@@ -58,8 +58,8 @@ public class WeaponManager : MonoBehaviour
         foreach (var weapon in rightHandWeaponMap.Values)
             if (weapon) weapon.SetActive(false);
 
-        SwapWeapon(currentLeftWeapon, HandType.Left);
-        SwapWeapon(currentRightWeapon, HandType.Right);
+        SwapWeapon(currentLeftWeapon, HandType.Left, true);
+        SwapWeapon(currentRightWeapon, HandType.Right, true);
     }
 
     private void AutoMapWeapons(Transform parent, Dictionary<WeaponType, GameObject> map)
@@ -78,7 +78,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    public void SwapWeapon(WeaponType newWeapon, HandType hand)
+    public void SwapWeapon(WeaponType newWeapon, HandType hand, bool ignoreOtherHandReset = false)
     {
         var currentMap = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
         var currentWeapon = hand == HandType.Left ? currentLeftWeapon : currentRightWeapon;
@@ -87,16 +87,16 @@ public class WeaponManager : MonoBehaviour
             lastLeftWeapon = currentLeftWeapon;
         else
             lastRightWeapon = currentRightWeapon;
-        // Reset the other hand to Fist if this hand is trying to equip a non-Fist weapon
-        if (newWeapon != WeaponType.Fist)
+        
+        if (!ignoreOtherHandReset)
         {
-            if (hand == HandType.Left && currentRightWeapon != WeaponType.Fist)
+            if (hand == HandType.Left)
             {
-                SwapWeapon(WeaponType.Fist, HandType.Right);
+                SwapWeapon(WeaponType.Fist, HandType.Right, true);
             }
-            else if (hand == HandType.Right && currentLeftWeapon != WeaponType.Fist)
+            else if (hand == HandType.Right)
             {
-                SwapWeapon(WeaponType.Fist, HandType.Left);
+                SwapWeapon(WeaponType.Fist, HandType.Left, true);
             }
         }
 
@@ -116,43 +116,6 @@ public class WeaponManager : MonoBehaviour
         else
             currentRightWeapon = newWeapon;
     }
-
-    public void AutoSwapNextWeapon(HandType hand)
-    {
-        var currentMap = hand == HandType.Left ? leftHandWeaponMap : rightHandWeaponMap;
-        var currentWeapon = hand == HandType.Left ? currentLeftWeapon : currentRightWeapon;
-
-        if (currentMap.TryGetValue(currentWeapon, out var oldWeapon) && oldWeapon != null)
-            oldWeapon.SetActive(false);
-
-        WeaponType[] weaponTypes = (WeaponType[])System.Enum.GetValues(typeof(WeaponType));
-        int nextIndex = ((int)currentWeapon + 1) % weaponTypes.Length;
-        WeaponType nextWeapon = weaponTypes[nextIndex];
-
-        // If next weapon is not Fist, reset the opposite hand
-        if (nextWeapon != WeaponType.Fist)
-        {
-            if (hand == HandType.Left && currentRightWeapon != WeaponType.Fist)
-            {
-                SwapWeapon(WeaponType.Fist, HandType.Right);
-            }
-            else if (hand == HandType.Right && currentLeftWeapon != WeaponType.Fist)
-            {
-                SwapWeapon(WeaponType.Fist, HandType.Left);
-            }
-        }
-
-        if (currentMap.TryGetValue(nextWeapon, out var newWeaponGO) && newWeaponGO != null)
-            newWeaponGO.SetActive(true);
-
-        PlayWeaponSwapSound(hand);
-
-        if (hand == HandType.Left)
-            currentLeftWeapon = nextWeapon;
-        else
-            currentRightWeapon = nextWeapon;
-    }
-
 
     private void PlayWeaponSwapSound(HandType controlhand)
     {
