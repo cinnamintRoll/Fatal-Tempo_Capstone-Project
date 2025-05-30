@@ -2799,6 +2799,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -2932,7 +2937,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7227,6 +7232,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -7360,7 +7370,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8200,6 +8210,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -8333,7 +8348,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -13327,6 +13342,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -13460,7 +13480,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -19826,7 +19846,12 @@ PrefabInstance:
     - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: currentState
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -19961,7 +19986,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -20658,6 +20683,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -20806,7 +20836,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -21561,6 +21591,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -21694,7 +21729,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -22439,7 +22474,7 @@ PrefabInstance:
     - target: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
@@ -26670,7 +26705,12 @@ PrefabInstance:
     - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: currentState
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -26805,7 +26845,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -29380,7 +29420,12 @@ PrefabInstance:
     - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: currentState
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -29515,7 +29560,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -30826,6 +30871,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -30959,7 +31009,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -32470,6 +32520,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -32603,7 +32658,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -41052,6 +41107,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -41185,7 +41245,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -41667,6 +41727,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -41800,7 +41865,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -48339,6 +48404,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -48472,7 +48542,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -49968,6 +50038,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -50101,7 +50176,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2086780343016305936, guid: 05b0aa2de99e9544d9b7955091d4bfc5, type: 3}
@@ -51055,6 +51130,11 @@ PrefabInstance:
       propertyPath: attackRange
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -51073,7 +51153,7 @@ PrefabInstance:
     - target: {fileID: 8243153761273110322, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579803415256636672, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -51303,6 +51383,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -51436,7 +51521,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -53638,6 +53723,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -53771,7 +53861,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -57598,6 +57688,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -57731,7 +57826,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -60508,7 +60603,7 @@ PrefabInstance:
     - target: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
@@ -61364,6 +61459,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -61497,7 +61597,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -61836,6 +61936,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -61984,7 +62089,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -62050,6 +62155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -62199,7 +62309,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -62381,6 +62491,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
+      objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -62514,7 +62629,7 @@ PrefabInstance:
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

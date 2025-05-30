@@ -150,6 +150,11 @@ PrefabInstance:
       objectReference: {fileID: 6703420398490604162}
     - target: {fileID: 932368166429764901, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
         type: 3}
+      propertyPath: selectedEnemyName
+      value: Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 932368166429764901, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
+        type: 3}
       propertyPath: Enemies.Array.data[1].enemyType
       value: 1
       objectReference: {fileID: 0}
@@ -206,6 +211,11 @@ PrefabInstance:
     - target: {fileID: 6379196026096721819, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667450082450508542, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
