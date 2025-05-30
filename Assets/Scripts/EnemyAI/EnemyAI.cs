@@ -4,14 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using static Enemies;
 
 [Serializable]
 public class Enemies
 {
     public string EnemyName;
-    public enum EnemyType { Melee, Sniper}
-    public EnemyType enemyType;
+    public int EnemyHealth;
     public GameObject EnemyObject;
 }
 
@@ -19,9 +17,13 @@ public class EnemyAI : MonoBehaviour
 {
     public enum EnemyState { Idle, MoveToPoint, ChasePlayer, Attack, Death }
     public EnemyState currentState = EnemyState.Idle;
-    public EnemyType enemyAIType = EnemyType.Melee; // Default type is melee
+
     [SerializeField]
-    private List<Enemies> Enemies;
+    public List<Enemies> Enemies;
+
+    [SerializeField, EnemyTypeDropdown]
+    private string selectedEnemyName;
+
     public Transform player;
     public Transform pointToMove;
     public float chaseRange = 10f;
@@ -30,7 +32,8 @@ public class EnemyAI : MonoBehaviour
     public float attackCooldown = 1.5f;
     // Define a threshold distance for detecting enemies behind the player
     public float behindDistanceThreshold = 2f;
-    public EnemyLaserShooter SniperScript;
+
+    private EnemyLaserShooter SniperScript;
     [SerializeField] private NavMeshAgent navMeshAgent;
     private float lastAttackTime = 0f;
     private GameObject EnemyVisuals;
@@ -46,27 +49,45 @@ public class EnemyAI : MonoBehaviour
     private bool isDead = false;
     public UnityEvent OnDeath;
 
+    // Property to get current Enemy object and name
+    public Enemies CurrentEnemy
+    {
+        get
+        {
+            return Enemies.Find(e => e.EnemyName == selectedEnemyName);
+        }
+    }
+
     void OnEnable()
     {
+        UpdateEnemyVisuals();
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        SetRandomChaseUpdateInterval(); // Set a random initial update interval
+        PlayerHealth = PlayerHealth.Instance;
+        InitializeHealth();
+        if (currentState == EnemyState.Attack)
+        {
+            navMeshAgent.enabled = false;
+        }
+    }
+
+    public void UpdateEnemyVisuals()
+    {
+        EnemyVisuals = null;
         foreach (var enemy in Enemies)
         {
-            if (enemy.enemyType == this.enemyAIType)
+            if (enemy.EnemyName == selectedEnemyName)
             {
-                enemy.EnemyObject.SetActive(true);
+                if (enemy.EnemyObject != null)
+                    enemy.EnemyObject.SetActive(true);
                 EnemyVisuals = enemy.EnemyObject;
             }
             else
             {
-                enemy.EnemyObject.SetActive(false);
+                if (enemy.EnemyObject != null)
+                    enemy.EnemyObject.SetActive(false);
             }
-        }
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        SetRandomChaseUpdateInterval(); // Set a random initial update interval
-        PlayerHealth = PlayerHealth.Instance;
-
-        if(currentState == EnemyState.Attack)
-        {
-            navMeshAgent.enabled = false;
         }
     }
 
@@ -97,6 +118,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    void InitializeHealth()
+    {
+        var enemyData = CurrentEnemy;
+        if (enemyData != null)
+        {
+            health = enemyData.EnemyHealth;
+        }
+    }
+
     // Transition to a new state
     public void TransitionToState(EnemyState newState)
     {
@@ -114,8 +144,8 @@ public class EnemyAI : MonoBehaviour
                 navMeshAgent.isStopped = false;
                 break;
             case EnemyState.Attack:
-                if(navMeshAgent.isOnNavMesh)
-                navMeshAgent.isStopped = true;
+                if (navMeshAgent.isOnNavMesh)
+                    navMeshAgent.isStopped = true;
                 break;
             case EnemyState.Death:
                 navMeshAgent.isStopped = true;
@@ -164,18 +194,10 @@ public class EnemyAI : MonoBehaviour
             SetRandomChaseUpdateInterval(); // Randomize the next interval
             MoveToPoint(player); // Update destination
         }
+
         if (IsEnemyBehindPlayer())
         {
-            switch (enemyAIType)
-            {
-                case EnemyType.Melee:
-                    TransitionToState(EnemyState.Attack); // Melee attack when close
-                    break;
-
-                case EnemyType.Sniper:
-                    TransitionToState(EnemyState.Attack); // Ranged attack at distance or Sniper attack at long range
-                    break;
-            }
+            TransitionToState(EnemyState.Attack);
         }
     }
 
@@ -188,12 +210,11 @@ public class EnemyAI : MonoBehaviour
             PerformAttack();
         }
 
-        switch (enemyAIType)
+        // After melee attack, return to idle
+        switch (selectedEnemyName.ToLower())
         {
-            case EnemyType.Melee:
+            case "melee":
                 TransitionToState(EnemyState.Idle);
-                break;
-            case EnemyType.Sniper:
                 break;
         }
     }
@@ -206,8 +227,8 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("Enemy has died");
             if (PlayerHealth)
             {
-                    PlayerHealth.KillEnemy(this.transform.position);
-                    isDead = true;
+                PlayerHealth.KillEnemy(this.transform.position);
+                isDead = true;
             }
             // Optionally, destroy the enemy object after a delay
             Destroy(gameObject, 0.5f); // Adjust the delay as needed
@@ -232,27 +253,35 @@ public class EnemyAI : MonoBehaviour
     // Enemy moves to a designated point
     void MoveToPoint()
     {
-        navMeshAgent.SetDestination(pointToMove.position);
+        if (pointToMove != null)
+            navMeshAgent.SetDestination(pointToMove.position);
     }
 
     public void MoveToPoint(Transform targetPoint)
     {
         pointToMove = targetPoint;
-        navMeshAgent.SetDestination(pointToMove.position);
+        if (pointToMove != null)
+            navMeshAgent.SetDestination(pointToMove.position);
     }
 
-    // Perform attack logic based on the enemy type
+    // Perform attack logic based on the enemy type determined by name
     void PerformAttack()
     {
-        switch (enemyAIType)
+
+        switch (selectedEnemyName.ToLower())
         {
-            case EnemyType.Melee:
+            case "melee":
                 Debug.Log("Enemy performs a melee attack!");
                 PlayerHealth.Instance.TakeDamage(); // Example of damaging the player
                 break;
-            case EnemyType.Sniper:
+            case "sniper":
                 Debug.Log("Enemy performs a sniper attack!");
-                SniperScript.StartShooting();
+                if (SniperScript != null)
+                    SniperScript.StartShooting();
+                break;
+            default:
+                Debug.Log("Unknown enemy performs a melee attack!");
+                PlayerHealth.Instance.TakeDamage();
                 break;
         }
     }
@@ -270,8 +299,6 @@ public class EnemyAI : MonoBehaviour
         // Check the dot product of the player's forward direction and the direction to the enemy
         float dotProduct = Vector3.Dot(baseTransform.forward, directionToEnemy);
 
-         // Adjust this value as needed
-
         // If the dotProduct is less than 0 and the distance is greater than the threshold, the enemy is behind and far enough
         return dotProduct < 0 && distanceToEnemy > behindDistanceThreshold;
     }
@@ -287,12 +314,58 @@ public class EnemyAI : MonoBehaviour
     {
         chaseUpdateInterval = UnityEngine.Random.Range(minChaseUpdateInterval, maxChaseUpdateInterval);
     }
+
     public void PickRandomEnemyType()
     {
-        // Get all possible enemy types
-        Array types = Enum.GetValues(typeof(EnemyType));
+        if (Enemies == null || Enemies.Count == 0)
+            return;
 
-        // Choose one at random
-        enemyAIType = (EnemyType)types.GetValue(UnityEngine.Random.Range(0, types.Length));
+        int idx = UnityEngine.Random.Range(0, Enemies.Count);
+        selectedEnemyName = Enemies[idx].EnemyName;
+        UpdateEnemyVisuals();
     }
 }
+
+#if UNITY_EDITOR
+[CustomPropertyDrawer(typeof(EnemyTypeDropdownAttribute))]
+public class EnemyTypeDropdownDrawer : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        var enemyAI = property.serializedObject.targetObject as EnemyAI;
+        if (enemyAI == null)
+        {
+            EditorGUI.PropertyField(position, property, label);
+            return;
+        }
+
+        if (enemyAI.Enemies == null || enemyAI.Enemies.Count == 0)
+        {
+            EditorGUI.LabelField(position, label.text, "No enemies defined");
+            return;
+        }
+
+        List<string> names = new List<string>();
+        int currentIndex = -1;
+
+        for (int i = 0; i < enemyAI.Enemies.Count; i++)
+        {
+            names.Add(enemyAI.Enemies[i].EnemyName);
+            if (enemyAI.Enemies[i].EnemyName == property.stringValue)
+                currentIndex = i;
+        }
+
+        if (currentIndex < 0) currentIndex = 0;
+
+        int selectedIndex = EditorGUI.Popup(position, label.text, currentIndex, names.ToArray());
+        if (selectedIndex != currentIndex)
+        {
+            property.stringValue = names[selectedIndex];
+            enemyAI.UpdateEnemyVisuals();
+            EditorUtility.SetDirty(enemyAI);
+        }
+    }
+}
+
+public class EnemyTypeDropdownAttribute : PropertyAttribute { }
+#endif
