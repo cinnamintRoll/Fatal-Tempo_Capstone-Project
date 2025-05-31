@@ -11,7 +11,9 @@ public class Enemies
     public string EnemyName;
     public int EnemyHealth;
     public GameObject EnemyObject;
+    public float SpawnChance = 1f; // 0 to 1 chance
 }
+
 
 public class EnemyAI : MonoBehaviour
 {
@@ -320,10 +322,31 @@ public class EnemyAI : MonoBehaviour
         if (Enemies == null || Enemies.Count == 0)
             return;
 
-        int idx = UnityEngine.Random.Range(0, Enemies.Count);
-        selectedEnemyName = Enemies[idx].EnemyName;
+        float totalChance = 0f;
+        foreach (var enemy in Enemies)
+        {
+            totalChance += enemy.SpawnChance;
+        }
+
+        float randomValue = UnityEngine.Random.Range(0f, totalChance);
+        float cumulative = 0f;
+
+        foreach (var enemy in Enemies)
+        {
+            cumulative += enemy.SpawnChance;
+            if (randomValue <= cumulative)
+            {
+                selectedEnemyName = enemy.EnemyName;
+                UpdateEnemyVisuals();
+                return;
+            }
+        }
+
+        // Fallback to first enemy if something goes wrong
+        selectedEnemyName = Enemies[0].EnemyName;
         UpdateEnemyVisuals();
     }
+
 }
 
 #if UNITY_EDITOR

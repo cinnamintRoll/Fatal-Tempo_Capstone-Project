@@ -22,7 +22,7 @@ public class GeneralSpawnerEditor : Editor
             string[] names = new string[spawner.Spawnables.Count];
             for (int i = 0; i < names.Length; i++)
             {
-                GameObject go = spawner.Spawnables[i];
+                GameObject go = spawner.Spawnables[i].spawnable;
                 names[i] = go != null ? go.name : "[Missing]";
             }
 

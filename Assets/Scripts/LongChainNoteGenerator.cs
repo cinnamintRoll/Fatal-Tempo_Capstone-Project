@@ -194,11 +194,13 @@ public class LongChainNoteGenerator : MonoBehaviour
                 // Set local position and rotation relative to this GameObject
                 instance.transform.localPosition = localPos;
                 instance.transform.localRotation = localRot;
+                instance.transform.localScale = prefab.transform.localScale;
             }
             else
             {
                 existing.localPosition = localPos;
                 existing.localRotation = localRot;
+                existing.localScale = prefab.transform.localScale;
             }
         }
 

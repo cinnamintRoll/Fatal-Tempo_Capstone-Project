@@ -2,9 +2,17 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
+[System.Serializable]
+public class SpawnableEntry
+{
+    public GameObject spawnable;
+    [Range(0f, 100f)]
+    public float spawnChance = 100f;
+}
+
 public class GeneralSpawner : MonoBehaviour
 {
-    public List<GameObject> Spawnables;
+    public List<SpawnableEntry> Spawnables;
     public int spawnIndex = 0;
     public enum EnemyType { Melee, Ranged, Sniper }
     public Transform spawnPoint;
@@ -19,59 +27,76 @@ public class GeneralSpawner : MonoBehaviour
         GameManager gameManager = GameManager.Instance;
         if (gameManager)
             player = gameManager.PlayerTransform;
+
         enemy.player = player;
         enemy.pointToMove = movepoint;
 
+        // Keep only the spawnIndex object for now
         for (int i = Spawnables.Count - 1; i >= 0; i--)
         {
             if (i != spawnIndex)
             {
-                DestroyImmediate(Spawnables[i],true);
+                if (Spawnables[i].spawnable != null)
+                {
+                    DestroyImmediate(Spawnables[i].spawnable, true);
+                }
                 Spawnables.RemoveAt(i);
             }
             else
             {
-                Spawnables[i].gameObject.SetActive(false);
+                if (Spawnables[i].spawnable != null)
+                    Spawnables[i].spawnable.SetActive(false);
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canSpawn)
         {
-            if (canSpawn)
             spawnAnim.SetTrigger("Spawn");
             canSpawn = false;
-            //Spawn();
         }
     }
 
-
     public void Spawn()
     {
+        if (Spawnables.Count == 0 || Spawnables[0].spawnable == null)
+            return;
 
-            GameObject toSpawn = Spawnables[0];
-            if (toSpawn != null)
-            {
-                toSpawn.transform.position = spawnPoint.position;
-                toSpawn.transform.rotation = spawnPoint.rotation;
-                toSpawn.SetActive(true);
-            }
+        Spawnables[0].spawnable.SetActive(true);
     }
 
     public void RandomlyPickSpawn()
     {
         if (Spawnables.Count == 0) return;
-        spawnIndex = Random.Range(0, Spawnables.Count);
+
+        float totalChance = 0f;
+        foreach (var entry in Spawnables)
+        {
+            totalChance += entry.spawnChance;
+        }
+
+        float randomValue = Random.Range(0, totalChance);
+        float cumulative = 0f;
         for (int i = 0; i < Spawnables.Count; i++)
         {
-            if (Spawnables[i] != null)
+            cumulative += Spawnables[i].spawnChance;
+            if (randomValue <= cumulative)
             {
-                Spawnables[i].SetActive(i == spawnIndex);
+                spawnIndex = i;
+                break;
             }
-
         }
+
+        for (int i = 0; i < Spawnables.Count; i++)
+        {
+            if (Spawnables[i].spawnable != null)
+            {
+                Spawnables[i].spawnable.SetActive(i == spawnIndex);
+            }
+        }
+
         enemy.PickRandomEnemyType();
     }
 
@@ -80,19 +105,16 @@ public class GeneralSpawner : MonoBehaviour
         if (Spawnables == null || Spawnables.Count == 0)
             return;
 
-        // Clamp the spawnIndex to prevent out-of-range issues
         spawnIndex = Mathf.Clamp(spawnIndex, 0, Spawnables.Count - 1);
 
         for (int i = 0; i < Spawnables.Count; i++)
         {
-            if (Spawnables[i] != null)
+            if (Spawnables[i].spawnable != null)
             {
-                Spawnables[i].SetActive(i == spawnIndex);
+                Spawnables[i].spawnable.SetActive(i == spawnIndex);
             }
-
         }
     }
-
 
     public void OnDespawn()
     {

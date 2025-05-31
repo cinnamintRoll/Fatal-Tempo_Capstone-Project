@@ -18,6 +18,11 @@ public class PathFollower : MonoBehaviour
     public float bpm = 120f; // Beats per minute
     public float timingLineWidth = 0.1f; // Width of timing lines
 
+    [Header("Easy Mode Settings")]
+    public bool easyMode = false; // Toggle to enable Easy Mode
+    [Range(1, 10)]
+    public int easyModeInterval = 2; // Keep every Nth spawnable
+
     void Start()
     {
 
@@ -25,6 +30,7 @@ public class PathFollower : MonoBehaviour
         //UpdateSecondPointPosition(); // [MODIFIED]
         //ComputeSamplePoints();
         //CalculateTimingLineSpacing();
+        easyMode = PlayerPrefs.GetInt("EasyMode", 0) == 1;
     }
 
     private void OnValidate()
@@ -189,4 +195,25 @@ public class PathFollower : MonoBehaviour
         }
     }
 
+    private void ApplyEasyMode()
+    {
+        if (!easyMode || pathParent == null) return;
+
+        int count = 0;
+        // Use a temp list to avoid modifying the hierarchy while iterating
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in pathParent)
+        {
+            if (child != pathPoints[0] && child != pathPoints[1])
+                children.Add(child);
+        }
+
+        foreach (Transform child in children)
+        {
+            bool keep = count % easyModeInterval == 0;
+            if (!keep)
+                Destroy(child.gameObject);
+            count++;
+        }
+    }
 }

@@ -339,12 +339,15 @@ MonoBehaviour:
   - EnemyName: Melee
     EnemyHealth: 1
     EnemyObject: {fileID: 7667450082450508542}
+    SpawnChance: 1
   - EnemyName: Sniper
     EnemyHealth: 1
     EnemyObject: {fileID: 7152436047013268146}
+    SpawnChance: 1
   - EnemyName: Multi Hit Meelee
     EnemyHealth: 10
     EnemyObject: {fileID: 3239703108063708633}
+    SpawnChance: 0.05
   selectedEnemyName: 
   player: {fileID: 0}
   pointToMove: {fileID: 0}
