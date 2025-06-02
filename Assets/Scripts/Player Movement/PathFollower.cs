@@ -5,13 +5,13 @@ public class PathFollower : MonoBehaviour
 {
     public Transform[] pathPoints;  // Should always be length 2
     public float speed = 5.0f;      // Speed at which to move along the path
-    private List<Vector3> samplePoints = new List<Vector3>(); // Precomputed path points
+    public List<Vector3> samplePoints = new List<Vector3>(); // Precomputed path points
     private int currentPointIndex = 0; // Current point index
     public int sampleCount = 100; // Number of samples along the path
     public float startDelay = 0f; // Delay in seconds before music starts
     [SerializeField] private MusicManager manager;
     public Transform pathParent; // Parent transform for path points
-
+    
     public AudioClip musicClip; // The music clip to base path length on
     public GameObject spawnTriggerPrefab;
     public float timingLineSpacing; // Calculated spacing for timing lines
@@ -22,7 +22,7 @@ public class PathFollower : MonoBehaviour
     public bool easyMode = false; // Toggle to enable Easy Mode
     [Range(1, 10)]
     public int easyModeInterval = 2; // Keep every Nth spawnable
-
+    public bool useClosestPointAlignment;
     void Start()
     {
 

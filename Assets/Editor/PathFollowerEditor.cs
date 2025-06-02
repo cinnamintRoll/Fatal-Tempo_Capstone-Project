@@ -5,7 +5,7 @@ using UnityEditor;
 public class PathFollowerEditor : Editor
 {
     private PathFollower pathFollower;
-
+    
     private void OnEnable()
     {
         pathFollower = (PathFollower)target;
@@ -40,24 +40,25 @@ public class PathFollowerEditor : Editor
     }
 
     public override void OnInspectorGUI()
+{
+    base.OnInspectorGUI();
+
+
+    if (GUILayout.Button("Generate Spawn Triggers"))
     {
-        base.OnInspectorGUI();
-
-        if (GUILayout.Button("Generate Spawn Triggers"))
-        {
-            GenerateSpawnTriggers();
-        }
-
-        if (GUILayout.Button("Align Beats to Points"))
-        {
-            AlignBeatsToPoints();
-        }
-
-        if (GUILayout.Button("Reshuffle Spawners"))
-        {
-            ReshuffleSpawners();
-        }
+        GenerateSpawnTriggers();
     }
+
+    if (GUILayout.Button("Align Beats to Points"))
+    {
+        AlignBeatsToPoints();
+    }
+
+    if (GUILayout.Button("Reshuffle Spawners"))
+    {
+        ReshuffleSpawners();
+    }
+}
 
     private void GenerateSpawnTriggers()
     {
@@ -154,24 +155,86 @@ public class PathFollowerEditor : Editor
 
         Vector3 startPoint = pathFollower.pathPoints[0].position;
         Vector3 endPoint = pathFollower.pathPoints[1].position;
-        Vector3 pathDirection = (endPoint - startPoint).normalized;
-
         float segmentLength = Vector3.Distance(startPoint, endPoint);
         float spacing = pathFollower.timingLineSpacing;
         float startOffset = pathFollower.startDelay * pathFollower.speed;
         int totalChildren = pathFollower.pathParent.childCount;
 
-        for (int i = 0; i < totalChildren; i++)
+        if (!pathFollower.useClosestPointAlignment)
         {
-            Transform child = pathFollower.pathParent.GetChild(i);
-            float beatDistance = startOffset + i * spacing;
-            float t = Mathf.Clamp01(beatDistance / segmentLength);
-            Vector3 alignedPos = Vector3.Lerp(startPoint, endPoint, t);
+            // Original linear alignment
+            Vector3 pathDirection = (endPoint - startPoint).normalized;
+            for (int i = 0; i < totalChildren; i++)
+            {
+                Transform child = pathFollower.pathParent.GetChild(i);
+                float beatDistance = startOffset + i * spacing;
+                float t = Mathf.Clamp01(beatDistance / segmentLength);
+                Vector3 alignedPos = Vector3.Lerp(startPoint, endPoint, t);
 
-            Undo.RecordObject(child, "Align Beat to Point");
-            child.position = alignedPos;
+                Undo.RecordObject(child, "Align Beat to Point");
+                child.position = alignedPos;
+            }
+        }
+        else
+        {
+            // Closest point alignment
+
+            // Find or create the parent in scene root
+            GameObject alignmentParent = GameObject.Find("ClosestPointAlignmentParent");
+            if (alignmentParent == null)
+            {
+                alignmentParent = new GameObject("ClosestPointAlignmentParent");
+                Undo.RegisterCreatedObjectUndo(alignmentParent, "Create Closest Point Alignment Parent");
+            }
+
+            // Clear existing children in alignmentParent
+            for (int i = alignmentParent.transform.childCount - 1; i >= 0; i--)
+            {
+                Undo.DestroyObjectImmediate(alignmentParent.transform.GetChild(i).gameObject);
+            }
+
+            // Calculate how many points needed along the line
+            int pointsCount = Mathf.CeilToInt(segmentLength / spacing) + 1;
+
+            // Create empty transforms spaced along the line
+            for (int i = 0; i < pointsCount; i++)
+            {
+                float t = (float)i / (pointsCount - 1);
+                Vector3 pos = Vector3.Lerp(startPoint, endPoint, t);
+
+                GameObject pointGO = new GameObject($"AlignPoint {i}");
+                Undo.RegisterCreatedObjectUndo(pointGO, "Create Alignment Point");
+                pointGO.transform.position = pos;
+                pointGO.transform.parent = alignmentParent.transform;
+            }
+
+            // For each child in pathParent, find closest align point and assign
+            foreach (Transform child in pathFollower.pathParent)
+            {
+                Transform closest = null;
+                float closestDist = float.MaxValue;
+
+                foreach (Transform alignPoint in alignmentParent.transform)
+                {
+                    float dist = Vector3.Distance(child.position, alignPoint.position);
+                    if (dist < closestDist)
+                    {
+                        closestDist = dist;
+                        closest = alignPoint;
+                    }
+                }
+
+                if (closest != null)
+                {
+                    Undo.RecordObject(child, "Align Beat to Closest Point");
+                    child.position = closest.position;
+                }
+            }
+
+            Undo.DestroyObjectImmediate(alignmentParent);
         }
 
         EditorUtility.SetDirty(pathFollower);
     }
+
 }
