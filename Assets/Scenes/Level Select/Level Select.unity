@@ -1164,6 +1164,12 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!4 &113920665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3800868980126616095, guid: 2af1d2045149fe743b81bc4d1a6f8406,
+    type: 3}
+  m_PrefabInstance: {fileID: 1518060132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &130546396
 GameObject:
   m_ObjectHideFlags: 0
@@ -6400,6 +6406,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187713325}
   m_CullTransparentMesh: 1
+--- !u!4 &1193603505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1765546623450899079, guid: 2af1d2045149fe743b81bc4d1a6f8406,
+    type: 3}
+  m_PrefabInstance: {fileID: 1518060132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1200479046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8380,7 +8392,7 @@ PrefabInstance:
     - target: {fileID: 1144915590546846139, guid: 2af1d2045149fe743b81bc4d1a6f8406,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1247141267538704520, guid: 2af1d2045149fe743b81bc4d1a6f8406,
         type: 3}
@@ -8448,6 +8460,11 @@ PrefabInstance:
       value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 2981720430411257789, guid: 2af1d2045149fe743b81bc4d1a6f8406,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3165472505434009774, guid: 2af1d2045149fe743b81bc4d1a6f8406,
         type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -8625,6 +8642,16 @@ PrefabInstance:
     - target: {fileID: 7528504646789336086, guid: 2af1d2045149fe743b81bc4d1a6f8406,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352397114572919372, guid: 2af1d2045149fe743b81bc4d1a6f8406,
+        type: 3}
+      propertyPath: CursorScaling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352397114572919372, guid: 2af1d2045149fe743b81bc4d1a6f8406,
+        type: 3}
+      propertyPath: AutoUpdateUITransforms
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8352397114572919372, guid: 2af1d2045149fe743b81bc4d1a6f8406,
@@ -11077,6 +11104,7 @@ GameObject:
   - component: {fileID: 2068755941}
   - component: {fileID: 2068755940}
   - component: {fileID: 2068755938}
+  - component: {fileID: 2068755942}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -11096,10 +11124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98ba066fd33ded4aa6474529973e6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
+  m_SendPointerHoverToParent: 0
   SelectedHand: 1
-  LeftPointerTransform: {fileID: 0}
-  RightPointerTransform: {fileID: 0}
+  LeftPointerTransform: {fileID: 113920665}
+  RightPointerTransform: {fileID: 1193603505}
   ControllerInput: 0f000000
   UIInputAction: {fileID: 0}
   AddPhysicsRaycaster: 1
@@ -11140,6 +11168,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068755942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068755937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99770dd910b34ce4f942fdbfc9d8cade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftTriggerBinding: 10
+  rightTriggerBinding: 16
 --- !u!1 &2074860157
 GameObject:
   m_ObjectHideFlags: 0
