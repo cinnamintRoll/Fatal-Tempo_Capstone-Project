@@ -74,7 +74,7 @@ public class PlayerHealth : MonoBehaviour
     // Damage instantly  removes a full life
     public void TakeDamage()
     {
-        if (godModeEnabled)
+        if (godMode)
         {
             Debug.Log("God Mode is ON - no damage taken.");
             return;
