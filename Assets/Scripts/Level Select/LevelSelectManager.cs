@@ -18,16 +18,20 @@ public class LevelSelectManager : MonoBehaviour
     public Text highestComboText;
     public Text fullComboText;
     public Text maxPointsText;
+    [SerializeField] private RotatingLevelSelector selector;
 
     private SongData selectedSong;
 
     private void OnEnable()
     {
+     
+        /*
         if (albumCover.sprite == null)
         {
             setAlbumAlpha(0f);
         }
         songNameText.gameObject.SetActive(false);
+        */
     }
 
     public void setAlbumAlpha(float alpha)
@@ -37,6 +41,14 @@ public class LevelSelectManager : MonoBehaviour
         albumCover.color = tempcolor;
     }
 
+    public void LoadSelectedSong()
+    {
+        if (selectedSong != selector.selectedSong)
+        {
+            SelectSong(selector.selectedSong);
+        }
+    }
+
     public void SelectSong(SongData song)
     {
         selectedSong = song;
@@ -44,8 +56,8 @@ public class LevelSelectManager : MonoBehaviour
         songNameText.gameObject.SetActive(true);
         songNameText.text = song.songName;
         songDescriptionText.text = song.songDescription;
-        albumCover.sprite = song.AlbumCover;
-        setAlbumAlpha(1f);
+        //albumCover.sprite = song.AlbumCover;
+        //setAlbumAlpha(1f);
 
         // Play the song preview
         if (audioSource.isPlaying) audioSource.Stop();
