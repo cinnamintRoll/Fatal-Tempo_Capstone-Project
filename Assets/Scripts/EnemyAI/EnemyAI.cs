@@ -149,7 +149,6 @@ public class EnemyAI : MonoBehaviour
                     navMeshAgent.isStopped = false;
                 break;
             case EnemyState.Attack:
-                HandleAttack();
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = true;
                 break;
@@ -221,7 +220,7 @@ public class EnemyAI : MonoBehaviour
         switch (selectedEnemyName.ToLower())
         {
             case "melee":
-                Despawn();
+                TransitionToState(EnemyState.Idle);
                 break;
             case "sniper":
                 TransitionToState(EnemyState.Idle);
