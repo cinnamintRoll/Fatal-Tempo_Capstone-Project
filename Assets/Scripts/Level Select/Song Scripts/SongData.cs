@@ -1,9 +1,11 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Song Data", menuName = "Level Select/Song Data")]
 public class SongData : ScriptableObject
 {
     public string songName;
+    public string artistName;
 
     [TextArea(3, 10)]  // Multiline text area with min 3 and max 10 lines
     public string songDescription;

@@ -181,6 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3627058543498318064}
   - component: {fileID: 6850010212816737911}
+  - component: {fileID: 5440736943696105408}
   m_Layer: 0
   m_Name: PlayerMovement
   m_TagString: Untagged
@@ -224,8 +225,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 2
+  samplePoints: []
   sampleCount: 100
   startDelay: 1
+  manager: {fileID: 0}
   pathParent: {fileID: 0}
   musicClip: {fileID: 8300000, guid: b95977dd1fa1707469a8dbd1e3aff96a, type: 3}
   spawnTriggerPrefab: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
@@ -233,6 +236,30 @@ MonoBehaviour:
   timingLineSpacing: 1
   bpm: 120
   timingLineWidth: -1.76
+  easyMode: 0
+  easyModeInterval: 2
+  useClosestPointAlignment: 0
+--- !u!65 &5440736943696105408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059118878159375017}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 0.096067965, z: 10}
+  m_Center: {x: 0, y: -0.048033983, z: 0}
 --- !u!1 &4486721108374056782
 GameObject:
   m_ObjectHideFlags: 0
