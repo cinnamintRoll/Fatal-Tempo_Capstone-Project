@@ -356,6 +356,7 @@ MonoBehaviour:
   rangedAttackRange: 15
   attackCooldown: 1.5
   behindDistanceThreshold: 0.5
+  SniperScript: {fileID: 1347426151028934052}
   navMeshAgent: {fileID: 7566053252195082254}
   health: 1
   minChaseUpdateInterval: 0.2
@@ -930,6 +931,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
+      propertyPath: loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
+        type: 3}
       propertyPath: visuals
       value: 
       objectReference: {fileID: 6386993210563551173}
@@ -1111,6 +1117,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2865927757532524909}
   m_SourcePrefab: {fileID: 100100000, guid: 51e4372ec740e7c42bd84bf1e83e96b0, type: 3}
+--- !u!114 &1347426151028934052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3433925356662281964, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4401358347637953352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7152436047013268146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36c6291e458f204db81843ce2676f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6386993210563551173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7329586837948845197, guid: 51e4372ec740e7c42bd84bf1e83e96b0,

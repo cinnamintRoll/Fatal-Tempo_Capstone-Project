@@ -34,6 +34,9 @@ public class EnemyLaserShooter : MonoBehaviour
     private int currentBeat = 0; // Track the current beat for the laser charge cycle
     private bool isCharging = false;
 
+    [SerializeField] private bool loopShooting = true;
+    private bool hasLooped = false;
+
     public UnityEvent OnDeflect;
     // Reference to the MusicManager
     private MusicManager musicManager;
@@ -85,11 +88,14 @@ public class EnemyLaserShooter : MonoBehaviour
             CheckForDeflection();
 
 
-       
-                if (!isShooting)
-                {
-                    StartCoroutine(ChargeAndShootLaser());
-                }
+
+            if (!isShooting)
+            {
+                if (!loopShooting && hasLooped)
+                    yield break;
+
+                yield return StartCoroutine(ChargeAndShootLaser());
+            }
 
 
             yield return null;
@@ -164,18 +170,28 @@ public class EnemyLaserShooter : MonoBehaviour
         yield return StartCoroutine(AnimateShootBeam());
 
         // Reset laser
-        laser.startWidth = initialLaserWidth;
-        laser.endWidth = initialLaserWidth;
+        if (loopShooting)
+        {
+            laser.startWidth = initialLaserWidth;
+            laser.endWidth = initialLaserWidth;
+        }
+        else
+        {
+            laser.startWidth = 0f;
+            laser.endWidth = 0f;
+        }
         laser.startColor = laserColorNormal;
         laser.endColor = laserColorNormal;
 
         isCharging = false;
         isShooting = false;
+        hasLooped = true;
     }
 
 
     public void StartShooting()
     {
+        Debug.LogWarning("Beam start shooting");
         StartCoroutine(StartShootingRoutine());
     }
 
@@ -214,6 +230,7 @@ public class EnemyLaserShooter : MonoBehaviour
     // Coroutine to animate the laser beam shooting effect
     IEnumerator AnimateShootBeam()
     {
+        Debug.LogWarning("Beam start shooting");
         float expandTime = 0.1f;
         float contractTime = 0.1f;
 
@@ -233,6 +250,7 @@ public class EnemyLaserShooter : MonoBehaviour
 
         yield return new WaitForSeconds(bigBeamDuration);
 
+        Debug.LogWarning("BeamBeingShot");
         // Contract phase
         elapsedTime = 0f;
         while (elapsedTime < contractTime)
