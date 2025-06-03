@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     // Define a threshold distance for detecting enemies behind the player
     public float behindDistanceThreshold = 2f;
 
-    private EnemyLaserShooter SniperScript;
+    [SerializeField]private EnemyLaserShooter SniperScript;
     [SerializeField] private NavMeshAgent navMeshAgent;
     private float lastAttackTime = 0f;
     private GameObject EnemyVisuals;
@@ -79,19 +79,19 @@ public class EnemyAI : MonoBehaviour
         EnemyVisuals = null;
         foreach (var enemy in Enemies)
         {
-            if (enemy.EnemyName == selectedEnemyName)
+            if (enemy.EnemyObject != null)
             {
-                if (enemy.EnemyObject != null)
-                    enemy.EnemyObject.SetActive(true);
-                EnemyVisuals = enemy.EnemyObject;
-            }
-            else
-            {
-                if (enemy.EnemyObject != null)
-                    enemy.EnemyObject.SetActive(false);
+                enemy.EnemyObject.SetActive(false);
             }
         }
+        var selectedEnemy = Enemies.Find(e => e.EnemyName == selectedEnemyName);
+        if (selectedEnemy != null && selectedEnemy.EnemyObject != null)
+        {
+            selectedEnemy.EnemyObject.SetActive(true);
+            EnemyVisuals = selectedEnemy.EnemyObject;
+        }
     }
+
 
     void Update()
     {
@@ -136,21 +136,26 @@ public class EnemyAI : MonoBehaviour
         switch (newState)
         {
             case EnemyState.Idle:
-                navMeshAgent.isStopped = true;
+                if (navMeshAgent.isOnNavMesh)
+                    navMeshAgent.isStopped = true;
                 break;
             case EnemyState.MoveToPoint:
-                navMeshAgent.isStopped = false;
+                if (navMeshAgent.isOnNavMesh)
+                    navMeshAgent.isStopped = false;
                 MoveToPoint();
                 break;
             case EnemyState.ChasePlayer:
-                navMeshAgent.isStopped = false;
+                if (navMeshAgent.isOnNavMesh)
+                    navMeshAgent.isStopped = false;
                 break;
             case EnemyState.Attack:
+                HandleAttack();
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = true;
                 break;
             case EnemyState.Death:
-                navMeshAgent.isStopped = true;
+                if (navMeshAgent.isOnNavMesh)
+                    navMeshAgent.isStopped = true;
                 HandleDeath();
                 break;
         }
@@ -160,7 +165,10 @@ public class EnemyAI : MonoBehaviour
     void HandleIdle()
     {
         // Idle behavior
-        Despawn();
+        if (IsEnemyBehindPlayer())
+        {
+            Despawn();
+        }
     }
 
     // Handle MoveToPoint State
@@ -206,16 +214,16 @@ public class EnemyAI : MonoBehaviour
     // Handle Attack State
     void HandleAttack()
     {
-        if (Time.time > lastAttackTime + attackCooldown)
-        {
-            lastAttackTime = Time.time;
-            PerformAttack();
-        }
+        PerformAttack();
+        
 
         // After melee attack, return to idle
         switch (selectedEnemyName.ToLower())
         {
             case "melee":
+                Despawn();
+                break;
+            case "sniper":
                 TransitionToState(EnemyState.Idle);
                 break;
         }
@@ -384,6 +392,7 @@ public class EnemyTypeDropdownDrawer : PropertyDrawer
         if (selectedIndex != currentIndex)
         {
             property.stringValue = names[selectedIndex];
+            property.serializedObject.ApplyModifiedProperties();
             enemyAI.UpdateEnemyVisuals();
             EditorUtility.SetDirty(enemyAI);
         }

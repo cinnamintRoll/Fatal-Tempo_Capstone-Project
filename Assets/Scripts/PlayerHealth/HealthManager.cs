@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth Instance { get; private set; }
+
+    [SerializeField] private bool godMode = false;
     [SerializeField] private int maxLives = 3;
     [SerializeField] private int currentLives;
     [SerializeField] private Slider[] lifeSliders;  // Two sliders representing the lives
@@ -26,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public UnityEvent OnDeath;
     [SerializeField] public UnityEvent OnDamage;
     [SerializeField] public UnityEvent<Vector3> OnKillEnemy;
-    [SerializeField] private BeatScoringSystem BeatScoringSystem;
     void Awake()
     {
         if (Instance == null)
@@ -73,6 +74,12 @@ public class PlayerHealth : MonoBehaviour
     // Damage instantly  removes a full life
     public void TakeDamage()
     {
+        if (godModeEnabled)
+        {
+            Debug.Log("God Mode is ON - no damage taken.");
+            return;
+        }
+
         OnDamage.Invoke();
 
         if (currentLives > 0)
