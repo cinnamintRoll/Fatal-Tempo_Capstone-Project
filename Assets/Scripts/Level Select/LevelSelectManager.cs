@@ -114,4 +114,9 @@ public class LevelSelectManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
+
+    public void ToggleEasyMode(bool toggle)
+    {
+        PlayerPrefs.SetInt("EasyMode", toggle ? 1 : 0);
+    }
 }

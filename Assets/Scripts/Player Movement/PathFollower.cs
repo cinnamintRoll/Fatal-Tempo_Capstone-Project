@@ -31,6 +31,7 @@ public class PathFollower : MonoBehaviour
         //ComputeSamplePoints();
         //CalculateTimingLineSpacing();
         easyMode = PlayerPrefs.GetInt("EasyMode", 0) == 1;
+        ApplyEasyMode();
     }
 
     private void OnValidate()
@@ -145,10 +146,12 @@ public class PathFollower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (pathPoints == null || pathPoints.Length != 2)
+        if (pathPoints == null || pathPoints.Length != 2 || pathPoints[0] == null || pathPoints[1] == null)
             return;
 
+
         Gizmos.color = Color.red;
+
 
         Vector3 previousPoint = pathPoints[0].position;
         int samples = sampleCount;
