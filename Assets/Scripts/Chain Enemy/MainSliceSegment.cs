@@ -19,6 +19,7 @@ public class MainSliceSegment : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(PlayerHealth)
         PlayerHealth.KillEnemy(this.transform.position);
     }
 }

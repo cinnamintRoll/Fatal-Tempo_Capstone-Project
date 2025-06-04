@@ -576,6 +576,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2084880937104188031, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195540976856458944, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 7451d7b397b93684ea9cc6485a38bfb6,
+        type: 3}
     - target: {fileID: 6410796599436775075, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_AnchorMax.x
