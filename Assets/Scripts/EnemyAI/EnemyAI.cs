@@ -1,3 +1,4 @@
+using BNG;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
@@ -77,20 +78,31 @@ public class EnemyAI : MonoBehaviour
     public void UpdateEnemyVisuals()
     {
         EnemyVisuals = null;
+
+        var selectedEnemy = Enemies.Find(e => e.EnemyName.ToLower() == selectedEnemyName.ToLower());
+
+        // Fallback to first enemy if selectedEnemy is null
+        if (selectedEnemy == null && Enemies.Count > 0)
+        {
+            selectedEnemy = Enemies[0];
+            selectedEnemyName = selectedEnemy.EnemyName;
+        }
+
         foreach (var enemy in Enemies)
         {
             if (enemy.EnemyObject != null)
             {
-                enemy.EnemyObject.SetActive(false);
+                enemy.EnemyObject.SetActive(enemy == selectedEnemy);
             }
         }
-        var selectedEnemy = Enemies.Find(e => e.EnemyName == selectedEnemyName);
+
         if (selectedEnemy != null && selectedEnemy.EnemyObject != null)
         {
-            selectedEnemy.EnemyObject.SetActive(true);
             EnemyVisuals = selectedEnemy.EnemyObject;
+            ApplyHealthToDamageables(EnemyVisuals);
         }
     }
+
 
 
     void Update()
@@ -219,10 +231,7 @@ public class EnemyAI : MonoBehaviour
         // After melee attack, return to idle
         switch (selectedEnemyName.ToLower())
         {
-            case "melee":
-                TransitionToState(EnemyState.Idle);
-                break;
-            case "sniper":
+                default:
                 TransitionToState(EnemyState.Idle);
                 break;
         }
@@ -253,6 +262,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        Debug.LogError("Enemy Damaged! " +  damage);
         if (health <= 0f)
         {
             TransitionToState(EnemyState.Death);
@@ -354,7 +364,17 @@ public class EnemyAI : MonoBehaviour
         UpdateEnemyVisuals();
     }
 
+    private void ApplyHealthToDamageables(GameObject root)
+    {
+        var damageables = root.GetComponentsInChildren<Damageable>(true);
+        foreach (var dmg in damageables)
+        {
+            dmg.Health = health; // Or use a custom method or property
+        }
+    }
 }
+
+
 
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(EnemyTypeDropdownAttribute))]
