@@ -507,6 +507,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 201162847901310067, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: screenFader
+      value: 
+      objectReference: {fileID: 2086978214914413217}
+    - target: {fileID: 201162847901310067, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -933,6 +938,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4531983711221226476}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2086978214914413217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2455227665062381901, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4531983711221226476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac09bf699d4234448aa42c086c9f964c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2629580158662204763 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1917110760761935543, guid: ba9f46a71c4f96749b3d89eb23e5812a,
