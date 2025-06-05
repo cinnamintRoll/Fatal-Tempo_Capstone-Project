@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3914211398426076834}
   - component: {fileID: 8512368455037900012}
   - component: {fileID: 8182383940477668092}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawnable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ PrefabInstance:
     - target: {fileID: 1156506557898113161, guid: bf6fa02da90a1604cb91736f61001a5b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.354
       objectReference: {fileID: 0}
     - target: {fileID: 1156506557898113161, guid: bf6fa02da90a1604cb91736f61001a5b,
         type: 3}
