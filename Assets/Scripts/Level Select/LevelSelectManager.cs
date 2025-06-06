@@ -52,7 +52,10 @@ public class LevelSelectManager : MonoBehaviour
     public void SelectSong(SongData song)
     {
         selectedSong = song;
-
+        if (selector.isActiveAndEnabled)
+        {
+            selector.SelectAlbumSong(song);
+        }
         songNameText.gameObject.SetActive(true);
         songNameText.text = song.songName;
         songDescriptionText.text = song.songDescription;
@@ -69,7 +72,7 @@ public class LevelSelectManager : MonoBehaviour
 
         playerScoreText.gameObject.SetActive(hasScore);
         gradeText.gameObject.SetActive(hasScore);
-
+        
         if (hasScore)
         {
             playerScoreText.text = $"{song.playerScore}";

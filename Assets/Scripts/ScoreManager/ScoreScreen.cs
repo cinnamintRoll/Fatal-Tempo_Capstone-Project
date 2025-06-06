@@ -10,6 +10,7 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private GameObject _ScoreScreen;
     [SerializeField] private GameObject _LevelSelect;
     [SerializeField] private LevelSelectManager _LevelSelectManager;
+    [SerializeField] private RotatingLevelSelector _RotationSelector;
     private SongData _SelectedSong;
 
     [Header("Song Info UI")]
@@ -164,6 +165,7 @@ public class ScoreScreen : MonoBehaviour
         if (_SelectedSong != null)
         {
             _LevelSelectManager.SelectSong(_SelectedSong);
+            //_RotationSelector.SelectAlbumSong(_SelectedSong);
         }
     }
 }

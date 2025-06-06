@@ -105,6 +105,37 @@ public class RotatingLevelSelector : MonoBehaviour
         backImage.sprite = songDataList[GetIndex(currentIndex + 2)].AlbumCover;
     }
 
+    public void SelectAlbumSong(SongData targetSong)
+    {
+        if (targetSong == null)
+        {
+            Debug.LogWarning("Target song is null.");
+            return;
+        }
+
+        var albumDB = AlbumDatabase.Instance;
+        if (albumDB == null || albumDB.allAlbums == null)
+        {
+            Debug.LogWarning("Album database not found in scene.");
+            return;
+        }
+
+        foreach (AlbumData album in albumDB.allAlbums)
+        {
+            int index = album.songs.IndexOf(targetSong);
+            if (index != -1)
+            {
+                SelectAlbum(album);
+                currentIndex = index;
+                selectedSong = targetSong;
+                onSongSelected?.Invoke(selectedSong);
+                UpdateUIImages();
+                return;
+            }
+        }
+
+        Debug.LogWarning("Target song not found in any album.");
+    }
 
     public void SelectSong()
     {

@@ -58,6 +58,10 @@ public class PathFollowerEditor : Editor
     {
         ReshuffleSpawners();
     }
+    if (GUILayout.Button("Place End Trigger at End Point"))
+    {
+        PlaceEndTriggerIfMissing();
+    }
 }
 
     private void GenerateSpawnTriggers()
@@ -79,32 +83,54 @@ public class PathFollowerEditor : Editor
         Vector3 pathDirection = (endPoint - startPoint).normalized;
         Vector3 perpendicular = Vector3.Cross(pathDirection, Vector3.up).normalized;
 
+        GameObject lastTrigger = null;
+
         for (int j = 0; j <= samples; j++)
         {
             float t = (float)j / samples;
             Vector3 pointOnLine = Vector3.Lerp(startPoint, endPoint, t);
 
-            // Instantiate spawn trigger prefab
             GameObject spawnTrigger = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.spawnTriggerPrefab);
             spawnTrigger.transform.position = pointOnLine;
             spawnTrigger.transform.parent = pathFollower.pathParent;
 
-            // Call RandomlyPickSpawn if GeneralSpawner is present
-            GeneralSpawner spawner = spawnTrigger.GetComponent<GeneralSpawner>();
-            if (spawner != null)
+            // Only call RandomlyPickSpawn if it's not the last one
+            if (j < samples)
             {
-                spawner.RandomlyPickSpawn();
-            }
-            else
-            {
-                Debug.LogWarning("Spawn trigger prefab does not have a GeneralSpawner component.");
+                GeneralSpawner spawner = spawnTrigger.GetComponent<GeneralSpawner>();
+                if (spawner != null)
+                {
+                    spawner.RandomlyPickSpawn();
+                }
+                else
+                {
+                    Debug.LogWarning("Spawn trigger prefab does not have a GeneralSpawner component.");
+                }
             }
 
             Undo.RegisterCreatedObjectUndo(spawnTrigger, "Create Spawn Trigger");
+            lastTrigger = spawnTrigger;
+        }
+
+        // Replace the last trigger with the EndTriggerPrefab
+        if (pathFollower.EndTriggerPrefab != null && lastTrigger != null)
+        {
+            Vector3 pos = lastTrigger.transform.position;
+            Quaternion rot = lastTrigger.transform.rotation;
+
+            Undo.DestroyObjectImmediate(lastTrigger);
+
+            GameObject endTrigger = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.EndTriggerPrefab);
+            endTrigger.transform.position = pos;
+            endTrigger.transform.rotation = rot;
+            endTrigger.transform.parent = pathFollower.pathParent;
+
+            Undo.RegisterCreatedObjectUndo(endTrigger, "Create End Trigger");
         }
 
         EditorUtility.SetDirty(pathFollower);
     }
+
 
     private void ReshuffleSpawners()
     {
@@ -147,6 +173,43 @@ public class PathFollowerEditor : Editor
         {
             EditorUtility.SetDirty(pathFollower);
         }
+    }
+
+    private void PlaceEndTriggerIfMissing()
+    {
+        if (pathFollower.EndTriggerPrefab == null)
+        {
+            Debug.LogError("EndTriggerPrefab is not assigned.");
+            return;
+        }
+
+        if (pathFollower.pathPoints == null || pathFollower.pathPoints.Length < 2 || pathFollower.pathPoints[1] == null)
+        {
+            Debug.LogError("Path endpoint is not properly defined.");
+            return;
+        }
+
+        Vector3 endPosition = pathFollower.pathPoints[1].position;
+        float checkRadius = 0.1f;
+
+        // Check if any existing EndTrigger is already close to the endpoint
+        foreach (Transform child in pathFollower.pathParent)
+        {
+            if (child.name.Contains(pathFollower.EndTriggerPrefab.name) && Vector3.Distance(child.position, endPosition) <= checkRadius)
+            {
+                Debug.Log("An End Trigger already exists at the end point.");
+                return;
+            }
+        }
+
+        // Instantiate the EndTriggerPrefab
+        GameObject endTrigger = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.EndTriggerPrefab);
+        endTrigger.transform.position = endPosition;
+        endTrigger.transform.rotation = Quaternion.identity;
+        endTrigger.transform.parent = pathFollower.pathParent;
+
+        Undo.RegisterCreatedObjectUndo(endTrigger, "Place End Trigger");
+        EditorUtility.SetDirty(pathFollower);
     }
 
     private void AlignBeatsToPoints()

@@ -1345,6 +1345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shielded Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 604956613512806324, guid: 09ade298182ef2c489c33ad9c4068e62,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5497040619185044263, guid: 09ade298182ef2c489c33ad9c4068e62,
         type: 3}
       propertyPath: m_LocalPosition.x
