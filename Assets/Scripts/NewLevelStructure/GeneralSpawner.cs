@@ -21,7 +21,7 @@ public class GeneralSpawner : MonoBehaviour
     [SerializeField] private EnemyAI enemy;
     [SerializeField] private Animator spawnAnim;
     [SerializeField] private Transform movepoint;
-
+    [SerializeField, HideInInspector] private int _previousSpawnIndex = -1;
     private void Start()
     {
         GameManager gameManager = GameManager.Instance;
@@ -38,9 +38,8 @@ public class GeneralSpawner : MonoBehaviour
             {
                 if (Spawnables[i].spawnable != null)
                 {
-                    DestroyImmediate(Spawnables[i].spawnable, true);
+                    Destroy(Spawnables[i].spawnable);
                 }
-                Spawnables.RemoveAt(i);
             }
             else
             {
@@ -107,6 +106,10 @@ public class GeneralSpawner : MonoBehaviour
 
         spawnIndex = Mathf.Clamp(spawnIndex, 0, Spawnables.Count - 1);
 
+        // Only apply activation if spawnIndex has changed
+        if (spawnIndex == _previousSpawnIndex)
+            return;
+
         for (int i = 0; i < Spawnables.Count; i++)
         {
             if (Spawnables[i].spawnable != null)
@@ -114,6 +117,8 @@ public class GeneralSpawner : MonoBehaviour
                 Spawnables[i].spawnable.SetActive(i == spawnIndex);
             }
         }
+
+        _previousSpawnIndex = spawnIndex;
     }
 
     public void OnDespawn()

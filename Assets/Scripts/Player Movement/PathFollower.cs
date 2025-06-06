@@ -18,6 +18,14 @@ public class PathFollower : MonoBehaviour
     public float timingLineSpacing; // Calculated spacing for timing lines
     public float bpm = 120f; // Beats per minute
     public float timingLineWidth = 0.1f; // Width of timing lines
+    private Vector3 lastStartPos;
+    private Vector3 lastEndPos;
+    private float lastSampleStartPos;
+    private float lastSampleEndPos;
+    private int lastSampleCount;
+    private float lastMusicLength;
+    private float lastSpeed;
+    private float lastBpm;
 
     [Header("Easy Mode Settings")]
     public bool easyMode = false; // Toggle to enable Easy Mode
@@ -28,7 +36,7 @@ public class PathFollower : MonoBehaviour
     {
 
         //SetupTwoPointPath();
-        //UpdateSecondPointPosition(); // [MODIFIED]
+        //UpdateSecondPointPosition(); 
         //ComputeSamplePoints();
         //CalculateTimingLineSpacing();
         easyMode = PlayerPrefs.GetInt("EasyMode", 0) == 1;
@@ -39,12 +47,15 @@ public class PathFollower : MonoBehaviour
     {
         if (manager != null)
         {
-            musicClip = manager.musicClip;
-            bpm = manager.bpm;
+            if (musicClip != manager.musicClip)
+            {
+                musicClip = manager.musicClip;
+                bpm = manager.bpm;
+            }
         }
         if (pathPoints != null && pathPoints.Length == 2 && pathPoints[0] != null && pathPoints[1] != null)
         {
-            UpdateSecondPointPosition(); // [MODIFIED]
+            UpdateSecondPointPosition();
             ComputeSamplePoints();
             CalculateTimingLineSpacing();
         }
@@ -106,7 +117,7 @@ public class PathFollower : MonoBehaviour
         UpdateSecondPointPosition(); // [MODIFIED]
     }
 
-    private void UpdateSecondPointPosition() // [NEW]
+    private void UpdateSecondPointPosition()
     {
         if (pathPoints == null || pathPoints.Length != 2 || pathPoints[1] == null || pathPoints[0] == null)
             return;
@@ -118,32 +129,58 @@ public class PathFollower : MonoBehaviour
             pathLength = musicClip.length * speed;
         }
 
+        if (Mathf.Approximately(lastMusicLength, musicClip != null ? musicClip.length : 0f) &&
+            Mathf.Approximately(lastSpeed, speed))
+            return;
+
         pathPoints[1].position = pathPoints[0].position + Vector3.forward * pathLength;
+
+        lastMusicLength = musicClip != null ? musicClip.length : 0f;
+        lastSpeed = speed;
     }
+
 
     private void ComputeSamplePoints()
     {
-        samplePoints.Clear();
-
         if (pathPoints == null || pathPoints.Length != 2)
         {
             Debug.LogError("Path must have exactly 2 points.");
             return;
         }
 
+        Vector3 startPos = pathPoints[0].position;
+        Vector3 endPos = pathPoints[1].position;
+
+        if (startPos == lastStartPos && endPos == lastEndPos && sampleCount == lastSampleCount)
+            return;
+
+        samplePoints.Clear();
+
         for (int i = 0; i <= sampleCount; i++)
         {
             float t = (float)i / sampleCount;
-            Vector3 point = Vector3.Lerp(pathPoints[0].position, pathPoints[1].position, t);
+            Vector3 point = Vector3.Lerp(startPos, endPos, t);
             samplePoints.Add(point);
         }
+
+        lastStartPos = startPos;
+        lastEndPos = endPos;
+        lastSampleCount = sampleCount;
     }
+
 
     private void CalculateTimingLineSpacing()
     {
+        if (Mathf.Approximately(lastBpm, bpm) && Mathf.Approximately(lastSpeed, speed))
+            return;
+
         float beatDuration = 60f / bpm;
         timingLineSpacing = speed * beatDuration;
+
+        lastBpm = bpm;
+        lastSpeed = speed;
     }
+
 
     private void OnDrawGizmos()
     {

@@ -135,6 +135,7 @@ MonoBehaviour:
   enemy: {fileID: 5445751337920672434}
   spawnAnim: {fileID: 8131395734542997375}
   movepoint: {fileID: 6152728158149869581}
+  _previousSpawnIndex: 1
 --- !u!65 &8182383940477668092
 BoxCollider:
   m_ObjectHideFlags: 0

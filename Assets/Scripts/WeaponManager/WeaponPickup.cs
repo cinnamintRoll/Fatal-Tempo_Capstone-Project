@@ -46,6 +46,7 @@ public class WeaponPickup : MonoBehaviour
     private bool rightHasSwapped = false;
     [SerializeField] private Vector3 DuplicateSpawn = new Vector3(0f, 0.046f, -0.045f);
 
+
     void Start()
     {
         originalPosition = transform.position;
@@ -185,46 +186,39 @@ public class WeaponPickup : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
-            EditorApplication.delayCall += () => {
+            EditorApplication.delayCall += () =>
+            {
                 if (this == null) return;
 
                 bool weaponTypeChanged = false;
 
-                // Check if weapon types changed compared to last cached values
                 if (pickupMode == PickupMode.Single)
                 {
-                    if (singleWeaponType != lastSingleWeaponType)
-                    {
-                        weaponTypeChanged = true;
-                        lastSingleWeaponType = singleWeaponType;
-                    }
+                    if (singleWeaponType == lastSingleWeaponType)
+                        return;
+
+                    weaponTypeChanged = true;
+                    lastSingleWeaponType = singleWeaponType;
                 }
                 else if (pickupMode == PickupMode.Dual)
                 {
-                    if (dualLeftWeaponType != lastDualLeftWeaponType || dualRightWeaponType != lastDualRightWeaponType)
-                    {
-                        weaponTypeChanged = true;
-                        lastDualLeftWeaponType = dualLeftWeaponType;
-                        lastDualRightWeaponType = dualRightWeaponType;
-                    }
+                    if (dualLeftWeaponType == lastDualLeftWeaponType && dualRightWeaponType == lastDualRightWeaponType)
+                        return;
+
+                    weaponTypeChanged = true;
+                    lastDualLeftWeaponType = dualLeftWeaponType;
+                    lastDualRightWeaponType = dualRightWeaponType;
                 }
 
-                // Assign visuals after checking changes
-                if (pickupMode == PickupMode.Single)
-                {
-                    leftVisual = GetVisualObject(singleWeaponType);
-                    rightVisual = null;
-                }
-                else if (pickupMode == PickupMode.Dual)
-                {
-                    leftVisual = GetVisualObject(dualLeftWeaponType);
-                    rightVisual = GetVisualObject(dualRightWeaponType);
-                }
+                // Update visual references
+                leftVisual = pickupMode == PickupMode.Single ?
+                    GetVisualObject(singleWeaponType) :
+                    GetVisualObject(dualLeftWeaponType);
 
-                // Only reset position if weapon type changed
-                
+                rightVisual = pickupMode == PickupMode.Dual ?
+                    GetVisualObject(dualRightWeaponType) : null;
 
-                // Handle duplicate visuals as before
+                // Handle duplicate visuals
                 if (pickupMode == PickupMode.Dual && rightVisual != null && leftVisual != null)
                 {
                     if (leftVisual == rightVisual)
@@ -235,53 +229,40 @@ public class WeaponPickup : MonoBehaviour
                             rightDuplicate.name = rightVisual.name + "_rightDuplicate";
                         }
                         rightVisual = rightDuplicate;
-
-                        UnityEditor.EditorUtility.SetDirty(this);
+                        EditorUtility.SetDirty(this);
                     }
-                    else
-                    {
-                        if (rightDuplicate != null)
-                        {
-                            DestroyImmediate(rightDuplicate);
-                            rightDuplicate = null;
-                        }
-                    }
-                }
-                else
-                {
-                    if (rightDuplicate != null)
+                    else if (rightDuplicate != null)
                     {
                         DestroyImmediate(rightDuplicate);
                         rightDuplicate = null;
                     }
                 }
+                else if (rightDuplicate != null)
+                {
+                    DestroyImmediate(rightDuplicate);
+                    rightDuplicate = null;
+                }
 
-                UnityEditor.EditorUtility.SetDirty(this);
-
-                // Activate/deactivate visual prefabs as before
+                // Activate/deactivate visual prefabs
                 foreach (var entry in weaponVisuals)
                 {
-                    if (entry.visualPrefab != null)
+                    if (entry.visualPrefab == null) continue;
+
+                    bool shouldBeActive = pickupMode switch
                     {
-                        bool shouldBeActive = false;
+                        PickupMode.Single => entry.weaponType == singleWeaponType,
+                        PickupMode.Dual => entry.weaponType == dualLeftWeaponType || entry.weaponType == dualRightWeaponType,
+                        _ => false
+                    };
 
-                        if (pickupMode == PickupMode.Single)
-                        {
-                            shouldBeActive = (entry.weaponType == singleWeaponType);
-                        }
-                        else if (pickupMode == PickupMode.Dual)
-                        {
-                            shouldBeActive = (entry.weaponType == dualLeftWeaponType || entry.weaponType == dualRightWeaponType);
-                        }
-
-                        if (entry.visualPrefab.activeSelf != shouldBeActive)
-                        {
-                            entry.visualPrefab.SetActive(shouldBeActive);
-                            UnityEditor.EditorUtility.SetDirty(entry.visualPrefab);
-                        }
+                    if (entry.visualPrefab.activeSelf != shouldBeActive)
+                    {
+                        entry.visualPrefab.SetActive(shouldBeActive);
+                        EditorUtility.SetDirty(entry.visualPrefab);
                     }
                 }
 
+                // Reset transforms only if changed
                 if (weaponTypeChanged)
                 {
                     if (leftVisual != null)
@@ -297,6 +278,7 @@ public class WeaponPickup : MonoBehaviour
                 }
             };
         }
-    }
 #endif
+    }
+
 }

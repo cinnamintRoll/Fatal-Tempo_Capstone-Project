@@ -48,7 +48,6 @@ public class EnemyAI : MonoBehaviour
     public float maxChaseUpdateInterval = 0.5f; // Maximum time between chase updates
     private float chaseUpdateInterval;
     private PlayerHealth PlayerHealth;
-
     private bool isDead = false;
     public UnityEvent OnDeath;
 
@@ -408,11 +407,13 @@ public class EnemyTypeDropdownDrawer : PropertyDrawer
         if (currentIndex < 0) currentIndex = 0;
 
         int selectedIndex = EditorGUI.Popup(position, label.text, currentIndex, names.ToArray());
-        if (selectedIndex != currentIndex)
+        string newSelection = names[selectedIndex];
+
+        if (selectedIndex != currentIndex && property.stringValue != newSelection)
         {
-            property.stringValue = names[selectedIndex];
+            property.stringValue = newSelection;
             property.serializedObject.ApplyModifiedProperties();
-            enemyAI.UpdateEnemyVisuals();
+            enemyAI.UpdateEnemyVisuals(); // Only call if value actually changed
             EditorUtility.SetDirty(enemyAI);
         }
     }
