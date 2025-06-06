@@ -14,6 +14,7 @@ public class PathFollower : MonoBehaviour
     
     public AudioClip musicClip; // The music clip to base path length on
     public GameObject spawnTriggerPrefab;
+    public GameObject EndTriggerPrefab;
     public float timingLineSpacing; // Calculated spacing for timing lines
     public float bpm = 120f; // Beats per minute
     public float timingLineWidth = 0.1f; // Width of timing lines

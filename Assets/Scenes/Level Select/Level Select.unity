@@ -1677,6 +1677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171140797}
   - component: {fileID: 171140796}
+  - component: {fileID: 171140798}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -1722,6 +1723,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171140798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171140795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996b597b179ad594c914537a441a0303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAlbums:
+  - {fileID: 11400000, guid: 1e3b788a643d7e64c814620135d6a2ae, type: 2}
+  - {fileID: 11400000, guid: 3bb692e218f684f4db7f1d6f7e068eb7, type: 2}
 --- !u!1 &176398617
 GameObject:
   m_ObjectHideFlags: 0
@@ -3314,7 +3330,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432963504}
   m_LocalRotation: {x: 0.108565114, y: -0, z: -0, w: 0.99408937}
-  m_LocalPosition: {x: 0, y: 0, z: 0.64799994}
+  m_LocalPosition: {x: 0, y: 0, z: 0.131}
   m_LocalScale: {x: 0.0014599999, y: 0.0014599999, z: 1.6747097}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3323,7 +3339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 12.465, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.741}
+  m_AnchoredPosition: {x: 0, y: 0.349}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432963506
@@ -4398,6 +4414,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Select (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 176904642522991756, guid: b23db288c18069e46ab7d24689057c2b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1275256724336173293, guid: b23db288c18069e46ab7d24689057c2b,
         type: 3}
       propertyPath: initialAlbum
@@ -4837,13 +4858,25 @@ MonoBehaviour:
           m_StringArgument: Return
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 1088869375}
+        m_TargetAssemblyTypeName: SongDataSaver, Assembly-CSharp
+        m_MethodName: SaveToJson
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1921323209}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7314,22 +7347,10 @@ MonoBehaviour:
     unityEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 952289942}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 69896008}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 962011839}
+          m_TargetAssemblyTypeName: ScoreScreen, Assembly-CSharp
+          m_MethodName: ReturnToLevelSelect
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8097,6 +8118,7 @@ MonoBehaviour:
   _ScoreScreen: {fileID: 69896008}
   _LevelSelect: {fileID: 952289942}
   _LevelSelectManager: {fileID: 171140796}
+  _RotationSelector: {fileID: 1299069565}
   songNameText: {fileID: 486424848}
   albumCoverImage: {fileID: 2002171495}
   killSlider: {fileID: 926993701}
@@ -8620,6 +8642,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8cb7cfb28042944f8739473f6b42abf, type: 2}
   - {fileID: 11400000, guid: 833696bea71be7840bd08d9fc40c2025, type: 2}
   - {fileID: 11400000, guid: fcffb94e99bf912439b05525e24637ae, type: 2}
+  - {fileID: 11400000, guid: 225946ea6aa60f84fa69b46ac57b4c07, type: 2}
 --- !u!4 &1088869376
 Transform:
   m_ObjectHideFlags: 0
@@ -14896,7 +14919,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844983600}
   m_LocalRotation: {x: 0.1339387, y: -0, z: -0, w: 0.9909896}
-  m_LocalPosition: {x: 0, y: 0, z: 0.29399997}
+  m_LocalPosition: {x: 0, y: 0, z: -0.223}
   m_LocalScale: {x: 0.00179, y: 0.0017900002, z: 2.0564198}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14905,7 +14928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 15.395, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.025, y: 0.29099998}
+  m_AnchoredPosition: {x: -0.025, y: -0.101}
   m_SizeDelta: {x: 579.8665, y: 123.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844983602
@@ -16714,12 +16737,12 @@ PrefabInstance:
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
@@ -16735,17 +16758,17 @@ PrefabInstance:
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 962011839}
+      objectReference: {fileID: 1088869375}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1088869375}
+      objectReference: {fileID: 899910160}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 899910160}
+      objectReference: {fileID: 1921323209}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -16774,17 +16797,17 @@ PrefabInstance:
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReturnToLevelSelect
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
-        type: 3}
-      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SaveToJson
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
-      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
+        type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
@@ -16809,17 +16832,17 @@ PrefabInstance:
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
       propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ScoreScreen, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
-        type: 3}
-      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: SongDataSaver, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
-      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
+        type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
@@ -16833,8 +16856,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
-      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Return
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
+        type: 3}
+      propertyPath: onButtonUp.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4763170952409570801, guid: 0ddfc520c9a0c444ca01b9e5f24afb7b,
         type: 3}
