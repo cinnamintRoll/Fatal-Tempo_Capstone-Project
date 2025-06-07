@@ -8,6 +8,7 @@ public class LevelSelectManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public Text songNameText;
+    public Text ArtistText;
     public Text songDescriptionText;
     public ScreenFader screenFader;
     public Image albumCover;
@@ -52,12 +53,9 @@ public class LevelSelectManager : MonoBehaviour
     public void SelectSong(SongData song)
     {
         selectedSong = song;
-        if (selector.isActiveAndEnabled)
-        {
-            selector.SelectAlbumSong(song);
-        }
         songNameText.gameObject.SetActive(true);
         songNameText.text = song.songName;
+        ArtistText.text = song.artistName;
         songDescriptionText.text = song.songDescription;
         //albumCover.sprite = song.AlbumCover;
         //setAlbumAlpha(1f);

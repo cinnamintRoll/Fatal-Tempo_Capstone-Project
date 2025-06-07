@@ -164,8 +164,7 @@ public class ScoreScreen : MonoBehaviour
         _LevelSelect.SetActive(true);
         if (_SelectedSong != null)
         {
-            _LevelSelectManager.SelectSong(_SelectedSong);
-            //_RotationSelector.SelectAlbumSong(_SelectedSong);
+            _RotationSelector.SelectAlbumSong(_SelectedSong);
         }
     }
 }
