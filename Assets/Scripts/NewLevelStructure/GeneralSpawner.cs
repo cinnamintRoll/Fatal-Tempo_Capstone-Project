@@ -39,6 +39,7 @@ public class GeneralSpawner : MonoBehaviour
                 if (Spawnables[i].spawnable != null)
                 {
                     Destroy(Spawnables[i].spawnable);
+                    Spawnables.RemoveAt(i);
                 }
             }
             else

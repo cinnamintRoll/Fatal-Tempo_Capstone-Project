@@ -348,7 +348,6 @@ MonoBehaviour:
   gunMuzzle: {fileID: 3463262009099617377}
   laser: {fileID: 8993609155406428589}
   laserRange: 50
-  aimDuration: 3
   playerDamage: 10
   deflectionSound: {fileID: 8300000, guid: 83dc0287d0634ed4cb587d44b592210c, type: 3}
   chargeSound: {fileID: 8300000, guid: c134a11450fb62e45b1f282d277c7c9a, type: 3}
@@ -368,8 +367,12 @@ MonoBehaviour:
   deflectLayer:
     serializedVersion: 2
     m_Bits: 8192
-  capsuleRadius: 0.5
-  capsuleHeight: 2
+  AIScript: {fileID: 0}
+  beatsBetweenShoots: 3
+  loopShooting: 1
+  OnDeflect:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &3514603933804737496
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -436,17 +439,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.26638
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.26638
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.26638
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
         type: 3}
@@ -498,10 +501,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3334022528660946411, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26638
+      objectReference: {fileID: 0}
+    - target: {fileID: -3334022528660946411, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.26638
+      objectReference: {fileID: 0}
+    - target: {fileID: -3334022528660946411, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
         type: 3}
       propertyPath: m_Name
       value: eyeball_red
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379989298373797106, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26638
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379989298373797106, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379989298373797106, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.26638
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379989298373797106, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00074
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379989298373797106, guid: e8e73c4278bfb7844b2ee1cd01c84d5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000389
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
