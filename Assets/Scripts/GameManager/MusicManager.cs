@@ -34,6 +34,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager Instance { get; private set; }
     [SerializeField] private Intervals[] _objectIntervals;
     [SerializeField] private Intervals _songInterval;
+    public SongData song;
     public AudioSource musicSource;
     public AudioClip musicClip;
     public float bpm = 120f;
@@ -46,7 +47,7 @@ public class MusicManager : MonoBehaviour
     private bool isPlaying = false;
     private float startTime;
     public UnityEvent OnIntervalPassed;
-    public SongData song;
+    
 
     private float _lastSongIntervalTime = 0f;
 
