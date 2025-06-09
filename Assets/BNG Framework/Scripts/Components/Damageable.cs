@@ -42,6 +42,10 @@ namespace BNG {
         [Tooltip("If this object is a Grabbable it can be dropped on Death")]
         public bool DropOnDeath = true;
 
+        public bool ReportToEnemyScriptOnDamage = true;
+
+        [SerializeField] private EnemyAI _enemyAI;
+
         /// <summary>
         /// How long to wait before destroying this objects
         /// </summary>
@@ -103,7 +107,14 @@ namespace BNG {
         }
 
         public virtual void DealDamage(float damageAmount) {
-            DealDamage(damageAmount, transform.position);
+            if (ReportToEnemyScriptOnDamage)
+            {
+                _enemyAI.TakeDamage(damageAmount);
+            }
+            else
+            {
+                DealDamage(damageAmount, transform.position);
+            }
         }
 
         public virtual void DealDamage(float damageAmount, Vector3? hitPosition = null, Vector3? hitNormal = null, bool reactToHit = true, GameObject sender = null, GameObject receiver = null) {
