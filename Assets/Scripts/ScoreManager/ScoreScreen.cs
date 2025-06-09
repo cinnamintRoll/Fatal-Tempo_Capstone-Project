@@ -27,6 +27,7 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private TMP_Text comboText;
     [SerializeField] private TMP_Text killText;
     [SerializeField] private TMP_Text collectibleText;
+    [SerializeField] private TMP_Text caloriesText;
     
     [Header("Animators")]
     [SerializeField] private Animator HighScoreText;
@@ -58,7 +59,7 @@ public class ScoreScreen : MonoBehaviour
     {
         _SelectedSong = SongList.Find(song => song.songName == songName);
         yield return AnimateScoreAndGrade(playerScore, totalMaxPoints, ScoreAnimationDuration);
-
+        yield return AnimateCalories(CalorieTrackerManager.Instance.GetCalories(),1.5f);
         songNameText.text = _SelectedSong.songName;
         albumCoverImage.sprite = _SelectedSong.AlbumCover;
 
@@ -101,6 +102,7 @@ public class ScoreScreen : MonoBehaviour
         PlayerPrefs.DeleteKey("BestCombo");
         PlayerPrefs.DeleteKey("TotalMaxPoints");
         PlayerPrefs.DeleteKey("TotalCollected");
+        CalorieTrackerManager.Instance.ResetCalories();
     }
 
     private IEnumerator AnimateScoreAndGrade(int finalScore, int maxScore, float duration)
@@ -123,6 +125,24 @@ public class ScoreScreen : MonoBehaviour
 
         scoreText.text = finalScore.ToString("D7");
         gradeText.text = CalculateGrade(finalScore, maxScore);
+    }
+
+    private IEnumerator AnimateCalories(float finalScore, float duration)
+    {
+        float elapsed = 0f;
+        float currentScore = 0;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            currentScore = Mathf.Lerp(0, finalScore, t);
+            caloriesText.text = currentScore.ToString("F1");
+
+            yield return null;
+        }
+
+        caloriesText.text = finalScore.ToString("F1");
     }
 
     private IEnumerator AnimateSlider(Slider slider, TMP_Text text, int finalValue, float duration, string suffix = "")
