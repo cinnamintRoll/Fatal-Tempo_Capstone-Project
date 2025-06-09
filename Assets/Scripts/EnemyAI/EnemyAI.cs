@@ -13,6 +13,7 @@ public class Enemies
     public int EnemyHealth;
     public GameObject EnemyObject;
     public float SpawnChance = 1f; // 0 to 1 chance
+    public Animator EnemyAnim;
 }
 
 
@@ -50,7 +51,7 @@ public class EnemyAI : MonoBehaviour
     private PlayerHealth PlayerHealth;
     private bool isDead = false;
     public UnityEvent OnDeath;
-
+    public Animator selectedAnimator;
     // Property to get current Enemy object and name
     public Enemies CurrentEnemy
     {
@@ -63,7 +64,6 @@ public class EnemyAI : MonoBehaviour
     void OnEnable()
     {
         UpdateEnemyVisuals();
-
         navMeshAgent = GetComponent<NavMeshAgent>();
         SetRandomChaseUpdateInterval(); // Set a random initial update interval
         PlayerHealth = PlayerHealth.Instance;
@@ -100,6 +100,8 @@ public class EnemyAI : MonoBehaviour
             EnemyVisuals = selectedEnemy.EnemyObject;
             ApplyHealthToDamageables(EnemyVisuals);
         }
+
+        selectedAnimator = selectedEnemy.EnemyAnim;
     }
 
 
