@@ -6,8 +6,6 @@ using TMPro;
 public class BasicCalorieTracker : MonoBehaviour
 {
     public float updateRate = 0.1f;
-    public float calorieMultiplier = 0.005f;
-    public float totalCalories = 0f;
 
     public TextMeshProUGUI caloriesText;
 
@@ -38,10 +36,7 @@ public class BasicCalorieTracker : MonoBehaviour
         Vector3 headVel = (currentHeadLocalPos - lastHeadLocalPos) / updateRate;
         lastHeadLocalPos = currentHeadLocalPos;
 
-        Debug.Log($"Left: {leftVel} Right: {rightVel} Head: {headVel}");
-
-        float movementEnergy = leftVel.sqrMagnitude + rightVel.sqrMagnitude + headVel.sqrMagnitude;
-        totalCalories += movementEnergy * calorieMultiplier * updateRate;
+        CalorieTrackerManager.Instance.AddCaloriesFromMovement(leftVel, rightVel, headVel, updateRate);
 
         UpdateCalorieDisplay();
     }
@@ -50,25 +45,15 @@ public class BasicCalorieTracker : MonoBehaviour
     {
         if (caloriesText != null)
         {
-            caloriesText.text = $"{totalCalories:F2}";
+            caloriesText.text = $"{CalorieTrackerManager.Instance.GetCalories():F2}";
         }
     }
 
     Vector3 GetHMDLocalPosition()
     {
         Vector3 localPosition;
-        InputDevice headDevice = GetHMD();
+        InputDevice headDevice = InputDevices.GetDeviceAtXRNode(XRNode.CenterEye);
         headDevice.TryGetFeatureValue(CommonUsages.devicePosition, out localPosition);
         return localPosition;
-    }
-
-    InputDevice GetHMD()
-    {
-        return InputDevices.GetDeviceAtXRNode(XRNode.CenterEye);
-    }
-
-    public float GetCaloriesBurned()
-    {
-        return totalCalories;
     }
 }
