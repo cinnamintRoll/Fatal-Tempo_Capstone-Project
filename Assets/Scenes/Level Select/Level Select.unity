@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 11
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 491fae0e7b2553546878c487ba1dba32, type: 2}
   m_sharedMaterial: {fileID: -7984825555116537650, guid: 491fae0e7b2553546878c487ba1dba32,
@@ -7718,7 +7718,7 @@ GameObject:
   - component: {fileID: 926711926}
   - component: {fileID: 926711925}
   m_Layer: 0
-  m_Name: Combo (1)
+  m_Name: CalorieText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8246,11 +8246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0776cae0606ed6458ba268e10b22f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SongList:
-  - {fileID: 11400000, guid: e8cb7cfb28042944f8739473f6b42abf, type: 2}
-  - {fileID: 11400000, guid: 016165e9f9b06a748b6cc3307c707705, type: 2}
-  - {fileID: 11400000, guid: 833696bea71be7840bd08d9fc40c2025, type: 2}
-  - {fileID: 11400000, guid: fcffb94e99bf912439b05525e24637ae, type: 2}
   _ScoreScreen: {fileID: 69896008}
   _LevelSelect: {fileID: 952289942}
   _LevelSelectManager: {fileID: 171140796}
@@ -8264,7 +8259,7 @@ MonoBehaviour:
   comboText: {fileID: 111960431}
   killText: {fileID: 1046829002}
   collectibleText: {fileID: 1363088327}
-  caloriesText: {fileID: 0}
+  caloriesText: {fileID: 926711925}
   HighScoreText: {fileID: 930347432}
   DiskUI: {fileID: 899910160}
   ScoreAnimationDuration: 1.5

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,5 +18,19 @@ public class AlbumDatabase : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    public SongData GetSongFromAlbums(string SongName)
+    {
+    if (string.IsNullOrEmpty(SongName)) return null;
+
+        foreach (AlbumData albumData in allAlbums) 
+        {
+            foreach(SongData Song in albumData.songs)
+            {
+                if (string.Equals(Song.songName, SongName, StringComparison.OrdinalIgnoreCase)) return Song;
+            }
+        }
+        return null;
     }
 }

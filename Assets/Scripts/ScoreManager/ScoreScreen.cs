@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ScoreScreen : MonoBehaviour
 {
-    [SerializeField] private List<SongData> SongList;
+    //[SerializeField] private List<SongData> SongList;
     [SerializeField] private GameObject _ScoreScreen;
     [SerializeField] private GameObject _LevelSelect;
     [SerializeField] private LevelSelectManager _LevelSelectManager;
@@ -57,13 +57,16 @@ public class ScoreScreen : MonoBehaviour
 
     private IEnumerator ShowScoreScreen(int playerScore, int bestCombo, int totalHits, int fullCombo, int totalCollected, int totalMaxPoints, string songName)
     {
-        _SelectedSong = SongList.Find(song => song.songName == songName);
-        yield return AnimateScoreAndGrade(playerScore, totalMaxPoints, ScoreAnimationDuration);
-        yield return AnimateCalories(CalorieTrackerManager.Instance.GetCalories(),1.5f);
+        //_SelectedSong = SongList.Find(song => song.songName == songName);
+
+        _SelectedSong = AlbumDatabase.Instance.GetSongFromAlbums(songName);
+
         songNameText.text = _SelectedSong.songName;
         albumCoverImage.sprite = _SelectedSong.AlbumCover;
+        yield return AnimateScoreAndGrade(playerScore, totalMaxPoints, ScoreAnimationDuration);
+        yield return AnimateNumber(CalorieTrackerManager.Instance.GetCalories(),1.5f,caloriesText);
+        yield return AnimateNumber(bestCombo, 1.5f, comboText);
 
-        comboText.text = $"{bestCombo}";
         killText.text = $"0 {fullCombo}";
         yield return AnimateSlider(killSlider, killText, totalHits, 1f, fullCombo.ToString());
 
@@ -127,7 +130,7 @@ public class ScoreScreen : MonoBehaviour
         gradeText.text = CalculateGrade(finalScore, maxScore);
     }
 
-    private IEnumerator AnimateCalories(float finalScore, float duration)
+    private IEnumerator AnimateNumber(float finalScore, float duration, TMP_Text Output)
     {
         float elapsed = 0f;
         float currentScore = 0;
@@ -137,12 +140,12 @@ public class ScoreScreen : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
             currentScore = Mathf.Lerp(0, finalScore, t);
-            caloriesText.text = currentScore.ToString("F1");
+            Output.text = currentScore.ToString("F1");
 
             yield return null;
         }
 
-        caloriesText.text = finalScore.ToString("F1");
+        Output.text = finalScore.ToString("F1");
     }
 
     private IEnumerator AnimateSlider(Slider slider, TMP_Text text, int finalValue, float duration, string suffix = "")
