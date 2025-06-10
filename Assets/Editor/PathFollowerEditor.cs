@@ -43,8 +43,12 @@ public class PathFollowerEditor : Editor
 {
     base.OnInspectorGUI();
 
+        if (GUILayout.Button("Re-show All Spawner Visuals"))
+        {
+            ReShowAllSpawnerVisuals();
+        }
 
-    if (GUILayout.Button("Generate Spawn Triggers"))
+        if (GUILayout.Button("Generate Spawn Triggers"))
     {
         GenerateSpawnTriggers();
     }
@@ -63,6 +67,29 @@ public class PathFollowerEditor : Editor
         PlaceEndTriggerIfMissing();
     }
 }
+
+    private void ReShowAllSpawnerVisuals()
+    {
+        if (pathFollower.pathParent == null)
+        {
+            Debug.LogWarning("PathFollower: pathParent is not assigned, cannot re-show spawner visuals.");
+            return;
+        }
+
+        int count = 0;
+        // Iterate through all immediate children of the pathParent
+        foreach (Transform child in pathFollower.pathParent)
+        {
+            GeneralSpawner spawner = child.GetComponent<GeneralSpawner>();
+            if (spawner != null)
+            {
+                // Call the ReShowEnemyVisuals method on the GeneralSpawner
+                spawner.ReShowAllSpawnerVisuals();
+                count++;
+            }
+        }
+        Debug.Log($"Re-showed visuals for {count} GeneralSpawner(s) under PathParent.");
+    }
 
     private void GenerateSpawnTriggers()
     {

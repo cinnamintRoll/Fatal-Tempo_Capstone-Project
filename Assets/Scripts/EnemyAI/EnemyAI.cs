@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using static UnityEngine.EventSystems.EventTrigger;
 
 [Serializable]
 public class Enemies
@@ -335,6 +336,10 @@ public class EnemyAI : MonoBehaviour
         chaseUpdateInterval = UnityEngine.Random.Range(minChaseUpdateInterval, maxChaseUpdateInterval);
     }
 
+    public void ReShowVisuals()
+    {
+        UpdateEnemyVisuals();
+    }
     public void PickRandomEnemyType()
     {
         if (Enemies == null || Enemies.Count == 0)
