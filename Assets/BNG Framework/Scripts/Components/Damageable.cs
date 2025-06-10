@@ -109,7 +109,10 @@ namespace BNG {
         public virtual void DealDamage(float damageAmount) {
             if (ReportToEnemyScriptOnDamage)
             {
-                _enemyAI.TakeDamage(damageAmount);
+                if (_enemyAI != null)
+                {
+                    _enemyAI.TakeDamage(damageAmount);
+                }
             }
             else
             {
