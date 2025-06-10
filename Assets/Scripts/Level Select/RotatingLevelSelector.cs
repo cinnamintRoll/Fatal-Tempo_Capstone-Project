@@ -126,7 +126,7 @@ public class RotatingLevelSelector : MonoBehaviour
                 SelectAlbum(album);
                 currentIndex = index;
                 selectedSong = targetSong;
-                onSongSelected?.Invoke(selectedSong);
+                onSongSelected.Invoke();
                 UpdateUIImages();
                 return;
             }
@@ -145,7 +145,7 @@ public class RotatingLevelSelector : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (songDataList.Count == 0) yield break;
         selectedSong = songDataList[currentIndex];
-        onSongSelected?.Invoke(selectedSong);
+        onSongSelected.Invoke();
     }
 
     private void Start()
