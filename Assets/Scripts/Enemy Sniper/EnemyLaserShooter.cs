@@ -37,6 +37,10 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private bool loopShooting = true;
     private bool hasLooped = false;
 
+    [Header("Aiming Options")]
+    [SerializeField] private bool rotateModelHorizontally = true;
+    [SerializeField] private bool rotateModelVertically = false;
+
     public UnityEvent OnDeflect;
     // Reference to the MusicManager
     private MusicManager musicManager;
@@ -107,21 +111,45 @@ public class EnemyLaserShooter : MonoBehaviour
     {
         if (player != null)
         {
-            Vector3 direction = (player.position - transform.position).normalized;
-            Quaternion offsetRotation = Quaternion.Euler(aimRotationOffset);
-            direction = offsetRotation * direction;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = lookRotation;
+            Vector3 targetDirection = (player.position - transform.position).normalized;
+            Quaternion currentRotation = transform.rotation;
+
+            if (rotateModelHorizontally && rotateModelVertically)
+            {
+                // Rotate both horizontally and vertically
+                Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
+                transform.rotation = Quaternion.Slerp(currentRotation, lookRotation * Quaternion.Euler(aimRotationOffset), Time.deltaTime * 10f); // Smooth rotation
+            }
+            else if (rotateModelHorizontally)
+            {
+                // Only rotate horizontally
+                Vector3 horizontalDirection = new Vector3(targetDirection.x, 0, targetDirection.z).normalized;
+                if (horizontalDirection == Vector3.zero) return; // Prevent Quaternion.LookRotation from throwing error with zero vector
+
+                Quaternion lookRotation = Quaternion.LookRotation(horizontalDirection);
+                // Apply the aimRotationOffset only to the horizontal rotation if it's meant for the model's forward
+                // For the model's y-axis rotation, we only care about the y-component of aimRotationOffset if it's meant to be applied to the model's yaw.
+                // Otherwise, a general offset is better applied to the gunMuzzle or to the laser's direction calculation.
+                // For horizontal rotation, we'll assume aimRotationOffset.y affects the yaw.
+                Quaternion desiredHorizontalRotation = Quaternion.Euler(0, lookRotation.eulerAngles.y + aimRotationOffset.y, 0);
+                transform.rotation = Quaternion.Slerp(currentRotation, desiredHorizontalRotation, Time.deltaTime * 10f); // Smooth rotation
+            }
+            // If neither model rotation option is selected, the model's rotation remains unchanged
         }
     }
 
     // Update the laser to point towards the player
     void UpdateLaser()
     {
-        if (gunMuzzle)
+        if (gunMuzzle && player)
         {
             laser.SetPosition(0, gunMuzzle.position);
-            Vector3 laserDirection = gunMuzzle.forward;
+            Vector3 laserDirection = (player.position - gunMuzzle.position).normalized;
+
+            // Apply the aimRotationOffset directly to the laser's direction
+            Quaternion offsetRotation = Quaternion.Euler(aimRotationOffset);
+            laserDirection = offsetRotation * laserDirection;
+
             laser.SetPosition(1, gunMuzzle.position + laserDirection * laserRange);
         }
     }

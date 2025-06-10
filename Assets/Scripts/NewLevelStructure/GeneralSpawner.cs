@@ -59,6 +59,26 @@ public class GeneralSpawner : MonoBehaviour
         }
     }
 
+    public void ReShowAllSpawnerVisuals()
+    {
+        for (int i = Spawnables.Count - 1; i >= 0; i--)
+        {
+            if(i == spawnIndex)
+            {
+                GameObject spawnable = Spawnables[i].spawnable;
+                spawnable.SetActive(true);
+
+                if (spawnable.GetComponent<EnemyAI>() != null)
+                {
+                    if (enemy != null && enemy.isActiveAndEnabled)
+                    {
+                        enemy.ReShowVisuals();
+                    }
+                }
+            }
+        }
+            
+    }
     public void Spawn()
     {
         if (Spawnables.Count == 0 || Spawnables[0].spawnable == null)

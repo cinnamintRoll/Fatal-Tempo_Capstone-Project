@@ -4413,7 +4413,7 @@ PrefabInstance:
     - target: {fileID: 176904642522991756, guid: b23db288c18069e46ab7d24689057c2b,
         type: 3}
       propertyPath: m_Name
-      value: Level Select (1)
+      value: Level Select Rotato
       objectReference: {fileID: 0}
     - target: {fileID: 176904642522991756, guid: b23db288c18069e46ab7d24689057c2b,
         type: 3}
@@ -8188,7 +8188,6 @@ Transform:
   m_Children:
   - {fileID: 1299069564}
   - {fileID: 7428048669606357692}
-  - {fileID: 2092939708}
   - {fileID: 1520461283}
   - {fileID: 431796656}
   - {fileID: 1524480372}
@@ -16168,12 +16167,13 @@ Transform:
   m_GameObject: {fileID: 1970515237}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.06260885, z: -0, w: 0.9980382}
-  m_LocalPosition: {x: -0.09580517, y: -0.000000029802322, z: 0.06863132}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 176398618}
   - {fileID: 1094473718}
+  - {fileID: 2092939708}
   m_Father: {fileID: 952289943}
   m_LocalEulerAnglesHint: {x: 0, y: -7.179, z: 0}
 --- !u!1 &1977234194
@@ -17461,17 +17461,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092939700}
-  m_LocalRotation: {x: -0, y: -0.5535676, z: -0, w: 0.8328043}
-  m_LocalPosition: {x: 0, y: 0, z: -0.55}
-  m_LocalScale: {x: 0.0011729691, y: 0.0011729691, z: 1.3475513}
+  m_LocalRotation: {x: -0, y: -0.5003406, z: -0, w: 0.86582863}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5090305}
+  m_LocalScale: {x: 0.0011729692, y: 0.0011729691, z: 1.3475515}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1946311669}
-  m_Father: {fileID: 952289943}
+  m_Father: {fileID: 1970515238}
   m_LocalEulerAnglesHint: {x: 0, y: -67.224, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.934, y: 0.558}
+  m_AnchoredPosition: {x: -0.90893525, y: 0.5580001}
   m_SizeDelta: {x: 579.8665, y: 123.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2106731016
