@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class SongSelectedEvent : UnityEvent<SongData> { }
 
 public class RotatingLevelSelector : MonoBehaviour
 {
@@ -30,7 +28,7 @@ public class RotatingLevelSelector : MonoBehaviour
     public SongData selectedSong;
 
     [Header("Events")]
-    public SongSelectedEvent onSongSelected;
+    public UnityEvent onSongSelected;
 
     [ContextMenu("Rotate Left")]
     public void TestRotateLeft() => RotateLeft();
@@ -49,7 +47,7 @@ public class RotatingLevelSelector : MonoBehaviour
         songDataList = album.songs;
         currentIndex = 0;
         selectedSong = songDataList[currentIndex];
-        onSongSelected?.Invoke(selectedSong);
+        onSongSelected.Invoke();
 
         UpdateUIImages();
     }
@@ -79,7 +77,7 @@ public class RotatingLevelSelector : MonoBehaviour
 
         currentIndex = (currentIndex + queuedDirection + count) % count;
         selectedSong = songDataList[currentIndex];
-        onSongSelected?.Invoke(selectedSong);
+        onSongSelected.Invoke();
 
         UpdateUIImages();
         isRotating = false;

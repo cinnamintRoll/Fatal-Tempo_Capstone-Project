@@ -263,7 +263,7 @@ public class EnemyAI : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        Debug.LogError("Enemy Damaged! " +  damage);
+        //Debug.LogError("Enemy Damaged! " +  damage);
         if (health <= 0f)
         {
             TransitionToState(EnemyState.Death);

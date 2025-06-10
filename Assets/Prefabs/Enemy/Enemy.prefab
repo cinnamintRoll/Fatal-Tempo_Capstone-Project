@@ -341,18 +341,22 @@ MonoBehaviour:
     EnemyHealth: 1
     EnemyObject: {fileID: 7667450082450508542}
     SpawnChance: 1
+    EnemyAnim: {fileID: 0}
   - EnemyName: Sniper
     EnemyHealth: 1
     EnemyObject: {fileID: 7152436047013268146}
     SpawnChance: 1
+    EnemyAnim: {fileID: 0}
   - EnemyName: Multi Hit Meelee
     EnemyHealth: 10
     EnemyObject: {fileID: 3239703108063708633}
     SpawnChance: 0.05
+    EnemyAnim: {fileID: 0}
   - EnemyName: Shielded Enemy
     EnemyHealth: 1
     EnemyObject: {fileID: 4616025458098154944}
     SpawnChance: 0.05
+    EnemyAnim: {fileID: 0}
   selectedEnemyName: 
   player: {fileID: 0}
   pointToMove: {fileID: 0}
@@ -381,6 +385,7 @@ MonoBehaviour:
           m_StringArgument: Death
           m_BoolArgument: 0
         m_CallState: 2
+  selectedAnimator: {fileID: 0}
 --- !u!195 &7566053252195082254
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -639,6 +644,8 @@ MonoBehaviour:
   DeactivateCollidersOnDeath: []
   DestroyOnDeath: 1
   DropOnDeath: 0
+  ReportToEnemyScriptOnDamage: 1
+  _enemyAI: {fileID: 932368166429764901}
   DestroyDelay: 0
   Respawn: 0
   RespawnTime: 10
@@ -786,6 +793,8 @@ MonoBehaviour:
   DeactivateCollidersOnDeath: []
   DestroyOnDeath: 1
   DropOnDeath: 0
+  ReportToEnemyScriptOnDamage: 1
+  _enemyAI: {fileID: 932368166429764901}
   DestroyDelay: 0
   Respawn: 0
   RespawnTime: 10
@@ -1172,6 +1181,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6525111918041773248}
+    - targetCorrespondingSourceObject: {fileID: 6797702779634047482, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5221010927989108279}
     - targetCorrespondingSourceObject: {fileID: 7329586837948845197, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
       insertIndex: -1
@@ -1224,6 +1237,8 @@ MonoBehaviour:
   DeactivateCollidersOnDeath: []
   DestroyOnDeath: 1
   DropOnDeath: 1
+  ReportToEnemyScriptOnDamage: 1
+  _enemyAI: {fileID: 0}
   DestroyDelay: 0
   Respawn: 0
   RespawnTime: 10
@@ -1264,6 +1279,42 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.32
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5221010927989108279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7152436047013268146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6de38f13d6b1443b2c5a5a20ac08d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
+  SelfDestruct: 0
+  SelfDestructDelay: 0.1
+  SpawnOnDeath: {fileID: 0}
+  ActivateGameObjectsOnDeath: []
+  DeactivateGameObjectsOnDeath: []
+  DeactivateCollidersOnDeath: []
+  DestroyOnDeath: 0
+  DropOnDeath: 0
+  ReportToEnemyScriptOnDamage: 1
+  _enemyAI: {fileID: 932368166429764901}
+  DestroyDelay: 0
+  Respawn: 0
+  RespawnTime: 10
+  RemoveBulletHolesOnDeath: 1
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &7474845108377078385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6534503280532838713, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
