@@ -41,6 +41,8 @@ public class PathFollower : MonoBehaviour
         //CalculateTimingLineSpacing();
         easyMode = PlayerPrefs.GetInt("EasyMode", 0) == 1;
         ApplyEasyMode();
+
+        SetStartFromPosition();
     }
 
     private void OnValidate()
@@ -68,13 +70,13 @@ public class PathFollower : MonoBehaviour
             Debug.LogError("You need at least 2 sample points to follow the path.");
             return;
         }
-
+        Debug.Log($"{currentPointIndex}/{samplePoints.Count}");
         if (currentPointIndex < samplePoints.Count - 1)
         {
             Vector3 targetPoint = samplePoints[currentPointIndex + 1];
             transform.position = Vector3.MoveTowards(transform.position, targetPoint, speed * Time.deltaTime);
 
-            if (transform.position == targetPoint)
+            if (Vector3.Distance(transform.position, targetPoint) < 0.01f)
             {
                 currentPointIndex++;
             }
@@ -168,6 +170,41 @@ public class PathFollower : MonoBehaviour
         lastSampleCount = sampleCount;
     }
 
+    private void SetStartFromPosition()
+    {
+        if (samplePoints == null || samplePoints.Count < 2 || manager == null || manager.musicSource == null)
+            return;
+
+        float closestDistance = float.MaxValue;
+        int closestIndex = 0;
+
+        // Find closest point in samplePoints to current position
+        for (int i = 0; i < samplePoints.Count; i++)
+        {
+            float dist = Vector3.Distance(transform.position, samplePoints[i]);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                closestIndex = i;
+            }
+        }
+
+        currentPointIndex = closestIndex;
+
+        // Calculate t value (0 to 1) along the path
+        float t = (float)closestIndex / (samplePoints.Count - 1);
+
+        // Convert t to time in music
+        float musicLength = musicClip != null ? musicClip.length : 0f;
+        float time = t * musicLength;
+
+        // Adjust for start delay
+        time -= startDelay;
+        time = Mathf.Clamp(time, 0f, musicLength);
+
+        // Seek music
+        manager.startAtTime = time;
+    }
 
     private void CalculateTimingLineSpacing()
     {

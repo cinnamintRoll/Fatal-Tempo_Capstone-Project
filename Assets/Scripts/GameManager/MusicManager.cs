@@ -47,7 +47,9 @@ public class MusicManager : MonoBehaviour
     private bool isPlaying = false;
     private float startTime;
     public UnityEvent OnIntervalPassed;
-    
+    [Tooltip("If greater than 0, skips startDelay and starts at this time in seconds.")]
+    public float startAtTime = 0f;
+
 
     private float _lastSongIntervalTime = 0f;
 
@@ -107,10 +109,23 @@ public class MusicManager : MonoBehaviour
     {
         if (musicClip != null && !isPlaying)
         {
-            StartCoroutine(StartEverythingWithDelay());
-            isPlaying = true;
+            if (startAtTime > 0f)
+            {
+                // Skip delay and jump to startAtTime
+                musicSource.time = Mathf.Clamp(startAtTime, 0f, musicClip.length);
+                _lastSongIntervalTime = 0f;
+                musicSource.Play();
+                startTime = Time.time - startAtTime;
+                isPlaying = true;
+            }
+            else
+            {
+                StartCoroutine(StartEverythingWithDelay());
+                isPlaying = true;
+            }
         }
     }
+
 
     private IEnumerator StartEverythingWithDelay()
     {
