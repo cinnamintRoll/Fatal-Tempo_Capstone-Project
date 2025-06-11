@@ -33,10 +33,10 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private int beatsBetweenShoots = 3; // Adjustable beats to shoot
     private int currentBeat = 0; // Track the current beat for the laser charge cycle
     private bool isCharging = false;
-
+    [SerializeField] private GameObject BulletCollider;
     [SerializeField] private bool loopShooting = true;
     private bool hasLooped = false;
-
+    private bool shouldStop = false;
     [Header("Aiming Options")]
     [SerializeField] private bool rotateModelHorizontally = true;
     [SerializeField] private bool rotateModelVertically = false;
@@ -72,6 +72,11 @@ public class EnemyLaserShooter : MonoBehaviour
         if (visuals == null)
         {
             DestroyObject();
+        }
+
+        if (!shouldStop && BulletCollider == null)
+        {
+            OnBulletColliderDestroyed();
         }
     }
 
@@ -111,6 +116,7 @@ public class EnemyLaserShooter : MonoBehaviour
     {
         if (player != null)
         {
+            
             Vector3 targetDirection = (player.position - transform.position).normalized;
             Quaternion currentRotation = transform.rotation;
 
@@ -127,10 +133,6 @@ public class EnemyLaserShooter : MonoBehaviour
                 if (horizontalDirection == Vector3.zero) return; // Prevent Quaternion.LookRotation from throwing error with zero vector
 
                 Quaternion lookRotation = Quaternion.LookRotation(horizontalDirection);
-                // Apply the aimRotationOffset only to the horizontal rotation if it's meant for the model's forward
-                // For the model's y-axis rotation, we only care about the y-component of aimRotationOffset if it's meant to be applied to the model's yaw.
-                // Otherwise, a general offset is better applied to the gunMuzzle or to the laser's direction calculation.
-                // For horizontal rotation, we'll assume aimRotationOffset.y affects the yaw.
                 Quaternion desiredHorizontalRotation = Quaternion.Euler(0, lookRotation.eulerAngles.y + aimRotationOffset.y, 0);
                 transform.rotation = Quaternion.Slerp(currentRotation, desiredHorizontalRotation, Time.deltaTime * 10f); // Smooth rotation
             }
@@ -186,11 +188,18 @@ public class EnemyLaserShooter : MonoBehaviour
 
         // Wait until all charge beats are done
         while (beatCount < chargeBeats)
+        {
+            AimAtPlayer();
+            UpdateLaser();
+            CheckForDeflection();
+            
             yield return null;
-
+        }
+        
         // Unsubscribe
         musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
 
+        
         // Play shoot sound and shoot
         audioSource.PlayOneShot(shootSound);
         ShootPlayer();
@@ -248,6 +257,24 @@ public class EnemyLaserShooter : MonoBehaviour
             Destroy(gameObject, 0.5f);
         }*/
     }
+
+    public void OnBulletColliderDestroyed()
+    {
+        shouldStop = true;
+        StopAllCoroutines(); // Stop everything gracefully
+        laser.enabled = false;
+
+        if (AIScript != null)
+        {
+            AIScript.TransitionToState(EnemyAI.EnemyState.Death);
+        }
+        else
+        {
+            Destroy(visuals);
+            Destroy(gameObject, 0.5f);
+        }
+    }
+
 
     public void DestroyObject()
     {
