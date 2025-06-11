@@ -20,14 +20,14 @@ public class Enemies
 
 public class EnemyAI : MonoBehaviour
 {
-    public enum EnemyState { Idle, MoveToPoint, ChasePlayer, Attack, Death }
+    public enum EnemyState { Idle, MoveToPoint, ChasePlayer, Attack, Death, Despawn }
     public EnemyState currentState = EnemyState.Idle;
 
     [SerializeField]
     public List<Enemies> Enemies;
 
     [SerializeField, EnemyTypeDropdown]
-    private string selectedEnemyName;
+    public string selectedEnemyName;
 
     public Transform player;
     public Transform pointToMove;
@@ -53,6 +53,8 @@ public class EnemyAI : MonoBehaviour
     private bool isDead = false;
     public UnityEvent OnDeath;
     public Animator selectedAnimator;
+    private bool isDespawning = false;
+    private bool hasDamaged = false;
     // Property to get current Enemy object and name
     public Enemies CurrentEnemy
     {
@@ -126,6 +128,9 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Death:
                 HandleDeath();
                 break;
+            case EnemyState.Despawn:
+                HandleDespawn();
+                break;
         }
 
         if (!EnemyVisuals)
@@ -146,31 +151,70 @@ public class EnemyAI : MonoBehaviour
     // Transition to a new state
     public void TransitionToState(EnemyState newState)
     {
+        if (currentState == newState) return; // Avoid redundant transitions
         currentState = newState;
+
+        // Reset all animation triggers before setting the new one
+        ResetAnimationTriggers();
+
         switch (newState)
         {
             case EnemyState.Idle:
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = true;
+                SetAnimationTrigger("Idle");
                 break;
             case EnemyState.MoveToPoint:
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = false;
                 MoveToPoint();
+                SetAnimationTrigger("WalkToPoint");
                 break;
             case EnemyState.ChasePlayer:
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = false;
+                SetAnimationTrigger("FollowPlayer");
                 break;
             case EnemyState.Attack:
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = true;
+                SetAnimationTrigger("Attack");
                 break;
             case EnemyState.Death:
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = true;
-                HandleDeath();
+                HandleDeath(); // Call HandleDeath directly here as it's a terminal state
+                SetAnimationTrigger("Death");
                 break;
+            case EnemyState.Despawn: // <--- ADD THIS NEW CASE
+                if (navMeshAgent.isOnNavMesh)
+                    navMeshAgent.isStopped = true; // Stop movement
+                // No specific animation trigger for despawn, as it's typically quick
+                HandleDespawn(); // Call the despawn logic
+                break;
+        }
+    }
+
+    // Sets the animation trigger on the selected Animator
+    private void SetAnimationTrigger(string triggerName)
+    {
+        if (selectedAnimator != null)
+        {
+            selectedAnimator.SetTrigger(triggerName);
+        }
+    }
+
+    // Resets all animation triggers to prevent conflicting animations
+    private void ResetAnimationTriggers()
+    {
+        if (selectedAnimator != null)
+        {
+            selectedAnimator.ResetTrigger("Attack");
+            selectedAnimator.ResetTrigger("FollowPlayer");
+            selectedAnimator.ResetTrigger("WalkToPoint");
+            selectedAnimator.ResetTrigger("Idle");
+            selectedAnimator.ResetTrigger("Damage");
+            selectedAnimator.ResetTrigger("Death");
         }
     }
 
@@ -180,7 +224,19 @@ public class EnemyAI : MonoBehaviour
         // Idle behavior
         if (IsEnemyBehindPlayer())
         {
-            Despawn();
+            switch (selectedEnemyName.ToLower())
+            {
+                case "melee":
+                    TransitionToState(EnemyState.Despawn);
+                    break;
+                case "sniper":
+                    TransitionToState(EnemyState.Despawn);
+                    break;
+                default:
+                    
+                    break;
+            }
+            
         }
     }
 
@@ -218,9 +274,9 @@ public class EnemyAI : MonoBehaviour
             MoveToPoint(player); // Update destination
         }
 
-        if (IsEnemyBehindPlayer())
+        if (distanceToPlayer <= attackRange)
         {
-            TransitionToState(EnemyState.Attack);
+            TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
         }
     }
 
@@ -255,21 +311,27 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void Despawn()
+    public void HandleDespawn()
     {
-        Destroy(gameObject, 4f);
+        if (!isDespawning) 
+        {
+            Destroy(gameObject, 4f);
+            isDespawning = true;
+        }
     }
 
     // Enemy takes damage and checks for death
     public void TakeDamage(float damage)
     {
         health -= damage;
+        SetAnimationTrigger("Damage"); // Play damage animation
         //Debug.LogError("Enemy Damaged! " +  damage);
         if (health <= 0f)
         {
             TransitionToState(EnemyState.Death);
         }
     }
+
 
     // Enemy moves to a designated point
     void MoveToPoint()
@@ -285,6 +347,15 @@ public class EnemyAI : MonoBehaviour
             navMeshAgent.SetDestination(pointToMove.position);
     }
 
+    public void DamagePlayer()
+    {
+        if (!hasDamaged) 
+        {
+            PlayerHealth.Instance.TakeDamage();
+            hasDamaged = true;
+        }
+    }
+
     // Perform attack logic based on the enemy type determined by name
     void PerformAttack()
     {
@@ -293,7 +364,7 @@ public class EnemyAI : MonoBehaviour
         {
             case "melee":
                 Debug.Log("Enemy performs a melee attack!");
-                PlayerHealth.Instance.TakeDamage(); // Example of damaging the player
+                TransitionToState(EnemyState.Idle);
                 break;
             case "sniper":
                 Debug.Log("Enemy performs a sniper attack!");

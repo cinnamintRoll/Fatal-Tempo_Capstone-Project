@@ -18,9 +18,9 @@ public class GeneralSpawner : MonoBehaviour
     public Transform spawnPoint;
     public Transform player;
     private bool canSpawn = true;
-    [SerializeField] private EnemyAI enemy;
+    [SerializeField] public EnemyAI enemy;
     [SerializeField] private Animator spawnAnim;
-    [SerializeField] private Transform movepoint;
+    [SerializeField] public Transform movepoint;
     [SerializeField, HideInInspector] private int _previousSpawnIndex = -1;
     private void Start()
     {
@@ -66,8 +66,9 @@ public class GeneralSpawner : MonoBehaviour
             if(i == spawnIndex)
             {
                 GameObject spawnable = Spawnables[i].spawnable;
-                spawnable.SetActive(true);
-
+                if (spawnable)
+                    spawnable.SetActive(true);
+                else return;
                 if (spawnable.GetComponent<EnemyAI>() != null)
                 {
                     if (enemy != null && enemy.isActiveAndEnabled)

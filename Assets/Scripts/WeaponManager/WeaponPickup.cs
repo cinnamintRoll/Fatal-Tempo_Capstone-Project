@@ -125,16 +125,27 @@ public class WeaponPickup : MonoBehaviour
             float distRight = Vector3.Distance(transform.position, rightHand.position);
 
             Transform targetHand = distLeft < distRight ? leftHand : rightHand;
+            HandType targetHandType = distLeft < distRight ? HandType.Left : HandType.Right;
 
             GameObject visual = GetVisualObject(singleWeaponType);
             if (visual != null)
             {
                 visual.transform.position = transform.position;
                 visual.SetActive(true);
-                leftVisual = visual;
-                leftTarget = targetHand;
+
+                if (targetHandType == HandType.Left)
+                {
+                    leftVisual = visual;
+                    leftTarget = targetHand;
+                }
+                else
+                {
+                    rightVisual = visual;
+                    rightTarget = targetHand;
+                }
             }
         }
+
         else if (pickupMode == PickupMode.Dual)
         {
             GameObject left = leftVisual;
@@ -219,29 +230,29 @@ public class WeaponPickup : MonoBehaviour
                     GetVisualObject(dualRightWeaponType) : null;
 
                 // Handle duplicate visuals
+                // Destroy all existing right duplicates to avoid clutter
+                foreach (Transform child in transform)
+                {
+                    if (child.name.EndsWith("_rightDuplicate"))
+                    {
+                        DestroyImmediate(child.gameObject);
+                    }
+                }
+                rightDuplicate = null;
+
+                // Handle duplicate visuals
                 if (pickupMode == PickupMode.Dual && rightVisual != null && leftVisual != null)
                 {
                     if (leftVisual == rightVisual)
                     {
-                        if (rightDuplicate == null)
-                        {
-                            rightDuplicate = Instantiate(rightVisual, transform);
-                            rightDuplicate.name = rightVisual.name + "_rightDuplicate";
-                        }
+                        // Create a clean new duplicate
+                        rightDuplicate = Instantiate(rightVisual, transform);
+                        rightDuplicate.name = rightVisual.name + "_rightDuplicate";
                         rightVisual = rightDuplicate;
                         EditorUtility.SetDirty(this);
                     }
-                    else if (rightDuplicate != null)
-                    {
-                        DestroyImmediate(rightDuplicate);
-                        rightDuplicate = null;
-                    }
                 }
-                else if (rightDuplicate != null)
-                {
-                    DestroyImmediate(rightDuplicate);
-                    rightDuplicate = null;
-                }
+
 
                 // Activate/deactivate visual prefabs
                 foreach (var entry in weaponVisuals)

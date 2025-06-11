@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(PathFollower))]
 public class PathFollowerEditor : Editor
@@ -43,10 +44,7 @@ public class PathFollowerEditor : Editor
 {
     base.OnInspectorGUI();
 
-        if (GUILayout.Button("Re-show All Spawner Visuals"))
-        {
-            ReShowAllSpawnerVisuals();
-        }
+       
 
         if (GUILayout.Button("Generate Spawn Triggers"))
     {
@@ -66,7 +64,17 @@ public class PathFollowerEditor : Editor
     {
         PlaceEndTriggerIfMissing();
     }
-}
+        if (GUILayout.Button("Re-show All Spawner Visuals"))
+        {
+            ReShowAllSpawnerVisuals();
+        }
+
+        if (GUILayout.Button("Replace All Spawnables with Prefab"))
+        {
+            ReplaceSpawnablesWithCurrentPrefab();
+        }
+
+    }
 
     private void ReShowAllSpawnerVisuals()
     {
@@ -257,6 +265,8 @@ public class PathFollowerEditor : Editor
             for (int i = 0; i < totalChildren; i++)
             {
                 Transform child = pathFollower.pathParent.GetChild(i);
+                if (child.tag != "Spawnable") continue;
+
                 float beatDistance = startOffset + i * spacing;
                 float t = Mathf.Clamp01(beatDistance / segmentLength);
                 Vector3 alignedPos = Vector3.Lerp(startPoint, endPoint, t);
@@ -301,6 +311,8 @@ public class PathFollowerEditor : Editor
             // For each child in pathParent, find closest align point and assign
             foreach (Transform child in pathFollower.pathParent)
             {
+                if (child.tag != "Spawnable") continue;
+
                 Transform closest = null;
                 float closestDist = float.MaxValue;
 
@@ -326,5 +338,69 @@ public class PathFollowerEditor : Editor
 
         EditorUtility.SetDirty(pathFollower);
     }
+
+    private void ReplaceSpawnablesWithCurrentPrefab()
+    {
+        if (pathFollower.spawnTriggerPrefab == null)
+        {
+            Debug.LogError("Spawn Trigger Prefab is not assigned.");
+            return;
+        }
+
+        int replacedCount = 0;
+
+        foreach (Transform child in pathFollower.pathParent)
+        {
+            GeneralSpawner oldSpawner = child.GetComponent<GeneralSpawner>();
+            if (oldSpawner == null) continue;
+
+            GameObject prefabSource = PrefabUtility.GetCorrespondingObjectFromSource(child.gameObject);
+            if (prefabSource == pathFollower.spawnTriggerPrefab)
+                continue; // Already correct prefab
+
+            // Store data
+            Vector3 pos = child.position;
+            Quaternion rot = child.rotation;
+            string name = child.name;
+            int siblingIndex = child.GetSiblingIndex();
+
+            int oldSpawnIndex = oldSpawner.spawnIndex;
+            Vector3? spawnPointPos = oldSpawner.spawnPoint ? oldSpawner.spawnPoint.position : null;
+            Vector3? movePointPos = oldSpawner.movepoint ? oldSpawner.movepoint.position : null;
+            string selectedEnemyName = oldSpawner.enemy ? oldSpawner.enemy.selectedEnemyName : null;
+
+            Undo.DestroyObjectImmediate(child.gameObject);
+
+            GameObject newGO = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.spawnTriggerPrefab);
+            newGO.name = name;
+            newGO.transform.position = pos;
+            newGO.transform.rotation = rot;
+            newGO.transform.SetParent(pathFollower.pathParent);
+            newGO.transform.SetSiblingIndex(siblingIndex); // Maintain original order
+
+            GeneralSpawner newSpawner = newGO.GetComponent<GeneralSpawner>();
+            if (newSpawner != null)
+            {
+                newSpawner.spawnIndex = oldSpawnIndex;
+
+                if (newSpawner.spawnPoint && spawnPointPos.HasValue)
+                    newSpawner.spawnPoint.position = spawnPointPos.Value;
+
+                if (newSpawner.movepoint && movePointPos.HasValue)
+                    newSpawner.movepoint.position = movePointPos.Value;
+
+                if (newSpawner.enemy)
+                    newSpawner.enemy.selectedEnemyName = selectedEnemyName;
+            }
+
+            Undo.RegisterCreatedObjectUndo(newGO, "Replace Spawnable");
+            replacedCount++;
+        }
+        ReShowAllSpawnerVisuals();
+        Debug.Log($"Replaced {replacedCount} spawnable(s) with current prefab.");
+        EditorUtility.SetDirty(pathFollower);
+    }
+
+
 
 }

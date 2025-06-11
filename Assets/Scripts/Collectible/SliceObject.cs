@@ -5,6 +5,8 @@ using EzySlice;
 using System.Net;
 using UnityEngine.Windows;
 using BNG;
+using Unity.VisualScripting;
+using UnityEditor.Animations;
 
 public class SliceObject : MonoBehaviour
 {
@@ -59,39 +61,89 @@ public class SliceObject : MonoBehaviour
     }
 
     IEnumerator SliceAsync(GameObject sliceableObject)
-{
-    if (sliceableObject != null)
+    {
+        GameObject originalobject = sliceableObject;
+        if (sliceableObject != null)
         {
+            // Handle segment collection
             SliceSegment segment = sliceableObject.GetComponent<SliceSegment>();
-            if (segment != null) {
+            if (segment != null)
+            {
                 _collector.CollectItem(segment.SegmentValue);
             }
+
+            // If the object has a SkinnedMeshRenderer, bake it to a Mesh
+            SkinnedMeshRenderer skinnedRenderer = sliceableObject.GetComponentInChildren<SkinnedMeshRenderer>();
+            if (skinnedRenderer != null)
+            {
+                Mesh bakedMesh = new Mesh();
+                bakedMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+                skinnedRenderer.BakeMesh(bakedMesh);
+                bakedMesh.RecalculateNormals();
+                bakedMesh.RecalculateBounds();
+
+                GameObject bakedObject = new GameObject(sliceableObject.name + "_Baked");
+                bakedObject.transform.SetPositionAndRotation(skinnedRenderer.transform.position, skinnedRenderer.transform.rotation);
+                bakedObject.transform.localScale = skinnedRenderer.transform.lossyScale;
+
+                MeshFilter meshFilter = bakedObject.AddComponent<MeshFilter>();
+                meshFilter.sharedMesh = bakedMesh;
+
+                MeshRenderer meshRenderer = bakedObject.AddComponent<MeshRenderer>();
+                meshRenderer.materials = skinnedRenderer.sharedMaterials;
+
+                bakedObject.layer = sliceableObject.layer;
+                bakedObject.transform.parent = null; // important!
+
+                sliceableObject.SetActive(false);
+                sliceableObject = bakedObject;
+
+                yield return new WaitForEndOfFrame(); // after replacement
+            }
+
         }
-    yield return new WaitForEndOfFrame(); // Defer slicing to the end of the frame
+        else { yield break; }
+        yield return new WaitForEndOfFrame();
+        // Slicing logic
+        Vector3 velocity = velocityEstimator.GetVelocityEstimate();
+        Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);
+        planeNormal.Normalize();
 
-    Vector3 velocity = velocityEstimator.GetVelocityEstimate();
-    Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);
-    planeNormal.Normalize();
+        SlicedHull slicedObject = sliceableObject.Slice(bladeEnd.position, planeNormal, crossSectionMaterial);
 
-    SlicedHull slicedObject = sliceableObject.Slice(bladeEnd.position, planeNormal, crossSectionMaterial);
+        if (slicedObject != null)
+        {
+            input.VibrateController(0.5f, 1f, 0.05f, HandSide);
 
-    if (slicedObject != null)
-    {
-        input.VibrateController(0.5f, 1f, 0.05f, HandSide);
+            PlaySliceSound();
 
-        PlaySliceSound();
+            GameObject upperHull = slicedObject.CreateUpperHull(sliceableObject, crossSectionMaterial);
+            GameObject lowerHull = slicedObject.CreateLowerHull(sliceableObject, crossSectionMaterial);
 
-        GameObject upperHull = slicedObject.CreateUpperHull(sliceableObject, crossSectionMaterial);
-        GameObject lowerHull = slicedObject.CreateLowerHull(sliceableObject, crossSectionMaterial);
-        upperHull.AddComponent<DespawnAfterSlice>();
-        lowerHull.AddComponent<DespawnAfterSlice>();
+            if (upperHull == null || lowerHull == null)
+            {
+                Debug.LogWarning("Sliced hulls were null.");
+                yield break;
+            }
 
-        SetupHullObject(upperHull, sliceableObject);
-        SetupHullObject(lowerHull, sliceableObject);
+            Debug.Log("Upper Hull has renderer: " + upperHull.GetComponent<MeshRenderer>());
+            Debug.Log("Lower Hull has renderer: " + lowerHull.GetComponent<MeshRenderer>());
 
-        Destroy(sliceableObject);
+            upperHull.AddComponent<DespawnAfterSlice>();
+            lowerHull.AddComponent<DespawnAfterSlice>();
+
+            SetupHullObject(upperHull, sliceableObject);
+            SetupHullObject(lowerHull, sliceableObject);
+
+            Destroy(originalobject);
+            Destroy(sliceableObject);
+        }
+        else
+        {
+            Debug.LogWarning($"Slicing failed for {sliceableObject.name}");
+        }
     }
-}
+
 
 
     // Helper function to configure the newly created slice objects
