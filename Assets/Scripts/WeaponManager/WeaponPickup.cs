@@ -42,6 +42,8 @@ public class WeaponPickup : MonoBehaviour
     private Transform leftTarget;
     private Transform rightTarget;
 
+    private HandType CloserHand;
+
     private bool leftHasSwapped = false;
     private bool rightHasSwapped = false;
     [SerializeField] private Vector3 DuplicateSpawn = new Vector3(0f, 0.046f, -0.045f);
@@ -65,21 +67,25 @@ public class WeaponPickup : MonoBehaviour
         else
         {
             // Handle left visual
-            if (leftVisual != null && leftTarget != null && !leftHasSwapped)
+            if (leftVisual && leftTarget && !leftHasSwapped)
             {
                 leftVisual.transform.position = Vector3.MoveTowards(leftVisual.transform.position, leftTarget.position, moveSpeed * Time.deltaTime);
                 leftVisual.transform.rotation = Quaternion.Lerp(leftVisual.transform.rotation, leftTarget.rotation, moveSpeed * Time.deltaTime);
 
                 if (Vector3.Distance(leftVisual.transform.position, leftTarget.position) < 0.1f)
                 {
-                    WeaponManager.Instance.SwapWeapon(
-                        pickupMode == PickupMode.Single ? singleWeaponType : dualLeftWeaponType,
-                        HandType.Left, true);
+                    var type = pickupMode == PickupMode.Single ? singleWeaponType : dualLeftWeaponType;
+                    var hand = pickupMode == PickupMode.Single ? CloserHand : HandType.Left;
+                    var otherSwap = pickupMode != PickupMode.Single;
+
+                    WeaponManager.Instance.SwapWeapon(type, hand, otherSwap);
+
                     leftHasSwapped = true;
                     leftVisual.SetActive(false);
                     leftVisual = null;
                 }
             }
+
 
             // Handle right visual
             if (rightVisual != null && rightTarget != null && !rightHasSwapped)
@@ -125,24 +131,15 @@ public class WeaponPickup : MonoBehaviour
             float distRight = Vector3.Distance(transform.position, rightHand.position);
 
             Transform targetHand = distLeft < distRight ? leftHand : rightHand;
-            HandType targetHandType = distLeft < distRight ? HandType.Left : HandType.Right;
-
+            CloserHand = distLeft < distRight ? HandType.Left : HandType.Right;
+            Debug.Log($"the closer hand is: {CloserHand}");
             GameObject visual = GetVisualObject(singleWeaponType);
             if (visual != null)
             {
                 visual.transform.position = transform.position;
                 visual.SetActive(true);
-
-                if (targetHandType == HandType.Left)
-                {
                     leftVisual = visual;
                     leftTarget = targetHand;
-                }
-                else
-                {
-                    rightVisual = visual;
-                    rightTarget = targetHand;
-                }
             }
         }
 

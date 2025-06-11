@@ -75,6 +75,8 @@ public class EnemyAI : MonoBehaviour
         {
             navMeshAgent.enabled = false;
         }
+
+        ApplyInitialAnimationState();
     }
 
     public void UpdateEnemyVisuals()
@@ -183,7 +185,6 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Death:
                 if (navMeshAgent.isOnNavMesh)
                     navMeshAgent.isStopped = true;
-                HandleDeath(); // Call HandleDeath directly here as it's a terminal state
                 SetAnimationTrigger("Death");
                 break;
             case EnemyState.Despawn: // <--- ADD THIS NEW CASE
@@ -283,6 +284,13 @@ public class EnemyAI : MonoBehaviour
     // Handle Attack State
     void HandleAttack()
     {
+        Vector3 targetPosition = new Vector3(
+        player.transform.position.x,
+        transform.position.y,
+        player.transform.position.z
+        );
+
+        transform.LookAt(targetPosition);
         PerformAttack();
         
 
@@ -306,8 +314,7 @@ public class EnemyAI : MonoBehaviour
                 PlayerHealth.KillEnemy(this.transform.position);
                 isDead = true;
             }
-            // Optionally, destroy the enemy object after a delay
-            Destroy(gameObject, 0.5f); // Adjust the delay as needed
+            TransitionToState(EnemyState.Despawn);
         }
     }
 
@@ -449,6 +456,34 @@ public class EnemyAI : MonoBehaviour
             dmg.Health = health; // Or use a custom method or property
         }
     }
+
+    private void ApplyInitialAnimationState()
+    {
+        ResetAnimationTriggers();
+
+        switch (currentState)
+        {
+            case EnemyState.Idle:
+                SetAnimationTrigger("Idle");
+                break;
+            case EnemyState.MoveToPoint:
+                SetAnimationTrigger("WalkToPoint");
+                break;
+            case EnemyState.ChasePlayer:
+                SetAnimationTrigger("FollowPlayer");
+                break;
+            case EnemyState.Attack:
+                SetAnimationTrigger("Attack");
+                break;
+            case EnemyState.Death:
+                SetAnimationTrigger("Death");
+                break;
+            case EnemyState.Despawn:
+                // Optional: Set a despawn animation if you have one
+                break;
+        }
+    }
+
 }
 
 
