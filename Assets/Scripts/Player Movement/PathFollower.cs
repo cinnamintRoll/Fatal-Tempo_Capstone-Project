@@ -70,7 +70,7 @@ public class PathFollower : MonoBehaviour
             Debug.LogError("You need at least 2 sample points to follow the path.");
             return;
         }
-        Debug.Log($"{currentPointIndex}/{samplePoints.Count}");
+        //Debug.Log($"{currentPointIndex}/{samplePoints.Count}");
         if (currentPointIndex < samplePoints.Count - 1)
         {
             Vector3 targetPoint = samplePoints[currentPointIndex + 1];

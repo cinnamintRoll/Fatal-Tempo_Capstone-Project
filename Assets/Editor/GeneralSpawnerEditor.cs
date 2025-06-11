@@ -48,15 +48,49 @@ public class GeneralSpawnerEditor : Editor
 
         GeneralSpawner spawner = (GeneralSpawner)target;
 
+        // --- Handle spawnPoint ---
         if (spawner.spawnPoint != null)
         {
             EditorGUI.BeginChangeCheck();
-            Vector3 newPosition = Handles.PositionHandle(spawner.spawnPoint.position, spawner.spawnPoint.rotation);
+
+            // Set color for spawnPoint handle
+            Handles.color = Color.green;
+            Vector3 newSpawnPosition = Handles.PositionHandle(spawner.spawnPoint.position, spawner.spawnPoint.rotation);
+
+            // Draw a label for spawnPoint
+            Handles.Label(spawner.spawnPoint.position + Vector3.up * 0.5f, "Spawn Point");
+
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(spawner.spawnPoint, "Move Spawn Point");
-                spawner.spawnPoint.position = newPosition;
+                spawner.spawnPoint.position = newSpawnPosition;
             }
         }
+
+        // --- Handle movepoint ---
+        SerializedProperty movepointProp = serializedObject.FindProperty("movepoint");
+
+        if (movepointProp != null && movepointProp.objectReferenceValue != null)
+        {
+            Transform movepointTransform = (Transform)movepointProp.objectReferenceValue;
+
+            EditorGUI.BeginChangeCheck();
+
+            // Set color for movepoint handle
+            Handles.color = Color.blue;
+            Vector3 newMovePosition = Handles.PositionHandle(movepointTransform.position, movepointTransform.rotation);
+
+            // Draw a label for movepoint
+            Handles.Label(movepointTransform.position + Vector3.up * 0.5f, "Move Point");
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(movepointTransform, "Move Move Point");
+                movepointTransform.position = newMovePosition;
+            }
+        }
+
+        // Reset handle color to default after drawing your custom handles
+        Handles.color = Color.white;
     }
 }
