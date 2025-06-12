@@ -148,7 +148,7 @@ public class RotatingLevelSelector : MonoBehaviour
         onSongSelected.Invoke();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         if (initialAlbum != null)
         {
