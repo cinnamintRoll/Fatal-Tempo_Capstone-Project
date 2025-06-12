@@ -44,7 +44,7 @@ public class LevelSelectManager : MonoBehaviour
 
     public void LoadSelectedSong()
     {
-        if (selectedSong != selector.selectedSong)
+        if (selectedSong != selector.selectedSong && selector.selectedSong != null)
         {
             SelectSong(selector.selectedSong);
         }
@@ -66,15 +66,17 @@ public class LevelSelectManager : MonoBehaviour
         audioSource.Play();
 
         // Show or hide score and grade based on stored score
-        bool hasScore = song.playerScore > 0;
-
-        playerScoreText.gameObject.SetActive(hasScore);
-        gradeText.gameObject.SetActive(hasScore);
-        
-        if (hasScore)
+        if (song.playerScore > 0)
         {
-            playerScoreText.text = $"{song.playerScore}";
-            gradeText.text = $"{song.letterGrade}";
+            playerScoreText.gameObject.SetActive(true);
+            gradeText.gameObject.SetActive(true);
+                playerScoreText.text = $"{song.playerScore}";
+                gradeText.text = $"{song.letterGrade}";
+        }
+        else
+        {
+            playerScoreText.gameObject.SetActive(false);
+            gradeText.gameObject.SetActive(false);
         }
     }
 
