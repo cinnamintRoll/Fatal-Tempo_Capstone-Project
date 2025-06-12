@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 124990764709576284}
   - component: {fileID: 4167342809943903791}
+  - component: {fileID: 7978243714460937807}
   m_Layer: 0
   m_Name: Lofeye
   m_TagString: Untagged
@@ -54,6 +55,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7978243714460937807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790345298920056038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36712e13cd23e449851e2f16ec42212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  namedEvents:
+  - eventName: DamagePlayer
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8175576945487686280}
+          m_TargetAssemblyTypeName: EnemyAI, Assembly-CSharp
+          m_MethodName: DamagePlayer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &959429343446916394
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +351,7 @@ Transform:
   - {fileID: 1775618248556688020}
   - {fileID: 3783185895578951632}
   m_Father: {fileID: 1510211293347468138}
-  m_LocalEulerAnglesHint: {x: 88.6372, y: -152.564, z: -152.564}
+  m_LocalEulerAnglesHint: {x: 89.44187, y: -180, z: -180}
 --- !u!1 &2828096177562460689
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +811,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5432483656853633925}
-  m_LocalEulerAnglesHint: {x: 11.327618, y: -41.385445, z: -17.66519}
+  m_LocalEulerAnglesHint: {x: 11.719605, y: -42.541508, z: -17.89621}
 --- !u!1 &5698374287000701033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1775618248556688020}
-  m_LocalEulerAnglesHint: {x: 11.327618, y: 41.385445, z: 17.66519}
+  m_LocalEulerAnglesHint: {x: 11.719605, y: 42.541508, z: 17.89621}
 --- !u!1 &7798596093650369790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,7 +1287,7 @@ PrefabInstance:
     - target: {fileID: 168947474585702948, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 477744811914056423, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
@@ -1493,6 +1523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -4.3368066e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000496917789672786, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9116902010776940374, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
