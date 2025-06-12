@@ -1483,7 +1483,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Enemies.Array.data[1].EnemyAnim
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5236606451922803411}
     - target: {fileID: 8177137869130605029, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_IsActive
@@ -1504,6 +1504,11 @@ PrefabInstance:
       propertyPath: BulletCollider
       value: 
       objectReference: {fileID: 3559540850807878591}
+    - target: {fileID: 8334388950284852530, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: rotateModelVertically
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8494712976865988899, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1527,7 +1532,7 @@ PrefabInstance:
     - target: {fileID: 9000496917789672786, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9116902010776940374, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
