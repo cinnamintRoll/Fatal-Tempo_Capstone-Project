@@ -7970,6 +7970,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.72, y: 2, z: 0.3}
   m_Center: {x: 0, y: 1, z: 0.14}
+--- !u!1 &244075161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6723757543113360418, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1249033604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245051609
 GameObject:
   m_ObjectHideFlags: 0
@@ -14733,6 +14739,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: singleWeaponType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723757543113360418, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7120598605106034431, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14787,6 +14803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157159191556515790, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22474,11 +22495,16 @@ PrefabInstance:
     - target: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: singleWeaponType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626507028684623192, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
@@ -22545,6 +22571,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157159191556515790, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25271,9 +25302,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 1341b7e5add3b3c4195176fb5411476d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 68ba75fba45833f469993847dfe52e11, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &817240175
 Transform:
@@ -37263,10 +37294,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: leftVisual
+      value: 
+      objectReference: {fileID: 244075161}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: singleWeaponType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: lastSingleWeaponType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5626507028684623192, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_Radius
       value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723757543113360418, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7120598605106034431, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
@@ -37322,6 +37373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157159191556515790, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52160,6 +52216,12 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &1729958119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2036313230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1729984262
 GameObject:
   m_ObjectHideFlags: 0
@@ -60603,11 +60665,26 @@ PrefabInstance:
     - target: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
+      propertyPath: leftVisual
+      value: 
+      objectReference: {fileID: 1729958119}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
       propertyPath: weaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: singleWeaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: lastSingleWeaponType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6723757543113360418, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
@@ -60669,6 +60746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157159191556515790, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67262,6 +67344,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1517028205944000761, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 820.5504
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517028205944000761, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 461.55966
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517028205944000761, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000049132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517028205944000761, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 71
+      objectReference: {fileID: 0}
     - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
@@ -67298,6 +67400,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 7451d7b397b93684ea9cc6485a38bfb6,
         type: 3}
+    - target: {fileID: 3014592899271542980, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3411713172828237071, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: screenFader

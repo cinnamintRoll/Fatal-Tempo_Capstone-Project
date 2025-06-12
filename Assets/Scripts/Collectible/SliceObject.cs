@@ -102,8 +102,6 @@ public class SliceObject : MonoBehaviour
             }
 
         }
-        else { yield break; }
-        yield return new WaitForEndOfFrame();
         // Slicing logic
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);
