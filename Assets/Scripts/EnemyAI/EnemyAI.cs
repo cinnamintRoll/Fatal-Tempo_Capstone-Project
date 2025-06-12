@@ -228,6 +228,7 @@ public class EnemyAI : MonoBehaviour
             switch (selectedEnemyName.ToLower())
             {
                 case "melee":
+                    DamagePlayer();
                     TransitionToState(EnemyState.Despawn);
                     break;
                 case "sniper":
