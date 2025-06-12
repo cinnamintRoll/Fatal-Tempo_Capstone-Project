@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip damageClip;
     [SerializeField] private AudioClip healClip;
-
+    [SerializeField] private GameObject FullHealth;
     [SerializeField] public UnityEvent OnDeath;
     [SerializeField] public UnityEvent OnDamage;
     [SerializeField] public UnityEvent<Vector3> OnKillEnemy;
@@ -45,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
         currentLives = maxLives;
         UpdateSliders();
         UpdateKillCountText();
+        UpdateHealthUIState();
     }
 
     void UpdateSliders()
@@ -103,6 +104,7 @@ public class PlayerHealth : MonoBehaviour
 
         UpdateKillCountText();
         UpdateSliders();
+        UpdateHealthUIState();
     }
 
     // Killing enemies slowly fills up the current life
@@ -125,8 +127,8 @@ public class PlayerHealth : MonoBehaviour
             }
 
             UpdateSliders();
+            UpdateHealthUIState();
 
-            
         }
     }
 
@@ -138,6 +140,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = 0;  // Set the newly restored life to full health
         UpdateSliders();
         UpdateKillCountText();
+        UpdateHealthUIState();
 
         // Play healing sound effect
         audioSource.PlayOneShot(healClip);
@@ -158,5 +161,13 @@ public class PlayerHealth : MonoBehaviour
     {
         gameMenu.TriggerDeathMenu();
         OnDeath.Invoke();
+    }
+
+    void UpdateHealthUIState()
+    {
+        bool atFullHealth = (currentLives == maxLives);
+
+        killsRemainingText.gameObject.SetActive(!atFullHealth);
+        FullHealth.SetActive(atFullHealth);
     }
 }
