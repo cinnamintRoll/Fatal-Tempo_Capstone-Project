@@ -37,10 +37,6 @@ public class CalorieTrackerManager : MonoBehaviour
         {
             playerWeightKg = PlayerPrefs.GetFloat(PlayerWeightKey);
         }
-        else
-        {
-            PlayerPrefs.SetFloat(PlayerWeightKey, playerWeightKg); // save default
-        }
     }
 
     public void AddCaloriesFromMovement(Vector3 leftVel, Vector3 rightVel, Vector3 headVel, float deltaTime)
