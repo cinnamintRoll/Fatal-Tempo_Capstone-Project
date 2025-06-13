@@ -142,6 +142,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2600351660115088281}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 7276ff191256962448d44af85114a1f7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5405043568534421889}
   m_SourcePrefab: {fileID: 100100000, guid: 7276ff191256962448d44af85114a1f7, type: 3}
 --- !u!1 &4596040105683089688 stripped
 GameObject:
@@ -161,11 +165,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa2bc425cc87db4384455bbaff8fe55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collector: {fileID: 0}
   bladeStart: {fileID: 2161966695677365251}
   bladeEnd: {fileID: 2909854447190049576}
-  collector: {fileID: 2600351660115088281}
+  minSliceSpeed: 2.22
+  velocityEstimator: {fileID: 5405043568534421889}
   crossSectionMaterial: {fileID: 2100000, guid: 50f265766dae2e94ca8b98c2ee3289d3,
     type: 2}
+  HandSide: 1
   cutForce: 710
   sliceableLayer:
     serializedVersion: 2
@@ -207,8 +214,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8659d261df59924eaa4cf4f8d01f593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HandSide: 2
   CollectorVelocity: {x: 0, y: 0, z: 0}
   TotalItemsCollected: 0
+  vibrationDuration: 0.1
+  vibrationStrength: 1
+  beatScoringSystem: {fileID: 0}
+--- !u!114 &5405043568534421889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596040105683089688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168db796e4b703e47a291580b3fb8d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 11
+  estimateOnAwake: 0
 --- !u!4 &4596040105683576120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7276ff191256962448d44af85114a1f7,

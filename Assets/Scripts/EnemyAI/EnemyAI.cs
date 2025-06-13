@@ -25,8 +25,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     public List<Enemies> Enemies;
-
+#if UNITY_EDITOR
     [SerializeField, EnemyTypeDropdown]
+#endif
     public string selectedEnemyName;
 
     public Transform player;
@@ -66,6 +67,7 @@ public class EnemyAI : MonoBehaviour
 
     void OnEnable()
     {
+       
         UpdateEnemyVisuals();
         EnemyTracker.Instance?.RegisterEnemy(gameObject);
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -317,6 +319,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (isDead) return;
 
+        
+
         Debug.Log("Enemy has died");
 
         if (PlayerHealth)
@@ -326,6 +330,12 @@ public class EnemyAI : MonoBehaviour
 
         isDead = true;
 
+        if (selectedAnimator == null)
+        {
+            GameObject _enemyObject = CurrentEnemy.EnemyObject;
+            if(_enemyObject)
+            _enemyObject.SetActive(false);
+        }
         EnemyTracker.Instance?.UnregisterEnemyKilled(gameObject);
         TransitionToState(EnemyState.Despawn);
     }

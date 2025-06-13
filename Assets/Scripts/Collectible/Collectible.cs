@@ -64,7 +64,7 @@ public class Collectible : MonoBehaviour
 
     private void OnEnable()
     {
-        CollectibleTracker.Instance.RegisterCollectible(gameObject);
+        CollectibleTracker.Instance?.RegisterCollectible(gameObject);
     }
 
     private void Update()

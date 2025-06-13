@@ -6,7 +6,6 @@ using System.Net;
 using UnityEngine.Windows;
 using BNG;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
 
 public class SliceObject : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class SliceObject : MonoBehaviour
     // Reference to the start and end points of the blade (assign in the inspector or dynamically)
     public Transform bladeStart;
     public Transform bladeEnd;
+    public float minSliceSpeed = 1.5f;
     public VelocityEstimator velocityEstimator;
     private InputBridge input;
     // Reference to a material used for the cross-section (cut faces)
@@ -65,6 +65,14 @@ public class SliceObject : MonoBehaviour
         GameObject originalobject = sliceableObject;
         if (sliceableObject != null)
         {
+            Vector3 swordVelocity = velocityEstimator.GetVelocityEstimate();
+            float speed = swordVelocity.magnitude;
+
+            if (speed < minSliceSpeed)
+            {
+                yield break; // Cancel slicing if moving too slowly
+            }
+
             // Handle segment collection
             SliceSegment segment = sliceableObject.GetComponent<SliceSegment>();
             if (segment != null)
@@ -104,7 +112,11 @@ public class SliceObject : MonoBehaviour
         Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);
         planeNormal.Normalize();
 
-        SlicedHull slicedObject = sliceableObject.Slice(bladeEnd.position, planeNormal, crossSectionMaterial);
+        SlicedHull slicedObject = null;
+        if (sliceableObject != null)
+        {
+            slicedObject = sliceableObject.Slice(bladeEnd.position, planeNormal, crossSectionMaterial);
+        }
 
         if (slicedObject != null)
         {
@@ -135,10 +147,17 @@ public class SliceObject : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Slicing failed for {sliceableObject.name}");
+            if (sliceableObject != null)
+            {
+                Debug.LogWarning($"Slicing failed for {sliceableObject.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"Slicing failed for object");
+            }
         }
-    }
 
+    }
 
 
     // Helper function to configure the newly created slice objects

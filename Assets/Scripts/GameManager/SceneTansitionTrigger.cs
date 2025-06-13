@@ -16,7 +16,7 @@ public class SceneTansitionTrigger : MonoBehaviour
     {
         if(screenFader == null)
         {
-            screenFader = GameManager.Instance.GetScreenFader();
+            screenFader = GameManager.Instance?.GetScreenFader();
         }
     }
     void Update()
