@@ -286,7 +286,6 @@ public class WeaponPickup : MonoBehaviour
                 }
             };
         }
-#endif
     }
-
+#endif
 }

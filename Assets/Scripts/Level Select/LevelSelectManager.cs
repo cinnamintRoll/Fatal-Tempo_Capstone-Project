@@ -70,8 +70,8 @@ public class LevelSelectManager : MonoBehaviour
         {
             playerScoreText.gameObject.SetActive(true);
             gradeText.gameObject.SetActive(true);
-                playerScoreText.text = $"{song.playerScore}";
-                gradeText.text = $"{song.letterGrade}";
+            playerScoreText.text = song.playerScore.ToString("D7");
+            gradeText.text = $"{song.letterGrade}";
         }
         else
         {

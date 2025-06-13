@@ -78,6 +78,11 @@ public class EnemyLaserShooter : MonoBehaviour
         {
             OnBulletColliderDestroyed();
         }
+
+        if (isCharging)
+        {
+            CheckForDeflection();       
+        }
     }
 
 
@@ -116,7 +121,7 @@ public class EnemyLaserShooter : MonoBehaviour
     {
         if (player != null)
         {
-            
+
             Vector3 targetDirection = (player.position - transform.position).normalized;
             Quaternion currentRotation = transform.rotation;
 
@@ -124,7 +129,7 @@ public class EnemyLaserShooter : MonoBehaviour
             {
                 // Rotate both horizontally and vertically
                 Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
-                transform.rotation = Quaternion.Slerp(currentRotation, lookRotation * Quaternion.Euler(aimRotationOffset), Time.deltaTime * 10f); // Smooth rotation
+                transform.rotation = Quaternion.Slerp(currentRotation, lookRotation * Quaternion.Euler(aimRotationOffset), Time.deltaTime * 5f); // Smooth rotation
             }
             else if (rotateModelHorizontally)
             {
@@ -134,7 +139,7 @@ public class EnemyLaserShooter : MonoBehaviour
 
                 Quaternion lookRotation = Quaternion.LookRotation(horizontalDirection);
                 Quaternion desiredHorizontalRotation = Quaternion.Euler(0, lookRotation.eulerAngles.y + aimRotationOffset.y, 0);
-                transform.rotation = Quaternion.Slerp(currentRotation, desiredHorizontalRotation, Time.deltaTime * 10f); // Smooth rotation
+                transform.rotation = Quaternion.Slerp(currentRotation, desiredHorizontalRotation, Time.deltaTime * 5f); // Smooth rotation
             }
             // If neither model rotation option is selected, the model's rotation remains unchanged
         }
@@ -192,14 +197,14 @@ public class EnemyLaserShooter : MonoBehaviour
             AimAtPlayer();
             UpdateLaser();
             CheckForDeflection();
-            
+
             yield return null;
         }
-        
+
         // Unsubscribe
         musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
 
-        
+
         // Play shoot sound and shoot
         audioSource.PlayOneShot(shootSound);
         ShootPlayer();
@@ -322,11 +327,17 @@ public class EnemyLaserShooter : MonoBehaviour
     // Function to check for deflection
     private void CheckForDeflection()
     {
-        Vector3 capsuleStart = gunMuzzle.position;
-        Vector3 capsuleEnd = gunMuzzle.position + gunMuzzle.forward * 2f;
+        if (gunMuzzle == null || player == null) return;
+
+        Vector3 origin = gunMuzzle.position;
+
+        // Get direction with aim offset (same as laser visuals)
+        Vector3 laserDirection = (player.position - gunMuzzle.position).normalized;
+        Quaternion offsetRotation = Quaternion.Euler(aimRotationOffset);
+        laserDirection = offsetRotation * laserDirection;
 
         RaycastHit hit;
-        bool hitDeflectable = Physics.CapsuleCast(capsuleStart, capsuleEnd, 0.2f, gunMuzzle.forward, out hit, laserRange, deflectLayer);
+        bool hitDeflectable = Physics.SphereCast(origin, 0.05f, laserDirection, out hit, laserRange, deflectLayer);
 
         if (hitDeflectable && !isDeflected)
         {
@@ -334,4 +345,5 @@ public class EnemyLaserShooter : MonoBehaviour
             isDeflected = true;
         }
     }
+
 }

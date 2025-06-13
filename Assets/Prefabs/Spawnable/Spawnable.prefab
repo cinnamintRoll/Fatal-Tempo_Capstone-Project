@@ -477,6 +477,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: BulletCollider
+      value: 
+      objectReference: {fileID: 2287958805562769490}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: HitDetectWidth
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: rotateModelVertically
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -487,6 +502,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10779f3466d8a9b4b9fff935c1b94178, type: 3}
+--- !u!1 &2287958805562769490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2493210250661592370, guid: 10779f3466d8a9b4b9fff935c1b94178,
+    type: 3}
+  m_PrefabInstance: {fileID: 4420810706283150688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2298008892768452620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2503426363661696364, guid: 10779f3466d8a9b4b9fff935c1b94178,

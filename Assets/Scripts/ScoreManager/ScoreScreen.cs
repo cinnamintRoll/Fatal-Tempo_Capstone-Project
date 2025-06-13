@@ -161,13 +161,14 @@ public class ScoreScreen : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            currentScore = Mathf.Lerp(0, finalScore, t);
-            Output.text = currentScore.ToString("F1");
+            currentScore = Mathf.Round(Mathf.Lerp(0, finalScore, t));
+
+            Output.text = currentScore.ToString();
 
             yield return null;
         }
 
-        Output.text = finalScore.ToString("F1");
+        Output.text = Mathf.Round(finalScore).ToString();
     }
 
     private IEnumerator AnimateSlider(Slider slider, TMP_Text text, int finalValue, float duration, string suffix = "")
