@@ -812,6 +812,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
         type: 3}
+      propertyPath: screenFader
+      value: 
+      objectReference: {fileID: 2086978214914413217}
+    - target: {fileID: 3777142475904961148, guid: ba9f46a71c4f96749b3d89eb23e5812a,
+        type: 3}
       propertyPath: scoringSystem
       value: 
       objectReference: {fileID: 2712192080385080488}

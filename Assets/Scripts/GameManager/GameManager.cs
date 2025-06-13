@@ -1,4 +1,4 @@
-using System.Drawing.Text;
+using BNG;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,14 +6,11 @@ public class GameManager : MonoBehaviour
     // Singleton instance
     public static GameManager Instance { get; private set; }
 
-    // Reference to the player's transform
-    [SerializeField]private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform baseTransform;
     [SerializeField] private BeatScoringSystem scoringSystem;
+    [SerializeField] private ScreenFader screenFader;
 
-    [SerializeField] private ChildCounter TotalEnemyCounter;
-    [SerializeField] private ChildCounter TotalCollectibles;
-    // Public getter for the player's transform
     public Transform PlayerTransform
     {
         get
@@ -38,22 +35,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Awake is called when the script instance is being loaded
     private void Awake()
     {
-        // Check if an instance already exists
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // Destroy this if another instance exists
+            Destroy(gameObject);
         }
         else
         {
-            Instance = this; // Set the instance
-            DontDestroyOnLoad(gameObject); // Make sure the GameManager persists across scenes
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
-    // Method to set the player's transform
     public void SetPlayerTransform(Transform player)
     {
         playerTransform = player;
@@ -64,39 +58,45 @@ public class GameManager : MonoBehaviour
         baseTransform = transform;
     }
 
-    
-
     public int GetTotalCombo()
     {
-        int TotalEnemies = TotalEnemyCounter.CountNestedChildren();
-        int totalCollectibles = TotalCollectibles.CountDirectChildren();
-        return TotalEnemies + totalCollectibles;
+        int totalEnemies = EnemyTracker.Instance != null ? EnemyTracker.Instance.GetTotalEnemyCount() : 0;
+        int totalCollectibles = CollectibleTracker.Instance != null ? CollectibleTracker.Instance.GetTotalCollectibleCount() : 0;
+        return totalEnemies + totalCollectibles;
     }
+
     public int GetTotalSongScore()
     {
-        int TotalEnemies = TotalEnemyCounter.CountNestedChildren();
-
+        int totalEnemies = EnemyTracker.Instance != null ? EnemyTracker.Instance.GetTotalEnemyCount() : 0;
         int maxKillpoints = scoringSystem.MaxWindow;
-
-        int total = (TotalEnemies * maxKillpoints);
-        return total;
+        return totalEnemies * maxKillpoints;
     }
+
     public void SaveSongScore()
     {
-        
         if (MusicManager.Instance != null)
         {
-            /*
-            SongData songDataSave = MusicManager.Instance.song;
-
-            songDataSave.FullCombo = getTotalSongs();
-            songDataSave.maxPoints = GetTotalSongScore();
-            */
-            string SongName = MusicManager.Instance.song.songName;
-            PlayerPrefs.SetString("SongName", SongName);
+            string songName = MusicManager.Instance.song.songName;
+            PlayerPrefs.SetString("SongName", songName);
         }
-        PlayerPrefs.SetInt("TotalMaxPoints",GetTotalSongScore());
+
+        PlayerPrefs.SetInt("TotalMaxPoints", GetTotalSongScore());
         PlayerPrefs.SetInt("FullCombo", GetTotalCombo());
         scoringSystem.SaveScore();
+    }
+
+    public int GetTotalEnemiesKilled()
+    {
+        return EnemyTracker.Instance != null ? EnemyTracker.Instance.GetTotalEnemiesKilled() : 0;
+    }
+
+    public int GetTotalCollectiblesCollected()
+    {
+        return CollectibleTracker.Instance != null ? CollectibleTracker.Instance.GetTotalCollectiblesCollected() : 0;
+    }
+
+    public ScreenFader GetScreenFader()
+    {
+        return screenFader;
     }
 }

@@ -12,6 +12,13 @@ public class SceneTansitionTrigger : MonoBehaviour
     [SerializeField] private float fadeInDelay = 1.0f; // Optional delay before loading the scene
 
     // Update is called once per frame
+    private void OnEnable()
+    {
+        if(screenFader == null)
+        {
+            screenFader = GameManager.Instance.GetScreenFader();
+        }
+    }
     void Update()
     {
 
