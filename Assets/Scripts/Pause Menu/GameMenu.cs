@@ -41,14 +41,17 @@ public class GameMenu : MonoBehaviour
         {
             Time.fixedDeltaTime = (Time.timeScale / UnityEngine.XR.XRDevice.refreshRate);
         }
-
+        audioSource.ignoreListenerPause = true;
         playerHead = Camera.main.transform;
 
         // Ensure menus are initially disabled
         pauseMenuUI.SetActive(false);
         deathMenuUI.SetActive(false);
 
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
         originalFixedDelta = Time.fixedDeltaTime;
 
         if (player != null)
