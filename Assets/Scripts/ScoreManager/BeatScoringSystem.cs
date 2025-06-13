@@ -15,7 +15,6 @@ public class BeatScoringSystem : MonoBehaviour
     private int totalScore = 0;
     private int bestCombo = 0;
 
-    private int totalCollected = 0;
     private int totalHits = 0;
     private bool pulseReceived = false;
     // Scoring windows in milliseconds
@@ -144,7 +143,6 @@ public class BeatScoringSystem : MonoBehaviour
     public void OnItemCollected(int itemValue)
     {
         totalScore += itemValue;
-        totalCollected++;
 
         Debug.Log($"Item Collected! Total Score: {totalScore}");
 
@@ -171,11 +169,20 @@ public class BeatScoringSystem : MonoBehaviour
     public void SaveScore()
     {
         PlayerPrefs.SetInt("SongScore", totalScore);
-        PlayerPrefs.SetInt("TotalCollected", totalCollected);
         PlayerPrefs.SetInt("TotalHits", totalHits);
         PlayerPrefs.SetInt("BestCombo", bestCombo);
-    }
 
-    public int GetTotalCollected() => totalCollected;
+        if (EnemyTracker.Instance != null)
+        {
+            PlayerPrefs.SetInt("TotalEnemies", EnemyTracker.Instance.GetTotalEnemyCount());
+            PlayerPrefs.SetInt("EnemiesKilled", EnemyTracker.Instance.GetTotalEnemiesKilled());
+        }
+
+        if (CollectibleTracker.Instance != null)
+        {
+            PlayerPrefs.SetInt("MaxCollected", CollectibleTracker.Instance.GetTotalCollectibleCount());
+            PlayerPrefs.SetInt("TotalCollected", CollectibleTracker.Instance.GetTotalCollectiblesCollected());
+        }
+    }
     public int GetTotalHits() => totalHits;
 }

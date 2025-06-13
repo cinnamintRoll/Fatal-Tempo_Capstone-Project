@@ -62,6 +62,11 @@ public class Collectible : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        CollectibleTracker.Instance.RegisterCollectible(gameObject);
+    }
+
     private void Update()
     {
         // Rotate the child visuals if Spin is enabled and VisualChild is assigned
@@ -103,7 +108,7 @@ public class Collectible : MonoBehaviour
 
         // Award points to the collector
         collector.CollectItem(CoinValue);
-
+        CollectibleTracker.Instance.UnregisterCollectibleCollected(gameObject);
         // Destroy or respawn logic
         if (DestroyOnCollect)
         {

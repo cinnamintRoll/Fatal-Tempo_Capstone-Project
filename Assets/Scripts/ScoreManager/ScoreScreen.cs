@@ -49,33 +49,48 @@ public class ScoreScreen : MonoBehaviour
             int totalHits = PlayerPrefs.GetInt("TotalHits");
             int bestCombo = PlayerPrefs.GetInt("BestCombo");
             int totalMaxPoints = PlayerPrefs.GetInt("TotalMaxPoints");
-            int totalCollected = PlayerPrefs.GetInt("TotalCollected");
 
-            StartCoroutine(ShowScoreScreen(playerScore, bestCombo, totalHits, fullCombo, totalCollected, totalMaxPoints, songName));
+            int totalCollected = PlayerPrefs.GetInt("TotalCollected");
+            int maxCollected = PlayerPrefs.GetInt("MaxCollected");
+
+            int enemiesKilled = PlayerPrefs.GetInt("EnemiesKilled");
+            int totalEnemies = PlayerPrefs.GetInt("TotalEnemies");
+
+            StartCoroutine(ShowScoreScreen(playerScore, bestCombo, totalHits, fullCombo, totalCollected, maxCollected, enemiesKilled, totalEnemies, totalMaxPoints, songName));
         }
     }
 
-    private IEnumerator ShowScoreScreen(int playerScore, int bestCombo, int totalHits, int fullCombo, int totalCollected, int totalMaxPoints, string songName)
+    private IEnumerator ShowScoreScreen(
+    int playerScore,
+    int bestCombo,
+    int totalHits,
+    int fullCombo,
+    int totalCollected,
+    int maxCollected,
+    int enemiesKilled,
+    int totalEnemies,
+    int totalMaxPoints,
+    string songName)
     {
-        //_SelectedSong = SongList.Find(song => song.songName == songName);
-
         _SelectedSong = AlbumDatabase.Instance.GetSongFromAlbums(songName);
 
         songNameText.text = _SelectedSong.songName;
         albumCoverImage.sprite = _SelectedSong.AlbumCover;
+
         yield return AnimateScoreAndGrade(playerScore, totalMaxPoints, ScoreAnimationDuration);
-        yield return AnimateNumber(CalorieTrackerManager.Instance.GetCalories(),1.5f,caloriesText);
+        yield return AnimateNumber(CalorieTrackerManager.Instance.GetCalories(), 1.5f, caloriesText);
         yield return AnimateNumber(bestCombo, 1.5f, comboText);
 
-        killText.text = $"0 {fullCombo}";
-        yield return AnimateSlider(killSlider, killText, totalHits, 1f, fullCombo.ToString());
+        // Enemy kills
+        killText.text = $"0 {totalEnemies}";
+        yield return AnimateSlider(killSlider, killText, enemiesKilled, 1f, totalEnemies.ToString());
 
-        collectibleText.text = $"0 {totalCollected}";
-        yield return AnimateSlider(collectibleSlider, collectibleText, totalCollected, 1f, totalCollected.ToString());
+        // Collectibles
+        collectibleText.text = $"0 {maxCollected}";
+        yield return AnimateSlider(collectibleSlider, collectibleText, totalCollected, 1f, maxCollected.ToString());
 
         string finalGrade = CalculateGrade(playerScore, totalMaxPoints);
 
-        
         if (_SelectedSong != null)
         {
             if (playerScore > _SelectedSong.playerScore)
@@ -98,6 +113,8 @@ public class ScoreScreen : MonoBehaviour
         {
             Debug.LogWarning("SongData not found for: " + songName);
         }
+
+        // Clean up PlayerPrefs
         PlayerPrefs.DeleteKey("SongName");
         PlayerPrefs.DeleteKey("SongScore");
         PlayerPrefs.DeleteKey("FullCombo");
@@ -105,8 +122,13 @@ public class ScoreScreen : MonoBehaviour
         PlayerPrefs.DeleteKey("BestCombo");
         PlayerPrefs.DeleteKey("TotalMaxPoints");
         PlayerPrefs.DeleteKey("TotalCollected");
+        PlayerPrefs.DeleteKey("MaxCollected");
+        PlayerPrefs.DeleteKey("EnemiesKilled");
+        PlayerPrefs.DeleteKey("TotalEnemies");
+
         CalorieTrackerManager.Instance.ResetCalories();
     }
+
 
     private IEnumerator AnimateScoreAndGrade(int finalScore, int maxScore, float duration)
     {

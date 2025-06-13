@@ -84,24 +84,21 @@ public class SliceObject : MonoBehaviour
 
                 GameObject bakedObject = new GameObject(sliceableObject.name + "_Baked");
                 bakedObject.transform.SetPositionAndRotation(skinnedRenderer.transform.position, skinnedRenderer.transform.rotation);
-                bakedObject.transform.localScale = skinnedRenderer.transform.lossyScale;
+                bakedObject.transform.localScale = skinnedRenderer.transform.localScale;
 
                 MeshFilter meshFilter = bakedObject.AddComponent<MeshFilter>();
                 meshFilter.sharedMesh = bakedMesh;
 
                 MeshRenderer meshRenderer = bakedObject.AddComponent<MeshRenderer>();
                 meshRenderer.materials = skinnedRenderer.sharedMaterials;
-
                 bakedObject.layer = sliceableObject.layer;
                 bakedObject.transform.parent = null; // important!
 
                 sliceableObject.SetActive(false);
                 sliceableObject = bakedObject;
-
-                yield return new WaitForEndOfFrame(); // after replacement
             }
-
         }
+        yield return new WaitForEndOfFrame(); // after replacement
         // Slicing logic
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
         Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);

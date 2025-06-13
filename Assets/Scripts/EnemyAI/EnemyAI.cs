@@ -67,6 +67,7 @@ public class EnemyAI : MonoBehaviour
     void OnEnable()
     {
         UpdateEnemyVisuals();
+        EnemyTracker.Instance?.RegisterEnemy(gameObject);
         navMeshAgent = GetComponent<NavMeshAgent>();
         SetRandomChaseUpdateInterval(); // Set a random initial update interval
         PlayerHealth = PlayerHealth.Instance;
@@ -77,6 +78,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         ApplyInitialAnimationState();
+
     }
 
     public void UpdateEnemyVisuals()
@@ -133,6 +135,11 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Despawn:
                 HandleDespawn();
                 break;
+        }
+
+        if (health <= 0f)
+        {
+            TransitionToState(EnemyState.Death);
         }
 
         if (!EnemyVisuals)
@@ -306,29 +313,35 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
     }
-
-    // Handle Death State
     void HandleDeath()
     {
-        if (!isDead)
+        if (isDead) return;
+
+        Debug.Log("Enemy has died");
+
+        if (PlayerHealth)
         {
-            Debug.Log("Enemy has died");
-            if (PlayerHealth)
-            {
-                PlayerHealth.KillEnemy(this.transform.position);
-                isDead = true;
-            }
-            TransitionToState(EnemyState.Despawn);
+            PlayerHealth.KillEnemy(this.transform.position);
         }
+
+        isDead = true;
+
+        EnemyTracker.Instance?.UnregisterEnemyKilled(gameObject);
+        TransitionToState(EnemyState.Despawn);
     }
 
     public void HandleDespawn()
     {
-        if (!isDespawning) 
+        if (isDespawning) return;
+
+        isDespawning = true;
+
+        if (!isDead)
         {
-            Destroy(gameObject, 4f);
-            isDespawning = true;
+            EnemyTracker.Instance?.UnregisterEnemyDespawned(gameObject);
         }
+
+        Destroy(gameObject, 4f);
     }
 
     // Enemy takes damage and checks for death

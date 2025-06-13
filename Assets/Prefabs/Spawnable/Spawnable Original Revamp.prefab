@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 3052645029118849325}
   - component: {fileID: 470241679185221588}
   - component: {fileID: 1750321357117168799}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FairyWings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,6 +1476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7920382096636392883, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920382096636392883, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
       propertyPath: Enemies.Array.data[0].EnemyAnim
       value: 
       objectReference: {fileID: 4167342809943903791}
@@ -1539,6 +1544,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawnable Original Revamp
       objectReference: {fileID: 0}
+    - target: {fileID: 9191761013507417726, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: Bullethit
+      value: 
+      objectReference: {fileID: 3902013421607448055}
     - target: {fileID: 9191761013507417726, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: ObjectVisuals

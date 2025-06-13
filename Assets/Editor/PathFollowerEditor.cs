@@ -85,19 +85,27 @@ public class PathFollowerEditor : Editor
         }
 
         int count = 0;
-        // Iterate through all immediate children of the pathParent
-        foreach (Transform child in pathFollower.pathParent)
+
+        void TraverseAndReshow(Transform parent)
         {
-            GeneralSpawner spawner = child.GetComponent<GeneralSpawner>();
-            if (spawner != null)
+            foreach (Transform child in parent)
             {
-                // Call the ReShowEnemyVisuals method on the GeneralSpawner
-                spawner.ReShowAllSpawnerVisuals();
-                count++;
+                TraverseAndReshow(child); // Go deeper
+
+                GeneralSpawner spawner = child.GetComponent<GeneralSpawner>();
+                if (spawner != null)
+                {
+                    spawner.ReShowAllSpawnerVisuals();
+                    count++;
+                }
             }
         }
+
+        TraverseAndReshow(pathFollower.pathParent);
+
         Debug.Log($"Re-showed visuals for {count} GeneralSpawner(s) under PathParent.");
     }
+
 
     private void GenerateSpawnTriggers()
     {
@@ -171,18 +179,26 @@ public class PathFollowerEditor : Editor
     {
         if (pathFollower.pathParent == null) return;
 
-        foreach (Transform child in pathFollower.pathParent)
+        void TraverseAndReshuffle(Transform parent)
         {
-            GeneralSpawner spawner = child.GetComponent<GeneralSpawner>();
-            if (spawner != null)
+            foreach (Transform child in parent)
             {
-                Undo.RecordObject(spawner, "Reshuffle Spawner");
-                spawner.RandomlyPickSpawn();
+                TraverseAndReshuffle(child); // Go deeper
+
+                GeneralSpawner spawner = child.GetComponent<GeneralSpawner>();
+                if (spawner != null)
+                {
+                    Undo.RecordObject(spawner, "Reshuffle Spawner");
+                    spawner.RandomlyPickSpawn();
+                }
             }
         }
 
+        TraverseAndReshuffle(pathFollower.pathParent);
+
         EditorUtility.SetDirty(pathFollower);
     }
+
 
     void OnSceneGUI()
     {
@@ -349,57 +365,69 @@ public class PathFollowerEditor : Editor
 
         int replacedCount = 0;
 
-        foreach (Transform child in pathFollower.pathParent)
+        // Recursive function to traverse all children
+        void TraverseAndReplace(Transform parent)
         {
-            GeneralSpawner oldSpawner = child.GetComponent<GeneralSpawner>();
-            if (oldSpawner == null) continue;
-
-            GameObject prefabSource = PrefabUtility.GetCorrespondingObjectFromSource(child.gameObject);
-            if (prefabSource == pathFollower.spawnTriggerPrefab)
-                continue; // Already correct prefab
-
-            // Store data
-            Vector3 pos = child.position;
-            Quaternion rot = child.rotation;
-            string name = child.name;
-            int siblingIndex = child.GetSiblingIndex();
-
-            int oldSpawnIndex = oldSpawner.spawnIndex;
-            Vector3? spawnPointPos = oldSpawner.spawnPoint ? oldSpawner.spawnPoint.position : null;
-            Vector3? movePointPos = oldSpawner.movepoint ? oldSpawner.movepoint.position : null;
-            string selectedEnemyName = oldSpawner.enemy ? oldSpawner.enemy.selectedEnemyName : null;
-
-            Undo.DestroyObjectImmediate(child.gameObject);
-
-            GameObject newGO = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.spawnTriggerPrefab);
-            newGO.name = name;
-            newGO.transform.position = pos;
-            newGO.transform.rotation = rot;
-            newGO.transform.SetParent(pathFollower.pathParent);
-            newGO.transform.SetSiblingIndex(siblingIndex); // Maintain original order
-
-            GeneralSpawner newSpawner = newGO.GetComponent<GeneralSpawner>();
-            if (newSpawner != null)
+            foreach (Transform child in parent)
             {
-                newSpawner.spawnIndex = oldSpawnIndex;
+                // First, go deeper
+                TraverseAndReplace(child);
 
-                if (newSpawner.spawnPoint && spawnPointPos.HasValue)
-                    newSpawner.spawnPoint.position = spawnPointPos.Value;
+                GeneralSpawner oldSpawner = child.GetComponent<GeneralSpawner>();
+                if (oldSpawner == null) continue;
 
-                if (newSpawner.movepoint && movePointPos.HasValue)
-                    newSpawner.movepoint.position = movePointPos.Value;
+                GameObject prefabSource = PrefabUtility.GetCorrespondingObjectFromSource(child.gameObject);
+                if (prefabSource == pathFollower.spawnTriggerPrefab)
+                    continue; // Already correct prefab
 
-                if (newSpawner.enemy)
-                    newSpawner.enemy.selectedEnemyName = selectedEnemyName;
+                // Store data
+                Vector3 pos = child.position;
+                Quaternion rot = child.rotation;
+                string name = child.name;
+                Transform originalParent = child.parent;
+                int siblingIndex = child.GetSiblingIndex();
+
+                int oldSpawnIndex = oldSpawner.spawnIndex;
+                Vector3? spawnPointPos = oldSpawner.spawnPoint ? oldSpawner.spawnPoint.position : null;
+                Vector3? movePointPos = oldSpawner.movepoint ? oldSpawner.movepoint.position : null;
+                string selectedEnemyName = oldSpawner.enemy ? oldSpawner.enemy.selectedEnemyName : null;
+
+                Undo.DestroyObjectImmediate(child.gameObject);
+
+                GameObject newGO = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.spawnTriggerPrefab);
+                newGO.name = name;
+                newGO.transform.position = pos;
+                newGO.transform.rotation = rot;
+                newGO.transform.SetParent(originalParent);
+                newGO.transform.SetSiblingIndex(siblingIndex); // Maintain original order
+
+                GeneralSpawner newSpawner = newGO.GetComponent<GeneralSpawner>();
+                if (newSpawner != null)
+                {
+                    newSpawner.spawnIndex = oldSpawnIndex;
+
+                    if (newSpawner.spawnPoint && spawnPointPos.HasValue)
+                        newSpawner.spawnPoint.position = spawnPointPos.Value;
+
+                    if (newSpawner.movepoint && movePointPos.HasValue)
+                        newSpawner.movepoint.position = movePointPos.Value;
+
+                    if (newSpawner.enemy)
+                        newSpawner.enemy.selectedEnemyName = selectedEnemyName;
+                }
+
+                Undo.RegisterCreatedObjectUndo(newGO, "Replace Spawnable");
+                replacedCount++;
             }
-
-            Undo.RegisterCreatedObjectUndo(newGO, "Replace Spawnable");
-            replacedCount++;
         }
+
+        TraverseAndReplace(pathFollower.pathParent);
+
         ReShowAllSpawnerVisuals();
         Debug.Log($"Replaced {replacedCount} spawnable(s) with current prefab.");
         EditorUtility.SetDirty(pathFollower);
     }
+
 
 
 

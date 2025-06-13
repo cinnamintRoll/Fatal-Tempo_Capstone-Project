@@ -146,6 +146,7 @@ Transform:
   - {fileID: 2408443560535500868}
   - {fileID: 680913421902866249}
   - {fileID: 3125888227750202082}
+  - {fileID: 8384710829505175557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146897785073434141
@@ -795,6 +796,67 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4965999994169952258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8384710829505175557}
+  - component: {fileID: 291827389540098565}
+  - component: {fileID: 5949158904460797520}
+  m_Layer: 0
+  m_Name: EnemyTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8384710829505175557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965999994169952258}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.13027282, y: -0.26640192, z: 0.51554865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7778916929767366613}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291827389540098565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965999994169952258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c365ee1fd2c1e544a8e0a4f165d85888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalEnemiesSpawned: 0
+  totalEnemiesKilled: 0
+--- !u!114 &5949158904460797520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965999994169952258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770fb5db8368ed34092f92fdefc81d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalCollectiblesSpawned: 0
+  totalCollectiblesCollected: 0
 --- !u!1 &5025336638337098075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1305,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   damageClip: {fileID: 0}
   healClip: {fileID: 0}
+  FullHealth: {fileID: 0}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -1296,8 +1359,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463319ce7c72e31429fb399c252c8167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWeightKg: 70
+  baseCalorieMultiplier: 0.005
+  headWeightFactor: 1.2
+  handWeightFactor: 0.8
   totalCalories: 0
-  calorieMultiplier: 0.005
 --- !u!1 &7643537928328398844
 GameObject:
   m_ObjectHideFlags: 0
