@@ -5152,10 +5152,10 @@ MonoBehaviour:
   gunBarrel: {fileID: 7477877484400062150}
   muzzleFlash: {fileID: 4210409575806939332}
   muzzleSound: {fileID: 5731588917443839834}
-  GunShotSound: {fileID: 8300000, guid: 8ca48e9387f3cd549b795f4517d530ef, type: 3}
-  GunShotVolume: 1
+  GunShotSound: {fileID: 8300000, guid: 727ff3abbdb797f45b714a1795efc4e2, type: 3}
+  GunShotVolume: 2
   EmptySound: {fileID: 8300000, guid: 2fd08de76faac0d46a95ff13ae5d85f2, type: 3}
-  EmptyVolume: 1
+  EmptyVolume: 0.88
   ReloadSound: {fileID: 5831267363417372506}
   GunReloadSound: {fileID: 8300000, guid: f6cc3db65c5f89643b4df4f3c1307429, type: 3}
   ReloadVolume: 2

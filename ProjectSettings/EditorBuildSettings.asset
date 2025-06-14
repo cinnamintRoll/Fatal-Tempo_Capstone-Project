@@ -14,15 +14,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerMovement.unity
     guid: 4c5bf45c54315fa438ac94fedf70a53d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demos/Player Dodge.unity
     guid: 6dcdd9221c9374047b554bd9acd2c83f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demos/Gun.unity
     guid: 9ff5a292329549f4ca0c60cdf70b9161
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demos/Sword.unity
     guid: f423b4bff78c5e74991fafe4c42eb085
+  - enabled: 1
+    path: Assets/Scenes/LevelTemplate.unity
+    guid: 6a3f6e02d8110124e86c7bf842edb806
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: af250942fbab23045b0dc9c32937cb57
   - enabled: 0
     path: Assets/BNG Framework/Scenes/XR Demo.unity
     guid: a1360534006d3f845bc79b46b93cfec5
@@ -41,9 +47,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/BNG Framework/Scenes/Quest Demo.unity
     guid: eac0312c32df12949a47d07747a9d1cd
-  - enabled: 1
-    path: Assets/Scenes/LevelTemplate.unity
-    guid: 6a3f6e02d8110124e86c7bf842edb806
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26feecbe57149db47821aeb790abb369,
       type: 2}

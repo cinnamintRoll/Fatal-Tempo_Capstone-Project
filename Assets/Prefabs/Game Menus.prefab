@@ -686,7 +686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1466612519982394874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -890,6 +890,7 @@ MonoBehaviour:
   pauseClip: {fileID: 8300000, guid: ccf09de43bfc3d74a81972e64344be0d, type: 3}
   resumeClip: {fileID: 0}
   deathClip: {fileID: 8300000, guid: 1533f9bdac7f70c42b064ea31055f300, type: 3}
+  audioSource: {fileID: 2543767206776022013}
   pointer: {fileID: 0}
   heightOffset: 0
   player: {fileID: 1767449684563320819}

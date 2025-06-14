@@ -17,7 +17,7 @@ public class GameMenu : MonoBehaviour
 
     private Transform playerHead;  // Reference to the player's head (e.g., VR camera)
     private bool isPaused = false; // Tracks if the game is paused
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     private float originalFixedDelta;
     [SerializeField] private UIPointer pointer;
     [SerializeField] private float heightOffset;

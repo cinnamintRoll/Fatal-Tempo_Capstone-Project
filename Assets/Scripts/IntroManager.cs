@@ -8,7 +8,7 @@ public class IntroManager : MonoBehaviour
 {
     [SerializeField] private GameObject IntroMenu;
 
-    [SerializeField] private LocomotionManager LocomotionManager;
+    [SerializeField] private CharacterController controller;
 
     private string SkipKey = "GeneratorIsOn";
 
@@ -23,13 +23,13 @@ public class IntroManager : MonoBehaviour
         else
         {
             Debug.Log("Movement Disabled");
-            LocomotionManager.enabled = false;
+            controller.enabled = false;
         }
     }
 
     public void closeMenu()
     {
-        LocomotionManager.ChangeLocomotion(LocomotionType.SmoothLocomotion, true);
+        controller.enabled = true;
         IntroMenu?.SetActive(false);    
     }
 

@@ -158,10 +158,7 @@ MonoBehaviour:
   selectedEnemyName: Melee
   player: {fileID: 0}
   pointToMove: {fileID: 6703420398490604162}
-  chaseRange: 10
   attackRange: 1.7
-  rangedAttackRange: 15
-  attackCooldown: 1.5
   behindDistanceThreshold: 0.5
   SniperScript: {fileID: 257860668715290660}
   navMeshAgent: {fileID: 8657918786939254158}
@@ -979,61 +976,6 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &9025824210705560627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 571818277236801891}
-  - component: {fileID: 7400191801658403829}
-  m_Layer: 11
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &571818277236801891
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025824210705560627}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8546954814382596081}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7400191801658403829
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025824210705560627}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9166686580776420700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,7 +1293,7 @@ PrefabInstance:
     - target: {fileID: 7209850760775582231, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7329586837948845197, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
@@ -1416,19 +1358,7 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 2874121505840388758}
-    - targetCorrespondingSourceObject: {fileID: 6534503280532838713, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 571818277236801891}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7209850760775582231, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5838369142186078426}
-    - targetCorrespondingSourceObject: {fileID: 7209850760775582231, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6916064353884855475}
     - targetCorrespondingSourceObject: {fileID: 7329586837948845197, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
         type: 3}
       insertIndex: -1
@@ -1464,63 +1394,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3185129065574958792}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5838369142186078426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5205408086231467231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6de38f13d6b1443b2c5a5a20ac08d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 1
-  SelfDestruct: 0
-  SelfDestructDelay: 0.1
-  SpawnOnDeath: {fileID: 0}
-  ActivateGameObjectsOnDeath: []
-  DeactivateGameObjectsOnDeath: []
-  DeactivateCollidersOnDeath: []
-  DestroyOnDeath: 0
-  DropOnDeath: 0
-  ReportToEnemyScriptOnDamage: 1
-  _enemyAI: {fileID: 0}
-  DestroyDelay: 0
-  Respawn: 0
-  RespawnTime: 10
-  RemoveBulletHolesOnDeath: 1
-  onDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  onDestroyed:
-    m_PersistentCalls:
-      m_Calls: []
-  onRespawn:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!135 &6916064353884855475
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5205408086231467231}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5297418878896294469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7329586837948845197, guid: 51e4372ec740e7c42bd84bf1e83e96b0,
