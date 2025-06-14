@@ -32,16 +32,12 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
     public Transform pointToMove;
-    public float chaseRange = 10f;
     public float attackRange = 2f; // Melee attack range
-    public float rangedAttackRange = 15f; // Ranged or sniper attack range
-    public float attackCooldown = 1.5f;
     // Define a threshold distance for detecting enemies behind the player
     public float behindDistanceThreshold = 2f;
 
     [SerializeField]private EnemyLaserShooter SniperScript;
     [SerializeField] private NavMeshAgent navMeshAgent;
-    private float lastAttackTime = 0f;
     private GameObject EnemyVisuals;
     public float health = 100f; // Enemy's health
 
@@ -67,7 +63,6 @@ public class EnemyAI : MonoBehaviour
 
     void OnEnable()
     {
-       
         UpdateEnemyVisuals();
         EnemyTracker.Instance?.RegisterEnemy(gameObject);
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -108,13 +103,11 @@ public class EnemyAI : MonoBehaviour
         {
             EnemyVisuals = selectedEnemy.EnemyObject;
             ApplyHealthToDamageables(EnemyVisuals);
+            health = selectedEnemy.EnemyHealth;
         }
 
         selectedAnimator = selectedEnemy.EnemyAnim;
     }
-
-
-
     void Update()
     {
         switch (currentState)
@@ -237,7 +230,7 @@ public class EnemyAI : MonoBehaviour
             switch (selectedEnemyName.ToLower())
             {
                 case "melee":
-                    if (selectedAnimator = null)
+                    if (selectedAnimator == null)
                     {
                         DamagePlayer();
                     }
@@ -415,17 +408,9 @@ public class EnemyAI : MonoBehaviour
     bool IsEnemyBehindPlayer()
     {
         Transform baseTransform = GameManager.Instance.BaseTransform;
-
-        // Get the direction from the player to the enemy
         Vector3 directionToEnemy = (transform.position - baseTransform.position).normalized;
-
-        // Get the distance from the player to the enemy
         float distanceToEnemy = Vector3.Distance(transform.position, baseTransform.position);
-
-        // Check the dot product of the player's forward direction and the direction to the enemy
         float dotProduct = Vector3.Dot(baseTransform.forward, directionToEnemy);
-
-        // If the dotProduct is less than 0 and the distance is greater than the threshold, the enemy is behind and far enough
         return dotProduct < 0 && distanceToEnemy > behindDistanceThreshold;
     }
 
@@ -513,22 +498,31 @@ public class EnemyAI : MonoBehaviour
 
 }
 
-
-
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(EnemyTypeDropdownAttribute))]
 public class EnemyTypeDropdownDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        var enemyAI = property.serializedObject.targetObject as EnemyAI;
-        if (enemyAI == null)
+        UnityEngine.Object target = property.serializedObject.targetObject;
+        List<Enemies> enemyList = null;
+        EnemyAI enemyAI = null;
+        EnemyAIManager manager = null;
+
+        if (target is EnemyAI ai)
         {
-            EditorGUI.PropertyField(position, property, label);
-            return;
+            enemyAI = ai;
+            enemyList = ai.Enemies;
+        }
+        else if (target is EnemyAIManager mgr)
+        {
+            manager = mgr;
+            enemyAI = mgr.GetComponentInChildren<EnemyAI>();
+            if (enemyAI != null)
+                enemyList = enemyAI.Enemies;
         }
 
-        if (enemyAI.Enemies == null || enemyAI.Enemies.Count == 0)
+        if (enemyList == null || enemyList.Count == 0)
         {
             EditorGUI.LabelField(position, label.text, "No enemies defined");
             return;
@@ -537,10 +531,10 @@ public class EnemyTypeDropdownDrawer : PropertyDrawer
         List<string> names = new List<string>();
         int currentIndex = -1;
 
-        for (int i = 0; i < enemyAI.Enemies.Count; i++)
+        for (int i = 0; i < enemyList.Count; i++)
         {
-            names.Add(enemyAI.Enemies[i].EnemyName);
-            if (enemyAI.Enemies[i].EnemyName == property.stringValue)
+            names.Add(enemyList[i].EnemyName);
+            if (enemyList[i].EnemyName == property.stringValue)
                 currentIndex = i;
         }
 
@@ -553,11 +547,24 @@ public class EnemyTypeDropdownDrawer : PropertyDrawer
         {
             property.stringValue = newSelection;
             property.serializedObject.ApplyModifiedProperties();
-            enemyAI.UpdateEnemyVisuals(); // Only call if value actually changed
-            EditorUtility.SetDirty(enemyAI);
+
+            if (enemyAI != null)
+            {
+                enemyAI.selectedEnemyName = newSelection;
+                enemyAI.UpdateEnemyVisuals();
+                EditorUtility.SetDirty(enemyAI);
+            }
+
+            if (manager != null)
+            {
+                manager.selectedEnemyName = newSelection;
+                manager.ApplyChangesToEnemy(); // Ensure visual + stats update
+                EditorUtility.SetDirty(manager);
+            }
         }
     }
 }
 
 public class EnemyTypeDropdownAttribute : PropertyAttribute { }
 #endif
+
