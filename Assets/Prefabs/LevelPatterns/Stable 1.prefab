@@ -194,6 +194,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3108906595845759022, guid: 183a8ea581f98584f916c18155adb5bd, type: 3}
@@ -312,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -332,6 +337,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -458,6 +468,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -577,6 +592,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -694,7 +714,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -714,6 +734,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -833,7 +858,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -853,6 +878,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -972,7 +1002,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -992,6 +1022,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1118,6 +1153,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1235,7 +1275,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -1255,6 +1295,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1381,6 +1426,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1498,7 +1548,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -1518,6 +1568,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1637,7 +1692,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -1657,6 +1712,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1788,6 +1848,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1905,7 +1970,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -1925,6 +1990,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2044,7 +2114,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -2064,6 +2134,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2195,6 +2270,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2324,6 +2404,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2441,7 +2526,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -2461,6 +2546,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2587,6 +2677,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2614,12 +2709,12 @@ PrefabInstance:
     - target: {fileID: 2603591470524912933, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3245722232465626473, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3914211398426076834, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -2689,7 +2784,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -2709,6 +2804,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2828,7 +2928,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -2848,6 +2948,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2979,6 +3084,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3103,6 +3213,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3220,7 +3335,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -3240,6 +3355,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3369,6 +3489,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3607,7 +3732,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -3627,6 +3752,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3746,7 +3876,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -3766,6 +3896,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3885,7 +4020,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -3905,6 +4040,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4031,6 +4171,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4148,7 +4293,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -4168,6 +4313,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4287,7 +4437,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -4307,6 +4457,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4426,7 +4581,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -4446,6 +4601,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4570,6 +4730,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4820,6 +4985,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4937,7 +5107,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -4957,6 +5127,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5088,6 +5263,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5212,6 +5392,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5334,6 +5519,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5465,6 +5655,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5582,7 +5777,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -5602,6 +5797,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5728,6 +5928,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5845,7 +6050,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -5865,6 +6070,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5984,7 +6194,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -6004,6 +6214,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6135,6 +6350,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6252,7 +6472,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -6272,6 +6492,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6398,6 +6623,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6515,7 +6745,7 @@ PrefabInstance:
     - target: {fileID: 5445751337920672434, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: selectedEnemyName
-      value: Sniper
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 6412094956577089623, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
@@ -6535,6 +6765,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6654,6 +6889,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

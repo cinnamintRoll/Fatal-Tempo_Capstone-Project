@@ -710,6 +710,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2174,6 +2179,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2430,6 +2440,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4169,6 +4184,11 @@ PrefabInstance:
       propertyPath: spawnIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4425,6 +4445,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4693,6 +4718,11 @@ PrefabInstance:
     - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
         type: 3}
       propertyPath: spawnIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512368455037900012, guid: 183a8ea581f98584f916c18155adb5bd,
+        type: 3}
+      propertyPath: _previousSpawnIndex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
