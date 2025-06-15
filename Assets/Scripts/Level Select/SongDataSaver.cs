@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Needed for scene events
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SongSaveData
@@ -22,19 +22,16 @@ public class SongSaveCollection
 
 public class SongDataSaver : MonoBehaviour
 {
-    [SerializeField] private List<SongData> songList;
     private string savePath => Path.Combine(Application.persistentDataPath, "songScores.json");
 
     private void Start()
     {
         LoadFromJson();
-        // Register to scene unload event to save automatically on scene change
         SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnDestroy()
     {
-        // Unregister event when object destroyed
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
@@ -43,17 +40,35 @@ public class SongDataSaver : MonoBehaviour
         SaveToJson();
     }
 
-    // Call this from your Score Screen "Close" button or method when exiting score screen UI
     public void OnScoreScreenExit()
     {
         SaveToJson();
     }
 
+    private List<SongData> GetAllSongsFromAlbums()
+    {
+        List<SongData> songs = new List<SongData>();
+
+        if (AlbumDatabase.Instance == null)
+        {
+            Debug.LogWarning("AlbumDatabase instance not found!");
+            return songs;
+        }
+
+        foreach (var album in AlbumDatabase.Instance.allAlbums)
+        {
+            songs.AddRange(album.songs);
+        }
+
+        return songs;
+    }
+
     public void SaveToJson()
     {
         var collection = new SongSaveCollection();
+        var allSongs = GetAllSongsFromAlbums();
 
-        foreach (var song in songList)
+        foreach (var song in allSongs)
         {
             collection.songs.Add(new SongSaveData
             {
@@ -81,10 +96,11 @@ public class SongDataSaver : MonoBehaviour
 
         string json = File.ReadAllText(savePath);
         SongSaveCollection collection = JsonUtility.FromJson<SongSaveCollection>(json);
+        var allSongs = GetAllSongsFromAlbums();
 
         foreach (var save in collection.songs)
         {
-            var song = songList.Find(s => s.songName == save.songName);
+            var song = allSongs.Find(s => s.songName == save.songName);
             if (song != null)
             {
                 song.playerScore = save.playerScore;

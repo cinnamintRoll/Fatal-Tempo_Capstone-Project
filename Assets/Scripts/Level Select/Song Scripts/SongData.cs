@@ -1,5 +1,8 @@
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Song Data", menuName = "Level Select/Song Data")]
 public class SongData : ScriptableObject
@@ -7,17 +10,34 @@ public class SongData : ScriptableObject
     public string songName;
     public string artistName;
 
-    [TextArea(3, 10)]  // Multiline text area with min 3 and max 10 lines
+    [TextArea(3, 10)]
     public string songDescription;
 
     public Sprite AlbumCover;
     public AudioClip songClip;
-    public string sceneName;  // Name of the scene to load
 
-    // Performance-related fields
+#if UNITY_EDITOR
+    public SceneAsset sceneAsset; // Drag-and-drop scene reference in Editor
+#endif
+
+    // For runtime use
+    [HideInInspector]
+    public string sceneName;
+
     public int playerScore;
-    public string letterGrade; // Example: "S", "A", "B", etc.
+    public string letterGrade;
     public int HighestCombo;
-    public int FullCombo;      // Number of successful hits
-    public int maxPoints;        // Total number of possible hits
+    public int FullCombo;
+    public int maxPoints;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (sceneAsset != null)
+        {
+            string path = AssetDatabase.GetAssetPath(sceneAsset);
+            sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
+        }
+    }
+#endif
 }
