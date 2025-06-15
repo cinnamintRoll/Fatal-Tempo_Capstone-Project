@@ -35,14 +35,14 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private float ScoreAnimationDuration = 1.5f;
     private bool isNewHighScore = false;
 
-    private void Start()
+    private void OnEnable()
     {
         string songName = PlayerPrefs.GetString("SongName");
 
         if (!string.IsNullOrEmpty(songName))
         {
-            _ScoreScreen.SetActive(true);
             _LevelSelect.SetActive(false);
+            _ScoreScreen.SetActive(true);
 
             int playerScore = PlayerPrefs.GetInt("SongScore");
             int fullCombo = PlayerPrefs.GetInt("FullCombo");
@@ -55,6 +55,10 @@ public class ScoreScreen : MonoBehaviour
 
             int enemiesKilled = PlayerPrefs.GetInt("EnemiesKilled");
             int totalEnemies = PlayerPrefs.GetInt("TotalEnemies");
+
+            AudioSource levelselectsource = _LevelSelectManager.audioSource;
+            levelselectsource.clip = AlbumDatabase.Instance.GetSongFromAlbums(songName).songClip;
+            levelselectsource.Play();
 
             StartCoroutine(ShowScoreScreen(playerScore, bestCombo, totalHits, fullCombo, totalCollected, maxCollected, enemiesKilled, totalEnemies, totalMaxPoints, songName));
         }
