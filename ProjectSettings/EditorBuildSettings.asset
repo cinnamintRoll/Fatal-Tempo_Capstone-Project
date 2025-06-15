@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelTemplate.unity
     guid: 6a3f6e02d8110124e86c7bf842edb806
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 2.unity
     guid: af250942fbab23045b0dc9c32937cb57
   - enabled: 0
@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/BNG Framework/Scenes/Quest Demo.unity
     guid: eac0312c32df12949a47d07747a9d1cd
+  - enabled: 1
+    path: Assets/Levels/Level 2/Level 2 - Retro Rework.unity
+    guid: 49a9faa2b4bff05459e295da7739f84b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 26feecbe57149db47821aeb790abb369,
       type: 2}
