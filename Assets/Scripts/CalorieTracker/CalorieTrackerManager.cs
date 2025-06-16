@@ -37,6 +37,11 @@ public class CalorieTrackerManager : MonoBehaviour
         {
             playerWeightKg = PlayerPrefs.GetFloat(PlayerWeightKey);
         }
+
+        if (PlayerPrefs.HasKey(TotalCaloriesKey))
+        {
+            totalCalories = PlayerPrefs.GetFloat(TotalCaloriesKey);
+        }
     }
 
     public void AddCaloriesFromMovement(Vector3 leftVel, Vector3 rightVel, Vector3 headVel, float deltaTime)

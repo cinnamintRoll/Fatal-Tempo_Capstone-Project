@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("SongName", songName);
         }
 
+        CalorieTrackerManager.Instance?.SaveCalories();
+
         PlayerPrefs.SetInt("TotalMaxPoints", GetTotalSongScore());
         PlayerPrefs.SetInt("FullCombo", GetTotalCombo());
         scoringSystem.SaveScore();
