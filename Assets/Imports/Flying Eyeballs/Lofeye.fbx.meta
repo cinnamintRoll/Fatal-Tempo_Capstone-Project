@@ -3,7 +3,22 @@ guid: 7a3f5aba37a73734f8663a48fa5bcc9e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lofeye
+    second: {fileID: 2100000, guid: e008b0cf3a68d824abeef855729ed415, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lofeye_Iris
+    second: {fileID: 2100000, guid: 17016fe0a752ab74b9907fdef938a264, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: 1cc6cddd48bc85f4c85ed13238267ed9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

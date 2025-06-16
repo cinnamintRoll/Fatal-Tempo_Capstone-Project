@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using static EnemyAI;
 
 [CustomEditor(typeof(PathFollower))]
 public class PathFollowerEditor : Editor
@@ -391,6 +392,8 @@ public class PathFollowerEditor : Editor
                 Vector3? spawnPointPos = oldSpawner.spawnPoint ? oldSpawner.spawnPoint.position : null;
                 Vector3? movePointPos = oldSpawner.movepoint ? oldSpawner.movepoint.position : null;
                 string selectedEnemyName = oldSpawner.enemy ? oldSpawner.enemy.selectedEnemyName : null;
+                EnemyAI oldEnemyAI = oldSpawner.enemy;
+                EnemyState currentState = oldEnemyAI ? oldEnemyAI.currentState : EnemyState.Idle;
 
                 Undo.DestroyObjectImmediate(child.gameObject);
 
@@ -414,6 +417,7 @@ public class PathFollowerEditor : Editor
 
                     if (newSpawner.enemy)
                         newSpawner.enemy.selectedEnemyName = selectedEnemyName;
+                        newSpawner.enemy.currentState = currentState;
                 }
 
                 Undo.RegisterCreatedObjectUndo(newGO, "Replace Spawnable");

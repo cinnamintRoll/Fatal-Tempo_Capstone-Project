@@ -3,7 +3,22 @@ guid: 8d2cbefa7f8ee1e448f674ae595ae62b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Punkeye
+    second: {fileID: 2100000, guid: d3858da65e073e840a789f5761f2d3b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Punkeye_Iris
+    second: {fileID: 2100000, guid: fa2d754878c03d24ca4b959e3d18ec43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedWings
+    second: {fileID: 2100000, guid: 6f90a22dc518f884b92d12f8acf4ecc4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

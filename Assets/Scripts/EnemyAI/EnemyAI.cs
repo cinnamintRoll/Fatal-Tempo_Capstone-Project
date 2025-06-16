@@ -252,6 +252,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (pointToMove != null)
         {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
             float distanceToDestination = Vector3.Distance(transform.position, pointToMove.position);
             chaseUpdateTimer += Time.deltaTime;
             if (chaseUpdateTimer >= chaseUpdateInterval)
@@ -263,6 +264,15 @@ public class EnemyAI : MonoBehaviour
             if (distanceToDestination <= 1f)
             {
                 TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
+            }
+
+            switch (selectedEnemyName.ToLower()) {
+                case "melee":
+                    if (distanceToPlayer <= attackRange)
+                    {
+                        TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
+                    }
+                    break;
             }
         }
     }
@@ -506,59 +516,62 @@ public class EnemyTypeDropdownDrawer : PropertyDrawer
     {
         UnityEngine.Object target = property.serializedObject.targetObject;
         List<Enemies> enemyList = null;
-        EnemyAI enemyAI = null;
-        EnemyAIManager manager = null;
+        string currentSelection = property.stringValue;
 
-        if (target is EnemyAI ai)
+        // Try to get the enemy list and current selection context
+        if (target is EnemyAI enemyAI)
         {
-            enemyAI = ai;
-            enemyList = ai.Enemies;
+            enemyList = enemyAI.Enemies;
+            currentSelection = enemyAI.selectedEnemyName;
         }
-        else if (target is EnemyAIManager mgr)
+        else if (target is EnemyAIManager manager)
         {
-            manager = mgr;
-            enemyAI = mgr.GetComponentInChildren<EnemyAI>();
-            if (enemyAI != null)
-                enemyList = enemyAI.Enemies;
+            EnemyAI ai = manager.GetComponentInChildren<EnemyAI>();
+            if (ai != null)
+            {
+                enemyList = ai.Enemies;
+                currentSelection = manager.selectedEnemyName;
+            }
         }
 
+        // Display fallback if list is empty
         if (enemyList == null || enemyList.Count == 0)
         {
             EditorGUI.LabelField(position, label.text, "No enemies defined");
             return;
         }
 
+        // Build dropdown list
         List<string> names = new List<string>();
-        int currentIndex = -1;
+        int currentIndex = 0;
 
         for (int i = 0; i < enemyList.Count; i++)
         {
             names.Add(enemyList[i].EnemyName);
-            if (enemyList[i].EnemyName == property.stringValue)
+            if (enemyList[i].EnemyName == currentSelection)
                 currentIndex = i;
         }
 
-        if (currentIndex < 0) currentIndex = 0;
-
+        // Show popup
         int selectedIndex = EditorGUI.Popup(position, label.text, currentIndex, names.ToArray());
         string newSelection = names[selectedIndex];
 
-        if (selectedIndex != currentIndex && property.stringValue != newSelection)
+        // Only apply if changed
+        if (newSelection != property.stringValue)
         {
             property.stringValue = newSelection;
             property.serializedObject.ApplyModifiedProperties();
 
-            if (enemyAI != null)
+            if (target is EnemyAI _enemyAI)
             {
-                enemyAI.selectedEnemyName = newSelection;
-                enemyAI.UpdateEnemyVisuals();
-                EditorUtility.SetDirty(enemyAI);
+                _enemyAI.selectedEnemyName = newSelection;
+                _enemyAI.UpdateEnemyVisuals();
+                EditorUtility.SetDirty(_enemyAI);
             }
-
-            if (manager != null)
+            else if (target is EnemyAIManager manager)
             {
                 manager.selectedEnemyName = newSelection;
-                manager.ApplyChangesToEnemy(); // Ensure visual + stats update
+                manager.ApplyChangesToEnemy();
                 EditorUtility.SetDirty(manager);
             }
         }
@@ -567,4 +580,5 @@ public class EnemyTypeDropdownDrawer : PropertyDrawer
 
 public class EnemyTypeDropdownAttribute : PropertyAttribute { }
 #endif
+
 

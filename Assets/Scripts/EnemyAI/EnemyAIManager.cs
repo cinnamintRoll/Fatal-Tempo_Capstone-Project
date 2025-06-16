@@ -9,17 +9,17 @@ public class EnemyAIManager : MonoBehaviour
     [SerializeField] private EnemyAI enemyAI;
     [SerializeField] private NavMeshAgent navAgent;
 
-    // Synced enemy values for Inspector
     [Header("Enemy Stats")]
 #if UNITY_EDITOR
     [SerializeField, EnemyTypeDropdown]
 #endif
     public string selectedEnemyName;
+
     [SerializeField] private EnemyAI.EnemyState currentState;
     [SerializeField] private float health;
     [SerializeField] private float attackRange;
     [SerializeField] private float moveSpeed;
-    private string _previousEnemyName;
+
     private void Awake()
     {
         if (enemyAI == null)
@@ -35,34 +35,7 @@ public class EnemyAIManager : MonoBehaviour
             Debug.LogWarning("EnemyAIManager: No NavMeshAgent found on EnemyAI.");
     }
 
-
-
-    private void OnValidate()
-    {
-        if (enemyAI == null)
-            enemyAI = GetComponentInChildren<EnemyAI>();
-
-        if (enemyAI == null)
-            return;
-
-        // Check if enemy type has changed
-        if (_previousEnemyName != selectedEnemyName)
-        {
-            foreach (var enemy in enemyAI.Enemies)
-            {
-                if (enemy.EnemyName == selectedEnemyName)
-                {
-                    health = enemy.EnemyHealth;
-                    break;
-                }
-            }
-            _previousEnemyName = selectedEnemyName;
-        }
-
-        ApplyChangesToEnemy();
-    }
-
-    private void SyncToInspector()
+    public void SyncFromEnemyAI()
     {
         if (enemyAI == null) return;
 
@@ -114,12 +87,4 @@ public class EnemyAIManager : MonoBehaviour
         enemyAI.health = 0;
         enemyAI.OnDeath?.Invoke();
     }
-
-#if UNITY_EDITOR
-    [ContextMenu("Sync From EnemyAI")]
-    private void SyncFromEnemyAI()
-    {
-        SyncToInspector();
-    }
-#endif
 }
