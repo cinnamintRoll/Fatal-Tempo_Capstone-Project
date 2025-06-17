@@ -1,7 +1,7 @@
 using BNG;
-using JetBrains.Annotations;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,22 +10,26 @@ public class Intervals
 {
     [SerializeField] private float _steps;
     [SerializeField] private UnityEvent _trigger;
-    private int _lastInterval;
+    private float _lastTriggerTime;
 
     public float GetIntervalLength(float bpm)
     {
         return 16f / (bpm * _steps);
     }
 
-    public bool CheckForNewInterval(float interval)
+    public void CheckAndTrigger(float currentTime, float bpm)
     {
-        if (Mathf.FloorToInt(interval) != _lastInterval)
+        float intervalLength = GetIntervalLength(bpm);
+        while (currentTime >= _lastTriggerTime + intervalLength)
         {
-            _lastInterval = Mathf.FloorToInt(interval);
+            _lastTriggerTime += intervalLength;
             _trigger.Invoke();
-            return true;
         }
-        return false;
+    }
+
+    public void Reset()
+    {
+        _lastTriggerTime = 0f;
     }
 }
 
@@ -49,7 +53,6 @@ public class MusicManager : MonoBehaviour
     public UnityEvent OnIntervalPassed;
     [Tooltip("If greater than 0, skips startDelay and starts at this time in seconds.")]
     public float startAtTime = 0f;
-
 
     private float _lastSongIntervalTime = 0f;
 
@@ -82,26 +85,19 @@ public class MusicManager : MonoBehaviour
         musicSource.pitch = Time.timeScale;
 
         float currentTime = musicSource.time + musicOffset;
-        float intervalLength = _songInterval.GetIntervalLength(bpm);
 
-        while (currentTime >= _lastSongIntervalTime + intervalLength)
+        float songIntervalLength = _songInterval.GetIntervalLength(bpm);
+        while (currentTime >= _lastSongIntervalTime + songIntervalLength)
         {
-            _lastSongIntervalTime += intervalLength;
+            _lastSongIntervalTime += songIntervalLength;
             OnIntervalPassed.Invoke();
             StartCoroutine(VibrateController(ControllerHand.Left));
             StartCoroutine(VibrateController(ControllerHand.Right));
         }
 
-        float beatsPassed = currentTime / secondsPerBeat;
-        if (Mathf.FloorToInt(beatsPassed) > Mathf.FloorToInt((currentTime - Time.deltaTime) / secondsPerBeat))
-        {
-            
-        }
-
         foreach (Intervals interval in _objectIntervals)
         {
-            float intervalSampledTime = (musicSource.timeSamples / (musicSource.clip.frequency * interval.GetIntervalLength(bpm)));
-            interval.CheckForNewInterval(intervalSampledTime);
+            interval.CheckAndTrigger(currentTime, bpm);
         }
     }
 
@@ -109,9 +105,13 @@ public class MusicManager : MonoBehaviour
     {
         if (musicClip != null && !isPlaying)
         {
+            foreach (var interval in _objectIntervals)
+                interval.Reset();
+
+            _songInterval.Reset();
+
             if (startAtTime > 0f)
             {
-                // Skip delay and jump to startAtTime
                 musicSource.time = Mathf.Clamp(startAtTime, 0f, musicClip.length);
                 _lastSongIntervalTime = 0f;
                 musicSource.Play();
@@ -125,7 +125,6 @@ public class MusicManager : MonoBehaviour
             }
         }
     }
-
 
     private IEnumerator StartEverythingWithDelay()
     {
@@ -151,8 +150,6 @@ public class MusicManager : MonoBehaviour
     {
         float clampedVibrationStrength = Mathf.Clamp(vibrationStrength, 0f, 1f);
         float clampedVibrationDuration = Mathf.Max(vibrationDuration, 0f);
-
-        Debug.Log($"Vibration Strength: {clampedVibrationStrength}, Duration: {clampedVibrationDuration}, Hand: {hand}");
 
         inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, hand);
         yield return null;

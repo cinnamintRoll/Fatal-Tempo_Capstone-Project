@@ -69,13 +69,22 @@ public class GeneralSpawner : MonoBehaviour
                 if (spawnable)
                     spawnable.SetActive(true);
                 else return;
-                if (spawnable.GetComponent<EnemyAI>() != null)
+               
+                EnemyAIManager aIManager = GetComponent<EnemyAIManager>();
+                if (aIManager)
                 {
-                    if (enemy != null && enemy.isActiveAndEnabled)
-                    {
-                        enemy.ReShowVisuals();
-                    }
+                    aIManager.ApplyChangesToEnemy();
                 }
+
+          
+               if (spawnable.GetComponent<EnemyAI>() != null)
+               {
+                   if (enemy != null && enemy.isActiveAndEnabled)
+                   {
+                       enemy.ReShowVisuals();
+                   }
+               }
+               
             }
         }
             

@@ -50,6 +50,12 @@ public class BeatIndicator : MonoBehaviour
         {
             PlayerHealth.Instance.OnKillEnemy.AddListener(OnKillEnemyHandler);
         }
+
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.OnIntervalPassed.AddListener(SyncBeatVisuals);
+        }
+
     }
 
     private void OnDestroy()
@@ -57,6 +63,24 @@ public class BeatIndicator : MonoBehaviour
         if (PlayerHealth.Instance != null)
         {
             PlayerHealth.Instance.OnKillEnemy.RemoveListener(OnKillEnemyHandler);
+        }
+    }
+
+    private void SyncBeatVisuals()
+    {
+        float currentTime = music.time + offset;
+        float currentBeat = currentTime / secondsPerBeat;
+
+        foreach (var vis in activeVisuals)
+        {
+            if (vis.isStopped) continue;
+
+            float beatTime = vis.beatTime;
+            float t = Mathf.InverseLerp(vis.spawnTime, beatTime, currentTime);
+            t = Mathf.Clamp01(t);
+
+            // Adjust positions based on the perfect timing interval
+            vis.obj.transform.localPosition = Vector3.Lerp(vis.startPos, vis.endPos, t);
         }
     }
 

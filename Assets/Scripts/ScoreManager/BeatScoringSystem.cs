@@ -8,23 +8,24 @@ public class BeatScoringSystem : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_Text scoreText;
 
-    private float beatIntervalSec; // seconds per beat
-    private float timeSinceLastPulse; 
+    private float beatIntervalSec;
+    private float timeSinceLastPulse;
 
     private int hitStreak = 0;
     private int totalScore = 0;
     private int bestCombo = 0;
-
     private int totalHits = 0;
+
     private bool pulseReceived = false;
-    // Scoring windows in milliseconds
-    [SerializeField] private int perfectWindow = 100; // ms
-    [SerializeField] private int maxWindow = 300;     // ms
+
+    [Header("Scoring Settings")]
+    [SerializeField] private int perfectWindow = 100; // milliseconds
+    public int highScore = 300;
+    public int minScore = 100;
 
     [SerializeField] private GameObject scorePopupPrefab;
 
     public int PerfectWindow => perfectWindow;
-    public int MaxWindow => maxWindow;
 
     private void Start()
     {
@@ -32,9 +33,8 @@ public class BeatScoringSystem : MonoBehaviour
         {
             float bpm = MusicManager.Instance.bpm;
             beatIntervalSec = 60f / bpm;
-
             MusicManager.Instance.OnIntervalPassed.AddListener(OnPulse);
-            timeSinceLastPulse = 0f; // initialize
+            timeSinceLastPulse = 0f;
         }
 
         if (PlayerHealth.Instance != null)
@@ -56,7 +56,6 @@ public class BeatScoringSystem : MonoBehaviour
 
     private void OnPulse()
     {
-        Debug.Log("Pulsed");
         timeSinceLastPulse = 0f;
         pulseReceived = true;
     }
@@ -70,9 +69,7 @@ public class BeatScoringSystem : MonoBehaviour
         }
 
         float halfBeat = beatIntervalSec / 2f;
-
         float offset = timeSinceLastPulse;
-
 
         if (offset > halfBeat)
             offset -= beatIntervalSec;
@@ -84,19 +81,15 @@ public class BeatScoringSystem : MonoBehaviour
 
         if (absOffsetMS <= perfectWindow)
         {
-            return 300;
-        }
-        else if (absOffsetMS <= maxWindow)
-        {
-            float t = (absOffsetMS - perfectWindow) / (maxWindow - perfectWindow);
-            return Mathf.RoundToInt(Mathf.Lerp(300, 1, t));
+            return highScore;
         }
         else
         {
-            return 0;
+            float maxOffset = halfBeat * 1000f;
+            float t = Mathf.Clamp01((absOffsetMS - perfectWindow) / (maxOffset - perfectWindow));
+            return Mathf.RoundToInt(Mathf.Lerp(highScore, minScore, t));
         }
     }
-
 
     public void OnHitEnemy(Vector3 enemy)
     {
@@ -143,9 +136,7 @@ public class BeatScoringSystem : MonoBehaviour
     public void OnItemCollected(int itemValue)
     {
         totalScore += itemValue;
-
         Debug.Log($"Item Collected! Total Score: {totalScore}");
-
         UpdateScoreDisplay();
     }
 
@@ -184,5 +175,6 @@ public class BeatScoringSystem : MonoBehaviour
             PlayerPrefs.SetInt("TotalCollected", CollectibleTracker.Instance.GetTotalCollectiblesCollected());
         }
     }
+
     public int GetTotalHits() => totalHits;
 }
