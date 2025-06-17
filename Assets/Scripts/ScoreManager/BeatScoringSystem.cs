@@ -65,7 +65,7 @@ public class BeatScoringSystem : MonoBehaviour
         if (!pulseReceived)
         {
             Debug.LogWarning("No pulse received yet, cannot score.");
-            return 0;
+            return 100;
         }
 
         float halfBeat = beatIntervalSec / 2f;

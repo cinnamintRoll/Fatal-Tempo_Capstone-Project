@@ -82,7 +82,7 @@ public class EnemyAI : MonoBehaviour
     {
         EnemyVisuals = null;
 
-        var selectedEnemy = Enemies.Find(e => e.EnemyName.ToLower() == selectedEnemyName.ToLower());
+        var selectedEnemy = CurrentEnemy;
 
         // Fallback to first enemy if selectedEnemy is null
         if (selectedEnemy == null && Enemies.Count > 0)
@@ -407,6 +407,10 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Enemy performs a sniper attack!");
                 if (SniperScript != null)
                     SniperScript.StartShooting();
+                break;
+            case "multi hit meelee":
+                Debug.Log("Enemy performs a melee attack!");
+                TransitionToState(EnemyState.Idle);
                 break;
             default:
                 Debug.Log("Unknown enemy performs a melee attack!");
