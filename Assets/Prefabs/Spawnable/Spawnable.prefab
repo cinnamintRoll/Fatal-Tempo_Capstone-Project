@@ -154,7 +154,7 @@ MonoBehaviour:
   selectedEnemyName: Melee
   currentState: 2
   health: 1
-  attackRange: 1.7
+  attackRange: 2.5
   moveSpeed: 2
 --- !u!65 &8182383940477668092
 BoxCollider:
@@ -536,6 +536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: rotateModelVertically
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: attackRange
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}

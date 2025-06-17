@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PulseToTheBeat : MonoBehaviour
 {
-    [SerializeField] private bool _useMusicManager = true; // Toggle for using MusicManager
+    public bool _useMusicManager = true; // Toggle for using MusicManager
     [SerializeField] private bool _useTestBeat = false; // Toggle for using test beat
     [SerializeField] private float _pulseSize = 1.15f;
     [SerializeField] private float _returnSpeed = 5f;
@@ -26,6 +26,8 @@ public class PulseToTheBeat : MonoBehaviour
 
     public void Pulse()
     {
+        if (!gameObject.activeInHierarchy) return;
+
         // Set the object to the pulsed size
         transform.localScale = _startSize * _pulseSize;
 

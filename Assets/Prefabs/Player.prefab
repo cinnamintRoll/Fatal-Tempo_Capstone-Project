@@ -310,7 +310,19 @@ MonoBehaviour:
   - _steps: 0.25
     _trigger:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1326671551755553399}
+          m_TargetAssemblyTypeName: PulseToTheBeat, Assembly-CSharp
+          m_MethodName: Pulse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - _steps: 0.125
     _trigger:
       m_PersistentCalls:
@@ -509,6 +521,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3627058543498318064}
     m_Modifications:
+    - target: {fileID: 81034099139567847, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: _useTestBeat
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 81034099139567847, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: _useMusicManager
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 185597941203811097, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_Name
@@ -631,6 +653,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1402498180752992912}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326671551755553399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 81034099139567847, guid: 695052bf1470b6d4faf96024b3f0222a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1402498180752992912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f55bfcd4d1eacf4e9162806732399e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &7820895422105531928 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 9223313046317685896, guid: 695052bf1470b6d4faf96024b3f0222a,

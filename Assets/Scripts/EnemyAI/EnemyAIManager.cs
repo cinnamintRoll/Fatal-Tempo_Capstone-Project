@@ -3,7 +3,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-[ExecuteAlways]
 public class EnemyAIManager : MonoBehaviour
 {
     [SerializeField] private EnemyAI enemyAI;

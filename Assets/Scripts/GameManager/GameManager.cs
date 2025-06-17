@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public int GetTotalSongScore()
     {
         int totalEnemies = EnemyTracker.Instance != null ? EnemyTracker.Instance.GetTotalEnemyCount() : 0;
-        int maxKillpoints = scoringSystem.MaxWindow;
+        int maxKillpoints = scoringSystem.highScore;
         return totalEnemies * maxKillpoints;
     }
 

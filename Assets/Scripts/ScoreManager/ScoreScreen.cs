@@ -81,9 +81,7 @@ public class ScoreScreen : MonoBehaviour
         songNameText.text = _SelectedSong.songName;
         albumCoverImage.sprite = _SelectedSong.AlbumCover;
 
-        yield return AnimateScoreAndGrade(playerScore, totalMaxPoints, ScoreAnimationDuration);
-        yield return AnimateNumber(CalorieTrackerManager.Instance.GetCalories(), 1.5f, caloriesText);
-        yield return AnimateNumber(bestCombo, 1.5f, comboText);
+        
 
         // Enemy kills
         killText.text = $"0 {totalEnemies}";
@@ -92,7 +90,9 @@ public class ScoreScreen : MonoBehaviour
         // Collectibles
         collectibleText.text = $"0 {maxCollected}";
         yield return AnimateSlider(collectibleSlider, collectibleText, totalCollected, 1f, maxCollected.ToString());
-
+        yield return AnimateScoreAndGrade(playerScore, totalMaxPoints, ScoreAnimationDuration);
+        yield return AnimateNumber(bestCombo, 1.5f, comboText);
+        yield return AnimateNumber(CalorieTrackerManager.Instance.GetCalories(), 1.5f, caloriesText);
         string finalGrade = CalculateGrade(playerScore, totalMaxPoints);
 
         if (_SelectedSong != null)
@@ -200,11 +200,11 @@ public class ScoreScreen : MonoBehaviour
         if (maxScore == 0) return "F";
 
         float percent = (float)score / maxScore;
-        if (percent >= 0.95f) return "SS";
-        if (percent >= 0.90f) return "S";
-        if (percent >= 0.80f) return "A";
-        if (percent >= 0.70f) return "B";
-        if (percent >= 0.60f) return "C";
+        if (percent >= 0.90f) return "SS";
+        if (percent >= 0.80f) return "S";
+        if (percent >= 0.70f) return "A";
+        if (percent >= 0.60f) return "B";
+        if (percent >= 0.50f) return "C";
         return "F";
     }
 
