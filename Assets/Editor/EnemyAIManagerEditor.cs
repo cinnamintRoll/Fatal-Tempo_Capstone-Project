@@ -2,25 +2,32 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(EnemyAIManager))]
+[CanEditMultipleObjects]
 public class EnemyAIManagerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
-        EnemyAIManager manager = (EnemyAIManager)target;
-
         GUILayout.Space(10);
         EditorGUILayout.LabelField("Manual Sync Controls", EditorStyles.boldLabel);
 
         if (GUILayout.Button("Sync From EnemyAI"))
         {
-            manager.SyncFromEnemyAI();
+            foreach (Object obj in targets)
+            {
+                EnemyAIManager manager = (EnemyAIManager)obj;
+                manager.SyncFromEnemyAI();
+            }
         }
 
         if (GUILayout.Button("Apply Changes to Enemy"))
         {
-            manager.ApplyChangesToEnemy();
+            foreach (Object obj in targets)
+            {
+                EnemyAIManager manager = (EnemyAIManager)obj;
+                manager.ApplyChangesToEnemy();
+            }
         }
     }
 }
