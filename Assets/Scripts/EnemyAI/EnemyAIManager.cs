@@ -51,6 +51,10 @@ public class EnemyAIManager : MonoBehaviour
     {
         if (enemyAI == null) return;
 
+#if UNITY_EDITOR
+        UnityEditor.Undo.RecordObject(enemyAI, "Apply Enemy Changes");
+#endif
+
         if (enemyAI.selectedEnemyName != selectedEnemyName)
         {
             enemyAI.selectedEnemyName = selectedEnemyName;
@@ -61,9 +65,22 @@ public class EnemyAIManager : MonoBehaviour
         enemyAI.attackRange = attackRange;
         enemyAI.currentState = currentState;
 
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(enemyAI);
+#endif
+
         if (navAgent != null)
+        {
+#if UNITY_EDITOR
+            UnityEditor.Undo.RecordObject(navAgent, "Apply NavMeshAgent Changes");
+#endif
             navAgent.speed = moveSpeed;
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(navAgent);
+#endif
+        }
     }
+
 
     public List<string> GetAllEnemyNames()
     {

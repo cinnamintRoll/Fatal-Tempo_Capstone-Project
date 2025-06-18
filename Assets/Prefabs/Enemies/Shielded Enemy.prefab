@@ -54,7 +54,7 @@ MonoBehaviour:
   maxAngleScore: 100
   maxDistance: 3
   maxAllowedAngle: 30
-  ObjectVisuals: {fileID: 8147090042592792068}
+  ObjectVisuals: {fileID: 0}
   Bullethit: {fileID: 0}
   punchAngleTransform: {fileID: 0}
   onHit:
@@ -829,6 +829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 60d7ab68b829a7c408ddae5b0560f9a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
