@@ -164,71 +164,81 @@ public class EnemyLaserShooter : MonoBehaviour
     // Coroutine to charge and shoot the laser
     private IEnumerator ChargeAndShootLaser()
     {
-        isShooting = true;
-        isCharging = true;
-
-        int chargeBeats = beatsBetweenShoots;
-        int beatCount = 0;
-
-        // Start charging sound
-        audioSource.clip = chargeSound;
-        audioSource.Play();
-
-        void OnShootBeat()
+        if (!isDeflected)
         {
-            beatCount++;
+            isShooting = true;
+            isCharging = true;
 
-            float t = (float)beatCount / chargeBeats;
-            float targetWidth = Mathf.Lerp(initialLaserWidth, chargeLaserWidth, t);
-            Color targetColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
-            if (laser == null) return;
-            laser.startWidth = targetWidth;
-            laser.endWidth = targetWidth;
-            laser.startColor = targetColor;
-            laser.endColor = targetColor;
+            int chargeBeats = beatsBetweenShoots;
+            int beatCount = 0;
+
+            audioSource.clip = chargeSound;
+            audioSource.Play();
+
+            void OnShootBeat()
+            {
+                if (isDeflected) return; // Skip if deflected mid-charge
+
+                beatCount++;
+                float t = (float)beatCount / chargeBeats;
+                float targetWidth = Mathf.Lerp(initialLaserWidth, chargeLaserWidth, t);
+                Color targetColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
+                if (laser == null) return;
+                laser.startWidth = targetWidth;
+                laser.endWidth = targetWidth;
+                laser.startColor = targetColor;
+                laser.endColor = targetColor;
+            }
+
+            musicManager.OnIntervalPassed.AddListener(OnShootBeat);
+
+            while (beatCount < chargeBeats)
+            {
+                if (isDeflected)
+                {
+                    musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
+                    yield break; // Stop coroutine if deflected mid-charge
+                }
+
+                AimAtPlayer();
+                UpdateLaser();
+                CheckForDeflection();
+
+                yield return null;
+            }
+
+            musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
+
+            // 🛑 Final check before shooting
+            if (isDeflected)
+                yield break;
+
+            // Proceed to shoot
+            audioSource.PlayOneShot(shootSound);
+            ShootPlayer();
+
+            yield return StartCoroutine(AnimateShootBeam());
+
+            if (loopShooting)
+            {
+                laser.startWidth = initialLaserWidth;
+                laser.endWidth = initialLaserWidth;
+            }
+            else
+            {
+                laser.startWidth = 0f;
+                laser.endWidth = 0f;
+            }
+
+            laser.startColor = laserColorNormal;
+            laser.endColor = laserColorNormal;
+
+            isCharging = false;
+            isShooting = false;
+            hasLooped = true;
         }
-
-        // Subscribe
-        musicManager.OnIntervalPassed.AddListener(OnShootBeat);
-
-        // Wait until all charge beats are done
-        while (beatCount < chargeBeats)
-        {
-            AimAtPlayer();
-            UpdateLaser();
-            CheckForDeflection();
-
-            yield return null;
-        }
-
-        // Unsubscribe
-        musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
-
-
-        // Play shoot sound and shoot
-        audioSource.PlayOneShot(shootSound);
-        ShootPlayer();
-
-        yield return StartCoroutine(AnimateShootBeam());
-
-        // Reset laser
-        if (loopShooting)
-        {
-            laser.startWidth = initialLaserWidth;
-            laser.endWidth = initialLaserWidth;
-        }
-        else
-        {
-            laser.startWidth = 0f;
-            laser.endWidth = 0f;
-        }
-        laser.startColor = laserColorNormal;
-        laser.endColor = laserColorNormal;
-
-        isCharging = false;
-        isShooting = false;
-        hasLooped = true;
     }
+
 
 
     public void StartShooting()
