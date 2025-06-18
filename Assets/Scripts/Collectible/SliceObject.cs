@@ -32,7 +32,7 @@ public class SliceObject : MonoBehaviour
 
     // Slice sound effect
     public AudioClip sliceSound;    // Assign your sound in the Inspector
-    private AudioSource audioSource;   // To play the sound
+    [SerializeField] private AudioSource audioSource;   // To play the sound
 
     // Range for random pitch
     public float minPitch = 0.8f;  // Lower pitch for slower speed
@@ -41,6 +41,7 @@ public class SliceObject : MonoBehaviour
     void Start()
     {
         // Initialize the audio source component
+        if(audioSource == null)
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 

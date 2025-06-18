@@ -313,11 +313,12 @@ public class PathFollowerEditor : Editor
             // Calculate how many points needed along the line
             int pointsCount = Mathf.CeilToInt(segmentLength / spacing) + 1;
 
-            // Create empty transforms spaced along the line
+            // Create empty transforms spaced along the line, starting at startOffset
             for (int i = 0; i < pointsCount; i++)
             {
-                float t = (float)i / (pointsCount - 1);
-                Vector3 pos = Vector3.Lerp(startPoint, endPoint, t);
+                float beatDistance = startOffset + i * spacing;
+                float tWithOffset = Mathf.Clamp01(beatDistance / segmentLength);
+                Vector3 pos = Vector3.Lerp(startPoint, endPoint, tWithOffset);
 
                 GameObject pointGO = new GameObject($"AlignPoint {i}");
                 Undo.RegisterCreatedObjectUndo(pointGO, "Create Alignment Point");
