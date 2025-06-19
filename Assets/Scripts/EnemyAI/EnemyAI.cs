@@ -13,7 +13,7 @@ public class Enemies
     public string EnemyName;
     public int EnemyHealth;
     public GameObject EnemyObject;
-    public float SpawnChance = 1f; // 0 to 1 chance
+    public float SpawnChance = 1f; 
     public Animator EnemyAnim;
 }
 
@@ -33,7 +33,6 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
     public Transform pointToMove;
     public float attackRange = 2f; // Melee attack range
-    // Define a threshold distance for detecting enemies behind the player
     public float behindDistanceThreshold = 2f;
 
     [SerializeField]private EnemyLaserShooter SniperScript;
@@ -43,8 +42,8 @@ public class EnemyAI : MonoBehaviour
 
     // Variables to control chase update intervals
     private float chaseUpdateTimer = 0f;
-    public float minChaseUpdateInterval = 0.2f; // Minimum time between chase updates
-    public float maxChaseUpdateInterval = 0.5f; // Maximum time between chase updates
+    public float minChaseUpdateInterval = 0.2f; 
+    public float maxChaseUpdateInterval = 0.5f; 
     private float chaseUpdateInterval;
     private PlayerHealth PlayerHealth;
     private bool isDead = false;
@@ -52,7 +51,7 @@ public class EnemyAI : MonoBehaviour
     public Animator selectedAnimator;
     private bool isDespawning = false;
     private bool hasDamaged = false;
-    // Property to get current Enemy object and name
+
     public Enemies CurrentEnemy
     {
         get
@@ -84,7 +83,6 @@ public class EnemyAI : MonoBehaviour
 
         var selectedEnemy = CurrentEnemy;
 
-        // Fallback to first enemy if selectedEnemy is null
         if (selectedEnemy == null && Enemies.Count > 0)
         {
             selectedEnemy = Enemies[0];
@@ -155,10 +153,9 @@ public class EnemyAI : MonoBehaviour
     // Transition to a new state
     public void TransitionToState(EnemyState newState)
     {
-        if (currentState == newState) return; // Avoid redundant transitions
+        if (currentState == newState) return; 
         currentState = newState;
 
-        // Reset all animation triggers before setting the new one
         ResetAnimationTriggers();
 
         switch (newState)
@@ -189,11 +186,10 @@ public class EnemyAI : MonoBehaviour
                     navMeshAgent.isStopped = true;
                 SetAnimationTrigger("Death");
                 break;
-            case EnemyState.Despawn: // <--- ADD THIS NEW CASE
+            case EnemyState.Despawn:
                 if (navMeshAgent.isOnNavMesh)
-                    navMeshAgent.isStopped = true; // Stop movement
-                // No specific animation trigger for despawn, as it's typically quick
-                HandleDespawn(); // Call the despawn logic
+                    navMeshAgent.isStopped = true; 
+                HandleDespawn();
                 break;
         }
     }
@@ -224,7 +220,6 @@ public class EnemyAI : MonoBehaviour
     // Handle Idle State
     void HandleIdle()
     {
-        // Idle behavior
         if (IsEnemyBehindPlayer())
         {
             switch (selectedEnemyName.ToLower())
@@ -309,8 +304,6 @@ public class EnemyAI : MonoBehaviour
         transform.LookAt(targetPosition);
         PerformAttack();
         
-
-        // After melee attack, return to idle
         switch (selectedEnemyName.ToLower())
         {
                 default:
@@ -357,7 +350,6 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject, 4f);
     }
 
-    // Enemy takes damage and checks for death
     public void TakeDamage(float damage)
     {
         health -= damage;
@@ -370,7 +362,6 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    // Enemy moves to a designated point
     void MoveToPoint()
     {
         if (pointToMove != null)
@@ -393,7 +384,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Perform attack logic based on the enemy type determined by name
     void PerformAttack()
     {
 
@@ -428,13 +418,10 @@ public class EnemyAI : MonoBehaviour
         return dotProduct < 0 && distanceToEnemy > behindDistanceThreshold;
     }
 
-    // Public function to make the enemy idle
     public void Idle()
     {
         TransitionToState(EnemyState.Idle);
     }
-
-    // Randomize the chase update interval to avoid synchronized destination updates
     void SetRandomChaseUpdateInterval()
     {
         chaseUpdateInterval = UnityEngine.Random.Range(minChaseUpdateInterval, maxChaseUpdateInterval);
@@ -479,7 +466,7 @@ public class EnemyAI : MonoBehaviour
         var damageables = root.GetComponentsInChildren<Damageable>(true);
         foreach (var dmg in damageables)
         {
-            dmg.Health = health; // Or use a custom method or property
+            dmg.Health = health;
         }
     }
 
@@ -505,7 +492,6 @@ public class EnemyAI : MonoBehaviour
                 SetAnimationTrigger("Death");
                 break;
             case EnemyState.Despawn:
-                // Optional: Set a despawn animation if you have one
                 break;
         }
     }

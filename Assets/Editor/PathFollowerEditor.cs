@@ -282,7 +282,7 @@ public class PathFollowerEditor : Editor
             for (int i = 0; i < totalChildren; i++)
             {
                 Transform child = pathFollower.pathParent.GetChild(i);
-                if (child.tag != "Spawnable") continue;
+                if (child.tag != "Spawnable" || child.tag != "EndSaver") continue;
 
                 float beatDistance = startOffset + i * spacing;
                 float t = Mathf.Clamp01(beatDistance / segmentLength);
@@ -329,7 +329,7 @@ public class PathFollowerEditor : Editor
             // For each child in pathParent, find closest align point and assign
             foreach (Transform child in pathFollower.pathParent)
             {
-                if (child.tag != "Spawnable") continue;
+                if (child.tag != "Spawnable" || child.tag != "EndSaver") continue;
 
                 Transform closest = null;
                 float closestDist = float.MaxValue;

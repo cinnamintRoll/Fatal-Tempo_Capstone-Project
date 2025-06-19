@@ -586,6 +586,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 185597941229990861, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 185597941230496085, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -595,6 +600,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 204039823784121379, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 205961320958408909, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 256854451764756398, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
