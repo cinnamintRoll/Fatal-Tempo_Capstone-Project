@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class EnemyLaserShooter : MonoBehaviour
 {
     [SerializeField] private Transform player; // Reference to the player
-    [SerializeField] private Transform gunMuzzle; // Position where the laser starts (muzzle of the gun)
+    [SerializeField] private Transform gunMuzzle; // Position where the laser starts
     [SerializeField] private LineRenderer laser; // Laser LineRenderer
     [SerializeField] private float laserRange = 50f; // Maximum range of the laser
     [SerializeField] private float playerDamage = 10f; // Damage to apply to player
@@ -14,7 +14,7 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private AudioClip shootSound; // Sound to play when shooting
     [SerializeField] private AudioSource audioSource; // AudioSource component reference
     [SerializeField] private GameObject visuals;
-    [SerializeField] private float offsetAmount = 0.5f; // Set the offset distance (adjust this value as needed)
+    [SerializeField] private float offsetAmount = 0.5f; // Set the offset distance
     [SerializeField] private Color laserColorCharged = Color.red; // Color of the charged laser
     [SerializeField] private Color laserColorNormal = Color.green; // Color of the normal laser
     [SerializeField] private Color shootBeamColor = Color.white; // Color of the beam when shooting
@@ -29,7 +29,6 @@ public class EnemyLaserShooter : MonoBehaviour
     private bool isShooting = false;
     private Vector3 laserOffset; // Fixed laser offset
     [SerializeField] private EnemyAI AIScript;
-    // Adjustable Beats for Charging and Firing
     [SerializeField] private int beatsBetweenShoots = 3; // Adjustable beats to shoot
     private int currentBeat = 0; // Track the current beat for the laser charge cycle
     private bool isCharging = false;
@@ -88,13 +87,13 @@ public class EnemyLaserShooter : MonoBehaviour
 
     private IEnumerator StartShootingRoutine()
     {
-        yield return new WaitForSeconds(aimDelay); // Wait for the delay before starting
-        while (true) // Continuously aim and shoot
+        yield return new WaitForSeconds(aimDelay); 
+        while (true)
         {
             if (Time.timeScale == 0)
             {
-                yield return null; // Wait until the game resumes
-                continue; // Skip this iteration
+                yield return null; 
+                continue; 
             }
 
             AimAtPlayer();
@@ -116,7 +115,6 @@ public class EnemyLaserShooter : MonoBehaviour
         }
     }
 
-    // Aim the enemy towards the player with an offset
     void AimAtPlayer()
     {
         if (player != null)
@@ -135,13 +133,12 @@ public class EnemyLaserShooter : MonoBehaviour
             {
                 // Only rotate horizontally
                 Vector3 horizontalDirection = new Vector3(targetDirection.x, 0, targetDirection.z).normalized;
-                if (horizontalDirection == Vector3.zero) return; // Prevent Quaternion.LookRotation from throwing error with zero vector
+                if (horizontalDirection == Vector3.zero) return; 
 
                 Quaternion lookRotation = Quaternion.LookRotation(horizontalDirection);
                 Quaternion desiredHorizontalRotation = Quaternion.Euler(0, lookRotation.eulerAngles.y + aimRotationOffset.y, 0);
-                transform.rotation = Quaternion.Slerp(currentRotation, desiredHorizontalRotation, Time.deltaTime * 5f); // Smooth rotation
+                transform.rotation = Quaternion.Slerp(currentRotation, desiredHorizontalRotation, Time.deltaTime * 5f); 
             }
-            // If neither model rotation option is selected, the model's rotation remains unchanged
         }
     }
 
