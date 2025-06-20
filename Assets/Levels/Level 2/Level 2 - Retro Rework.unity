@@ -42745,7 +42745,7 @@ PrefabInstance:
     - target: {fileID: 6750803516172806011, guid: a6e894c5998de624e96951f83ce58921,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 300.65
+      value: 303.46
       objectReference: {fileID: 0}
     - target: {fileID: 6750803516172806011, guid: a6e894c5998de624e96951f83ce58921,
         type: 3}
@@ -73391,12 +73391,12 @@ PrefabInstance:
     - target: {fileID: 1289662209072268225, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1289662209072268225, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1289662209072268225, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
@@ -73535,6 +73535,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 1723131027}
@@ -73553,6 +73558,16 @@ PrefabInstance:
       propertyPath: timingLineWidth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: easyModeInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: waveformMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 8476d9fe6c7e4f2458b0347d2e561361, type: 2}
     - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: timingLineSpacing

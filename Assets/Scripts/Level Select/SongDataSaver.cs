@@ -113,4 +113,28 @@ public class SongDataSaver : MonoBehaviour
 
         Debug.Log("Song scores loaded from: " + savePath);
     }
+
+    public void DeleteAllSaveData()
+    {
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+            Debug.Log("All song save data deleted at: " + savePath);
+        }
+        else
+        {
+            Debug.Log("No save file found to delete.");
+        }
+
+        // Optionally reset in-memory song data too
+        var allSongs = GetAllSongsFromAlbums();
+        foreach (var song in allSongs)
+        {
+            song.playerScore = 0;
+            song.letterGrade = "";
+            song.HighestCombo = 0;
+            song.FullCombo = 0;
+            song.maxPoints = 0;
+        }
+    }
 }

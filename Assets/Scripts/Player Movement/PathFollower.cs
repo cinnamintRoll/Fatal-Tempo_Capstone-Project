@@ -45,7 +45,11 @@ public class PathFollower : MonoBehaviour
     public Material waveformMaterial; // Assign a transparent unlit material
     private Texture2D waveformTexture;
     private Mesh waveformMesh;
-
+#if UNITY_EDITOR
+    [Header("Waveform Export Settings")]
+    public string waveformSavePath = "Assets/Graphics/WaveformTextures/";
+    private System.DateTime lastWaveformFileTime = System.DateTime.MinValue;
+#endif
     void Start()
     {
 
@@ -76,7 +80,26 @@ public class PathFollower : MonoBehaviour
             CalculateTimingLineSpacing();
 
         }
-        
+#if UNITY_EDITOR
+        if (musicClip != null && !string.IsNullOrEmpty(waveformSavePath))
+        {
+            string filePath = System.IO.Path.Combine(waveformSavePath, GeneratedWaveformFileName);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                System.DateTime fileTime = System.IO.File.GetLastWriteTime(filePath);
+
+                if (fileTime != lastWaveformFileTime)
+                {
+                    lastWaveformFileTime = fileTime;
+                    LoadWaveformTextureFromDisk();
+                    GenerateWaveformMesh();
+                    Debug.Log($"[Waveform] Regenerated mesh for '{musicClip.name}' due to file change at: {filePath}");
+                }
+            }
+        }
+#endif
+
     }
 
     void Update()
@@ -307,7 +330,28 @@ public class PathFollower : MonoBehaviour
 #endif
     }
 }
+    private void ApplyEasyMode()
+    {
+        if (!easyMode || pathParent == null) return;
 
+        int count = 0;
+        // Use a temp list to avoid modifying the hierarchy while iterating
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in pathParent)
+        {
+            if (child != pathPoints[0] && child != pathPoints[1])
+                children.Add(child);
+        }
+
+        foreach (Transform child in children)
+        {
+            bool keep = count % easyModeInterval == 0;
+            if (!keep)
+                Destroy(child.gameObject);
+            count++;
+        }
+    }
+#if UNITY_EDITOR
     public void GenerateWaveformTexture()
     {
         if (musicClip == null) return;
@@ -353,14 +397,19 @@ public class PathFollower : MonoBehaviour
         }
 
         waveformTexture.Apply();
+
+
+        SaveWaveformTexture();
     }
 
 
     public void GenerateWaveformMesh()
     {
+             // try loading saved texture
+
         if (pathPoints == null || pathPoints.Length != 2 || waveformTexture == null) return;
         if (musicClip == null) return;
-
+        LoadWaveformTextureFromDisk();
         float musicDuration = musicClip.length;
 
         Vector3 pathDirection = (pathPoints[1].position - pathPoints[0].position).normalized;
@@ -410,26 +459,111 @@ public class PathFollower : MonoBehaviour
 
 
 
-
-    private void ApplyEasyMode()
+    public void SaveWaveformTexture()
     {
-        if (!easyMode || pathParent == null) return;
-
-        int count = 0;
-        // Use a temp list to avoid modifying the hierarchy while iterating
-        List<Transform> children = new List<Transform>();
-        foreach (Transform child in pathParent)
+        if (waveformTexture == null)
         {
-            if (child != pathPoints[0] && child != pathPoints[1])
-                children.Add(child);
+            Debug.LogWarning("No waveform texture to save.");
+            return;
         }
 
-        foreach (Transform child in children)
+        byte[] pngData = waveformTexture.EncodeToPNG();
+        if (pngData == null)
         {
-            bool keep = count % easyModeInterval == 0;
-            if (!keep)
-                Destroy(child.gameObject);
-            count++;
+            Debug.LogError("Failed to encode waveform texture to PNG.");
+            return;
+        }
+
+        string directory = waveformSavePath;
+        string texturePath = System.IO.Path.Combine(waveformSavePath, GeneratedWaveformFileName);
+        
+
+        if (!System.IO.Directory.Exists(directory))
+            System.IO.Directory.CreateDirectory(directory);
+
+        // Save texture PNG
+        System.IO.File.WriteAllBytes(texturePath, pngData);
+        Debug.Log($"Waveform texture saved to: {texturePath}");
+
+        DuplicateMaterial();
+
+        AssetDatabase.Refresh();
+    }
+
+    public void LoadWaveformTextureFromDisk()
+    {
+        string texturePath = System.IO.Path.Combine(waveformSavePath, GeneratedWaveformFileName);
+        string materialPath = GeneratedWaveformMaterialPath;
+
+        if (!System.IO.File.Exists(texturePath))
+        {
+            Debug.LogWarning("Waveform texture file not found at: " + texturePath);
+            return;
+        }
+
+        byte[] fileData = System.IO.File.ReadAllBytes(texturePath);
+        Texture2D tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        if (!tex.LoadImage(fileData))
+        {
+            Debug.LogError("Failed to load waveform texture from file.");
+            return;
+        }
+
+        waveformTexture = tex;
+        waveformTexture.wrapMode = TextureWrapMode.Clamp;
+        waveformTexture.filterMode = FilterMode.Bilinear;
+
+        Debug.Log("Loaded waveform texture from: " + texturePath);
+
+        // Try loading duplicated material
+        Material loadedMaterial = AssetDatabase.LoadAssetAtPath<Material>(materialPath);
+        if (loadedMaterial != null)
+        {
+            waveformMaterial = loadedMaterial;
+            Debug.Log($"Loaded duplicated waveform material: {materialPath}");
+        }
+        else
+        {
+            Debug.LogWarning($"No saved material found at {materialPath}, duplicating material.");
+            DuplicateMaterial();
+            if (waveformMaterial != null)
+                waveformMaterial.mainTexture = waveformTexture;
         }
     }
+
+
+    private void DuplicateMaterial()
+    {
+        string materialPath = GeneratedWaveformMaterialPath;
+        // Duplicate and save material
+        if (waveformMaterial != null)
+        {
+            Material duplicated = new Material(waveformMaterial);
+            duplicated.mainTexture = waveformTexture;
+
+            AssetDatabase.CreateAsset(duplicated, materialPath);
+            AssetDatabase.SaveAssets();
+            Debug.Log($"Waveform material duplicated and saved to: {materialPath}");
+        }
+    }
+   
+    public string GeneratedWaveformFileName
+    {
+        get
+        {
+            string name = musicClip != null ? musicClip.name : "Unknown";
+            return $"Waveform_{name}.png";
+        }
+    }
+
+    public string GeneratedWaveformMaterialPath
+    {
+        get
+        {
+            string name = musicClip != null ? musicClip.name : "Unknown";
+            return System.IO.Path.Combine(waveformSavePath, $"Waveform_{name}.mat");
+        }
+    }
+
+#endif
 }
