@@ -74,7 +74,13 @@ public class PathFollowerEditor : Editor
         {
             ReplaceSpawnablesWithCurrentPrefab();
         }
-
+        PathFollower follower = (PathFollower)target;
+        if (GUILayout.Button("Regenerate Waveform Texture"))
+        {
+            follower.GenerateWaveformTexture();
+            follower.GenerateWaveformMesh();
+            Debug.Log("Regenerated waveform texture and mesh.");
+        }
     }
 
     private void ReShowAllSpawnerVisuals()

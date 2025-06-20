@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class PathFollower : MonoBehaviour
 {
@@ -32,6 +33,19 @@ public class PathFollower : MonoBehaviour
     [Range(1, 10)]
     public int easyModeInterval = 2; // Keep every Nth spawnable
     public bool useClosestPointAlignment;
+
+    [Header("Waveform Texture Settings")]
+    public int waveformTextureWidth = 1024;
+    public int waveformTextureHeight = 128;
+
+    [Header("Waveform Visual Settings")]
+    public float waveformWidth = 1f;         // Thickness of the waveform
+    public float waveformYOffset = 0.01f;    // Slight lift to avoid z-fighting
+    public float waveformHorizontalOffset = 0f; // Left/right shift
+    public Material waveformMaterial; // Assign a transparent unlit material
+    private Texture2D waveformTexture;
+    private Mesh waveformMesh;
+
     void Start()
     {
 
@@ -60,7 +74,9 @@ public class PathFollower : MonoBehaviour
             UpdateSecondPointPosition();
             ComputeSamplePoints();
             CalculateTimingLineSpacing();
+
         }
+        
     }
 
     void Update()
@@ -240,38 +256,160 @@ public class PathFollower : MonoBehaviour
         }
 
         DrawTimingLines();
-    }
 
+#if UNITY_EDITOR
+        if (waveformMaterial == null || waveformMesh == null || waveformTexture == null)
+            return;
+
+        waveformMaterial.mainTexture = waveformTexture;
+        waveformMaterial.SetPass(0);
+
+        Graphics.DrawMeshNow(waveformMesh, Matrix4x4.identity);
+#endif
+    }
     private void DrawTimingLines()
+{
+    if (pathPoints == null || pathPoints.Length != 2 || pathPoints[0] == null || pathPoints[1] == null)
+        return;
+
+    Gizmos.color = Color.blue;
+
+    float segmentLength = Vector3.Distance(pathPoints[0].position, pathPoints[1].position);
+    float delayOffset = startDelay * speed;
+
+    int totalLines = Mathf.CeilToInt((segmentLength - delayOffset) / timingLineSpacing);
+
+    Vector3 direction = (pathPoints[1].position - pathPoints[0].position).normalized;
+    Vector3 perpendicular = new Vector3(-direction.z, 0, direction.x); // left
+
+    for (int i = 0; i <= totalLines; i++)
     {
-        Gizmos.color = Color.blue;
+        float distanceAlongPath = delayOffset + i * timingLineSpacing;
+        float t = distanceAlongPath / segmentLength;
 
-        float segmentLength = Vector3.Distance(pathPoints[0].position, pathPoints[1].position);
+        if (t > 1f) break;
 
-        // Offset distance from delay
-        float delayOffset = startDelay * speed;
+        Vector3 pointOnLine = Vector3.Lerp(pathPoints[0].position, pathPoints[1].position, t);
+        Vector3 lineStart = pointOnLine + perpendicular * (timingLineWidth / 2);
+        Vector3 lineEnd = pointOnLine - perpendicular * (timingLineWidth / 2);
 
-        // Start after delayOffset, then every timingLineSpacing
-        int totalLines = Mathf.CeilToInt((segmentLength - delayOffset) / timingLineSpacing);
+        Gizmos.DrawLine(lineStart, lineEnd);
 
-        for (int i = 0; i <= totalLines; i++)
-        {
-            float distanceAlongPath = delayOffset + i * timingLineSpacing;
-            float t = distanceAlongPath / segmentLength;
+#if UNITY_EDITOR
+        // Use lineEnd (right edge) + slight offset to push it right
+        Vector3 labelPos = lineEnd - perpendicular * 0.1f;
 
-            if (t > 1f) break; // Avoid overshooting the path
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = Color.blue;
+        style.fontStyle = FontStyle.Bold;
 
-            Vector3 pointOnLine = Vector3.Lerp(pathPoints[0].position, pathPoints[1].position, t);
-
-            Vector3 direction = (pathPoints[1].position - pathPoints[0].position).normalized;
-            Vector3 perpendicular = new Vector3(-direction.z, 0, direction.x);
-
-            Vector3 lineStart = pointOnLine + perpendicular * (timingLineWidth / 2);
-            Vector3 lineEnd = pointOnLine - perpendicular * (timingLineWidth / 2);
-
-            Gizmos.DrawLine(lineStart, lineEnd);
-        }
+        Handles.Label(labelPos, i.ToString(), style);
+#endif
     }
+}
+
+    public void GenerateWaveformTexture()
+    {
+        if (musicClip == null) return;
+
+        int width = waveformTextureWidth;
+        int height = waveformTextureHeight;
+
+        float[] samples = new float[musicClip.samples * musicClip.channels];
+        musicClip.GetData(samples, 0);
+
+        float[] waveform = new float[width];
+
+        int packSize = (samples.Length / width);
+        for (int i = 0; i < width; i++)
+        {
+            float max = 0;
+            int start = i * packSize;
+            int end = Mathf.Min(start + packSize, samples.Length);
+
+            for (int j = start; j < end; j++)
+            {
+                float val = Mathf.Abs(samples[j]);
+                if (val > max) max = val;
+            }
+
+            waveform[i] = max;
+        }
+
+        waveformTexture = new Texture2D(width, height, TextureFormat.RGBA32, false);
+        waveformTexture.wrapMode = TextureWrapMode.Clamp;
+        waveformTexture.filterMode = FilterMode.Bilinear;
+
+        Color background = new Color(0, 0, 0, 0); // transparent
+        Color foreground = Color.cyan;
+
+        for (int x = 0; x < width; x++)
+        {
+            int yHeight = Mathf.RoundToInt(waveform[x] * height);
+            for (int y = 0; y < height; y++)
+            {
+                waveformTexture.SetPixel(x, y, y < yHeight ? foreground : background);
+            }
+        }
+
+        waveformTexture.Apply();
+    }
+
+
+    public void GenerateWaveformMesh()
+    {
+        if (pathPoints == null || pathPoints.Length != 2 || waveformTexture == null) return;
+        if (musicClip == null) return;
+
+        float musicDuration = musicClip.length;
+
+        Vector3 pathDirection = (pathPoints[1].position - pathPoints[0].position).normalized;
+        Vector3 right = Vector3.Cross(Vector3.up, pathDirection).normalized;
+
+        // Offset to start from the first timing line
+        Vector3 start = pathPoints[0].position + pathDirection * (startDelay * speed);
+        Vector3 end = pathPoints[0].position + pathDirection * (musicDuration * speed);
+
+        // Apply user horizontal offset
+        start += right * waveformHorizontalOffset;
+        end += right * waveformHorizontalOffset;
+
+        Vector3 offsetUp = Vector3.up * waveformYOffset;
+        Vector3 halfWidthOffset = right * (waveformWidth / 2f);
+
+        waveformMesh = new Mesh();
+
+        Vector3[] vertices = new Vector3[4];
+        Vector2[] uvs = new Vector2[4];
+        int[] triangles = new int[6];
+
+        // Aligned to timing line start/end + correct orientation
+        vertices[0] = start - halfWidthOffset + offsetUp; // bottom left
+        vertices[1] = start + halfWidthOffset + offsetUp; // top left
+        vertices[2] = end + halfWidthOffset + offsetUp;   // top right
+        vertices[3] = end - halfWidthOffset + offsetUp;   // bottom right
+
+        // Flip Y-axis to match your waveform orientation
+        uvs[0] = new Vector2(0, 1);
+        uvs[1] = new Vector2(0, 0);
+        uvs[2] = new Vector2(1, 0);
+        uvs[3] = new Vector2(1, 1);
+
+        triangles[0] = 0;
+        triangles[1] = 2;
+        triangles[2] = 1;
+        triangles[3] = 0;
+        triangles[4] = 3;
+        triangles[5] = 2;
+
+        waveformMesh.vertices = vertices;
+        waveformMesh.uv = uvs;
+        waveformMesh.triangles = triangles;
+        waveformMesh.RecalculateNormals();
+    }
+
+
+
 
     private void ApplyEasyMode()
     {

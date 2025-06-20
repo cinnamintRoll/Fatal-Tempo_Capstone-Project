@@ -241,6 +241,13 @@ MonoBehaviour:
   easyMode: 0
   easyModeInterval: 2
   useClosestPointAlignment: 0
+  waveformTextureWidth: 10000
+  waveformTextureHeight: 100
+  waveformWidth: 3
+  waveformYOffset: 0.1
+  waveformHorizontalOffset: -2.93
+  waveformMaterial: {fileID: 2100000, guid: 8a87100d830a0104097cff0951598540, type: 2}
+  waveformTexture: {fileID: 0}
 --- !u!65 &5440736943696105408
 BoxCollider:
   m_ObjectHideFlags: 0
