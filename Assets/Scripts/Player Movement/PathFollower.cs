@@ -401,12 +401,8 @@ public class PathFollower : MonoBehaviour
 
         SaveWaveformTexture();
     }
-
-
     public void GenerateWaveformMesh()
     {
-             // try loading saved texture
-
         if (pathPoints == null || pathPoints.Length != 2 || waveformTexture == null) return;
         if (musicClip == null) return;
         LoadWaveformTextureFromDisk();
@@ -415,9 +411,12 @@ public class PathFollower : MonoBehaviour
         Vector3 pathDirection = (pathPoints[1].position - pathPoints[0].position).normalized;
         Vector3 right = Vector3.Cross(Vector3.up, pathDirection).normalized;
 
-        // Offset to start from the first timing line
-        Vector3 start = pathPoints[0].position + pathDirection * (startDelay * speed);
-        Vector3 end = pathPoints[0].position + pathDirection * (musicDuration * speed);
+        // Apply offset shift
+        float offset = (startDelay + (manager != null ? manager.musicOffset : 0f)) * speed;
+
+        // Offset to start from the adjusted timing line
+        Vector3 start = pathPoints[0].position + pathDirection * offset;
+        Vector3 end = pathPoints[0].position + pathDirection * ((musicDuration + startDelay + (manager != null ? manager.musicOffset : 0f)) * speed);
 
         // Apply user horizontal offset
         start += right * waveformHorizontalOffset;
@@ -438,7 +437,7 @@ public class PathFollower : MonoBehaviour
         vertices[2] = end + halfWidthOffset + offsetUp;   // top right
         vertices[3] = end - halfWidthOffset + offsetUp;   // bottom right
 
-        // Flip Y-axis to match your waveform orientation
+        // Flip Y-axis to match waveform orientation
         uvs[0] = new Vector2(0, 1);
         uvs[1] = new Vector2(0, 0);
         uvs[2] = new Vector2(1, 0);
