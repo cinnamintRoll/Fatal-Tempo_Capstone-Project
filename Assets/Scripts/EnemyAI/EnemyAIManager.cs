@@ -14,10 +14,10 @@ public class EnemyAIManager : MonoBehaviour
 #endif
     public string selectedEnemyName;
 
-    [SerializeField] private EnemyAI.EnemyState currentState;
-    [SerializeField] private float health;
-    [SerializeField] private float attackRange;
-    [SerializeField] private float moveSpeed;
+    public EnemyAI.EnemyState currentState;
+    public float health;
+    public float attackRange;
+    public float moveSpeed;
 
     private void Awake()
     {

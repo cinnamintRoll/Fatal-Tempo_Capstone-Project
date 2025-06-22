@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5103315598102016231}
   - component: {fileID: 7640656201511999006}
   - component: {fileID: 9030219421800368162}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: FairyWings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51122693276073268}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.57755905, y: -2.0305588e-15, z: -2.8851539e-15, w: 0.8163489}
-  m_LocalPosition: {x: -0.07000001, y: 0.0043263827, z: 0.02606266}
+  m_LocalRotation: {x: -0, y: -3.5527135e-15, z: -3.5527137e-15, w: 1}
+  m_LocalPosition: {x: -0.070000015, y: -0.019613037, z: 0.006455227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1836939243745105269}
+  m_Father: {fileID: 34784088786015864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7640656201511999006
 SkinnedMeshRenderer:
@@ -109,7 +109,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.008
   m_Center: {x: 0.070000015, y: 0.021, z: -0.005}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 4521950747358123001}
   - component: {fileID: 5944524873801724554}
   - component: {fileID: 4499655604705482545}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: EvilWings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,12 +319,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959429343446916394}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.62572736, y: -2.2230301e-15, z: -2.7712652e-15, w: 0.7800418}
-  m_LocalPosition: {x: -0, y: 0.00919, z: -0.01155}
+  m_LocalRotation: {x: -0, y: -3.5527133e-15, z: -3.5527137e-15, w: 1}
+  m_LocalPosition: {x: 0, y: 0.016655503, z: -0.00107917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6192350198777677071}
+  m_Father: {fileID: 4517353188040727825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5944524873801724554
 SkinnedMeshRenderer:
@@ -402,7 +402,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.009
   m_Center: {x: -0.000000003725304, y: -0.015185062, z: 0.0015493883}
@@ -745,7 +745,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.004767457, z: 0.0054193395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5103315598102016231}
   m_Father: {fileID: 1836939243745105269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6945490784980483202
@@ -1608,7 +1609,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5103315598102016231}
   - {fileID: 7272702910308828027}
   - {fileID: 34784088786015864}
   - {fileID: 2876600731984017999}
@@ -1730,7 +1730,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3076446259644918428}
-  - {fileID: 4521950747358123001}
   - {fileID: 4517353188040727825}
   - {fileID: 8232566376488526885}
   - {fileID: 9026393472058873890}
@@ -1799,7 +1798,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.0066303792, z: 0.0049430127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4521950747358123001}
   m_Father: {fileID: 6192350198777677071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6901906358200358382

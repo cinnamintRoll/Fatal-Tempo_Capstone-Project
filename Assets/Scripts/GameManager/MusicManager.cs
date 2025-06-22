@@ -84,7 +84,7 @@ public class MusicManager : MonoBehaviour
     {
         musicSource.pitch = Time.timeScale;
 
-        float currentTime = musicSource.time + musicOffset;
+        float currentTime = musicSource.time;
 
         float songIntervalLength = _songInterval.GetIntervalLength(bpm);
         while (currentTime >= _lastSongIntervalTime + songIntervalLength)
@@ -113,6 +113,7 @@ public class MusicManager : MonoBehaviour
             if (startAtTime > 0f)
             {
                 musicSource.time = Mathf.Clamp(startAtTime, 0f, musicClip.length);
+
                 _lastSongIntervalTime = 0f;
                 musicSource.Play();
                 startTime = Time.time - startAtTime;
@@ -128,13 +129,17 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator StartEverythingWithDelay()
     {
-        if (startDelay > 0f)
+        float totalDelay = Mathf.Max(0f, startDelay + musicOffset); // Apply offset as additional delay
+        if (totalDelay > 0f)
         {
-            yield return new WaitForSeconds(startDelay);
+            yield return new WaitForSeconds(totalDelay);
         }
+
         startTime = Time.time;
+        musicSource.time = 0f; // Start from beginning of the song
         musicSource.Play();
     }
+
 
     public void StopMusic()
     {

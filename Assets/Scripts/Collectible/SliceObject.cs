@@ -30,14 +30,21 @@ public class SliceObject : MonoBehaviour
     public AudioClip sliceSound;
     [SerializeField] private AudioSource audioSource;
 
+    private Vector3 previousBladeStart;
+    private Vector3 previousBladeEnd;
+    public float bladeRadius = 0.01f;
     // Range for random pitch
     public float minPitch = 0.8f;
     public float maxPitch = 1.2f;
-
+    private bool isEmulator;
     void Start()
     {
         if(audioSource == null)
         audioSource = gameObject.AddComponent<AudioSource>();
+
+        previousBladeStart = bladeStart.position;
+        previousBladeEnd = bladeEnd.position;
+        isEmulator = !GameManager.Instance.VREmulator.HMDIsActive;
     }
 
     private void Awake()
@@ -45,29 +52,66 @@ public class SliceObject : MonoBehaviour
         input = InputBridge.Instance;
     }
 
-        void FixedUpdate()
+    void FixedUpdate()
     {
+        Debug.DrawLine(previousBladeStart, previousBladeEnd, Color.green);
         Debug.DrawLine(bladeStart.position, bladeEnd.position, Color.red);
+        Debug.DrawLine(previousBladeStart, previousBladeEnd, Color.green);
+        Debug.DrawLine(bladeStart.position, bladeEnd.position, Color.red);
+        Vector3 currentStart = bladeStart.position;
+        Vector3 currentEnd = bladeEnd.position;
 
-        if (Physics.Linecast(bladeStart.position, bladeEnd.position, out RaycastHit hit, sliceableLayer))
+        Vector3 previousStart = previousBladeStart;
+        Vector3 previousEnd = previousBladeEnd;
+
+        // Midpoint movement for direction and distance
+        Vector3 movementDirection = ((currentStart + currentEnd) * 0.5f) - ((previousStart + previousEnd) * 0.5f);
+        float movementDistance = movementDirection.magnitude;
+
+        if (movementDistance > 0f)
         {
-            GameObject sliceableObject = hit.collider.gameObject;
-            StartCoroutine(SliceAsync(sliceableObject));
+            Vector3 directionNormalized = movementDirection.normalized;
+
+            // CapsuleCast from previous blade line to current blade line
+            if (Physics.CapsuleCast(previousStart, previousEnd, bladeRadius, directionNormalized,
+                out RaycastHit hit, movementDistance + rayExtension, sliceableLayer))
+            {
+                GameObject sliceableObject = hit.collider.gameObject;
+                StartCoroutine(SliceAsync(sliceableObject));
+            }
         }
+
+        previousBladeStart = currentStart;
+        previousBladeEnd = currentEnd;
     }
+
+
 
     IEnumerator SliceAsync(GameObject sliceableObject)
     {
         GameObject originalobject = sliceableObject;
         if (sliceableObject != null)
         {
-            Vector3 swordVelocity = velocityEstimator.GetVelocityEstimate();
+            Vector3 swordVelocity = Vector3.zero;
+
+            if (isEmulator)
+            {
+                swordVelocity = velocityEstimator.GetVelocityEstimate();
+                velocityEstimator.enabled = false;
+            }
+            else
+            {
+                swordVelocity = InputBridge.Instance.GetControllerVelocity(HandSide);
+            }
+            
+
             float speed = swordVelocity.magnitude;
 
             if (speed < minSliceSpeed)
             {
-                yield break; 
+                yield break; // Too slow to slice
             }
+
 
             SliceSegment segment = sliceableObject.GetComponent<SliceSegment>();
             if (segment != null)
@@ -158,7 +202,36 @@ public class SliceObject : MonoBehaviour
         hull.transform.SetPositionAndRotation(originalObject.transform.position, originalObject.transform.rotation);
         hull.transform.localScale = originalObject.transform.localScale;
 
-        hull.AddComponent<MeshCollider>().convex = true;  
+        try
+        {
+            MeshFilter mf = hull.GetComponent<MeshFilter>();
+            Mesh mesh = mf.sharedMesh;
+            int triangleCount = mesh.triangles.Length / 3;
+
+            if (triangleCount <= 255)
+            {
+                MeshCollider meshCol = hull.AddComponent<MeshCollider>();
+                meshCol.sharedMesh = mesh;
+                meshCol.convex = true;
+            }
+            else
+            {
+                Debug.LogWarning($"Mesh too complex for convex collider ({triangleCount} triangles). Using fitted BoxCollider.");
+                AddFittedBoxCollider(hull, mesh);
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning($"Convex MeshCollider failed on {hull.name}. Falling back to fitted BoxCollider.\n{ex.Message}");
+            Destroy(hull.GetComponent<MeshCollider>());
+
+            Mesh mesh = hull.GetComponent<MeshFilter>()?.sharedMesh;
+            if (mesh != null)
+                AddFittedBoxCollider(hull, mesh);
+            else
+                hull.AddComponent<BoxCollider>(); // fallback if mesh missing
+        }
+
         Rigidbody rb = hull.AddComponent<Rigidbody>();   
 
         rb.AddExplosionForce(cutForce, originalObject.transform.position, 1f);
@@ -172,4 +245,54 @@ public class SliceObject : MonoBehaviour
             audioSource.PlayOneShot(sliceSound);
         }
     }
+
+    private void AddFittedBoxCollider(GameObject obj, Mesh mesh)
+    {
+        BoxCollider box = obj.AddComponent<BoxCollider>();
+
+        // Get local bounds of the mesh
+        Bounds bounds = mesh.bounds;
+
+        // Apply mesh bounds to the BoxCollider in local space
+        box.center = bounds.center;
+        box.size = bounds.size;
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (bladeStart != null && bladeEnd != null)
+        {
+            Gizmos.color = Color.cyan;
+
+            Vector3 start = bladeStart.position;
+            Vector3 end = bladeEnd.position;
+
+            // Draw spheres at each end to represent the capsule ends
+            Gizmos.DrawWireSphere(start, bladeRadius);
+            Gizmos.DrawWireSphere(end, bladeRadius);
+
+            // Approximate capsule sides by drawing radial lines between the spheres
+            Vector3 dir = (end - start).normalized;
+            Vector3 up = Vector3.up;
+            if (Vector3.Dot(dir, up) > 0.99f) // If aligned with up, choose another axis
+            {
+                up = Vector3.right;
+            }
+
+            up = Vector3.Cross(dir, up).normalized * bladeRadius;
+
+            int segments = 12;
+            for (int i = 0; i < segments; i++)
+            {
+                float angle = (360f / segments) * i;
+                Quaternion rot = Quaternion.AngleAxis(angle, dir);
+                Vector3 offset = rot * up;
+
+                Gizmos.DrawLine(start + offset, end + offset);
+            }
+        }
+    }
+#endif
+
 }

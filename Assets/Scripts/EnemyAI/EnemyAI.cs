@@ -220,6 +220,7 @@ public class EnemyAI : MonoBehaviour
     // Handle Idle State
     void HandleIdle()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (IsEnemyBehindPlayer())
         {
             switch (selectedEnemyName.ToLower())
@@ -239,6 +240,14 @@ public class EnemyAI : MonoBehaviour
                     break;
             }
             
+        }
+        switch (CurrentEnemy.EnemyName) {
+            case "melee":
+                if(distanceToPlayer <= attackRange)
+                {
+                    TransitionToState(EnemyState.Attack);
+                }
+        break;
         }
     }
 
@@ -265,7 +274,7 @@ public class EnemyAI : MonoBehaviour
                 case "melee":
                     if (distanceToPlayer <= attackRange)
                     {
-                        TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
+                        TransitionToState(EnemyState.Idle); // Reached destination, switch to attack
                     }
                     break;
             }

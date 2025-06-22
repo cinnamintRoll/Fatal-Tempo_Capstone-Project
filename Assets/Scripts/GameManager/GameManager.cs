@@ -10,7 +10,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform baseTransform;
     [SerializeField] private BeatScoringSystem scoringSystem;
     [SerializeField] private ScreenFader screenFader;
+    [SerializeField] private VREmulator vrEmulator;
 
+    public VREmulator VREmulator
+    {
+        get
+        {
+            if (playerTransform == null)
+            {
+                Debug.LogWarning("VREmulator is not set!");
+            }
+            return vrEmulator;
+        }
+    }
     public Transform PlayerTransform
     {
         get

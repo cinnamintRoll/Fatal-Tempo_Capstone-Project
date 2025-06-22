@@ -378,12 +378,10 @@ public class PathFollowerEditor : Editor
 
         int replacedCount = 0;
 
-        // Recursive function to traverse all children
         void TraverseAndReplace(Transform parent)
         {
             foreach (Transform child in parent)
             {
-                // First, go deeper
                 TraverseAndReplace(child);
 
                 GeneralSpawner oldSpawner = child.GetComponent<GeneralSpawner>();
@@ -391,9 +389,9 @@ public class PathFollowerEditor : Editor
 
                 GameObject prefabSource = PrefabUtility.GetCorrespondingObjectFromSource(child.gameObject);
                 if (prefabSource == pathFollower.spawnTriggerPrefab)
-                    continue; // Already correct prefab
+                    continue;
 
-                // Store data
+                // --- Store GeneralSpawner data ---
                 Vector3 pos = child.position;
                 Quaternion rot = child.rotation;
                 string name = child.name;
@@ -403,18 +401,33 @@ public class PathFollowerEditor : Editor
                 int oldSpawnIndex = oldSpawner.spawnIndex;
                 Vector3? spawnPointPos = oldSpawner.spawnPoint ? oldSpawner.spawnPoint.position : null;
                 Vector3? movePointPos = oldSpawner.movepoint ? oldSpawner.movepoint.position : null;
-                string selectedEnemyName = oldSpawner.enemy ? oldSpawner.enemy.selectedEnemyName : null;
-                EnemyAI oldEnemyAI = oldSpawner.enemy;
-                EnemyState currentState = oldEnemyAI ? oldEnemyAI.currentState : EnemyState.Idle;
+
+                string selectedEnemyName = null;
+                EnemyAI.EnemyState currentState = EnemyAI.EnemyState.Idle;
+                float health = 0;
+                float attackRange = 0;
+                float moveSpeed = 0;
+
+                // --- Extract data from EnemyAIManager ---
+                EnemyAIManager oldManager = child.GetComponentInChildren<EnemyAIManager>();
+                if (oldManager != null)
+                {
+                    selectedEnemyName = oldManager.selectedEnemyName;
+                    currentState = oldManager.currentState;
+                    health = oldManager.health;
+                    attackRange = oldManager.attackRange;
+                    moveSpeed = oldManager.moveSpeed;
+                }
 
                 Undo.DestroyObjectImmediate(child.gameObject);
 
+                // --- Instantiate new prefab ---
                 GameObject newGO = (GameObject)PrefabUtility.InstantiatePrefab(pathFollower.spawnTriggerPrefab);
                 newGO.name = name;
                 newGO.transform.position = pos;
                 newGO.transform.rotation = rot;
                 newGO.transform.SetParent(originalParent);
-                newGO.transform.SetSiblingIndex(siblingIndex); // Maintain original order
+                newGO.transform.SetSiblingIndex(siblingIndex);
 
                 GeneralSpawner newSpawner = newGO.GetComponent<GeneralSpawner>();
                 if (newSpawner != null)
@@ -428,8 +441,22 @@ public class PathFollowerEditor : Editor
                         newSpawner.movepoint.position = movePointPos.Value;
 
                     if (newSpawner.enemy)
+                    {
                         newSpawner.enemy.selectedEnemyName = selectedEnemyName;
                         newSpawner.enemy.currentState = currentState;
+                    }
+                }
+
+                // --- Apply to new EnemyAIManager ---
+                EnemyAIManager newManager = newGO.GetComponentInChildren<EnemyAIManager>();
+                if (newManager != null)
+                {
+                    newManager.selectedEnemyName = selectedEnemyName;
+                    newManager.currentState = currentState;
+                    newManager.health = health;
+                    newManager.attackRange = attackRange;
+                    newManager.moveSpeed = moveSpeed;
+                    newManager.ApplyChangesToEnemy();
                 }
 
                 Undo.RegisterCreatedObjectUndo(newGO, "Replace Spawnable");
@@ -443,6 +470,7 @@ public class PathFollowerEditor : Editor
         Debug.Log($"Replaced {replacedCount} spawnable(s) with current prefab.");
         EditorUtility.SetDirty(pathFollower);
     }
+
 
 
 
