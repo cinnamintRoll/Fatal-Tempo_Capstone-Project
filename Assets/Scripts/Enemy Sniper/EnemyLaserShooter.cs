@@ -30,7 +30,6 @@ public class EnemyLaserShooter : MonoBehaviour
     private Vector3 laserOffset; // Fixed laser offset
     [SerializeField] private EnemyAI AIScript;
     [SerializeField] private int beatsBetweenShoots = 3; // Adjustable beats to shoot
-    private int currentBeat = 0; // Track the current beat for the laser charge cycle
     private bool isCharging = false;
     [SerializeField] private GameObject BulletCollider;
     [SerializeField] private bool loopShooting = true;
@@ -254,11 +253,12 @@ public class EnemyLaserShooter : MonoBehaviour
     // Method to deflect the shot
     public void DeflectShot(Vector3 deflectPoint)
     {
+        
         isDeflected = true;
         OnDeflect.Invoke();
         laser.enabled = false;
         AudioSource.PlayClipAtPoint(deflectionSound, deflectPoint);
-        /*if (AIScript != null)
+        if (AIScript != null)
         {
             AIScript.TransitionToState(EnemyAI.EnemyState.Death);
         }
@@ -267,7 +267,7 @@ public class EnemyLaserShooter : MonoBehaviour
             Destroy(visuals);
             
             Destroy(gameObject, 0.5f);
-        }*/
+        }
     }
 
     public void OnBulletColliderDestroyed()
@@ -275,7 +275,6 @@ public class EnemyLaserShooter : MonoBehaviour
         shouldStop = true;
         StopAllCoroutines(); // Stop everything gracefully
         laser.enabled = false;
-
         if (AIScript != null)
         {
             AIScript.TransitionToState(EnemyAI.EnemyState.Death);
