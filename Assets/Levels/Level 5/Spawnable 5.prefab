@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5370671105430264576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 583976177954945176, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 583976177954945176, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165300871366844835, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630499133010990551, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630499133010990551, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: attackRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5790479524541551597, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: Spawnables.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834670796385129556, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920382096636392883, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: attackRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920382096636392883, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: behindDistanceThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920382096636392883, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: Enemies.Array.data[2].EnemyHealth
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294233970349934348, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116902010776940374, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Spawnable 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0e05b8659524a64893019db5f9ff6fe, type: 3}
