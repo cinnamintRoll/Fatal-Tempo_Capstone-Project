@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
     public Animator selectedAnimator;
     private bool isDespawning = false;
     private bool hasDamaged = false;
-
+    private bool isAttacking = false;
     public Enemies CurrentEnemy
     {
         get
@@ -233,6 +233,7 @@ public class EnemyAI : MonoBehaviour
                     TransitionToState(EnemyState.Despawn);
                     break;
                 case "sniper":
+                case "wizard sniper":
                     TransitionToState(EnemyState.Despawn);
                     break;
                 default:
@@ -315,6 +316,9 @@ public class EnemyAI : MonoBehaviour
         
         switch (selectedEnemyName.ToLower())
         {
+            case "sniper":
+            case "wizard sniper":
+                break;
                 default:
                 TransitionToState(EnemyState.Idle);
                 break;
@@ -403,9 +407,18 @@ public class EnemyAI : MonoBehaviour
                 TransitionToState(EnemyState.Idle);
                 break;
             case "sniper":
+            case "wizard sniper":
                 Debug.Log("Enemy performs a sniper attack!");
-                if (SniperScript != null)
-                    SniperScript.StartShooting();
+                if (!isAttacking)
+                {
+                    isAttacking = true;
+                    if (CurrentEnemy.EnemyObject != null)
+                    {
+                        SniperScript = CurrentEnemy.EnemyObject?.GetComponent<EnemyLaserShooter>();
+                    }
+                    if (SniperScript != null)
+                        SniperScript.StartShooting();
+                }
                 break;
             case "multi hit meelee":
                 Debug.Log("Enemy performs a melee attack!");

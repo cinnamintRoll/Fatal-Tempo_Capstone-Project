@@ -1289,6 +1289,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.439
       objectReference: {fileID: 0}
+    - target: {fileID: 1085558668431940042, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: m_Name
+      value: Wizard Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085558668431940042, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1176214412402599945, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
       propertyPath: m_IsActive
@@ -1461,6 +1471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
+      propertyPath: Enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
       propertyPath: Enemies.Array.data[0].EnemyAnim
       value: 
       objectReference: {fileID: 2528183454922028445}
@@ -1469,6 +1484,31 @@ PrefabInstance:
       propertyPath: Enemies.Array.data[1].EnemyAnim
       value: 
       objectReference: {fileID: 6127547583758203298}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: Enemies.Array.data[4].EnemyAnim
+      value: 
+      objectReference: {fileID: 4433444296773547477}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: Enemies.Array.data[4].EnemyName
+      value: Wizard Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: Enemies.Array.data[4].EnemyHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: Enemies.Array.data[4].EnemyObject
+      value: 
+      objectReference: {fileID: 3440309738960901444}
+    - target: {fileID: 8559915824735752146, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: Enemies.Array.data[4].SpawnChance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8584353010999047646, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1499,6 +1539,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: visuals
+      value: 
+      objectReference: {fileID: 5819879376949426230}
     m_RemovedComponents:
     - {fileID: 2357453297398257207, guid: 10779f3466d8a9b4b9fff935c1b94178, type: 3}
     - {fileID: 3624905366661893312, guid: 10779f3466d8a9b4b9fff935c1b94178, type: 3}
@@ -1525,6 +1570,24 @@ Transform:
 --- !u!4 &2407889733315647459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 127306223379372909, guid: 10779f3466d8a9b4b9fff935c1b94178,
+    type: 3}
+  m_PrefabInstance: {fileID: 2355033654502067342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3440309738960901444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1085558668431940042, guid: 10779f3466d8a9b4b9fff935c1b94178,
+    type: 3}
+  m_PrefabInstance: {fileID: 2355033654502067342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4433444296773547477 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2100930019160537435, guid: 10779f3466d8a9b4b9fff935c1b94178,
+    type: 3}
+  m_PrefabInstance: {fileID: 2355033654502067342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5819879376949426230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8100462616018597048, guid: 10779f3466d8a9b4b9fff935c1b94178,
     type: 3}
   m_PrefabInstance: {fileID: 2355033654502067342}
   m_PrefabAsset: {fileID: 0}

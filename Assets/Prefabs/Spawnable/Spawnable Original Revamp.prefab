@@ -1981,6 +1981,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1454832287585002411, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2112290043310198563, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -2201,6 +2206,7 @@ PrefabInstance:
     - {fileID: 4093673529480131743, guid: d0e05b8659524a64893019db5f9ff6fe, type: 3}
     - {fileID: 8177137869130605029, guid: d0e05b8659524a64893019db5f9ff6fe, type: 3}
     - {fileID: 171257199056147474, guid: d0e05b8659524a64893019db5f9ff6fe, type: 3}
+    - {fileID: 3445601767609464540, guid: d0e05b8659524a64893019db5f9ff6fe, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1937814268821365004, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}

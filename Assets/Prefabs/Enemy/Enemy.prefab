@@ -357,13 +357,10 @@ MonoBehaviour:
     EnemyObject: {fileID: 4616025458098154944}
     SpawnChance: 0.05
     EnemyAnim: {fileID: 0}
-  selectedEnemyName: 
+  selectedEnemyName: Melee
   player: {fileID: 0}
   pointToMove: {fileID: 0}
-  chaseRange: 10
   attackRange: 1.7
-  rangedAttackRange: 15
-  attackCooldown: 1.5
   behindDistanceThreshold: 0.5
   SniperScript: {fileID: 1347426151028934052}
   navMeshAgent: {fileID: 7566053252195082254}
@@ -526,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1549810389059741840
 Transform:
   m_ObjectHideFlags: 0
@@ -675,7 +672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5579235067880989858
 Transform:
   m_ObjectHideFlags: 0
