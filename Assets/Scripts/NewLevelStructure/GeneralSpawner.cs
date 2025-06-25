@@ -129,7 +129,7 @@ public class GeneralSpawner : MonoBehaviour
 
         enemy.PickRandomEnemyType();
     }
-
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if (Spawnables == null || Spawnables.Count == 0)
@@ -151,7 +151,7 @@ public class GeneralSpawner : MonoBehaviour
 
         _previousSpawnIndex = spawnIndex;
     }
-
+#endif
     public void OnDespawn()
     {
         Destroy(this.gameObject, 5f);

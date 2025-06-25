@@ -138,14 +138,10 @@ public class WeaponManager : MonoBehaviour
 
     public void SwapBack()
     {
-        if (currentLeftWeapon != WeaponType.Fist)
-        {
-            SwapWeapon(lastLeftWeapon, HandType.Left);
-        }
-        else if (currentRightWeapon != WeaponType.Fist)
-        {
-            SwapWeapon(lastRightWeapon, HandType.Right);
-        }
+       SwapWeapon(lastLeftWeapon, HandType.Left, true);
+       SwapWeapon(lastRightWeapon, HandType.Right, true);
+        Debug.Log($"setting Left Weapon:{lastLeftWeapon}");
+        Debug.Log($"Setting Right Weapon:{lastRightWeapon}");
     }
 
     public GameObject GetWeaponGameObject(WeaponType weaponType, HandType hand)
@@ -158,9 +154,10 @@ public class WeaponManager : MonoBehaviour
     {
             lastLeftWeapon = currentLeftWeapon;
             lastRightWeapon = currentRightWeapon;
-
-        SwapWeapon(WeaponType.Fist, HandType.Left);
-        SwapWeapon(WeaponType.Fist, HandType.Right);
+        Debug.Log($"Last Left Weapon:{lastLeftWeapon}");
+        Debug.Log($"Last Right Weapon:{lastRightWeapon}");
+        SwapWeapon(WeaponType.Fist, HandType.Left, true);
+        SwapWeapon(WeaponType.Fist, HandType.Right, true);
 
     }
 }

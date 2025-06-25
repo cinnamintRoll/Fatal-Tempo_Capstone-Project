@@ -9,7 +9,7 @@ public class CollectibleTracker : MonoBehaviour
 
     [SerializeField] private int totalCollectiblesSpawned = 0;
     [SerializeField] private int totalCollectiblesCollected = 0;
-
+    [SerializeField] BeatScoringSystem _BeatScoringSystem;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,6 +18,8 @@ public class CollectibleTracker : MonoBehaviour
             return;
         }
         Instance = this;
+
+        
     }
 
     public void RegisterCollectible(GameObject collectible)
@@ -28,11 +30,20 @@ public class CollectibleTracker : MonoBehaviour
             totalCollectiblesSpawned++;
         }
     }
-
     public void UnregisterCollectibleCollected(GameObject collectible)
     {
         if (activeCollectibles.Contains(collectible))
         {
+            activeCollectibles.Remove(collectible);
+            totalCollectiblesCollected++;
+            CheckAllCollectiblesCollected();
+        }
+    }
+    public void UnregisterCollectibleCollected(GameObject collectible,int amount)
+    {
+        if (activeCollectibles.Contains(collectible))
+        {
+            _BeatScoringSystem.OnItemCollected(amount);
             activeCollectibles.Remove(collectible);
             totalCollectiblesCollected++;
             CheckAllCollectiblesCollected();

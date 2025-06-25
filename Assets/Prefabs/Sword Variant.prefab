@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630729827529224737, guid: caec4d6ec9e6ebb4f9d959ca67fbc3ca,
+        type: 3}
+      propertyPath: clipList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d97f3d782fff5db4694872d1401c03f1, type: 3}
     - target: {fileID: 1398292124317172399, guid: caec4d6ec9e6ebb4f9d959ca67fbc3ca,
         type: 3}
       propertyPath: HandSide
@@ -136,6 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168db796e4b703e47a291580b3fb8d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityAverageFrames: 2
+  velocityAverageFrames: 3
   angularVelocityAverageFrames: 11
   estimateOnAwake: 1

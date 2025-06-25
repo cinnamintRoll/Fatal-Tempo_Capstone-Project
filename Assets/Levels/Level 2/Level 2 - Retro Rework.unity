@@ -73452,7 +73452,7 @@ PrefabInstance:
         type: 3}
       propertyPath: BeatScoringSystem
       value: 
-      objectReference: {fileID: 1723131025}
+      objectReference: {fileID: 0}
     - target: {fileID: 2015949462795925646, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
@@ -73493,9 +73493,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3402421593372251706, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collector
+      objectReference: {fileID: 0}
     - target: {fileID: 3627058543498318064, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753039569315279125, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753039569315279125, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3862387714036907386, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3862387714036907386, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5336089992900569180, guid: 8906fde655c51b74fb7393f8f84dd3c0,
@@ -73597,7 +73622,7 @@ PrefabInstance:
     - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: useClosestPointAlignment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
@@ -75143,12 +75168,17 @@ PrefabInstance:
     - target: {fileID: 7717205260082810105, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: musicOffset
-      value: -0.05
+      value: 0.089
       objectReference: {fileID: 0}
     - target: {fileID: 7717205260082810105, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: secondsPerBeat
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998053602522090615, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8906949951179139858, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
@@ -75211,18 +75241,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8906fde655c51b74fb7393f8f84dd3c0, type: 3}
---- !u!114 &1723131025 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3951074117588031032, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1723131024}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90591792220107343967e9b9c15ef8a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1723131027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7717205260082810105, guid: 8906fde655c51b74fb7393f8f84dd3c0,

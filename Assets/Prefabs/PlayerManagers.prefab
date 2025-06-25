@@ -857,6 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalCollectiblesSpawned: 0
   totalCollectiblesCollected: 0
+  _BeatScoringSystem: {fileID: 8387222490823233241}
 --- !u!1 &5025336638337098075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1623,8 @@ MonoBehaviour:
   useMusicManager: 1
   scoreText: {fileID: 3865784836217458682}
   perfectWindow: 100
-  maxWindow: 300
+  highScore: 300
+  minScore: 100
   scorePopupPrefab: {fileID: 0}
 --- !u!1 &8129322224807711891
 GameObject:

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3660761499819202300}
   m_Layer: 0
   m_Name: HandCollector
-  m_TagString: PlayerHand
+  m_TagString: Collector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 7382329491085846283}
   m_Layer: 0
   m_Name: HandCollector
-  m_TagString: Untagged
+  m_TagString: Collector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11406,6 +11406,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1666063926510068917}
     m_Modifications:
+    - target: {fileID: 5645643775511247088, guid: ad1b82b7a5e26d1408814ee077efbcb2,
+        type: 3}
+      propertyPath: HandSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5645643775511247088, guid: ad1b82b7a5e26d1408814ee077efbcb2,
+        type: 3}
+      propertyPath: _collector
+      value: 
+      objectReference: {fileID: 8540646099750327542}
     - target: {fileID: 7131039330892022599, guid: ad1b82b7a5e26d1408814ee077efbcb2,
         type: 3}
       propertyPath: m_Name

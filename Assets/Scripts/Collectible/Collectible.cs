@@ -107,8 +107,9 @@ public class Collectible : MonoBehaviour
         Debug.Log("Collected Item!");
 
         // Award points to the collector
-        collector.CollectItem(CoinValue);
-        CollectibleTracker.Instance.UnregisterCollectibleCollected(gameObject);
+        CollectibleTracker.Instance.UnregisterCollectibleCollected(gameObject, CoinValue);
+        //collector.CollectItem(CoinValue);
+
         // Destroy or respawn logic
         if (DestroyOnCollect)
         {

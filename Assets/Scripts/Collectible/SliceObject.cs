@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 
 public class SliceObject : MonoBehaviour
 {
-    [SerializeField] private Collector _collector;
+    public Collector _collector;
     public Transform bladeStart;
     public Transform bladeEnd;
     public float minSliceSpeed = 1.5f;
@@ -54,6 +54,8 @@ public class SliceObject : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 swordVelocity = velocityEstimator.GetVelocityEstimate();
+        Debug.Log($"Sword Velocity: {swordVelocity}");
         Debug.DrawLine(previousBladeStart, previousBladeEnd, Color.green);
         Debug.DrawLine(bladeStart.position, bladeEnd.position, Color.red);
         Debug.DrawLine(previousBladeStart, previousBladeEnd, Color.green);
@@ -94,14 +96,16 @@ public class SliceObject : MonoBehaviour
         {
             Vector3 swordVelocity = Vector3.zero;
 
-            if (isEmulator)
+            if (velocityEstimator != null)
             {
                 swordVelocity = velocityEstimator.GetVelocityEstimate();
-                velocityEstimator.enabled = false;
+
             }
             else
             {
                 swordVelocity = InputBridge.Instance.GetControllerVelocity(HandSide);
+                Debug.Log($"Sword Velocity: {swordVelocity}");
+                //velocityEstimator.enabled = false;
             }
             
 
@@ -147,6 +151,7 @@ public class SliceObject : MonoBehaviour
         }
         yield return new WaitForEndOfFrame(); 
         Vector3 velocity = velocityEstimator.GetVelocityEstimate();
+        Vector3 bladeDirection = bladeEnd.position - bladeStart.position;
         Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);
         planeNormal.Normalize();
 
@@ -156,6 +161,30 @@ public class SliceObject : MonoBehaviour
             slicedObject = sliceableObject.Slice(bladeEnd.position, planeNormal, crossSectionMaterial);
         }
 
+        if (slicedObject == null && sliceableObject != null)
+        {
+            Debug.LogWarning($"[Slice Fallback] Defaulting to center slice for {sliceableObject.name}");
+
+            Bounds bounds;
+            MeshRenderer renderer = sliceableObject.GetComponentInChildren<MeshRenderer>();
+            if (renderer != null)
+            {
+                bounds = renderer.bounds;
+            }
+            else
+            {
+                bounds = new Bounds(sliceableObject.transform.position, Vector3.one);
+            }
+
+            Vector3 fallbackPosition = bounds.center;
+
+            // Use blade direction + gravity offset to define a better cut angle
+            Vector3 fallbackPlaneNormal = Vector3.Cross(bladeDirection.normalized, Vector3.up).normalized;
+            if (fallbackPlaneNormal == Vector3.zero)
+                fallbackPlaneNormal = sliceableObject.transform.up; // fallback if cross product failed
+
+            slicedObject = sliceableObject.Slice(fallbackPosition, fallbackPlaneNormal, crossSectionMaterial);
+        }
         if (slicedObject != null)
         {
             input.VibrateController(0.5f, 1f, 0.05f, HandSide);
@@ -193,6 +222,7 @@ public class SliceObject : MonoBehaviour
             {
                 Debug.LogWarning($"Slicing failed for object");
             }
+            Destroy(originalobject);
         }
 
     }
