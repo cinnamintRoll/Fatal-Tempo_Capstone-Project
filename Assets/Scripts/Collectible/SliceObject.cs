@@ -29,7 +29,7 @@ public class SliceObject : MonoBehaviour
     // Slice sound effect
     public AudioClip sliceSound;
     [SerializeField] private AudioSource audioSource;
-
+    [SerializeField] private SoundPlayer soundPlayer;
     private Vector3 previousBladeStart;
     private Vector3 previousBladeEnd;
     public float bladeRadius = 0.01f;
@@ -116,6 +116,7 @@ public class SliceObject : MonoBehaviour
             SliceSegment segment = sliceableObject.GetComponent<SliceSegment>();
             if (segment != null)
             {
+                if(_collector)
                 _collector.CollectItem(segment.SegmentValue);
             }
 
@@ -238,12 +239,19 @@ public class SliceObject : MonoBehaviour
     }
     private void PlaySliceSound()
     {
-        if (sliceSound != null && audioSource != null)
-        {
-            audioSource.pitch = Random.Range(minPitch, maxPitch);
+        if (audioSource == null)
+            return;
 
-            audioSource.PlayOneShot(sliceSound);
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+
+        if (soundPlayer != null)
+        {
+            soundPlayer.PlayRandomSound();
+            return;   
         }
+   
+        if(sliceSound != null)
+        audioSource.PlayOneShot(sliceSound);
     }
 
     private void AddFittedBoxCollider(GameObject obj, Mesh mesh)

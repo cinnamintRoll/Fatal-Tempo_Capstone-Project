@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2208f6b1733301b40b33ac7fcce46102, type: 3}
-  m_Name: Demo Album
+  m_Name: Melt Records Album
   m_EditorClassIdentifier: 
-  albumName: Demo Album
+  albumName: Melt Records Collection 01
   albumDescription: 
   albumCover: {fileID: 0}
   songs:
-  - {fileID: 11400000, guid: e8cb7cfb28042944f8739473f6b42abf, type: 2}
-  - {fileID: 11400000, guid: 53e8d77dc54956c46a81ce7dc0937529, type: 2}
-  - {fileID: 11400000, guid: 0a4fa43a9da6f914ba11e71b18bcfa70, type: 2}
   - {fileID: 11400000, guid: ae8d929319ce8c749bd3d100f550f8bf, type: 2}
+  - {fileID: 11400000, guid: 0a4fa43a9da6f914ba11e71b18bcfa70, type: 2}

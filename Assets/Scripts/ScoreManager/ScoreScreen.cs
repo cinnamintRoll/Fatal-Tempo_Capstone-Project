@@ -28,7 +28,7 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private TMP_Text killText;
     [SerializeField] private TMP_Text collectibleText;
     [SerializeField] private TMP_Text caloriesText;
-    
+    [SerializeField] private AudioClip ScoreScreenClip;
     [Header("Animators")]
     [SerializeField] private Animator HighScoreText;
     [SerializeField] private Animator DiskUI;
@@ -57,7 +57,14 @@ public class ScoreScreen : MonoBehaviour
             int totalEnemies = PlayerPrefs.GetInt("TotalEnemies");
 
             AudioSource levelselectsource = _LevelSelectManager.audioSource;
-            levelselectsource.clip = AlbumDatabase.Instance.GetSongFromAlbums(songName).songClip;
+            if (ScoreScreenClip != null)
+            {
+                levelselectsource.clip = ScoreScreenClip;
+            }
+            else
+            {
+                levelselectsource.clip = AlbumDatabase.Instance.GetSongFromAlbums(songName).songClip;
+            }
             levelselectsource.Play();
 
             StartCoroutine(ShowScoreScreen(playerScore, bestCombo, totalHits, fullCombo, totalCollected, maxCollected, enemiesKilled, totalEnemies, totalMaxPoints, songName));
