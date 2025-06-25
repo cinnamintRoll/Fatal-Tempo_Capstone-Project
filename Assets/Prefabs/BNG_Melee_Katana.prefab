@@ -137,6 +137,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 7276ff191256962448d44af85114a1f7,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 630729827529224737}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 7276ff191256962448d44af85114a1f7,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8305577213521387930}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 7276ff191256962448d44af85114a1f7,
         type: 3}
@@ -184,9 +188,30 @@ MonoBehaviour:
   rayExtension: 0.01
   sliceSound: {fileID: 8300000, guid: d85eea887fb0cd4418a91db9d5217751, type: 3}
   audioSource: {fileID: 581442291845441615}
-  bladeRadius: -0.04
+  soundPlayer: {fileID: 630729827529224737}
+  bladeRadius: 0.05
   minPitch: 0.8
   maxPitch: 1.2
+--- !u!114 &630729827529224737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596040105683089688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a7d684f2271884b8b3c3f31b570113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipList:
+  - {fileID: 8300000, guid: 402e8d11157535141b9a9f3606ec51f2, type: 3}
+  - {fileID: 8300000, guid: 94680f75392678f4382864f7cbfbf4a8, type: 3}
+  - {fileID: 8300000, guid: d97f3d782fff5db4694872d1401c03f1, type: 3}
+  - {fileID: 8300000, guid: 3347bfb0e1208bc4c871ae45c0fbf520, type: 3}
+  - {fileID: 8300000, guid: 6eb689ab5cfdd724ba1a8692abdcdb9a, type: 3}
+  audioSource: {fileID: 581442291845441615}
+  PlayOnEnable: 0
 --- !u!65 &8305577213521387930
 BoxCollider:
   m_ObjectHideFlags: 0
