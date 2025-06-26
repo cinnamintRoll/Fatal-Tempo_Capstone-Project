@@ -152,8 +152,20 @@ public class BeatScoringSystem : MonoBehaviour
         Popup scorePopup = popup.GetComponent<Popup>();
         if (scorePopup != null)
         {
-            scorePopup.SetLocation(position);
             scorePopup.SetText(score.ToString());
+        }
+        PopupRatingDisplay ratingPopup = popup.GetComponent<PopupRatingDisplay>();
+        if(ratingPopup != null)
+        {
+            if (score == highScore)
+            {
+                ratingPopup.ShowRating("perfect");
+            }
+            else
+            {
+                ratingPopup.ShowRating("great");
+            }
+            ratingPopup.Play();
         }
     }
 
