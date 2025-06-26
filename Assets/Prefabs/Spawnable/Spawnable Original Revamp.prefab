@@ -678,7 +678,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -824,11 +824,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.016
+  m_Radius: 0.013
   m_Center: {x: 0.0000000149011345, y: 0.0012309691, z: 0.0017293841}
 --- !u!1 &2602228110610480909
 GameObject:
@@ -1086,7 +1086,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1208,7 +1208,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1298,11 +1298,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.45
+  m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9002828816480210530
 MonoBehaviour:
@@ -1877,11 +1877,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.014
+  m_Radius: 0.011
   m_Center: {x: -0.000000004656585, y: 0.0010174918, z: 0.0009835595}
 --- !u!1001 &2062545721898999611
 PrefabInstance:
@@ -2156,6 +2156,11 @@ PrefabInstance:
       propertyPath: BulletCollider
       value: 
       objectReference: {fileID: 3559540850807878591}
+    - target: {fileID: 8334388950284852530, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: aimRotationOffset.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8334388950284852530, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: rotateModelVertically
