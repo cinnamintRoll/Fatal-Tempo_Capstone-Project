@@ -19841,7 +19841,7 @@ PrefabInstance:
     - target: {fileID: 2993828217973100604, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
       propertyPath: currentState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982697550853976152, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
@@ -40282,6 +40282,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7717205260082810105, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
+      propertyPath: song
+      value: 
+      objectReference: {fileID: 11400000, guid: ae8d929319ce8c749bd3d100f550f8bf,
+        type: 2}
+    - target: {fileID: 7717205260082810105, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
       propertyPath: musicClip
       value: 
       objectReference: {fileID: 8300000, guid: 6ac1f831c9a22c542a6a4a358785e599, type: 3}
@@ -43029,7 +43035,7 @@ PrefabInstance:
     - target: {fileID: 2993828217973100604, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
       propertyPath: currentState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982697550853976152, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
@@ -49492,7 +49498,7 @@ PrefabInstance:
     - target: {fileID: 2993828217973100604, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
       propertyPath: currentState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982697550853976152, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
@@ -52775,7 +52781,7 @@ PrefabInstance:
     - target: {fileID: 2993828217973100604, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
       propertyPath: currentState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982697550853976152, guid: 00f131d0763e8c645bc40e6705cd8592,
         type: 3}
@@ -52801,6 +52807,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spawnable 2 - Techisoba
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085544102445679335, guid: 00f131d0763e8c645bc40e6705cd8592,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2337332
+      objectReference: {fileID: 0}
+    - target: {fileID: 9085544102445679335, guid: 00f131d0763e8c645bc40e6705cd8592,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.054199
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
