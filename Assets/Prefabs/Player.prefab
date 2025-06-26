@@ -206,7 +206,7 @@ Transform:
   - {fileID: 1023315244013734592}
   - {fileID: 7829056118846333583}
   - {fileID: 2822923896944112421}
-  - {fileID: 1289662209031852427}
+  - {fileID: 6303622993110281383}
   m_Father: {fileID: 9052165745593503988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6850010212816737911
@@ -644,6 +644,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 32900000, guid: 7451d7b397b93684ea9cc6485a38bfb6,
         type: 3}
+    - target: {fileID: 5128529402312936911, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6410796599436775075, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -664,17 +669,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6609952035605685729, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: scorePopupPrefab
+      value: 
+      objectReference: {fileID: 2751024255575125711, guid: d0679c3d35d7ebf4489a2236fbe64580,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695052bf1470b6d4faf96024b3f0222a, type: 3}
---- !u!4 &1289662209031852427 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 185597941203811099, guid: 695052bf1470b6d4faf96024b3f0222a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1402498180752992912}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1326671551755553399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 81034099139567847, guid: 695052bf1470b6d4faf96024b3f0222a,
@@ -687,6 +692,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f55bfcd4d1eacf4e9162806732399e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6303622993110281383 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4903394274205976119, guid: 695052bf1470b6d4faf96024b3f0222a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1402498180752992912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &7820895422105531928 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 9223313046317685896, guid: 695052bf1470b6d4faf96024b3f0222a,
