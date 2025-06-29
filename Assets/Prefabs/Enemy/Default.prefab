@@ -162,6 +162,7 @@ MonoBehaviour:
   laserColorNormal: {r: 1, g: 1, b: 1, a: 1}
   shootBeamColor: {r: 1, g: 0.98004615, b: 0, a: 1}
   aimRotationOffset: {x: -0.7, y: 0, z: 0}
+  DeflectSpeedThreshold: 3
   initialLaserWidth: 0.01
   chargeLaserWidth: 0.1
   shootLaserWidth: 0.2
@@ -1693,6 +1694,11 @@ PrefabInstance:
         type: 3}
       propertyPath: loopShooting
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347426151028934052, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
+        type: 3}
+      propertyPath: DeflectSpeedThreshold
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1347426151028934052, guid: b11bd02027ff05e42b8b0138d4ab3e6d,
         type: 3}

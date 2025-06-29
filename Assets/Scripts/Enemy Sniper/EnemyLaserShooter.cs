@@ -19,6 +19,7 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private Color laserColorNormal = Color.green; // Color of the normal laser
     [SerializeField] private Color shootBeamColor = Color.white; // Color of the beam when shooting
     [SerializeField] private Vector3 aimRotationOffset; // Rotation offset for aiming at the player
+    [SerializeField] private float DeflectSpeedThreshold = 3f;
     private bool isDeflected = false;
     [SerializeField] private float initialLaserWidth = 0.05f; // Initial width of the laser
     [SerializeField] private float chargeLaserWidth = 0.2f; // Maximum width during the charge-up phase
@@ -198,7 +199,6 @@ public class EnemyLaserShooter : MonoBehaviour
 
                 AimAtPlayer();
                 UpdateLaser();
-                CheckForDeflection();
 
                 yield return null;
             }
@@ -354,11 +354,22 @@ public class EnemyLaserShooter : MonoBehaviour
         RaycastHit hit;
         bool hitDeflectable = Physics.SphereCast(origin, 0.05f, laserDirection, out hit, laserRange, deflectLayer);
 
-        if (hitDeflectable && !isDeflected)
+        SliceObject sliceObj = hit.collider != null ? hit.collider.gameObject.GetComponent<SliceObject>() : null;
+
+        if (sliceObj != null)
         {
-            DeflectShot(hit.point);
-            isDeflected = true;
+            Vector3 swordVelocity = sliceObj.GetSwordVelocity();
+            float speed = swordVelocity.magnitude;
+            //Debug.Log($"Current Sword Velocity: {speed}");
+            if (speed >= DeflectSpeedThreshold)
+            {
+                if (hitDeflectable && !isDeflected)
+                {
+                    Debug.Log($"Sword Velocity: {swordVelocity}, Magnitude: {speed}");
+                    DeflectShot(hit.point);
+                    isDeflected = true;
+                }
+            }
         }
     }
-
 }

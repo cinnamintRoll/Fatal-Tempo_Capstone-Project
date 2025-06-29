@@ -54,8 +54,6 @@ public class SliceObject : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 swordVelocity = velocityEstimator.GetVelocityEstimate();
-        //Debug.Log($"Sword Velocity: {swordVelocity}");
         Debug.DrawLine(previousBladeStart, previousBladeEnd, Color.green);
         Debug.DrawLine(bladeStart.position, bladeEnd.position, Color.red);
         Debug.DrawLine(previousBladeStart, previousBladeEnd, Color.green);
@@ -85,8 +83,20 @@ public class SliceObject : MonoBehaviour
 
         previousBladeStart = currentStart;
         previousBladeEnd = currentEnd;
+
     }
 
+    public Vector3 GetSwordVelocity()
+    {
+        if (isEmulator && velocityEstimator != null)
+        {
+            return velocityEstimator.GetVelocityEstimate();
+        }
+        else
+        {
+            return InputBridge.Instance.GetControllerVelocity(HandSide);
+        }
+    }
 
 
     IEnumerator SliceAsync(GameObject sliceableObject)
@@ -96,18 +106,7 @@ public class SliceObject : MonoBehaviour
         {
             Vector3 swordVelocity = Vector3.zero;
 
-            if (isEmulator)
-            {
-                swordVelocity = velocityEstimator.GetVelocityEstimate();
-
-            }
-            else
-            {
-                swordVelocity = InputBridge.Instance.GetControllerVelocity(HandSide);
-                Debug.Log($"Sword Velocity: {swordVelocity}");
-                //velocityEstimator.enabled = false;
-            }
-            
+            swordVelocity = GetSwordVelocity();
 
             float speed = swordVelocity.magnitude;
 
@@ -151,14 +150,7 @@ public class SliceObject : MonoBehaviour
         }
         yield return new WaitForEndOfFrame();
         Vector3 velocity = Vector3.zero;
-        if (isEmulator)
-        {
-            velocity = velocityEstimator.GetVelocityEstimate();
-        }
-        else
-        {
-            velocity = InputBridge.Instance.GetControllerVelocity(HandSide);
-        }
+        velocity = GetSwordVelocity();
         Vector3 bladeDirection = bladeEnd.position - bladeStart.position;
         Vector3 planeNormal = Vector3.Cross(bladeEnd.position - bladeStart.position, velocity);
         planeNormal.Normalize();
