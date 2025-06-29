@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentKillCount;
     [SerializeField] private GameMenu gameMenu;
     private float currentHealth;
-
+    [SerializeField] private PathFollower follower;
     [SerializeField] private Animator DamageAnimator;
 
     // Audio handling with a single AudioSource and two clips
@@ -160,6 +160,7 @@ public class PlayerHealth : MonoBehaviour
     public void PlayerDeath()
     {
         gameMenu.TriggerDeathMenu();
+        follower.pathParent.gameObject.SetActive(false);
         OnDeath.Invoke();
     }
 

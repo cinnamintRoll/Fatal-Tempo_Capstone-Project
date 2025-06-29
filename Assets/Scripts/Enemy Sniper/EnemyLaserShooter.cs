@@ -213,7 +213,14 @@ public class EnemyLaserShooter : MonoBehaviour
             audioSource.PlayOneShot(shootSound);
             ShootPlayer();
 
-            yield return StartCoroutine(AnimateShootBeam());
+            if (gameObject.activeInHierarchy)
+            {
+                yield return StartCoroutine(AnimateShootBeam());
+            }
+            else
+            {
+                yield break; // Or optionally skip the animation
+            }
 
             if (loopShooting)
             {
@@ -296,6 +303,8 @@ public class EnemyLaserShooter : MonoBehaviour
     // Coroutine to animate the laser beam shooting effect
     IEnumerator AnimateShootBeam()
     {
+        if (!gameObject.activeInHierarchy)
+            yield break;
         Debug.LogWarning("Beam start shooting");
         float expandTime = 0.1f;
         float contractTime = 0.1f;

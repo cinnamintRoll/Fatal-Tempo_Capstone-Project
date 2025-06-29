@@ -20,7 +20,7 @@ public class SmoothFollowHUD : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update() // Use Update instead of FixedUpdate to work with timeScale = 0
     {
         // Target position is in front of the player's camera, at a slight height offset
         targetPosition = playerCamera.position + playerCamera.forward * followDistance;
