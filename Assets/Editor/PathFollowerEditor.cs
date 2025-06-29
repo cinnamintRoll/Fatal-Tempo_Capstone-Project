@@ -277,7 +277,11 @@ public class PathFollowerEditor : Editor
 
     private void AlignBeatsToPoints()
     {
-        if (pathFollower.pathPoints == null || pathFollower.pathPoints.Length != 2) return;
+        if (pathFollower.pathPoints == null || pathFollower.pathPoints.Length != 2)
+        {
+            Debug.LogWarning("AlignBeatsToPoints: Path points are not properly set.");
+            return;
+        }
 
         Vector3 startPoint = pathFollower.pathPoints[0].position;
         Vector3 endPoint = pathFollower.pathPoints[1].position;
@@ -286,6 +290,8 @@ public class PathFollowerEditor : Editor
         float startOffset = pathFollower.startDelay * pathFollower.speed;
         int totalChildren = pathFollower.pathParent.childCount;
 
+        Debug.Log($"Aligning beats with spacing: {spacing}, segmentLength: {segmentLength}, startOffset: {startOffset}");
+
         if (!pathFollower.useClosestPointAlignment)
         {
             // Original linear alignment
@@ -293,13 +299,14 @@ public class PathFollowerEditor : Editor
             for (int i = 0; i < totalChildren; i++)
             {
                 Transform child = pathFollower.pathParent.GetChild(i);
-                if (child.tag != "Spawnable" || child.tag != "EndSaver") continue;
+                if (child.tag != "Spawnable" && child.tag != "EndSaver") continue;
 
                 float beatDistance = startOffset + i * spacing;
                 float t = Mathf.Clamp01(beatDistance / segmentLength);
                 Vector3 alignedPos = Vector3.Lerp(startPoint, endPoint, t);
 
                 Undo.RecordObject(child, "Align Beat to Point");
+                Debug.Log($"[Linear] Moving '{child.name}' to {alignedPos}");
                 child.position = alignedPos;
             }
         }
@@ -321,8 +328,8 @@ public class PathFollowerEditor : Editor
                 Undo.DestroyObjectImmediate(alignmentParent.transform.GetChild(i).gameObject);
             }
 
-            // Calculate how many points needed along the line
             int pointsCount = Mathf.CeilToInt(segmentLength / spacing) + 1;
+            Debug.Log($"Creating {pointsCount} alignment points");
 
             // Create empty transforms spaced along the line, starting at startOffset
             for (int i = 0; i < pointsCount; i++)
@@ -335,12 +342,14 @@ public class PathFollowerEditor : Editor
                 Undo.RegisterCreatedObjectUndo(pointGO, "Create Alignment Point");
                 pointGO.transform.position = pos;
                 pointGO.transform.parent = alignmentParent.transform;
+
+                Debug.Log($"Created alignment point {i} at {pos}");
             }
 
             // For each child in pathParent, find closest align point and assign
             foreach (Transform child in pathFollower.pathParent)
             {
-                if (child.tag != "Spawnable" || child.tag != "EndSaver") continue;
+                if (child.tag != "Spawnable" && child.tag != "EndSaver") continue;
 
                 Transform closest = null;
                 float closestDist = float.MaxValue;
@@ -358,6 +367,7 @@ public class PathFollowerEditor : Editor
                 if (closest != null)
                 {
                     Undo.RecordObject(child, "Align Beat to Closest Point");
+                    Debug.Log($"[Closest] Moving '{child.name}' to {closest.position}");
                     child.position = closest.position;
                 }
             }
@@ -366,7 +376,9 @@ public class PathFollowerEditor : Editor
         }
 
         EditorUtility.SetDirty(pathFollower);
+        Debug.Log("Finished aligning beats.");
     }
+
 
     private void ReplaceSpawnablesWithCurrentPrefab()
     {

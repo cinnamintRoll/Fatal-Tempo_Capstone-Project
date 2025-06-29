@@ -167,7 +167,7 @@ namespace BNG
 
             eventSystem.RaycastAll(EventData, m_RaycastResultCache);
 
-            EventData.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
+            EventData.pointerCurrentRaycast = FindValidUIRaycast(m_RaycastResultCache);
             m_RaycastResultCache.Clear();
 
             // Handle Hover
@@ -399,5 +399,39 @@ namespace BNG
             ControllerInput.Add(newBinding);
         }
 
+        protected virtual RaycastResult FindValidUIRaycast(List<RaycastResult> candidates)
+        {
+            RaycastResult closestValid = default;
+            float closestDistance = float.MaxValue;
+
+            foreach (var result in candidates)
+            {
+                if (result.gameObject == null)
+                    continue;
+
+                int layer = result.gameObject.layer;
+
+                // Check if the layer is in the PhysicsRaycasterEventMask
+                if ((PhysicsRaycasterEventMask.value & (1 << layer)) != 0)
+                {
+                    if (result.distance < closestDistance)
+                    {
+                        closestDistance = result.distance;
+                        closestValid = result;
+                    }
+                }
+            }
+
+            // If we found a valid one within the mask, return it
+            if (closestValid.gameObject != null)
+            {
+                return closestValid;
+            }
+
+            // Otherwise fallback to the first raycast (could be ignored layer)
+            return FindFirstRaycast(candidates);
+        }
+
     }
+
 }

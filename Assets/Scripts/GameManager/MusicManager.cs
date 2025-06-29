@@ -124,6 +124,7 @@ public class MusicManager : MonoBehaviour
                 StartCoroutine(StartEverythingWithDelay());
                 isPlaying = true;
             }
+            OnIntervalPassed.Invoke();
         }
     }
 

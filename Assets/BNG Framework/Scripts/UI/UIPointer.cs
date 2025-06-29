@@ -180,7 +180,10 @@ public virtual void SetupXRITRaycaster() {
             UpdatePointer();
 #endif
         }
-
+        public void SetHidePointer(bool hide)
+        {
+            HidePointerIfNoObjectsFound = hide;
+        }
         public virtual void UpdatePointer() {
             data = uiSystem.EventData;
 

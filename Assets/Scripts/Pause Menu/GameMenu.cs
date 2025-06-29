@@ -25,7 +25,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] ScreenFader screenFader;
     [Tooltip("If true, will set Time.fixedDeltaTime to the device refresh rate")]
     public bool SetFixedDelta = false;
-
+    public bool disableInput = false;
     public enum MenuType { None, Pause, Death }
     private MenuType activeMenu = MenuType.None;
 
@@ -63,6 +63,7 @@ public class GameMenu : MonoBehaviour
     void Update()
     {
         // Check if the pause button (custom input) is pressed
+        if(!disableInput)
         if (InputBridge.Instance.AButtonDown)
         {
             if (activeMenu == MenuType.Pause)

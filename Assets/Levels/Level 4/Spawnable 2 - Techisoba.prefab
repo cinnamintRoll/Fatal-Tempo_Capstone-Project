@@ -153,6 +153,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8334388950284852530, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: rotateModelVertically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9116902010776940374, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_Name

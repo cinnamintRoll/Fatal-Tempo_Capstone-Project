@@ -335,22 +335,35 @@ public class PathFollower : MonoBehaviour
         if (!easyMode || pathParent == null) return;
 
         int count = 0;
-        // Use a temp list to avoid modifying the hierarchy while iterating
-        List<Transform> children = new List<Transform>();
-        foreach (Transform child in pathParent)
+        List<GameObject> spawnableObjects = new List<GameObject>();
+
+        // Recursively collect spawnable-tagged objects in hierarchy order
+        void CollectSpawnablesInOrder(Transform parent)
         {
-            if (child != pathPoints[0] && child != pathPoints[1])
-                children.Add(child);
+            foreach (Transform child in parent)
+            {
+                if (child.CompareTag("Spawnable"))
+                {
+                    spawnableObjects.Add(child.gameObject);
+                }
+
+                // Recurse through children to maintain top-down order
+                CollectSpawnablesInOrder(child);
+            }
         }
 
-        foreach (Transform child in children)
+        CollectSpawnablesInOrder(pathParent);
+
+        // Destroy every non-kept object based on interval
+        for (int i = 0; i < spawnableObjects.Count; i++)
         {
-            bool keep = count % easyModeInterval == 0;
-            if (!keep)
-                Destroy(child.gameObject);
-            count++;
+            if (i % easyModeInterval != 0)
+            {
+                Destroy(spawnableObjects[i]);
+            }
         }
     }
+
 #if UNITY_EDITOR
     public void GenerateWaveformTexture()
     {

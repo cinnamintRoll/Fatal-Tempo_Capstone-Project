@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,7 +19,14 @@ public class AnimationTriggerScript : MonoBehaviour
         var namedEvent = namedEvents.Find(e => e.eventName == eventName);
         if (namedEvent != null)
         {
-            namedEvent.unityEvent.Invoke();
+            try
+            {
+                namedEvent.unityEvent?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning("Event call failed: " + ex.Message);
+            }
         }
         else
         {
