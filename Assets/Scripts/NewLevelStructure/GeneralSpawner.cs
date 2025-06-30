@@ -22,7 +22,7 @@ public class GeneralSpawner : MonoBehaviour
     [SerializeField] private Animator spawnAnim;
     [SerializeField] public Transform movepoint;
     [SerializeField, HideInInspector] private int _previousSpawnIndex = -1;
-    private void Start()
+    private void OnEnable()
     {
         GameManager gameManager = GameManager.Instance;
         if (gameManager)

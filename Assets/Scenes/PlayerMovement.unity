@@ -3939,18 +3939,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1540385984}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &136613391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1117107160474073137, guid: 8906fde655c51b74fb7393f8f84dd3c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 4407026743264182526}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac09bf699d4234448aa42c086c9f964c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &137394634
 GameObject:
   m_ObjectHideFlags: 0
@@ -12666,7 +12654,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -67421,10 +67409,30 @@ PrefabInstance:
         type: 3}
       propertyPath: screenFader
       value: 
-      objectReference: {fileID: 136613391}
+      objectReference: {fileID: 0}
     - target: {fileID: 3627058543498318064, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753039569315279125, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753039569315279125, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3862387714036907386, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3862387714036907386, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5336089992900569180, guid: 8906fde655c51b74fb7393f8f84dd3c0,
@@ -69001,6 +69009,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6.097531
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341702281882526151, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: godMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998053602522090615, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019440897768469992, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8554556649896629951, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
