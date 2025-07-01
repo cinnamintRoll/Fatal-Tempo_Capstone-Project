@@ -1998,6 +1998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2360384956210344563, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360384956210344563, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
       propertyPath: m_ApplyActiveColorSpace
       value: 1
       objectReference: {fileID: 0}
