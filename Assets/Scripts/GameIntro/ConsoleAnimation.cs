@@ -119,15 +119,4 @@ public class StartAnimIntro : MonoBehaviour
         // Ensure the final color is set
         material.color = endColor;
     }
-
-    // Optional: Automatically start animation on trigger collision
-    private void OnTriggerEnter(Collider other)
-    {
-        // If the player or any object collides with this trigger
-        if (other.CompareTag("Player"))
-        {
-            StartAnimation(); // Trigger the animation and event
-            FadeMaterialBlackToWhite(); // Fade material from black to white
-        }
-    }
 }

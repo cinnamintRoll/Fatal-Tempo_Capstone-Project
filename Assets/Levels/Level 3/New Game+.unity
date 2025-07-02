@@ -8755,6 +8755,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2598870371516606145, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: ReportToEnemyScriptOnDamage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4043893136049392364, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: moveSpeed
@@ -64326,6 +64331,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6303622993073611889, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303622993075240685, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6850010212816737911, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: bpm
@@ -65912,6 +65927,11 @@ PrefabInstance:
       propertyPath: samplePoints.Array.data[100].z
       value: 602.9114
       objectReference: {fileID: 0}
+    - target: {fileID: 7341702281882526151, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: healClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f2c5557aea36a146ba734129b44c1a1, type: 3}
     - target: {fileID: 7573161841309343753, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_IsActive

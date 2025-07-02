@@ -342,6 +342,7 @@ public class EnemyLaserShooter : MonoBehaviour
     // Function to check for deflection
     private void CheckForDeflection()
     {
+        if (shouldStop) return;
         if (gunMuzzle == null || player == null) return;
 
         Vector3 origin = gunMuzzle.position;
