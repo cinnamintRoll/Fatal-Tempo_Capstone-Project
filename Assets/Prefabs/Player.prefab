@@ -1315,12 +1315,27 @@ PrefabInstance:
       propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4903394274173439713, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4909326303645187977, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_VideoClip
       value: 
       objectReference: {fileID: 32900000, guid: 7451d7b397b93684ea9cc6485a38bfb6,
         type: 3}
+    - target: {fileID: 4919201819990050273, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921271553664739599, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: far clip plane
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5128529402312936911, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_Layer

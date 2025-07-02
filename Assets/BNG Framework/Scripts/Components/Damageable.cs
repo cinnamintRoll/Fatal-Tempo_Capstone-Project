@@ -113,6 +113,7 @@ namespace BNG {
                 {
                     _enemyAI.TakeDamage(damageAmount);
                 }
+                DealDamage(damageAmount, transform.position);
             }
             else
             {

@@ -1113,7 +1113,7 @@ MonoBehaviour:
   DeactivateCollidersOnDeath: []
   DestroyOnDeath: 1
   DropOnDeath: 0
-  ReportToEnemyScriptOnDamage: 0
+  ReportToEnemyScriptOnDamage: 1
   _enemyAI: {fileID: 8175576945487686280}
   DestroyDelay: 0
   Respawn: 0
@@ -2150,7 +2150,7 @@ PrefabInstance:
         type: 3}
       propertyPath: visuals
       value: 
-      objectReference: {fileID: 2565647971191130531}
+      objectReference: {fileID: 8447330331034562413}
     - target: {fileID: 8334388950284852530, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: gunMuzzle
