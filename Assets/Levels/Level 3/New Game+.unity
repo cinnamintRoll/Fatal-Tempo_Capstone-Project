@@ -16,7 +16,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.20990565, g: 0.71224374, b: 0.8396226, a: 1}
+  m_FogColor: {r: 0.2783019, g: 0.8556602, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
   m_LinearFogStart: 0
@@ -66021,6 +66021,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3338974644191256480, guid: 8906fde655c51b74fb7393f8f84dd3c0, type: 3}
+    - {fileID: 8681054596125298901, guid: 8906fde655c51b74fb7393f8f84dd3c0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9207963694027022575, guid: 8906fde655c51b74fb7393f8f84dd3c0,

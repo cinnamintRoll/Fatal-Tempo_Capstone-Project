@@ -1318,7 +1318,7 @@ PrefabInstance:
     - target: {fileID: 4903394274173439713, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4909326303645187977, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
@@ -1329,12 +1329,12 @@ PrefabInstance:
     - target: {fileID: 4919201819990050273, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4921271553664739599, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: far clip plane
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5128529402312936911, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
@@ -1488,7 +1488,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7714632639738280517, guid: 695052bf1470b6d4faf96024b3f0222a, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1059085444031021948, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
