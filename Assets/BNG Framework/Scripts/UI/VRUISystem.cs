@@ -409,6 +409,10 @@ namespace BNG
                 if (result.gameObject == null)
                     continue;
 
+                // Check if the raycast came from a GraphicRaycaster (UI)
+                if (!(result.module is GraphicRaycaster))
+                    continue;
+
                 int layer = result.gameObject.layer;
 
                 // Check if the layer is in the PhysicsRaycasterEventMask
@@ -431,6 +435,7 @@ namespace BNG
             // Otherwise fallback to the first raycast (could be ignored layer)
             return FindFirstRaycast(candidates);
         }
+
 
     }
 

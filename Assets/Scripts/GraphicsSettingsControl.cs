@@ -44,6 +44,7 @@ namespace BNG
         {
             if (isButtonSelected)
             {
+                if (joystickControl == null) return; 
                 Vector2 leverVector = joystickControl.LeverVector;
 
                 if (Mathf.Abs(leverVector.x - previousXInput) > changeThreshold)
