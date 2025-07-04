@@ -16,7 +16,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.2783019, g: 0.8556602, b: 1, a: 1}
+  m_FogColor: {r: 0.28773582, g: 0.7424908, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.03
   m_LinearFogStart: 0
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.6084906, g: 0.719295, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 2db0500e09ddb004d8f5c500633918b1, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a09e2e60f7cbcfb469fd9ba84e6bb618, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -43349,6 +43349,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5366349702027582085, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7068993852650942573, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: m_Name
@@ -64255,6 +64260,11 @@ PrefabInstance:
       propertyPath: BeatScoringSystem
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2081471634518392251, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2811212122937556065, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_Name
@@ -65927,11 +65937,21 @@ PrefabInstance:
       propertyPath: samplePoints.Array.data[100].z
       value: 602.9114
       objectReference: {fileID: 0}
+    - target: {fileID: 7254945005878144939, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7341702281882526151, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: healClip
       value: 
       objectReference: {fileID: 8300000, guid: 9f2c5557aea36a146ba734129b44c1a1, type: 3}
+    - target: {fileID: 7390721766384736759, guid: 8906fde655c51b74fb7393f8f84dd3c0,
+        type: 3}
+      propertyPath: AddPhysicsRaycaster
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7573161841309343753, guid: 8906fde655c51b74fb7393f8f84dd3c0,
         type: 3}
       propertyPath: m_IsActive
@@ -100524,7 +100544,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.8235294, b: 0.8235294, a: 1}
-  m_Intensity: 3
+  m_Intensity: 4.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -100582,13 +100602,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138171595}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.9504285, y: -0, z: -0, w: -0.31094325}
+  m_LocalRotation: {x: -0.97448653, y: -0, z: -0, w: -0.22444585}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -216.232, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -205.941, y: 0, z: 0}
 --- !u!114 &2138171598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105861,7 +105881,7 @@ SceneRoots:
   - {fileID: 246279507}
   - {fileID: 330463917}
   - {fileID: 1329044539}
-  - {fileID: 492398748}
   - {fileID: 1904836031}
   - {fileID: 813496934}
   - {fileID: 321223665}
+  - {fileID: 492398748}

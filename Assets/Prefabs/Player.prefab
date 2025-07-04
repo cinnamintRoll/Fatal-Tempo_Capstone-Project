@@ -540,6 +540,7 @@ MonoBehaviour:
   playerTag: PlayerHead
   gameMenu: {fileID: 5854740009334993990}
   warningUI: {fileID: 5494465671439418338}
+  startDelay: 1
 --- !u!1 &5494465671439418338
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +820,7 @@ MonoBehaviour:
   AddPhysicsRaycaster: 1
   PhysicsRaycasterEventMask:
     serializedVersion: 2
-    m_Bits: 1057
+    m_Bits: 1056
   RightThumbstickScroll: 1
   PressingObject: {fileID: 0}
   DraggingObject: {fileID: 0}
