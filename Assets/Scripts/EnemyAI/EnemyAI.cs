@@ -234,6 +234,7 @@ public class EnemyAI : MonoBehaviour
                     break;
                 case "sniper":
                 case "wizard sniper":
+                    Debug.Log("Enemy is behind player, despawning.");
                     TransitionToState(EnemyState.Despawn);
                     break;
                 default:
@@ -313,7 +314,29 @@ public class EnemyAI : MonoBehaviour
 
         transform.LookAt(targetPosition);
         PerformAttack();
-        
+
+        if (IsEnemyBehindPlayer())
+        {
+            switch (selectedEnemyName.ToLower())
+            {
+                case "melee":
+                    if (selectedAnimator == null)
+                    {
+                        DamagePlayer();
+                    }
+                    TransitionToState(EnemyState.Despawn);
+                    break;
+                case "sniper":
+                case "wizard sniper":
+                    TransitionToState(EnemyState.Despawn);
+                    break;
+                default:
+
+                    break;
+            }
+
+        }
+
         switch (selectedEnemyName.ToLower())
         {
             case "sniper":
