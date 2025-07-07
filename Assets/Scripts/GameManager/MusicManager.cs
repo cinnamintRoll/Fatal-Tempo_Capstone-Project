@@ -1,43 +1,40 @@
 using BNG;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
 public class Intervals
 {
-    [SerializeField] private float _steps;
+    [SerializeField] private float _steps = 1f; // 1 = once per beat, 2 = twice per beat
     [SerializeField] private UnityEvent _trigger;
-    private float _lastTriggerTime;
 
     public float GetIntervalLength(float bpm)
     {
-        return 16f / (bpm * _steps);
+        return 60f / (bpm * _steps);
     }
 
-    public void CheckAndTrigger(float currentTime, float bpm)
+    public void CheckAndTrigger(double songTime, float bpm, ref double lastTriggerTime)
     {
-        float intervalLength = GetIntervalLength(bpm);
-        while (currentTime >= _lastTriggerTime + intervalLength)
+        double intervalLength = GetIntervalLength(bpm);
+        while (songTime >= lastTriggerTime + intervalLength)
         {
-            _lastTriggerTime += intervalLength;
+            lastTriggerTime += intervalLength;
             _trigger.Invoke();
         }
-    }
-
-    public void Reset()
-    {
-        _lastTriggerTime = 0f;
     }
 }
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance { get; private set; }
+
     [SerializeField] private Intervals[] _objectIntervals;
     [SerializeField] private Intervals _songInterval;
+
+    [Header("Song Interval Settings")]
+    public float songIntervalMultiplier = 1f; // 1 = every beat, 2 = twice per beat, 0.5 = every 2 beats, etc.
+
     public SongData song;
     public AudioSource musicSource;
     public AudioClip musicClip;
@@ -49,12 +46,14 @@ public class MusicManager : MonoBehaviour
     public float secondsPerBeat;
     private InputBridge inputBridge;
     private bool isPlaying = false;
-    private float startTime;
+
     public UnityEvent OnIntervalPassed;
-    [Tooltip("If greater than 0, skips startDelay and starts at this time in seconds.")]
     public float startAtTime = 0f;
 
-    private float _lastSongIntervalTime = 0f;
+    private double dspStartTime;
+    private double lastSongIntervalTime;
+
+    private double[] _intervalLastTimes;
 
     private void Awake()
     {
@@ -75,6 +74,7 @@ public class MusicManager : MonoBehaviour
         {
             musicSource = gameObject.AddComponent<AudioSource>();
         }
+
         musicSource.clip = musicClip;
         secondsPerBeat = 60f / bpm;
         PlayMusic();
@@ -82,22 +82,23 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
-        musicSource.pitch = Time.timeScale;
+        if (!isPlaying)
+            return;
 
-        float currentTime = musicSource.time;
+        double songTime = AudioSettings.dspTime - dspStartTime;
 
-        float songIntervalLength = _songInterval.GetIntervalLength(bpm);
-        while (currentTime >= _lastSongIntervalTime + songIntervalLength)
+        double interval = 60.0 / (bpm * songIntervalMultiplier);
+        while (songTime >= lastSongIntervalTime + interval)
         {
-            _lastSongIntervalTime += songIntervalLength;
+            lastSongIntervalTime += interval;
             OnIntervalPassed.Invoke();
             StartCoroutine(VibrateController(ControllerHand.Left));
             StartCoroutine(VibrateController(ControllerHand.Right));
         }
 
-        foreach (Intervals interval in _objectIntervals)
+        for (int i = 0; i < _objectIntervals.Length; i++)
         {
-            interval.CheckAndTrigger(currentTime, bpm);
+            _objectIntervals[i].CheckAndTrigger(songTime, bpm, ref _intervalLastTimes[i]);
         }
     }
 
@@ -105,40 +106,30 @@ public class MusicManager : MonoBehaviour
     {
         if (musicClip != null && !isPlaying)
         {
-            foreach (var interval in _objectIntervals)
-                interval.Reset();
+            if (_objectIntervals != null)
+            {
+                _intervalLastTimes = new double[_objectIntervals.Length];
+                for (int i = 0; i < _intervalLastTimes.Length; i++)
+                    _intervalLastTimes[i] = 0f;
+            }
 
-            _songInterval.Reset();
+            lastSongIntervalTime = 0f;
 
+            double delay = Mathf.Max(0f, startDelay + musicOffset);
+            dspStartTime = AudioSettings.dspTime + delay;
+
+            // Set playback time BEFORE scheduling
             if (startAtTime > 0f)
             {
-                musicSource.time = Mathf.Clamp(startAtTime, 0f, musicClip.length);
+                musicSource.time = startAtTime;
+            }
 
-                _lastSongIntervalTime = 0f;
-                musicSource.Play();
-                startTime = Time.time - startAtTime;
-                isPlaying = true;
-            }
-            else
-            {
-                StartCoroutine(StartEverythingWithDelay());
-                isPlaying = true;
-            }
+            musicSource.PlayScheduled(dspStartTime);
+            isPlaying = true;
+
+            // Immediate visual feedback if needed
             OnIntervalPassed.Invoke();
         }
-    }
-
-    private IEnumerator StartEverythingWithDelay()
-    {
-        float totalDelay = Mathf.Max(0f, startDelay + musicOffset); // Apply offset as additional delay
-        if (totalDelay > 0f)
-        {
-            yield return new WaitForSeconds(totalDelay);
-        }
-
-        startTime = Time.time;
-        musicSource.time = 0f; // Start from beginning of the song
-        musicSource.Play();
     }
 
 
@@ -156,12 +147,11 @@ public class MusicManager : MonoBehaviour
     {
         float clampedVibrationStrength = Mathf.Clamp(vibrationStrength, 0f, 1f);
         float clampedVibrationDuration = Mathf.Max(vibrationDuration, 0f);
-
         inputBridge.VibrateController(clampedVibrationStrength, clampedVibrationStrength, clampedVibrationDuration, hand);
         yield return null;
     }
 
-    public void SetBPM(float newBPM)
+    public void SetBPM(float newBPM) 
     {
         bpm = newBPM;
         secondsPerBeat = 60f / bpm;
