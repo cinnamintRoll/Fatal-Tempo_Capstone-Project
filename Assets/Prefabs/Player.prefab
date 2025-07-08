@@ -456,6 +456,7 @@ MonoBehaviour:
     _trigger:
       m_PersistentCalls:
         m_Calls: []
+  songIntervalMultiplier: 1
   song: {fileID: 11400000, guid: e8cb7cfb28042944f8739473f6b42abf, type: 2}
   musicSource: {fileID: 7820895422105531928}
   musicClip: {fileID: 8300000, guid: b95977dd1fa1707469a8dbd1e3aff96a, type: 3}
@@ -1357,6 +1358,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6391212766236280291, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 6144
+      objectReference: {fileID: 0}
     - target: {fileID: 6410796599436775075, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1482,6 +1488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UpdateMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952148545202511736, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 6144
       objectReference: {fileID: 0}
     - target: {fileID: 9045593970552678119, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}

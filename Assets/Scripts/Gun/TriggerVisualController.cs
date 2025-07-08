@@ -6,7 +6,6 @@ public class TriggerVisualController : MonoBehaviour
     public Transform triggerTransform;  // The transform of the gun's trigger
     public Vector3 startRotation;       // The original rotation of the trigger
     public Vector3 pressedRotation;     // The rotation when the trigger is fully pressed
-    public float triggerThreshold = 0.5f; // Threshold for detecting input
     public float smoothTime = 0.1f;     // Smoothing factor for the trigger animation
 
     private InputBridge input;

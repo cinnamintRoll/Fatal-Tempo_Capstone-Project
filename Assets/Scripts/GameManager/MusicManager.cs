@@ -1,12 +1,14 @@
 using BNG;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
 public class Intervals
 {
-    [SerializeField] private float _steps = 1f; // 1 = once per beat, 2 = twice per beat
+    [SerializeField] private float _steps = 1f;
     [SerializeField] private UnityEvent _trigger;
 
     public float GetIntervalLength(float bpm)
@@ -25,6 +27,37 @@ public class Intervals
     }
 }
 
+[System.Serializable]
+public class BPMSection
+{
+    public int si;
+    public int ei;
+    public float sb;
+    public float eb;
+
+    public float GetBPM(float sampleRate)
+    {
+        float duration = (ei - si) / sampleRate;
+        float beats = eb - sb;
+        return (beats / duration) * 60f;
+    }
+
+    public bool ContainsSample(int sampleIndex)
+    {
+        return sampleIndex >= si && sampleIndex < ei;
+    }
+}
+
+[System.Serializable]
+public class TemporaBPMData
+{
+    public string version;
+    public string songCheckSum;
+    public int songSampleCount;
+    public int songFrequency;
+    public List<BPMSection> bpmData;
+}
+
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance { get; private set; }
@@ -33,7 +66,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private Intervals _songInterval;
 
     [Header("Song Interval Settings")]
-    public float songIntervalMultiplier = 1f; // 1 = every beat, 2 = twice per beat, 0.5 = every 2 beats, etc.
+    public float songIntervalMultiplier = 1f;
 
     public SongData song;
     public AudioSource musicSource;
@@ -44,16 +77,21 @@ public class MusicManager : MonoBehaviour
     public float startDelay = 0f;
     public float musicOffset = 0f;
     public float secondsPerBeat;
+    public float startAtTime = 0f;
+    public UnityEvent OnIntervalPassed;
+
+    [Header("Optional BPM Map (.dat from Tempora)")]
+    public TextAsset bpmDatFile;
+
     private InputBridge inputBridge;
     private bool isPlaying = false;
-
-    public UnityEvent OnIntervalPassed;
-    public float startAtTime = 0f;
-
     private double dspStartTime;
     private double lastSongIntervalTime;
-
     private double[] _intervalLastTimes;
+
+    private TemporaBPMData bpmData;
+    private float currentBPM;
+    private int sampleRate;
 
     private void Awake()
     {
@@ -66,6 +104,18 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         inputBridge = InputBridge.Instance;
         OnIntervalPassed = new UnityEvent();
+
+        if (bpmDatFile != null)
+        {
+            bpmData = JsonUtility.FromJson<TemporaBPMData>(bpmDatFile.text);
+            sampleRate = bpmData.songFrequency;
+        }
+        else
+        {
+            sampleRate = AudioSettings.outputSampleRate;
+        }
+
+        currentBPM = bpm;
     }
 
     private void Start()
@@ -87,7 +137,29 @@ public class MusicManager : MonoBehaviour
 
         double songTime = AudioSettings.dspTime - dspStartTime;
 
-        double interval = 60.0 / (bpm * songIntervalMultiplier);
+        if (musicSource.clip == null)
+            return;
+
+        int currentSample = musicSource.timeSamples;
+
+        // Update BPM from .dat if available
+        if (bpmData != null && bpmData.bpmData != null)
+        {
+            foreach (var section in bpmData.bpmData)
+            {
+                if (section.ContainsSample(currentSample))
+                {
+                    currentBPM = section.GetBPM(sampleRate);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            currentBPM = bpm;
+        }
+
+        double interval = 60.0 / (currentBPM * songIntervalMultiplier);
         while (songTime >= lastSongIntervalTime + interval)
         {
             lastSongIntervalTime += interval;
@@ -98,7 +170,7 @@ public class MusicManager : MonoBehaviour
 
         for (int i = 0; i < _objectIntervals.Length; i++)
         {
-            _objectIntervals[i].CheckAndTrigger(songTime, bpm, ref _intervalLastTimes[i]);
+            _objectIntervals[i].CheckAndTrigger(songTime, currentBPM, ref _intervalLastTimes[i]);
         }
     }
 
@@ -118,7 +190,6 @@ public class MusicManager : MonoBehaviour
             double delay = Mathf.Max(0f, startDelay + musicOffset);
             dspStartTime = AudioSettings.dspTime + delay;
 
-            // Set playback time BEFORE scheduling
             if (startAtTime > 0f)
             {
                 musicSource.time = startAtTime;
@@ -127,11 +198,9 @@ public class MusicManager : MonoBehaviour
             musicSource.PlayScheduled(dspStartTime);
             isPlaying = true;
 
-            // Immediate visual feedback if needed
             OnIntervalPassed.Invoke();
         }
     }
-
 
     public void StopMusic()
     {
@@ -151,9 +220,14 @@ public class MusicManager : MonoBehaviour
         yield return null;
     }
 
-    public void SetBPM(float newBPM) 
+    public void SetBPM(float newBPM)
     {
         bpm = newBPM;
         secondsPerBeat = 60f / bpm;
+    }
+
+    public float GetCurrentBPM()
+    {
+        return currentBPM;
     }
 }

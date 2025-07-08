@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class SwordCosmeticHandler : MonoBehaviour
 {
     [Tooltip("Where cosmetic visuals get spawned (i.e., the parent/holder of the sword visual)")]
@@ -17,6 +21,11 @@ public class SwordCosmeticHandler : MonoBehaviour
 
     private const string PlayerPrefKey = "SelectedSwordCosmetic";
 
+#if UNITY_EDITOR
+    private GameObject previewInstance;
+    private int lastPreviewedIndex = -1;
+#endif
+
     private void Start()
     {
         currentIndex = PlayerPrefs.GetInt(PlayerPrefKey, 0);
@@ -25,9 +34,8 @@ public class SwordCosmeticHandler : MonoBehaviour
 
     public void ApplyCosmetic(int index)
     {
-        Debug.Log("Trying to apply visual");
-
-        if (index < 0 || index >= cosmeticPrefabs.Count) return;
+        if (index < 0 || index >= cosmeticPrefabs.Count)
+            return;
 
         if (currentVisual != null)
         {
@@ -35,126 +43,164 @@ public class SwordCosmeticHandler : MonoBehaviour
             currentVisual = null;
         }
 
-
-        GameObject prefab = cosmeticPrefabs[index];
-        if (prefab == null)
-        {
-            Debug.Log("Didn't find the object");
-            return;
-        }
-
-        Debug.Log("Prefab found");
-
-        currentVisual = Instantiate(prefab, visualParent);
-        currentVisual.transform.localPosition = Vector3.zero;
-        currentVisual.transform.localRotation = Quaternion.identity;
-        currentVisual.transform.localScale = Vector3.one;
-
-        SwordCosmetic cosmetic = currentVisual.GetComponent<SwordCosmetic>();
-
-        if (cosmetic != null && cosmetic.handleTransform != null && loaderHandleTransform != null)
-        {
-            Transform handle = cosmetic.handleTransform;
-
-            // Step 1: Match handle's world pose to the loader's
-            // This gives us the handle delta relative to the visual root
-            Matrix4x4 handleToWorld = loaderHandleTransform.localToWorldMatrix;
-            Matrix4x4 visualToHandle = handle.worldToLocalMatrix * currentVisual.transform.localToWorldMatrix;
-            Matrix4x4 newVisualMatrix = handleToWorld * visualToHandle;
-
-            // Step 2: Apply new matrix to visual
-            currentVisual.transform.position = newVisualMatrix.GetColumn(3);
-            currentVisual.transform.rotation = newVisualMatrix.rotation;
-
-            // Step 3: Reparent to visualParent while keeping world alignment
-            currentVisual.transform.SetParent(visualParent, true);
-        }
-
-
-
+        currentVisual = CreateCosmeticInstance(index, isPreview: false);
 
         PlayerPrefs.SetInt(PlayerPrefKey, index);
         PlayerPrefs.Save();
 
         var slicer = GetComponent<SliceObject>();
-        if (slicer != null)
+        if (slicer != null && currentVisual != null)
         {
             slicer.bladeStart = currentVisual.transform.Find("BladeStart");
             slicer.bladeEnd = currentVisual.transform.Find("BladeEnd");
         }
     }
+
+    private GameObject CreateCosmeticInstance(int index, bool isPreview)
+    {
+        if (index < 0 || index >= cosmeticPrefabs.Count)
+            return null;
+
+        var prefab = cosmeticPrefabs[index];
+        if (prefab == null || loaderHandleTransform == null)
+            return null;
+
+        GameObject instance = Instantiate(prefab);
+        instance.name = isPreview ? "SwordPreview" : prefab.name;
+        instance.transform.localScale = Vector3.one;
+
 #if UNITY_EDITOR
-    private GameObject previewInstance;
+        if (isPreview)
+        {
+            instance.hideFlags = HideFlags.DontSaveInEditor;
+        }
+#endif
+
+        SwordCosmetic cosmetic = instance.GetComponent<SwordCosmetic>();
+        if (cosmetic != null && cosmetic.handleTransform != null)
+        {
+            Transform handle = cosmetic.handleTransform;
+
+            Matrix4x4 handleToWorld = loaderHandleTransform.localToWorldMatrix;
+            Matrix4x4 visualToHandle = handle.worldToLocalMatrix * instance.transform.localToWorldMatrix;
+            Matrix4x4 newVisualMatrix = handleToWorld * visualToHandle;
+
+            instance.transform.position = newVisualMatrix.GetColumn(3);
+            instance.transform.rotation = newVisualMatrix.rotation;
+            instance.transform.SetParent(visualParent, true);
+            instance.transform.localScale = Vector3.one;
+
+        }
+
+        return instance;
+    }
+    public void NextCosmetic()
+    {
+        int newIndex = (currentIndex + 1) % cosmeticPrefabs.Count;
+        currentIndex = newIndex;
+        ApplyCosmetic(currentIndex);
+    }
+
+    public void PreviousCosmetic()
+    {
+        int newIndex = (currentIndex - 1 + cosmeticPrefabs.Count) % cosmeticPrefabs.Count;
+        currentIndex = newIndex;
+        ApplyCosmetic(currentIndex);
+    }
+
+    public void SetCosmetic(int index)
+    {
+        if (index >= 0 && index < cosmeticPrefabs.Count)
+        {
+            currentIndex = index;
+            ApplyCosmetic(currentIndex);
+        }
+    }
+
+
+#if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+        if (Application.isPlaying || EditorUtility.IsPersistent(gameObject))
+            return;
+
+        int savedIndex = PlayerPrefs.GetInt(PlayerPrefKey, 0);
+
+        // Keep currentIndex in sync with PlayerPrefs and track changes
+        if (savedIndex != lastPreviewedIndex)
+        {
+            currentIndex = savedIndex;
+            lastPreviewedIndex = savedIndex;
+
+            ClearPreview();
+            EditorApplication.delayCall += () =>
+            {
+                if (this == null || Application.isPlaying || EditorUtility.IsPersistent(gameObject))
+                    return;
+
+                previewInstance = CreateCosmeticInstance(currentIndex, isPreview: true);
+            };
+        }
+        else if (currentIndex != lastPreviewedIndex)
+        {
+            PlayerPrefs.SetInt(PlayerPrefKey, currentIndex);
+            PlayerPrefs.Save();
+            lastPreviewedIndex = currentIndex;
+
+            ClearPreview();
+            EditorApplication.delayCall += () =>
+            {
+                if (this == null || Application.isPlaying || EditorUtility.IsPersistent(gameObject))
+                    return;
+
+                previewInstance = CreateCosmeticInstance(currentIndex, isPreview: true);
+            };
+        }
+    }
+
+
+
 
     [ContextMenu("Preview Cosmetic In Scene")]
     private void PreviewCosmeticInScene()
     {
-        if (previewInstance != null)
-        {
-            DestroyImmediate(previewInstance);
-            previewInstance = null;
-        }
-
-        if (currentIndex < 0 || currentIndex >= cosmeticPrefabs.Count)
-        {
-            Debug.LogWarning("Invalid index.");
-            return;
-        }
-
-        GameObject prefab = cosmeticPrefabs[currentIndex];
-        if (prefab == null)
-        {
-            Debug.LogWarning("Prefab is null.");
-            return;
-        }
-
-        previewInstance = Instantiate(prefab);
-        previewInstance.name = "SwordPreview";
-
-        SwordCosmetic cosmetic = previewInstance.GetComponent<SwordCosmetic>();
-
-        if (cosmetic != null && cosmetic.handleTransform != null && loaderHandleTransform != null)
-        {
-            Transform handle = cosmetic.handleTransform;
-
-            // Step 1: Match handle's world pose to the loader's
-            Matrix4x4 handleToWorld = loaderHandleTransform.localToWorldMatrix;
-            Matrix4x4 visualToHandle = handle.worldToLocalMatrix * previewInstance.transform.localToWorldMatrix;
-            Matrix4x4 newVisualMatrix = handleToWorld * visualToHandle;
-
-            previewInstance.transform.position = newVisualMatrix.GetColumn(3);
-            previewInstance.transform.rotation = newVisualMatrix.rotation;
-            previewInstance.transform.SetParent(visualParent, true);
-            previewInstance.transform.localScale = Vector3.one;
-        }
+        ClearPreview();
+        previewInstance = CreateCosmeticInstance(currentIndex, isPreview: true);
     }
 
-    [ContextMenu("Clear Preview")]
     private void ClearPreview()
     {
-        if (previewInstance != null)
+        EditorApplication.delayCall += () =>
         {
-            DestroyImmediate(previewInstance);
-            previewInstance = null;
-        }
+            var existing = GameObject.Find("SwordPreview");
+
+            if (previewInstance != null)
+            {
+                Object.DestroyImmediate(previewInstance);
+                previewInstance = null;
+            }
+        };
     }
-#endif
 
-
-#if UNITY_EDITOR
     [ContextMenu("Update Visual")]
     private void UpdateVisual()
     {
-        PlayerPrefs.SetInt(PlayerPrefKey, currentIndex);
+        if (currentVisual != null)
+        {
+            DestroyImmediate(currentVisual);
+            currentVisual = null;
+        }
 
-        if (Application.isPlaying)
-        {
-            ApplyCosmetic(currentIndex);
-        }
-        else
-        {
-            Debug.LogWarning("Update Visual only works at runtime. Enter Play Mode to see the visual change.");
-        }
+        ClearPreview();
+
+        PlayerPrefs.SetInt(PlayerPrefKey, currentIndex);
+        ApplyCosmetic(currentIndex);
+    }
+
+    private void OnDisable()
+    {
+        ClearPreview();
     }
 #endif
 }
