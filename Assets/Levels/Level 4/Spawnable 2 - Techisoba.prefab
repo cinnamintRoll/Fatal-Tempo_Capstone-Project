@@ -123,6 +123,11 @@ PrefabInstance:
       propertyPath: Spawnables.Array.data[3].spawnChance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7520970236395950709, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: currentIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7834670796385129556, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -132,6 +137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7899232653804775542, guid: d0e05b8659524a64893019db5f9ff6fe,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 7920382096636392883, guid: d0e05b8659524a64893019db5f9ff6fe,
         type: 3}
