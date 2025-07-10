@@ -33,7 +33,7 @@ PrefabInstance:
         type: 3}
       propertyPath: velocityEstimator
       value: 
-      objectReference: {fileID: 2083089702287904740}
+      objectReference: {fileID: 1602281050537065438}
     - target: {fileID: 2909854447190049576, guid: caec4d6ec9e6ebb4f9d959ca67fbc3ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -158,6 +158,18 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 2083089702287904740}
   m_SourcePrefab: {fileID: 100100000, guid: caec4d6ec9e6ebb4f9d959ca67fbc3ca, type: 3}
+--- !u!114 &1602281050537065438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5405043568534421889, guid: caec4d6ec9e6ebb4f9d959ca67fbc3ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 6719054385287592543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131039330892022599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168db796e4b703e47a291580b3fb8d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7131039330892022599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4596040105683089688, guid: caec4d6ec9e6ebb4f9d959ca67fbc3ca,

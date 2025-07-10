@@ -28,9 +28,9 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private float aimDelay = 1f;
     [SerializeField] private LayerMask deflectLayer;
     private bool isShooting = false;
-    private Vector3 laserOffset; // Fixed laser offset
+    private Vector3 laserOffset; 
     [SerializeField] private EnemyAI AIScript;
-    [SerializeField] private int beatsBetweenShoots = 3; // Adjustable beats to shoot
+    [SerializeField] private int beatsBetweenShoots = 3;
     private bool isCharging = false;
     [SerializeField] private GameObject BulletCollider;
     [SerializeField] private bool loopShooting = true;
@@ -41,7 +41,6 @@ public class EnemyLaserShooter : MonoBehaviour
     [SerializeField] private bool rotateModelVertically = false;
 
     public UnityEvent OnDeflect;
-    // Reference to the MusicManager
     private MusicManager musicManager;
 
     void Start()
@@ -53,11 +52,9 @@ public class EnemyLaserShooter : MonoBehaviour
             SetPlayer(Camera.main.transform.gameObject);
         }
 
-        // Initialize the laser appearance
-        laser.startColor = laserColorNormal; // Set the initial color of the laser
+        laser.startColor = laserColorNormal; 
         laser.endColor = laserColorNormal;
 
-        // Start the shooting routine
         //StartCoroutine(StartShootingRoutine());
     }
 
@@ -73,14 +70,9 @@ public class EnemyLaserShooter : MonoBehaviour
             DestroyObject();
         }
 
-        if (!shouldStop && BulletCollider == null)
+        if (BulletCollider == null)
         {
             OnBulletColliderDestroyed();
-        }
-
-        if (isCharging)
-        {
-            CheckForDeflection();       
         }
     }
 
@@ -98,7 +90,6 @@ public class EnemyLaserShooter : MonoBehaviour
 
             AimAtPlayer();
             UpdateLaser();
-            CheckForDeflection();
 
 
 
@@ -141,8 +132,6 @@ public class EnemyLaserShooter : MonoBehaviour
             }
         }
     }
-
-    // Update the laser to point towards the player
     void UpdateLaser()
     {
         if (gunMuzzle && player)
@@ -150,7 +139,6 @@ public class EnemyLaserShooter : MonoBehaviour
             laser.SetPosition(0, gunMuzzle.position);
             Vector3 laserDirection = (player.position - gunMuzzle.position).normalized;
 
-            // Apply the aimRotationOffset directly to the laser's direction
             Quaternion offsetRotation = Quaternion.Euler(aimRotationOffset);
             laserDirection = offsetRotation * laserDirection;
 
@@ -158,90 +146,108 @@ public class EnemyLaserShooter : MonoBehaviour
         }
     }
 
-    // Coroutine to charge and shoot the laser
     private IEnumerator ChargeAndShootLaser()
     {
-        if (!isDeflected)
+        if (isDeflected) yield break;
+
+        isShooting = true;
+        isCharging = true;
+        int chargeBeats = beatsBetweenShoots;
+        int beatCount = 0;
+        bool canDeflectWindow = false;
+        bool finalPulseStarted = false;
+
+        audioSource.clip = chargeSound;
+        audioSource.Play();
+
+        void OnShootBeat()
         {
-            isShooting = true;
-            isCharging = true;
+            if (isDeflected || laser == null) return;
 
-            int chargeBeats = beatsBetweenShoots;
-            int beatCount = 0;
+            beatCount++;
 
-            audioSource.clip = chargeSound;
-            audioSource.Play();
-
-            void OnShootBeat()
+            if (beatCount >= chargeBeats)
             {
-                if (isDeflected) return; // Skip if deflected mid-charge
-
-                beatCount++;
-                float t = (float)beatCount / chargeBeats;
-                float targetWidth = Mathf.Lerp(initialLaserWidth, chargeLaserWidth, t);
-                Color targetColor = Color.Lerp(laserColorNormal, laserColorCharged, t);
-                if (laser == null) return;
-                laser.startWidth = targetWidth;
-                laser.endWidth = targetWidth;
-                laser.startColor = targetColor;
-                laser.endColor = targetColor;
-            }
-
-            musicManager.OnIntervalPassed.AddListener(OnShootBeat);
-
-            while (beatCount < chargeBeats)
-            {
-                if (isDeflected)
+                if (!finalPulseStarted)
                 {
-                    musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
-                    yield break; // Stop coroutine if deflected mid-charge
+                    finalPulseStarted = true;
+                    StartCoroutine(FinalPulseAndShoot(() =>
+                    {
+                        canDeflectWindow = false;
+                        OnShootEnd();
+                    }));
                 }
-
-                AimAtPlayer();
-                UpdateLaser();
-
-                yield return null;
-            }
-
-            musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
-
-            // 🛑 Final check before shooting
-            if (isDeflected)
-                yield break;
-
-            // Proceed to shoot
-            audioSource.PlayOneShot(shootSound);
-            ShootPlayer();
-
-            if (gameObject.activeInHierarchy)
-            {
-                yield return StartCoroutine(AnimateShootBeam());
             }
             else
             {
-                yield break; // Or optionally skip the animation
-            }
+                float progress = (float)beatCount / (chargeBeats - 1);
+                progress = Mathf.Clamp01(progress); 
 
-            if (loopShooting)
-            {
-                laser.startWidth = initialLaserWidth;
-                laser.endWidth = initialLaserWidth;
-            }
-            else
-            {
-                laser.startWidth = 0f;
-                laser.endWidth = 0f;
-            }
+                Color interpolatedPulseColor = Color.Lerp(laserColorNormal, laserColorCharged, progress);
 
-            laser.startColor = laserColorNormal;
-            laser.endColor = laserColorNormal;
+                StartCoroutine(PulseLaserWidth(
+                    chargeLaserWidth,
+                    initialLaserWidth,
+                    interpolatedPulseColor,
+                    laserColorNormal,
+                    0.25f));
+            }
+        }
 
-            isCharging = false;
-            isShooting = false;
-            hasLooped = true;
+        musicManager.OnIntervalPassed.AddListener(OnShootBeat);
+
+        while (!finalPulseStarted)
+        {
+            AimAtPlayer();
+            UpdateLaser();
+            yield return null;
+        }
+
+        musicManager.OnIntervalPassed.RemoveListener(OnShootBeat);
+
+        isCharging = false;
+        isShooting = false;
+        hasLooped = true;
+    }
+
+
+
+    private IEnumerator PulseLaserWidth(float pulseOutWidth, float returnWidth, Color pulseColor, Color baseColor, float duration)
+    {
+        float halfTime = duration / 2f;
+        float t = 0f;
+        while (t < halfTime)
+        {
+            float lerp = t / halfTime;
+            float width = Mathf.Lerp(initialLaserWidth, pulseOutWidth, lerp);
+            Color color = Color.Lerp(baseColor, pulseColor, lerp);
+            ApplyLaserVisuals(width, color);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        t = 0f;
+        while (t < halfTime)
+        {
+            float lerp = t / halfTime;
+            float width = Mathf.Lerp(pulseOutWidth, returnWidth, lerp);
+            Color color = Color.Lerp(pulseColor, baseColor, lerp);
+            ApplyLaserVisuals(width, color);
+            t += Time.deltaTime;
+            yield return null;
         }
     }
 
+    private void ApplyLaserVisuals(float width, Color color)
+    {
+        if (laser != null)
+        {
+            laser.startWidth = width;
+            laser.endWidth = width;
+            laser.startColor = color;
+            laser.endColor = color;
+        }
+    }
 
 
     public void StartShooting()
@@ -250,14 +256,11 @@ public class EnemyLaserShooter : MonoBehaviour
         StartCoroutine(StartShootingRoutine());
     }
 
-
-    // Function to apply damage to the player
     void ShootPlayer()
     {
         PlayerHealth.Instance.TakeDamage();
     }
 
-    // Method to deflect the shot
     public void DeflectShot(Vector3 deflectPoint)
     {
         
@@ -280,7 +283,7 @@ public class EnemyLaserShooter : MonoBehaviour
     public void OnBulletColliderDestroyed()
     {
         shouldStop = true;
-        StopAllCoroutines(); // Stop everything gracefully
+        StopAllCoroutines();
         laser.enabled = false;
         if (AIScript != null)
         {
@@ -300,77 +303,93 @@ public class EnemyLaserShooter : MonoBehaviour
         Destroy(gameObject, 0.2f);
     }
 
-    // Coroutine to animate the laser beam shooting effect
-    IEnumerator AnimateShootBeam()
+    private IEnumerator FinalPulseAndShoot(System.Action onFinish)
     {
-        if (!gameObject.activeInHierarchy)
-            yield break;
-        Debug.LogWarning("Beam start shooting");
         float expandTime = 0.1f;
+        float holdTime = bigBeamDuration;
         float contractTime = 0.1f;
+        float elapsed;
 
-        // Expand phase
-        float elapsedTime = 0f;
-        while (elapsedTime < expandTime)
+        audioSource.PlayOneShot(shootSound);
+
+        elapsed = 0f;
+        while (elapsed < expandTime)
         {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / expandTime;
-            float currentWidth = Mathf.Lerp(chargeLaserWidth, shootLaserWidth, t);
-            laser.startWidth = currentWidth;
-            laser.endWidth = currentWidth;
-            laser.startColor = shootBeamColor;
-            laser.endColor = shootBeamColor;
+            if (CheckDeflectionDuringFinalPhase()) yield break;
+
+            float t = elapsed / expandTime;
+            ApplyLaserVisuals(Mathf.Lerp(chargeLaserWidth, shootLaserWidth, t), shootBeamColor);
+            elapsed += Time.deltaTime;
             yield return null;
         }
 
-        yield return new WaitForSeconds(bigBeamDuration);
-
-        Debug.LogWarning("BeamBeingShot");
-        // Contract phase
-        elapsedTime = 0f;
-        while (elapsedTime < contractTime)
+        float holdEndTime = Time.time + holdTime;
+        while (Time.time < holdEndTime)
         {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / contractTime;
-            float currentWidth = Mathf.Lerp(shootLaserWidth, chargeLaserWidth, t);
-            laser.startWidth = currentWidth;
-            laser.endWidth = currentWidth;
+            if (CheckDeflectionDuringFinalPhase()) yield break;
+
+            ApplyLaserVisuals(shootLaserWidth, shootBeamColor);
             yield return null;
         }
+
+        elapsed = 0f;
+        float startWidth = shootLaserWidth;
+        float endWidth = loopShooting ? chargeLaserWidth : 0f;
+
+        if (!isDeflected)
+        {
+            ShootPlayer();
+        }
+        while (elapsed < contractTime)
+        {
+            float t = elapsed / contractTime;
+            ApplyLaserVisuals(Mathf.Lerp(startWidth, endWidth, t), shootBeamColor);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        ApplyLaserVisuals(initialLaserWidth, laserColorNormal);
+
+        onFinish?.Invoke();
     }
 
-    // Function to check for deflection
-    private void CheckForDeflection()
+    private bool CheckDeflectionDuringFinalPhase()
     {
-        if (shouldStop) return;
-        if (gunMuzzle == null || player == null) return;
+        if (isDeflected || shouldStop || gunMuzzle == null || player == null) return false;
 
         Vector3 origin = gunMuzzle.position;
-
-        // Get direction with aim offset (same as laser visuals)
         Vector3 laserDirection = (player.position - gunMuzzle.position).normalized;
-        Quaternion offsetRotation = Quaternion.Euler(aimRotationOffset);
-        laserDirection = offsetRotation * laserDirection;
+        laserDirection = Quaternion.Euler(aimRotationOffset) * laserDirection;
 
-        RaycastHit hit;
-        bool hitDeflectable = Physics.SphereCast(origin, 0.05f, laserDirection, out hit, laserRange, deflectLayer);
-
-        SliceObject sliceObj = hit.collider != null ? hit.collider.gameObject.GetComponent<SliceObject>() : null;
-
-        if (sliceObj != null)
+        if (Physics.SphereCast(origin, 0.05f, laserDirection, out RaycastHit hit, laserRange, deflectLayer))
         {
-            Vector3 swordVelocity = sliceObj.GetSwordVelocity();
-            float speed = swordVelocity.magnitude;
-            //Debug.Log($"Current Sword Velocity: {speed}");
-            if (speed >= DeflectSpeedThreshold)
+            SliceObject sliceObj = hit.collider?.GetComponent<SliceObject>();
+            if (sliceObj != null)
             {
-                if (hitDeflectable && !isDeflected)
+                float speed = sliceObj.GetSwordVelocity().magnitude;
+                if (speed >= DeflectSpeedThreshold)
                 {
-                    Debug.Log($"Sword Velocity: {swordVelocity}, Magnitude: {speed}");
                     DeflectShot(hit.point);
                     isDeflected = true;
+                    return true;
                 }
             }
         }
+
+        return false;
     }
+
+
+    private void OnShootEnd()
+    {
+        if (!loopShooting)
+        {
+            laser.enabled = false;
+            isCharging = false;
+            isShooting = false;
+            hasLooped = true;
+            shouldStop = true;
+        }
+    }
+
 }

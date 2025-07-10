@@ -135,7 +135,10 @@ public class MusicManager : MonoBehaviour
         if (!isPlaying)
             return;
 
-        double songTime = AudioSettings.dspTime - dspStartTime;
+        // Adjust pitch to match time scale
+        musicSource.pitch = Mathf.Max(Time.timeScale, 0f);
+
+        double songTime = (AudioSettings.dspTime - dspStartTime) * Time.timeScale;
 
         if (musicSource.clip == null)
             return;
@@ -173,6 +176,7 @@ public class MusicManager : MonoBehaviour
             _objectIntervals[i].CheckAndTrigger(songTime, currentBPM, ref _intervalLastTimes[i]);
         }
     }
+
 
     public void PlayMusic()
     {

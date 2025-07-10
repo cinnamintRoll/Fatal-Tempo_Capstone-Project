@@ -94,6 +94,7 @@ public class PathFollower : MonoBehaviour
                     lastWaveformFileTime = fileTime;
                     LoadWaveformTextureFromDisk();
                     GenerateWaveformMesh();
+
                     Debug.Log($"[Waveform] Regenerated mesh for '{musicClip.name}' due to file change at: {filePath}");
                 }
             }
@@ -124,7 +125,7 @@ public class PathFollower : MonoBehaviour
 
     public void SetupTwoPointPath()
     {
-        if (pathPoints == null || pathPoints.Length != 2)
+        if (pathPoints == null || pathPoints.Length != 2 || pathPoints[0] == null || pathPoints[1] == null)
         {
             pathPoints = new Transform[2];
         }
@@ -416,7 +417,8 @@ public class PathFollower : MonoBehaviour
     }
     public void GenerateWaveformMesh()
     {
-        if (pathPoints == null || pathPoints.Length != 2 || waveformTexture == null) return;
+        if (pathPoints == null || pathPoints.Length != 2 || waveformTexture == null || pathPoints[0] == null || pathPoints[1] == null) return;
+
         if (musicClip == null) return;
         LoadWaveformTextureFromDisk();
         float musicDuration = musicClip.length;
