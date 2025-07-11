@@ -1,4 +1,4 @@
-using static GameMenu;
+﻿using static GameMenu;
 using UnityEngine;
 
 public class PauseOnExitTrigger : MonoBehaviour
@@ -6,68 +6,62 @@ public class PauseOnExitTrigger : MonoBehaviour
     public string playerTag = "Player";
     [SerializeField] private GameMenu gameMenu;
     [SerializeField] private GameObject warningUI;
-    [SerializeField] private float startDelay = 3f; // Time in seconds to delay at song start
+    [SerializeField] private float startDelay = 3f;
 
     private Collider triggerCollider;
     private GameObject player;
-    private bool warningShown = false;
-    private bool wasInside = false;
-    private float timeSinceStart = 0f;
-    private bool delayPassed = false;
+    private bool warningActive = false;
+    private float timer;
 
-    void Start()
+    private void Start()
     {
         triggerCollider = GetComponent<Collider>();
         player = GameObject.FindGameObjectWithTag(playerTag);
-
-        timeSinceStart = 0f;
-        delayPassed = false;
+        timer = 0f;
     }
 
-    void Update()
+    private void Update()
     {
-        if (!delayPassed)
+        // Wait for the start delay before checking trigger logic
+        if (timer < startDelay)
         {
-            timeSinceStart += Time.unscaledDeltaTime; // Use unscaled time in case game starts paused
-            if (timeSinceStart >= startDelay)
-            {
-                delayPassed = true;
-            }
-            else
-            {
-                return; // Don't run logic yet
-            }
+            timer += Time.unscaledDeltaTime;
+            return;
         }
 
         if (player == null || triggerCollider == null) return;
 
-        bool isInside = triggerCollider.bounds.Contains(player.transform.position);
+        bool playerInside = triggerCollider.bounds.Contains(player.transform.position);
 
-        if (isInside && !wasInside && warningShown)
-        {
-            if (warningUI != null)
-                warningUI.SetActive(false);
-
-            gameMenu.ShowMenu(MenuType.Pause);
-            gameMenu.disableInput = false;
-            warningShown = false;
-            Debug.Log("Player returned, showing pause menu.");
-        }
-        else if (!isInside && wasInside && !warningShown)
+        if (!playerInside && !warningActive)
         {
             ShowWarning();
         }
-
-        wasInside = isInside;
+        else if (playerInside && warningActive)
+        {
+            HideWarningAndPause();
+        }
     }
 
     private void ShowWarning()
     {
         if (warningUI != null)
             warningUI.SetActive(true);
+
         gameMenu.disableInput = true;
         Time.timeScale = 0f;
-        warningShown = true;
-        Debug.Log("Warning shown. Game paused.");
+        warningActive = true;
+        Debug.Log("Player exited. Warning shown and game paused.");
+    }
+
+    private void HideWarningAndPause()
+    {
+        if (warningUI != null)
+            warningUI.SetActive(false);
+
+        gameMenu.ShowMenu(MenuType.Pause);
+        gameMenu.disableInput = false;
+        warningActive = false;
+        Debug.Log("Player returned. Warning hidden, showing pause menu.");
     }
 }

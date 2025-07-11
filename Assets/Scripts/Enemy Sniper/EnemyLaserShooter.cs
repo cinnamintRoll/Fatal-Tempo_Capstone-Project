@@ -310,12 +310,15 @@ public class EnemyLaserShooter : MonoBehaviour
         float contractTime = 0.1f;
         float elapsed;
 
+        if (shouldStop || isDeflected) yield break;
+
         audioSource.PlayOneShot(shootSound);
 
+        // Expansion
         elapsed = 0f;
         while (elapsed < expandTime)
         {
-            if (CheckDeflectionDuringFinalPhase()) yield break;
+            if (CheckDeflectionDuringFinalPhase() || shouldStop) yield break;
 
             float t = elapsed / expandTime;
             ApplyLaserVisuals(Mathf.Lerp(chargeLaserWidth, shootLaserWidth, t), shootBeamColor);
@@ -323,25 +326,31 @@ public class EnemyLaserShooter : MonoBehaviour
             yield return null;
         }
 
+        // Hold
         float holdEndTime = Time.time + holdTime;
         while (Time.time < holdEndTime)
         {
-            if (CheckDeflectionDuringFinalPhase()) yield break;
+            if (CheckDeflectionDuringFinalPhase() || shouldStop) yield break;
 
             ApplyLaserVisuals(shootLaserWidth, shootBeamColor);
             yield return null;
         }
 
+        // Only damage player if still active
+        if (!isDeflected && !shouldStop)
+        {
+            ShootPlayer();
+        }
+
+        // Contract
         elapsed = 0f;
         float startWidth = shootLaserWidth;
         float endWidth = loopShooting ? chargeLaserWidth : 0f;
 
-        if (!isDeflected)
-        {
-            ShootPlayer();
-        }
         while (elapsed < contractTime)
         {
+            if (shouldStop) yield break;
+
             float t = elapsed / contractTime;
             ApplyLaserVisuals(Mathf.Lerp(startWidth, endWidth, t), shootBeamColor);
             elapsed += Time.deltaTime;
@@ -350,8 +359,10 @@ public class EnemyLaserShooter : MonoBehaviour
 
         ApplyLaserVisuals(initialLaserWidth, laserColorNormal);
 
-        onFinish?.Invoke();
+        if (!shouldStop)
+            onFinish?.Invoke();
     }
+
 
     private bool CheckDeflectionDuringFinalPhase()
     {

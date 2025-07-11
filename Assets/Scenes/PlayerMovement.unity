@@ -2779,6 +2779,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -5751,6 +5756,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -7200,6 +7210,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -7516,6 +7531,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -7958,12 +7978,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.72, y: 2, z: 0.3}
   m_Center: {x: 0, y: 1, z: 0.14}
---- !u!1 &244075161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6723757543113360418, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1249033604}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245051609
 GameObject:
   m_ObjectHideFlags: 0
@@ -8183,6 +8197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -9325,6 +9344,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -9344,6 +9368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -9393,7 +9422,7 @@ PrefabInstance:
     - target: {fileID: 8243153761273110322, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579803415256636672, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -9583,6 +9612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -13316,6 +13350,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -14727,10 +14766,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226437525723320312, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: leftVisual
+      value: 
+      objectReference: {fileID: 478008043}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: singleWeaponType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: lastSingleWeaponType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6723757543113360418, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
@@ -14806,6 +14860,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1728898920}
   m_SourcePrefab: {fileID: 100100000, guid: d7b922eae1c989c4b8b3e70cd1a281f6, type: 3}
+--- !u!1 &478008043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9157159191556515790, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 478008042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &483708660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8510877773864422972, guid: 32441d25c1b758e4dbab6282ac7bf318,
@@ -17092,6 +17152,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -17558,6 +17623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -19433,6 +19503,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -19837,6 +19912,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -20035,6 +20115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -20671,6 +20756,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -21580,6 +21670,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -22480,11 +22575,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1225898106}
     m_Modifications:
+    - target: {fileID: 1485659884390942703, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: leftVisual
+      value: 
+      objectReference: {fileID: 717321810}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: weaponType
@@ -22494,6 +22599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: singleWeaponType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: lastSingleWeaponType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5626507028684623192, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
@@ -22570,6 +22680,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7b922eae1c989c4b8b3e70cd1a281f6, type: 3}
+--- !u!1 &717321810 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9157159191556515790, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 717321809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &721360650
 GameObject:
   m_ObjectHideFlags: 0
@@ -22901,6 +23017,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -24141,6 +24262,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -24789,6 +24915,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -26320,6 +26451,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -26706,6 +26842,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -27027,6 +27168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -28088,6 +28234,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -28303,6 +28454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -28742,6 +28898,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -28941,6 +29102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -29420,6 +29586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -30881,6 +31052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -32531,6 +32707,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -34083,6 +34264,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -34276,6 +34462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -35214,6 +35405,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -35812,6 +36008,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -36297,6 +36498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -37294,11 +37500,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226437525723320312, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: leftVisual
       value: 
-      objectReference: {fileID: 244075161}
+      objectReference: {fileID: 1249033605}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: singleWeaponType
@@ -37388,6 +37599,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1706370632}
   m_SourcePrefab: {fileID: 100100000, guid: d7b922eae1c989c4b8b3e70cd1a281f6, type: 3}
+--- !u!1 &1249033605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2226437525723320312, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1249033604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251835666 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6131279743685918340, guid: bf40569b76f87354b9d70f67381c5ba6,
@@ -39594,6 +39811,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -39918,6 +40140,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -39937,6 +40164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -39986,7 +40218,7 @@ PrefabInstance:
     - target: {fileID: 8243153761273110322, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579803415256636672, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -40766,6 +40998,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -41143,6 +41380,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -41291,12 +41533,12 @@ PrefabInstance:
     - target: {fileID: 8819760370586451807, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.018
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 8819760370586451807, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.62
+      value: -11.47
       objectReference: {fileID: 0}
     - target: {fileID: 8885425192092278654, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -41763,6 +42005,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -42187,6 +42434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -43020,6 +43272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -45967,6 +46224,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -46453,6 +46715,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -46900,6 +47167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -48439,6 +48711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -50074,6 +50351,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -51176,6 +51458,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -51418,6 +51705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -52216,12 +52508,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!1 &1729958119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2036313230}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1729984262
 GameObject:
   m_ObjectHideFlags: 0
@@ -52794,6 +53080,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -53764,6 +54055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -55773,6 +56069,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -56266,6 +56567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -57730,6 +58036,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -58122,6 +58433,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -58141,6 +58457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150312636432693413, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: selectedEnemyName
+      value: Sniper
       objectReference: {fileID: 0}
     - target: {fileID: 5297418878896294469, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -58190,7 +58511,7 @@ PrefabInstance:
     - target: {fileID: 8243153761273110322, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579803415256636672, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -60662,6 +60983,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1485659884390942703, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4444180087211675707, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: m_IsActive
@@ -60671,7 +60997,7 @@ PrefabInstance:
         type: 3}
       propertyPath: leftVisual
       value: 
-      objectReference: {fileID: 1729958119}
+      objectReference: {fileID: 2036313233}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: weaponType
@@ -60786,6 +61112,12 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1 &2036313233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1485659884390942703, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2036313230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2036588366
 GameObject:
   m_ObjectHideFlags: 0
@@ -61521,6 +61853,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -61924,6 +62261,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
       propertyPath: m_IsActive
@@ -62143,6 +62485,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
@@ -62478,6 +62825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 257860668715290660, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
+        type: 3}
+      propertyPath: beatsBetweenShoots
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 924812682683516996, guid: 05b0aa2de99e9544d9b7955091d4bfc5,
         type: 3}
