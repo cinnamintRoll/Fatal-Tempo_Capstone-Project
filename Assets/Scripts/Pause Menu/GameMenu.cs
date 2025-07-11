@@ -23,6 +23,7 @@ public class GameMenu : MonoBehaviour
     [SerializeField] private float heightOffset;
     [SerializeField] private VideoPlayer player;
     [SerializeField] ScreenFader screenFader;
+    [SerializeField] WeaponManager weaponManager;
     [Tooltip("If true, will set Time.fixedDeltaTime to the device refresh rate")]
     public bool SetFixedDelta = false;
     public bool disableInput = false;
