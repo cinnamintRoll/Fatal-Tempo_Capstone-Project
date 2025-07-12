@@ -153,12 +153,21 @@ public class WeaponManager : MonoBehaviour
 
     public void ResetToFist()
     {
+        // Prevent overwriting last weapons if game is already paused
+        if (Time.timeScale != 0f)
+        {
             lastLeftWeapon = currentLeftWeapon;
             lastRightWeapon = currentRightWeapon;
-        Debug.Log($"Last Left Weapon:{lastLeftWeapon}");
-        Debug.Log($"Last Right Weapon:{lastRightWeapon}");
+            Debug.Log($"Last Left Weapon: {lastLeftWeapon}");
+            Debug.Log($"Last Right Weapon: {lastRightWeapon}");
+        }
+        else
+        {
+            Debug.Log("Skipping ResetToFist: game is already paused.");
+        }
+
         SwapWeapon(WeaponType.Fist, HandType.Left, true);
         SwapWeapon(WeaponType.Fist, HandType.Right, true);
-
     }
+
 }

@@ -44,16 +44,14 @@ public class SliceObject : MonoBehaviour
 
         previousBladeStart = bladeStart.position;
         previousBladeEnd = bladeEnd.position;
-        isEmulator = GameManager.Instance != null &&
-             GameManager.Instance.VREmulator != null &&
-             GameManager.Instance.VREmulator.EmulatorEnabled &&
-             !GameManager.Instance.VREmulator.HMDIsActive;
+        
 
     }
 
     private void Awake()
     {
         input = InputBridge.Instance;
+        isEmulator = !input.HMDActive;
     }
 
     void FixedUpdate()

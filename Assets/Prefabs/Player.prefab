@@ -1446,6 +1446,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2751024255575125711, guid: d0679c3d35d7ebf4489a2236fbe64580,
         type: 3}
+    - target: {fileID: 7003373764109471868, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: EditorOnly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7003373764701135927, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: HidePointerIfNoObjectsFound
