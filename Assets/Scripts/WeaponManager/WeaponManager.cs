@@ -60,6 +60,8 @@ public class WeaponManager : MonoBehaviour
 
         SwapWeapon(currentLeftWeapon, HandType.Left, true);
         SwapWeapon(currentRightWeapon, HandType.Right, true);
+
+        hasStarted = true;
     }
 
     private void AutoMapWeapons(Transform parent, Dictionary<WeaponType, GameObject> map)
@@ -108,8 +110,7 @@ public class WeaponManager : MonoBehaviour
 
         if (hasStarted)
             PlayWeaponSwapSound(hand);
-        else
-            hasStarted = true;
+
 
         if (hand == HandType.Left)
             currentLeftWeapon = newWeapon;

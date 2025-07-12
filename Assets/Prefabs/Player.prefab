@@ -1118,11 +1118,21 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 585059619777990218, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: fadeDelay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 761051425846874512, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: baseTransform
       value: 
       objectReference: {fileID: 3627058543498318064}
+    - target: {fileID: 1122649502645016363, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1355935348185091808, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_IsActive
@@ -1186,6 +1196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
       propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1198,6 +1213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onHidePauseMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
@@ -1221,6 +1241,11 @@ PrefabInstance:
       objectReference: {fileID: 8234365723472377199}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7820895422105531928}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
       propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 8234365722623790759}
@@ -1237,6 +1262,11 @@ PrefabInstance:
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: onHidePauseMenu.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
@@ -1261,6 +1291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Stop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
       propertyPath: onShowPauseMenu.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetHidePointer
       objectReference: {fileID: 0}
@@ -1278,6 +1313,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onHidePauseMenu.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: BNG.UIPointer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
@@ -1307,6 +1347,11 @@ PrefabInstance:
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: onHidePauseMenu.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: onShowDeathMenu.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4771172030785789654, guid: 695052bf1470b6d4faf96024b3f0222a,
@@ -1383,6 +1428,11 @@ PrefabInstance:
     - target: {fileID: 6447805812616397516, guid: 695052bf1470b6d4faf96024b3f0222a,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514831682757439373, guid: 695052bf1470b6d4faf96024b3f0222a,
+        type: 3}
+      propertyPath: SceneFadeInDelay
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6523072911242090407, guid: 695052bf1470b6d4faf96024b3f0222a,
