@@ -96,7 +96,15 @@ public class LevelSelectManager : MonoBehaviour
             yield return new WaitForSeconds(1f / screenFader.FadeInSpeed);
         }
 
-        SceneManager.LoadScene(selectedSong.sceneName);
+        SceneLoader loader = GetComponent<SceneLoader>();
+        if (loader != null)
+        {
+            loader.LoadSceneWithCover(selectedSong.sceneName, selectedSong.AlbumCover);
+        }
+        else
+        {
+            SceneManager.LoadScene(selectedSong.sceneName); 
+        }
     }
 
     public void GoBack()

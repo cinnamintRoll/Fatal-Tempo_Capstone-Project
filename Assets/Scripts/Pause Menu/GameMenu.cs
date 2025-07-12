@@ -29,7 +29,7 @@ public class GameMenu : MonoBehaviour
     public bool disableInput = false;
     public enum MenuType { None, Pause, Death }
     private MenuType activeMenu = MenuType.None;
-
+    SceneLoader loader;
     // Unity Events for showing and hiding menus
     public UnityEvent onShowPauseMenu;
     public UnityEvent onHidePauseMenu;
@@ -38,6 +38,8 @@ public class GameMenu : MonoBehaviour
 
     private void Start()
     {
+        loader = GetComponent<SceneLoader>();
+
         if (SetFixedDelta)
         {
             Time.fixedDeltaTime = (Time.timeScale / UnityEngine.XR.XRDevice.refreshRate);
@@ -163,14 +165,27 @@ public class GameMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = originalFixedDelta;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (loader)
+        {
+            loader.LoadSceneWithCover(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1;
         Time.fixedDeltaTime = originalFixedDelta;
-        SceneManager.LoadScene("Level Select");
+
+        if (loader)
+        {
+            loader.LoadSceneWithCover("Level Select");
+        }else{
+            SceneManager.LoadScene("Level Select");
+        }
     }
 
     public void TriggerDeathMenu()
