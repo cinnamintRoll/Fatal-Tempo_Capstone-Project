@@ -350,8 +350,8 @@ MonoBehaviour:
   laserRange: 50
   playerDamage: 10
   deflectionSound: {fileID: 8300000, guid: 83dc0287d0634ed4cb587d44b592210c, type: 3}
-  chargeSound: {fileID: 8300000, guid: c134a11450fb62e45b1f282d277c7c9a, type: 3}
-  shootSound: {fileID: 8300000, guid: eb85c3f0cae455341b23310e7936c473, type: 3}
+  chargeSound: {fileID: 8300000, guid: 6437c1987d1476d4db48221fe00e4204, type: 3}
+  shootSound: {fileID: 8300000, guid: 4aa26c00ba5fdeb489e90e7547858d22, type: 3}
   audioSource: {fileID: 2149581164651775472}
   visuals: {fileID: 7209850760775582231}
   offsetAmount: 0.5
@@ -359,6 +359,7 @@ MonoBehaviour:
   laserColorNormal: {r: 1, g: 1, b: 1, a: 1}
   shootBeamColor: {r: 1, g: 0.98004615, b: 0, a: 1}
   aimRotationOffset: {x: -0.5, y: 0, z: 0}
+  DeflectSpeedThreshold: 0.2
   initialLaserWidth: 0.01
   chargeLaserWidth: 0.1
   shootLaserWidth: 0.2
@@ -369,7 +370,10 @@ MonoBehaviour:
     m_Bits: 8192
   AIScript: {fileID: 0}
   beatsBetweenShoots: 3
+  BulletCollider: {fileID: 0}
   loopShooting: 1
+  rotateModelHorizontally: 1
+  rotateModelVertically: 0
   OnDeflect:
     m_PersistentCalls:
       m_Calls: []
