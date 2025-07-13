@@ -124,89 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &13901
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 13902}
-  - component: {fileID: 13904}
-  - component: {fileID: 13903}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Slide_Advance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &13902
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13901}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 337417261}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &13903
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13901}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &13904
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13901}
-  m_Mesh: {fileID: 4300018, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &521334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 31bbda51eeab02f44a8e92a7da2f5ff8,
@@ -499,6 +416,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 88112331}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3030748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3030749}
+  - component: {fileID: 3030751}
+  - component: {fileID: 3030750}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Slide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3030749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030748}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1059215898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &3030750
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030748}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &3030751
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030748}
+  m_Mesh: {fileID: 4300006, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &4453273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1906,6 +1906,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -2620,6 +2625,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 64928729}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -3501,6 +3511,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1051254154551564896, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1098087042980657161, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3566,6 +3581,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3285059442991799841, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3918281390966198630, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -3580,6 +3600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241576824074600772, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6557315391446744972, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
@@ -3893,6 +3918,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -4225,92 +4255,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 107976245}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &108465420
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 108465421}
-  - component: {fileID: 108465423}
-  - component: {fileID: 108465422}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Body
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &108465421
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108465420}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 144114984}
-  - {fileID: 473226266}
-  - {fileID: 1667050390}
-  m_Father: {fileID: 217882581}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &108465422
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108465420}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &108465423
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108465420}
-  m_Mesh: {fileID: 4300004, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &111580750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 288b117258616aa4f928ba6f91dc47c3,
@@ -4526,6 +4470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -4975,6 +4924,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -5124,6 +5078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -5327,6 +5286,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 129695638}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -5447,6 +5411,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 129862529}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -5622,6 +5591,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 136387188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &138387856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138387857}
+  - component: {fileID: 138387859}
+  - component: {fileID: 138387858}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Magazine_Big
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &138387857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138387856}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 627101725}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &138387858
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138387856}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &138387859
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138387856}
+  m_Mesh: {fileID: 4300002, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &138836836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5839,6 +5891,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 140039665}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -6082,6 +6139,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 142443140}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -6104,89 +6166,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 142443138}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &144114983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 144114984}
-  - component: {fileID: 144114986}
-  - component: {fileID: 144114985}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_magazine_release
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &144114984
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144114983}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.13052619, y: 0.0000000037252903, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: -0.0042, y: 0.0084, z: 0.0101}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 108465421}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &144114985
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144114983}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &144114986
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144114983}
-  m_Mesh: {fileID: 4300010, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &144319613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6319,6 +6298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -6484,6 +6468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -6899,6 +6888,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 150943429}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -7646,6 +7640,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -8243,6 +8242,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -8320,6 +8324,141 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 171308808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &171472340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171472341}
+  - component: {fileID: 171472343}
+  - component: {fileID: 171472342}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &171472341
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171472340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1317750219}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.7, y: -0.4}
+  m_SizeDelta: {x: 137.9, y: 107.75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &171472342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171472340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 00
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 491fae0e7b2553546878c487ba1dba32, type: 2}
+  m_sharedMaterial: {fileID: -7984825555116537650, guid: 491fae0e7b2553546878c487ba1dba32,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 113.6
+  m_fontSizeBase: 113.6
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &171472343
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171472340}
+  m_CullTransparentMesh: 1
 --- !u!1001 &173000546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8538,89 +8677,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 889734901}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &184466698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 184466699}
-  - component: {fileID: 184466701}
-  - component: {fileID: 184466700}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Magazine (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &184466699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184466698}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 718575455}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &184466700
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184466698}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &184466701
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184466698}
-  m_Mesh: {fileID: 4300000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &185149187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9257,6 +9313,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -9843,6 +9904,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 211132207}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -9932,149 +9998,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 173000546}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &217882580
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 217882581}
-  - component: {fileID: 217882586}
-  - component: {fileID: 217882585}
-  - component: {fileID: 217882584}
-  - component: {fileID: 217882583}
-  - component: {fileID: 217882582}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol (1)_rightDuplicate
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &217882581
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217882580}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7409904, y: 2.7409904, z: 2.7409904}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 108465421}
-  - {fileID: 718575455}
-  - {fileID: 806304233}
-  - {fileID: 337417261}
-  - {fileID: 1673489699}
-  - {fileID: 682370939}
-  m_Father: {fileID: 1279449725}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &217882582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217882580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378c14b8b97d4f84fa252a103ac09254, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinSets:
-  - skinParts:
-    - {fileID: 473226265}
-    - {fileID: 184466698}
-    - {fileID: 791765215}
-  - skinParts:
-    - {fileID: 1667050389}
-    - {fileID: 184466698}
-    - {fileID: 939515263}
-  - skinParts:
-    - {fileID: 473226265}
-    - {fileID: 1520027093}
-    - {fileID: 2116133430}
-  - skinParts:
-    - {fileID: 1667050389}
-    - {fileID: 1520027093}
-    - {fileID: 13901}
-  defaultSkinIndex: 0
-  selectedSkinIndex: 0
---- !u!114 &217882583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217882580}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9580d9630918b747a782778cfccca67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerTransform: {fileID: 1673489699}
-  startRotation: {x: 0, y: 0, z: 0}
-  pressedRotation: {x: 36.771, y: 0, z: 0}
-  smoothTime: 0.1
---- !u!114 &217882584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217882580}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9580d9630918b747a782778cfccca67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerTransform: {fileID: 1673489699}
-  startRotation: {x: 0, y: 0, z: 0}
-  pressedRotation: {x: 36.771, y: 0, z: 0}
-  smoothTime: 0
---- !u!95 &217882585
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217882580}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_Controller: {fileID: 9100000, guid: d0946308ee502b34e99e53ed0112c2a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &217882586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217882580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac3e45cb29fb6146a38cf5877677af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletCasingPrefab: {fileID: 4293907302815737054, guid: f8313a7c0e07bba40ac0f3634a590caf,
-    type: 3}
-  ejectPoint: {fileID: 682370939}
-  despawnTime: 5
-  ejectionForce: {x: 2, y: -1, z: -1}
 --- !u!1001 &218306710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10207,6 +10130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -10575,6 +10503,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 229257701}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -10710,6 +10643,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 230091960}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -11012,6 +10950,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1051254154551564896, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1098087042980657161, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11077,6 +11020,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3285059442991799841, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3918281390966198630, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -11091,6 +11039,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241576824074600772, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6557315391446744972, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
@@ -11673,6 +11626,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 251960243}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -12922,6 +12880,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -13390,6 +13353,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 282229059}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -13525,6 +13493,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 282799963}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -13880,6 +13853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -14690,6 +14668,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 300321188}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -15067,6 +15050,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -15426,6 +15414,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 312883395}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -15922,6 +15915,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -16062,6 +16060,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 319950288}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -16276,6 +16279,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -16366,6 +16374,11 @@ PrefabInstance:
       propertyPath: beatsBetweenShoots
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3113781789379283058, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3351631479770902452, guid: ae98a726bebf0334e837a1a502244c6e,
         type: 3}
       propertyPath: currentState
@@ -16385,6 +16398,16 @@ PrefabInstance:
         type: 3}
       propertyPath: beatsBetweenShoots
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298462871428608865, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325882611130868269, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8520380619623237099, guid: ae98a726bebf0334e837a1a502244c6e,
         type: 3}
@@ -16411,6 +16434,149 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae98a726bebf0334e837a1a502244c6e, type: 3}
+--- !u!1 &323706186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323706187}
+  - component: {fileID: 323706192}
+  - component: {fileID: 323706191}
+  - component: {fileID: 323706190}
+  - component: {fileID: 323706189}
+  - component: {fileID: 323706188}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol (1)_rightDuplicate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323706187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323706186}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0.06}
+  m_LocalScale: {x: 2.7409904, y: 2.7409904, z: 2.7409904}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1086588154}
+  - {fileID: 627101725}
+  - {fileID: 1439783798}
+  - {fileID: 1059215898}
+  - {fileID: 1182841120}
+  - {fileID: 965480205}
+  m_Father: {fileID: 1279449725}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323706188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323706186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378c14b8b97d4f84fa252a103ac09254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinSets:
+  - skinParts:
+    - {fileID: 373409996}
+    - {fileID: 470684366}
+    - {fileID: 1134901127}
+  - skinParts:
+    - {fileID: 2058693942}
+    - {fileID: 470684366}
+    - {fileID: 3030748}
+  - skinParts:
+    - {fileID: 373409996}
+    - {fileID: 138387856}
+    - {fileID: 1501802127}
+  - skinParts:
+    - {fileID: 2058693942}
+    - {fileID: 138387856}
+    - {fileID: 1205978793}
+  defaultSkinIndex: 0
+  selectedSkinIndex: 0
+--- !u!114 &323706189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323706186}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9580d9630918b747a782778cfccca67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerTransform: {fileID: 1182841120}
+  startRotation: {x: 0, y: 0, z: 0}
+  pressedRotation: {x: 36.771, y: 0, z: 0}
+  smoothTime: 0.1
+--- !u!114 &323706190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323706186}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9580d9630918b747a782778cfccca67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerTransform: {fileID: 1182841120}
+  startRotation: {x: 0, y: 0, z: 0}
+  pressedRotation: {x: 36.771, y: 0, z: 0}
+  smoothTime: 0
+--- !u!95 &323706191
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323706186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_Controller: {fileID: 9100000, guid: d0946308ee502b34e99e53ed0112c2a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &323706192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323706186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac3e45cb29fb6146a38cf5877677af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletCasingPrefab: {fileID: 4293907302815737054, guid: f8313a7c0e07bba40ac0f3634a590caf,
+    type: 3}
+  ejectPoint: {fileID: 965480205}
+  despawnTime: 5
+  ejectionForce: {x: 2, y: -1, z: -1}
 --- !u!1001 &324834298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17032,6 +17198,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1051254154551564896, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1098087042980657161, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17097,6 +17268,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3285059442991799841, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3918281390966198630, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -17111,6 +17287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241576824074600772, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6557315391446744972, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
@@ -17688,94 +17869,6 @@ MonoBehaviour:
   _useTestBeat: 0
   _pulseSize: 1.1
   _returnSpeed: 5
---- !u!1 &337417260
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 337417261}
-  - component: {fileID: 337417263}
-  - component: {fileID: 337417262}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Slide_Black
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &337417261
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337417260}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.020800347, z: -0.010804958}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1564585695}
-  - {fileID: 791765216}
-  - {fileID: 939515264}
-  - {fileID: 2116133431}
-  - {fileID: 13902}
-  m_Father: {fileID: 217882581}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &337417262
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337417260}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &337417263
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337417260}
-  m_Mesh: {fileID: 4300012, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &342964461 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2d5fb229ae2945742b900a405a5e7a0b,
@@ -17973,6 +18066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -18959,6 +19057,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -19107,6 +19210,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 370878702}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -19129,6 +19237,89 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 370878700}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &373409996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 373409997}
+  - component: {fileID: 373409999}
+  - component: {fileID: 373409998}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Body (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &373409997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373409996}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1086588154}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &373409998
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373409996}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &373409999
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373409996}
+  m_Mesh: {fileID: 4300004, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &374524964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19476,6 +19667,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 382191618}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -20272,6 +20468,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 402242410}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -20451,6 +20652,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 404052308}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -21553,6 +21759,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -22872,6 +23083,89 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e851c58997b9c438fae494e3412749, type: 3}
+--- !u!1 &470684366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470684367}
+  - component: {fileID: 470684369}
+  - component: {fileID: 470684368}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Magazine (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &470684367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470684366}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 627101725}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &470684368
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470684366}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &470684369
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470684366}
+  m_Mesh: {fileID: 4300000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &471142832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22998,89 +23292,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dac1a631b172e66469fb09e9987bcf57, type: 3}
---- !u!1 &473226265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 473226266}
-  - component: {fileID: 473226268}
-  - component: {fileID: 473226267}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Body (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &473226266
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473226265}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 108465421}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &473226267
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473226265}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &473226268
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473226265}
-  m_Mesh: {fileID: 4300004, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &475006530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23646,6 +23857,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 482921318}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -24007,6 +24223,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -24216,6 +24437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -25467,6 +25693,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 507502728}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -26243,6 +26474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -27048,6 +27284,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 540404625}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -27178,6 +27419,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 542625711}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -28082,6 +28328,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 568024265}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -28374,6 +28625,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 572964755}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -28559,6 +28815,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 574323008}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -28860,6 +29121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -29622,6 +29888,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -29777,6 +30048,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -29912,6 +30188,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 590472018}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -30168,6 +30449,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 594306755}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -30710,6 +30996,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 602959924}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -31225,6 +31516,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 610975939}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -31850,6 +32146,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -31927,6 +32228,91 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 626354832}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &627101724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 627101725}
+  - component: {fileID: 627101727}
+  - component: {fileID: 627101726}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Magazine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &627101725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627101724}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 138387857}
+  - {fileID: 470684367}
+  m_Father: {fileID: 323706187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &627101726
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627101724}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &627101727
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627101724}
+  m_Mesh: {fileID: 4300000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &629027192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b14aef9a05449784da6735de9ec90b24,
@@ -33879,6 +34265,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 669106474}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -34346,37 +34737,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1555706144}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &682370938
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 682370939}
-  m_Layer: 0
-  m_Name: BulletCaseSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &682370939
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682370938}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.707107, y: -0.000000005587935, z: -0.0000000074505797, w: 0.7071066}
-  m_LocalPosition: {x: 0, y: 0.0251, z: 0.0048}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 217882581}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &682597614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34658,6 +35018,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 686854093}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -34911,6 +35276,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 687249722}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -35566,6 +35936,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -36035,6 +36410,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -36470,91 +36850,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1701955907}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &718575454
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 718575455}
-  - component: {fileID: 718575457}
-  - component: {fileID: 718575456}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Magazine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &718575455
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718575454}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1520027094}
-  - {fileID: 184466699}
-  m_Father: {fileID: 217882581}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &718575456
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718575454}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &718575457
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718575454}
-  m_Mesh: {fileID: 4300000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &718919764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36808,6 +37103,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -36973,6 +37273,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -37093,6 +37398,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 727858938}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -37241,6 +37551,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 730748234}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -37921,6 +38236,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 745351190}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -38047,6 +38367,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 750010667}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -38261,6 +38586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -39481,6 +39811,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 778692834}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -39558,141 +39893,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 780044443}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &780310826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 780310827}
-  - component: {fileID: 780310829}
-  - component: {fileID: 780310828}
-  m_Layer: 0
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &780310827
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780310826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1564585695}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.7, y: -0.4}
-  m_SizeDelta: {x: 137.9, y: 107.75}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &780310828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780310826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 00
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 491fae0e7b2553546878c487ba1dba32, type: 2}
-  m_sharedMaterial: {fileID: -7984825555116537650, guid: 491fae0e7b2553546878c487ba1dba32,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 113.6
-  m_fontSizeBase: 113.6
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &780310829
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780310826}
-  m_CullTransparentMesh: 1
 --- !u!4 &785155212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: dac1a631b172e66469fb09e9987bcf57,
@@ -40181,89 +40381,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 790327269}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &791765215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 791765216}
-  - component: {fileID: 791765218}
-  - component: {fileID: 791765217}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Slide
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &791765216
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791765215}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 337417261}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &791765217
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791765215}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &791765218
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791765215}
-  m_Mesh: {fileID: 4300012, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &793771548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40509,89 +40626,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31bbda51eeab02f44a8e92a7da2f5ff8, type: 3}
---- !u!1 &806304232
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 806304233}
-  - component: {fileID: 806304235}
-  - component: {fileID: 806304234}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_magazine_release
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &806304233
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806304232}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.13052621, y: 0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: -0.0031502484, y: 0.008431533, z: 0.010052106}
-  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 217882581}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &806304234
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806304232}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &806304235
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806304232}
-  m_Mesh: {fileID: 4300010, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &808402619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40762,6 +40796,11 @@ PrefabInstance:
       propertyPath: beatsBetweenShoots
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3113781789379283058, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3351631479770902452, guid: ae98a726bebf0334e837a1a502244c6e,
         type: 3}
       propertyPath: currentState
@@ -40781,6 +40820,16 @@ PrefabInstance:
         type: 3}
       propertyPath: beatsBetweenShoots
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298462871428608865, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325882611130868269, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8520380619623237099, guid: ae98a726bebf0334e837a1a502244c6e,
         type: 3}
@@ -41037,6 +41086,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 819380363}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -41617,6 +41671,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 831886455}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -42224,6 +42283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -43428,6 +43492,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 867783208}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -43665,6 +43734,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -44177,6 +44251,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -44666,6 +44745,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 890541170}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -44797,6 +44881,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 891776641}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -45540,6 +45629,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 915455115}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -46236,6 +46330,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 932286026}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -46428,89 +46527,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937052315}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &939515263
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 939515264}
-  - component: {fileID: 939515266}
-  - component: {fileID: 939515265}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Slide
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &939515264
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939515263}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 337417261}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &939515265
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939515263}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &939515266
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939515263}
-  m_Mesh: {fileID: 4300006, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &941910691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46821,6 +46837,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 943385980}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -47458,6 +47479,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 961799661}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -47529,6 +47555,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31bbda51eeab02f44a8e92a7da2f5ff8, type: 3}
+--- !u!1 &965480204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965480205}
+  m_Layer: 0
+  m_Name: BulletCaseSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965480205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965480204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.707107, y: -0.000000005587935, z: -0.0000000074505797, w: 0.7071066}
+  m_LocalPosition: {x: 0, y: 0.0251, z: 0.0048}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 323706187}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &965917605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 31bbda51eeab02f44a8e92a7da2f5ff8,
@@ -48477,6 +48534,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -48687,6 +48749,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -48884,6 +48951,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1012907955}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -49410,6 +49482,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Multi Hit Meelee
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -49550,6 +49627,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1036233987}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -49685,6 +49767,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1036995026}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -49805,6 +49892,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1042691115}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -49940,6 +50032,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1047451617}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -50283,6 +50380,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1054617353}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -50503,6 +50605,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1057477012}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -50578,6 +50685,94 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c07ada992c3586e4dbf557bc4b8718cf, type: 3}
+--- !u!1 &1059215897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059215898}
+  - component: {fileID: 1059215900}
+  - component: {fileID: 1059215899}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Slide_Black
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059215898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059215897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.020800347, z: -0.010804958}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1317750219}
+  - {fileID: 1134901128}
+  - {fileID: 3030749}
+  - {fileID: 1501802128}
+  - {fileID: 1205978794}
+  m_Father: {fileID: 323706187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1059215899
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059215897}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1059215900
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059215897}
+  m_Mesh: {fileID: 4300012, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &1060125960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0ee37198b24b2164fbbccfbe92fe5d35,
@@ -51156,6 +51351,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -51286,6 +51486,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1068512793}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -51703,6 +51908,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -52043,6 +52253,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -52120,6 +52335,92 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1086109212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1086588153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086588154}
+  - component: {fileID: 1086588156}
+  - component: {fileID: 1086588155}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1086588154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086588153}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1661454518}
+  - {fileID: 373409997}
+  - {fileID: 2058693943}
+  m_Father: {fileID: 323706187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1086588155
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086588153}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1086588156
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086588153}
+  m_Mesh: {fileID: 4300004, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1088330948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52445,6 +52746,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -52630,6 +52936,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1110875830}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -53676,6 +53987,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -53892,6 +54208,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2054302551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1134901127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134901128}
+  - component: {fileID: 1134901130}
+  - component: {fileID: 1134901129}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Slide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134901128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134901127}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1059215898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1134901129
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134901127}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1134901130
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134901127}
+  m_Mesh: {fileID: 4300012, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1135172977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54213,6 +54612,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1137419392}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -54466,6 +54870,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -54663,6 +55072,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1141384489}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -54807,6 +55221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -55124,6 +55543,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1152387016}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -55398,6 +55822,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1156756770}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -56518,6 +56947,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -56540,6 +56974,89 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1182575280}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1182841119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182841120}
+  - component: {fileID: 1182841122}
+  - component: {fileID: 1182841121}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1182841120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182841119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.00069210964, y: 0.016111525, z: 0.016048254}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 323706187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1182841121
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182841119}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1182841122
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182841119}
+  m_Mesh: {fileID: 4300008, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1184352517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57150,6 +57667,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -57227,6 +57749,89 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+--- !u!1 &1205978793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205978794}
+  - component: {fileID: 1205978796}
+  - component: {fileID: 1205978795}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Slide_Advance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1205978794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205978793}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1059215898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1205978795
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205978793}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1205978796
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205978793}
+  m_Mesh: {fileID: 4300018, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1208515350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57822,6 +58427,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1220202568}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -59214,6 +59824,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1269833241}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -59368,6 +59983,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -59712,7 +60332,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rightVisual
       value: 
-      objectReference: {fileID: 217882580}
+      objectReference: {fileID: 323706186}
     - target: {fileID: 5463458523431247453, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       propertyPath: DuplicateSpawn.y
@@ -59859,7 +60479,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3827422390604676976, guid: d7b922eae1c989c4b8b3e70cd1a281f6,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 217882581}
+      addedObject: {fileID: 323706187}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7b922eae1c989c4b8b3e70cd1a281f6, type: 3}
 --- !u!4 &1279449724 stripped
@@ -59988,6 +60608,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1279901166}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -60676,6 +61301,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1298209965}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -60879,6 +61509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -61911,6 +62546,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1317549308}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -61933,6 +62573,90 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1317549306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1317750218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317750219}
+  - component: {fileID: 1317750221}
+  - component: {fileID: 1317750220}
+  m_Layer: 0
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1317750219
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317750218}
+  m_LocalRotation: {x: -0.010735258, y: 0.0010882355, z: 0.004058063, w: 0.9999336}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0015550423}
+  m_LocalScale: {x: 0.0001, y: 0.00009999998, z: 0.0001}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 171472341}
+  m_Father: {fileID: 1059215898}
+  m_LocalEulerAnglesHint: {x: -1.231, y: 0.12, z: 0.464}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000090000176, y: 0.002949655}
+  m_SizeDelta: {x: 152.94, y: 122.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1317750220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317750218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1317750221
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317750218}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1001 &1317848099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62313,6 +63037,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1051254154551564896, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1098087042980657161, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62378,6 +63107,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3285059442991799841, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3918281390966198630, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -62392,6 +63126,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241576824074600772, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6557315391446744972, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
@@ -64406,6 +65145,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1374623422}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -64685,6 +65429,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -64850,6 +65599,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -64985,6 +65739,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1380405993}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -65748,6 +66507,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1408851800}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -68442,6 +69206,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -68787,6 +69556,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1425072159}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -69183,6 +69957,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1439614860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1439783797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439783798}
+  - component: {fileID: 1439783800}
+  - component: {fileID: 1439783799}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_magazine_release
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439783798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439783797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.13052621, y: 0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: -0.0031502484, y: 0.008431533, z: 0.010052106}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 323706187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1439783799
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439783797}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1439783800
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439783797}
+  m_Mesh: {fileID: 4300010, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &1440451048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b8ee657c6800ab849bb30b4375d02323,
@@ -69384,6 +70241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -70268,6 +71130,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1469239987}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -70428,6 +71295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -70744,6 +71616,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -70982,6 +71859,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1486057938}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -71117,6 +71999,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1486245487}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -71301,6 +72188,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1487354729}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -71679,6 +72571,89 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d5fb229ae2945742b900a405a5e7a0b, type: 3}
+--- !u!1 &1501802127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501802128}
+  - component: {fileID: 1501802130}
+  - component: {fileID: 1501802129}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Slide_Yellow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1501802128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501802127}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1059215898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1501802129
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501802127}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1501802130
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501802127}
+  m_Mesh: {fileID: 4300014, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!4 &1502557456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0ee6d569ec3227e40888e8151b331e0f,
@@ -71817,6 +72792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -72637,89 +73617,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1250147502}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1520027093
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1520027094}
-  - component: {fileID: 1520027096}
-  - component: {fileID: 1520027095}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Magazine_Big
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1520027094
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520027093}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 718575455}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1520027095
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520027093}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1520027096
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520027093}
-  m_Mesh: {fileID: 4300002, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1 &1521611721
 GameObject:
   m_ObjectHideFlags: 0
@@ -73039,6 +73936,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1523868954}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -73311,6 +74213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -73667,6 +74574,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1540981901}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -74064,6 +74976,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1553950994}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -74194,6 +75111,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1554000044}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -74803,90 +75725,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1564139970}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1564585694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1564585695}
-  - component: {fileID: 1564585697}
-  - component: {fileID: 1564585696}
-  m_Layer: 0
-  m_Name: Canvas
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1564585695
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564585694}
-  m_LocalRotation: {x: -0.010735258, y: 0.0010882355, z: 0.004058063, w: 0.9999336}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0015550423}
-  m_LocalScale: {x: 0.0001, y: 0.00009999998, z: 0.0001}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 780310827}
-  m_Father: {fileID: 337417261}
-  m_LocalEulerAnglesHint: {x: -1.231, y: 0.12, z: 0.464}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.000090000176, y: 0.002949655}
-  m_SizeDelta: {x: 152.94, y: 122.7}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1564585696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564585694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
---- !u!223 &1564585697
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564585694}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1001 &1565280975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75019,6 +75857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -75244,6 +76087,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -75927,6 +76775,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1579868344}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -76507,6 +77360,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1591783934}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -79095,6 +79953,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -79497,6 +80360,89 @@ MonoBehaviour:
   _useTestBeat: 0
   _pulseSize: 1.05
   _returnSpeed: 5
+--- !u!1 &1661454517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1661454518}
+  - component: {fileID: 1661454520}
+  - component: {fileID: 1661454519}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_magazine_release
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1661454518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661454517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.13052619, y: 0.0000000037252903, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: -0.0042, y: 0.0084, z: 0.0101}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1086588154}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1661454519
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661454517}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1661454520
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661454517}
+  m_Mesh: {fileID: 4300010, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1665869334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79786,89 +80732,6 @@ Transform:
   - {fileID: 1927238519}
   m_Father: {fileID: 918210020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1667050389
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1667050390}
-  - component: {fileID: 1667050392}
-  - component: {fileID: 1667050391}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Body_Advance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1667050390
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667050389}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 108465421}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1667050391
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667050389}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1667050392
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667050389}
-  m_Mesh: {fileID: 4300016, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1667589402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80222,89 +81085,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1672553219}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1673489698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1673489699}
-  - component: {fileID: 1673489701}
-  - component: {fileID: 1673489700}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1673489699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673489698}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00069210964, y: 0.016111525, z: 0.016048254}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 217882581}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1673489700
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673489698}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1673489701
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673489698}
-  m_Mesh: {fileID: 4300008, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &1673864035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80599,6 +81379,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1676021542}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -83034,6 +83819,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1727101122}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -83545,6 +84335,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1741388081}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -84064,6 +84859,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1746594767}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -84367,6 +85167,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1751689254}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -84877,6 +85682,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1759756837}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -85467,6 +86277,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1768681513}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -85854,6 +86669,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1783622041}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -86362,6 +87182,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1796271201}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -86694,6 +87519,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1802018801}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -86848,6 +87678,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -88325,6 +89160,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1827852367}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -88602,6 +89442,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1840712057}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -88909,6 +89754,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -89862,6 +90712,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1875499755}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -90529,6 +91384,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1885435339}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -90673,6 +91533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -90996,6 +91861,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1892788280}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -91156,6 +92026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -91330,6 +92205,11 @@ PrefabInstance:
       propertyPath: beatsBetweenShoots
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3113781789379283058, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3351631479770902452, guid: ae98a726bebf0334e837a1a502244c6e,
         type: 3}
       propertyPath: currentState
@@ -91349,6 +92229,16 @@ PrefabInstance:
         type: 3}
       propertyPath: beatsBetweenShoots
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298462871428608865, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325882611130868269, guid: ae98a726bebf0334e837a1a502244c6e,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8520380619623237099, guid: ae98a726bebf0334e837a1a502244c6e,
         type: 3}
@@ -91727,6 +92617,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1915364998}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -92798,6 +93693,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -93209,6 +94109,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1945944517}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -93437,6 +94342,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1949035529}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -93951,6 +94861,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -94242,6 +95157,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 1973650561}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -95110,6 +96030,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -95229,6 +96154,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1051254154551564896, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1098087042980657161, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95294,6 +96224,11 @@ PrefabInstance:
       propertyPath: currentState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3285059442991799841, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3918281390966198630, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -95308,6 +96243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6241576824074600772, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6557315391446744972, guid: 93b7f8c2f49f92147b5dcf64e6886cb7,
         type: 3}
@@ -95870,6 +96810,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2005795921}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -96410,6 +97355,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2019052547}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -96651,6 +97601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -96909,6 +97864,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -97145,6 +98105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -97541,6 +98506,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2033280989}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -97671,6 +98641,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2034690864}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -97976,6 +98951,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2047213458}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -98456,6 +99436,89 @@ MonoBehaviour:
   _useTestBeat: 0
   _pulseSize: 1.15
   _returnSpeed: 5
+--- !u!1 &2058693942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058693943}
+  - component: {fileID: 2058693945}
+  - component: {fileID: 2058693944}
+  m_Layer: 0
+  m_Name: BNG_Gun_Pistol_Body_Advance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2058693943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058693942}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1086588154}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2058693944
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058693942}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2058693945
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058693942}
+  m_Mesh: {fileID: 4300016, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &2059211897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98613,6 +99676,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2060269084}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -99478,6 +100546,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2068672389}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -100931,6 +102004,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -101341,6 +102419,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2107818109}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -101705,89 +102788,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9580631, y: 2.1952403, z: 6.320545}
   m_Center: {x: -0.0029808893, y: 1.0939842, z: -0.19415757}
---- !u!1 &2116133430
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2116133431}
-  - component: {fileID: 2116133433}
-  - component: {fileID: 2116133432}
-  m_Layer: 0
-  m_Name: BNG_Gun_Pistol_Slide_Yellow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2116133431
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116133430}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 337417261}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2116133432
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116133430}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2116133433
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116133430}
-  m_Mesh: {fileID: 4300014, guid: 5a96c67ccd3ffaa48bbcb276eb4267ad, type: 3}
 --- !u!1001 &2116688984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102310,6 +103310,11 @@ PrefabInstance:
       propertyPath: selectedEnemyName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -102609,6 +103614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
@@ -103404,6 +104414,11 @@ PrefabInstance:
       propertyPath: selectedAnimator
       value: 
       objectReference: {fileID: 2138970252}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
       propertyPath: beatsBetweenShoots
@@ -103553,6 +104568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selectedEnemyName
       value: Sniper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412857088805440846, guid: 346a0e615021e9849879ce791843f12a,
+        type: 3}
+      propertyPath: currentIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8745623671420580742, guid: 346a0e615021e9849879ce791843f12a,
         type: 3}
