@@ -1,0 +1,9 @@
+diff a/Assets/Scripts/WeaponManager/WeaponPickup.cs b/Assets/Scripts/WeaponManager/WeaponPickup.cs	(rejected hunks)
+@@ -202,7 +202,6 @@
+ 
+                 if (pickupMode == PickupMode.Single)
+                 {
+-
+                     if (singleWeaponType != lastSingleWeaponType)
+                     {
+                         weaponTypeChanged = true;

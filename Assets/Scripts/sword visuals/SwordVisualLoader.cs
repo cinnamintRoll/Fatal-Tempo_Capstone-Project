@@ -144,8 +144,8 @@ public class SwordCosmeticHandler : MonoBehaviour
         }
         else if (currentIndex != lastPreviewedIndex)
         {
-            PlayerPrefs.SetInt(PlayerPrefKey, currentIndex);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetInt(PlayerPrefKey, currentIndex);
+            //PlayerPrefs.Save();
             lastPreviewedIndex = currentIndex;
 
             ClearPreview();
