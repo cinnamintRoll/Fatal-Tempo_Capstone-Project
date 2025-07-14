@@ -11,7 +11,6 @@ public class LevelSelectManager : MonoBehaviour
     public Text ArtistText;
     public Text songDescriptionText;
     public ScreenFader screenFader;
-    public Image albumCover;
 
     // NEW: Score-related UI fields
     public Text playerScoreText;
@@ -35,13 +34,6 @@ public class LevelSelectManager : MonoBehaviour
         */
     }
 
-    public void setAlbumAlpha(float alpha)
-    {
-        var tempcolor = albumCover.color;
-        tempcolor.a = alpha;
-        albumCover.color = tempcolor;
-    }
-
     public void LoadSelectedSong()
     {
         if (selectedSong != selector.selectedSong && selector.selectedSong != null)
@@ -52,20 +44,41 @@ public class LevelSelectManager : MonoBehaviour
 
     public void SelectSong(SongData song)
     {
+        StopAllCoroutines(); // Stop previous loading if still ongoing
+        StartCoroutine(AsyncSelectSong(song));
+    }
+
+    private IEnumerator AsyncSelectSong(SongData song)
+    {
         selectedSong = song;
+
+        // Text and metadata updates
         songNameText.gameObject.SetActive(true);
         songNameText.text = song.songName;
         ArtistText.text = song.artistName;
         songDescriptionText.text = song.songDescription;
-        //albumCover.sprite = song.AlbumCover;
-        //setAlbumAlpha(1f);
 
-        // Play the song preview
-        if (audioSource.isPlaying) audioSource.Stop();
-        audioSource.clip = song.songClip;
-        audioSource.Play();
+        // Frame delay: allow UI to update
+        yield return null;
 
-        // Show or hide score and grade based on stored score
+        // Stop and unload previous clip if necessary
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        // Wait a short moment before heavy loading
+        yield return new WaitForSeconds(0.05f);
+
+        // Load AudioClip and play (simulate async delay if needed)
+        if (song.songClip != null)
+        {
+            audioSource.clip = song.songClip;
+            audioSource.PlayDelayed(0.1f); // Delay play slightly to avoid concurrent loading + play spike
+        }
+
+        // Delay before UI update
+        yield return null;
+
+        // Score display
         if (song.playerScore > 0)
         {
             playerScoreText.gameObject.SetActive(true);
@@ -79,6 +92,7 @@ public class LevelSelectManager : MonoBehaviour
             gradeText.gameObject.SetActive(false);
         }
     }
+
 
     public void StartSelectedLevel()
     {

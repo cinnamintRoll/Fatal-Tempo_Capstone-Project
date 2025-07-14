@@ -18,6 +18,7 @@ public class RotatingLevelSelector : MonoBehaviour
 
     [Header("Album Selection")]
     [SerializeField] private AlbumData initialAlbum;
+    [SerializeField] private AlbumData CurrentAlbum;
 
     private List<SongData> songDataList = new List<SongData>();
     private int currentIndex = 0;
@@ -43,7 +44,7 @@ public class RotatingLevelSelector : MonoBehaviour
             Debug.LogWarning("Album is null or contains no songs.");
             return;
         }
-
+        CurrentAlbum = album;
         songDataList = album.songs;
         currentIndex = 0;
         selectedSong = songDataList[currentIndex];
