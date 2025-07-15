@@ -7264,7 +7264,7 @@ GameObject:
   - component: {fileID: 151824504}
   - component: {fileID: 151824503}
   m_Layer: 5
-  m_Name: Text (Legacy) (3)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8743,7 +8743,7 @@ GameObject:
   - component: {fileID: 175925043}
   - component: {fileID: 175925042}
   m_Layer: 5
-  m_Name: Text (Legacy) (3)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24123,7 +24123,7 @@ GameObject:
   - component: {fileID: 442901193}
   - component: {fileID: 442901192}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32759,7 +32759,7 @@ GameObject:
   - component: {fileID: 611631874}
   - component: {fileID: 611631873}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39590,74 +39590,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 728207651}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &729305650
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.3163643
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.0057216
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 27.562883
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3019032296472542811, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137346054027227310, guid: 2d493a0d705369f4599306c52c0fb4e0,
-        type: 3}
-      propertyPath: m_Name
-      value: Spawnable - Tutorial 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2d493a0d705369f4599306c52c0fb4e0, type: 3}
 --- !u!1 &730249548 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8112815344972194250, guid: c6293bd905850cb439c7c1f8d6dbd57e,
@@ -42059,7 +41991,7 @@ GameObject:
   - component: {fileID: 793122835}
   - component: {fileID: 793122834}
   m_Layer: 5
-  m_Name: Text (Legacy) (2)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43812,7 +43744,7 @@ GameObject:
   - component: {fileID: 826783131}
   - component: {fileID: 826783130}
   m_Layer: 5
-  m_Name: Text (Legacy) (4)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62818,7 +62750,7 @@ GameObject:
   - component: {fileID: 1231871746}
   - component: {fileID: 1231871745}
   m_Layer: 5
-  m_Name: Text (Legacy) (4)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75559,6 +75491,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: EVADE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520929550629976448, guid: 87c797da6a7bc4c4cad8fbc8eb63af4a,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520929550629976448, guid: 87c797da6a7bc4c4cad8fbc8eb63af4a,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 4850009418382293110, guid: 87c797da6a7bc4c4cad8fbc8eb63af4a,
         type: 3}
@@ -90987,7 +90929,7 @@ GameObject:
   - component: {fileID: 1752501840}
   - component: {fileID: 1752501839}
   m_Layer: 5
-  m_Name: Text (Legacy) (5)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91034,7 +90976,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 116b2e603da07e041847350f56646834, type: 3}
-    m_FontSize: 52
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 8
@@ -98059,7 +98001,7 @@ GameObject:
   - component: {fileID: 1912901639}
   - component: {fileID: 1912901638}
   m_Layer: 5
-  m_Name: Text (Legacy) (2)
+  m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109630,4 +109572,3 @@ SceneRoots:
   - {fileID: 1289319462}
   - {fileID: 594983559}
   - {fileID: 290708193}
-  - {fileID: 729305650}
