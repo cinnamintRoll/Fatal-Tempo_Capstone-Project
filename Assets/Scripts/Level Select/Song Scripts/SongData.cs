@@ -20,6 +20,8 @@ public class SongData : ScriptableObject
     public SceneAsset sceneAsset; // Drag-and-drop scene reference in Editor
 #endif
 
+    public bool locked = false;
+
     // For runtime use
     [HideInInspector]
     public string sceneName;

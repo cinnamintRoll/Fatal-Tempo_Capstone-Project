@@ -18,6 +18,8 @@ public class LevelSelectManager : MonoBehaviour
     public Text highestComboText;
     public Text fullComboText;
     public Text maxPointsText;
+    [SerializeField] private Text unlockRequirementText;
+
     [SerializeField] private RotatingLevelSelector selector;
 
     private SongData selectedSong;
@@ -91,6 +93,36 @@ public class LevelSelectManager : MonoBehaviour
             playerScoreText.gameObject.SetActive(false);
             gradeText.gameObject.SetActive(false);
         }
+
+        // Unlock requirement message
+        if (song.locked)
+        {
+            if (selector.CurrentAlbum != null)
+            {
+                int index = selector.CurrentAlbum.songs.IndexOf(song);
+                if (index > 0)
+                {
+                    SongData previousSong = selector.CurrentAlbum.songs[index - 1];
+                    unlockRequirementText.text = $"To unlock this, you need at least a <b>B</b> on <i>{previousSong.songName}</i>";
+                    unlockRequirementText.gameObject.SetActive(true);
+                }
+                else
+                {
+                    unlockRequirementText.text = $"This song is locked.";
+                    unlockRequirementText.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                unlockRequirementText.text = $"This song is locked.";
+                unlockRequirementText.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            unlockRequirementText.gameObject.SetActive(false);
+        }
+
     }
 
 
@@ -98,6 +130,7 @@ public class LevelSelectManager : MonoBehaviour
     {
         if (selectedSong != null)
         {
+            if (selectedSong.locked) return;
             StartCoroutine(FadeAndLoadScene());
         }
     }
@@ -120,6 +153,7 @@ public class LevelSelectManager : MonoBehaviour
             SceneManager.LoadScene(selectedSong.sceneName); 
         }
     }
+
 
     public void GoBack()
     {
