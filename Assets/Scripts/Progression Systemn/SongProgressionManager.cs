@@ -41,9 +41,8 @@ public class SongProgressionManager : MonoBehaviour
             }
 
             SongData previousSong = songs[i - 1];
-            string previousGrade = PlayerPrefs.GetString($"BestGrade_{previousSong.songName}", "");
 
-            bool unlocked = IsGradeSufficient(previousGrade);
+            bool unlocked = IsGradeSufficient(previousSong.letterGrade);
             songs[i].locked = !unlocked;
         }
 
