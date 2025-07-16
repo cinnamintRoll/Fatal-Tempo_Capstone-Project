@@ -550,6 +550,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
+      propertyPath: shootBeamColor.g
+      value: 0.120469406
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserColorCharged.b
+      value: 0.4764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserColorCharged.g
+      value: 0.7829252
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserColorCharged.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
       propertyPath: rotateModelVertically
       value: 1
       objectReference: {fileID: 0}
