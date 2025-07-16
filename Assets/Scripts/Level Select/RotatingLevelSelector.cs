@@ -18,7 +18,14 @@ public class RotatingLevelSelector : MonoBehaviour
 
     [Header("Album Selection")]
     [SerializeField] private AlbumData initialAlbum;
-    [SerializeField] private AlbumData CurrentAlbum;
+    [SerializeField] public AlbumData CurrentAlbum;
+
+    [Header("Lock Icons")]
+    [SerializeField] private GameObject previousLockedIcon;
+    [SerializeField] private GameObject mainLockedIcon;
+    [SerializeField] private GameObject nextLockedIcon;
+    [SerializeField] private GameObject backLockedIcon;
+
 
     private List<SongData> songDataList = new List<SongData>();
     private int currentIndex = 0;
@@ -89,20 +96,30 @@ public class RotatingLevelSelector : MonoBehaviour
         int count = songDataList.Count;
         if (count == 0) return;
 
-        // Helper local function to get song index safely and wrap around
         int GetIndex(int idx)
         {
-            // Just wrap index into 0..count-1 range
             return ((idx % count) + count) % count;
         }
 
-        // For fewer than 4 songs, fill duplicates as needed:
-        // Use the available songs cyclically for the four images
-        previousImage.sprite = songDataList[GetIndex(currentIndex - 1)].AlbumCover;
-        mainImage.sprite = songDataList[GetIndex(currentIndex)].AlbumCover;
-        nextImage.sprite = songDataList[GetIndex(currentIndex + 1)].AlbumCover;
-        backImage.sprite = songDataList[GetIndex(currentIndex + 2)].AlbumCover;
+        // Get indices
+        int prevIndex = GetIndex(currentIndex - 1);
+        int currIndex = GetIndex(currentIndex);
+        int nextIndex = GetIndex(currentIndex + 1);
+        int backIndex = GetIndex(currentIndex + 2);
+
+        // Update images
+        previousImage.sprite = songDataList[prevIndex].AlbumCover;
+        mainImage.sprite = songDataList[currIndex].AlbumCover;
+        nextImage.sprite = songDataList[nextIndex].AlbumCover;
+        backImage.sprite = songDataList[backIndex].AlbumCover;
+
+        // Update locked icons (using 'locked' field)
+        if (previousLockedIcon) previousLockedIcon.SetActive(songDataList[prevIndex].locked);
+        if (mainLockedIcon) mainLockedIcon.SetActive(songDataList[currIndex].locked);
+        if (nextLockedIcon) nextLockedIcon.SetActive(songDataList[nextIndex].locked);
+        if (backLockedIcon) backLockedIcon.SetActive(songDataList[backIndex].locked);
     }
+
 
     public void SelectAlbumSong(SongData targetSong)
     {
