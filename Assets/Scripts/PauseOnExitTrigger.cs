@@ -7,11 +7,13 @@ public class PauseOnExitTrigger : MonoBehaviour
     [SerializeField] private GameMenu gameMenu;
     [SerializeField] private GameObject warningUI;
     [SerializeField] private float startDelay = 3f;
+    [SerializeField] private float exitTimeThreshold = 1f;
 
     private Collider triggerCollider;
     private GameObject player;
     private bool warningActive = false;
     private float timer;
+    private float outsideTimer = 0f;
 
     private void Start()
     {
@@ -22,7 +24,6 @@ public class PauseOnExitTrigger : MonoBehaviour
 
     private void Update()
     {
-        // Wait for the start delay before checking trigger logic
         if (timer < startDelay)
         {
             timer += Time.unscaledDeltaTime;
@@ -33,13 +34,23 @@ public class PauseOnExitTrigger : MonoBehaviour
 
         bool playerInside = triggerCollider.bounds.Contains(player.transform.position);
 
-        if (!playerInside && !warningActive)
+        if (!playerInside)
         {
-            ShowWarning();
+            outsideTimer += Time.unscaledDeltaTime;
+
+            if (outsideTimer >= exitTimeThreshold && !warningActive)
+            {
+                ShowWarning();
+            }
         }
-        else if (playerInside && warningActive)
+        else
         {
-            HideWarningAndPause();
+            outsideTimer = 0f;
+
+            if (warningActive)
+            {
+                HideWarningAndPause();
+            }
         }
     }
 
@@ -51,7 +62,7 @@ public class PauseOnExitTrigger : MonoBehaviour
         gameMenu.disableInput = true;
         Time.timeScale = 0f;
         warningActive = true;
-        Debug.Log("Player exited. Warning shown and game paused.");
+        Debug.Log("Player exited for 1 second. Warning shown and game paused.");
     }
 
     private void HideWarningAndPause()

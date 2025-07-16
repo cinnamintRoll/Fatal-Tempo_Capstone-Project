@@ -52,6 +52,9 @@ public class EnemyAI : MonoBehaviour
     private bool isDespawning = false;
     private bool hasDamaged = false;
     private bool isAttacking = false;
+
+    private float previousHealth;
+
     public Enemies CurrentEnemy
     {
         get
@@ -72,7 +75,7 @@ public class EnemyAI : MonoBehaviour
         {
             navMeshAgent.enabled = false;
         }
-
+        previousHealth = health;
         ApplyInitialAnimationState();
 
     }
@@ -129,6 +132,22 @@ public class EnemyAI : MonoBehaviour
                 HandleDespawn();
                 break;
         }
+
+        if (!isDead && health < previousHealth)
+        {
+            float damageTaken = previousHealth - health;
+
+            if (damageTaken > 0.1f && health > 0f) // still alive = multi-hit
+            {
+                if (GameManager.Instance?.ScoringSystem != null)
+                {
+                    GameManager.Instance.ScoringSystem.OnPartialHitEnemy(transform.position);
+                }
+            }
+
+            previousHealth = health;
+        }
+
 
         if (health <= 0f)
         {
@@ -276,7 +295,7 @@ public class EnemyAI : MonoBehaviour
                 case "melee":
                     if (distanceToPlayer <= attackRange)
                     {
-                        TransitionToState(EnemyState.Idle); // Reached destination, switch to attack
+                        TransitionToState(EnemyState.Attack); // Reached destination, switch to attack
                     }
                     break;
             }

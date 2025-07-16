@@ -168,6 +168,18 @@ public class BeatScoringSystem : MonoBehaviour
             ratingPopup.Play();
         }
     }
+    public void OnPartialHitEnemy(Vector3 position)
+    {
+        int baseScore = GetHitScore();
+        totalScore += baseScore;
+
+        Debug.Log($"Partial Hit: {baseScore} at {position}");
+
+        Vector3 popupPosition = position + Vector3.up * 1.5f;
+        SpawnScorePopup(popupPosition, baseScore);
+
+        UpdateScoreDisplay();
+    }
 
     public void SaveScore()
     {

@@ -23,6 +23,18 @@ public class GameManager : MonoBehaviour
             return vrEmulator;
         }
     }
+
+    public BeatScoringSystem ScoringSystem
+    {
+        get
+        {
+            if (scoringSystem == null)
+            {
+                Debug.LogWarning("BeatScoringSystem is not set!");
+            }
+            return scoringSystem;
+        }
+    }
     public Transform PlayerTransform
     {
         get
