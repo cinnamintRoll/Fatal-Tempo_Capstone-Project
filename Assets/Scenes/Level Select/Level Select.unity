@@ -8780,6 +8780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1275256724336173293, guid: b23db288c18069e46ab7d24689057c2b,
         type: 3}
+      propertyPath: progression
+      value: 
+      objectReference: {fileID: 171140800}
+    - target: {fileID: 1275256724336173293, guid: b23db288c18069e46ab7d24689057c2b,
+        type: 3}
       propertyPath: initialAlbum
       value: 
       objectReference: {fileID: 11400000, guid: 1e3b788a643d7e64c814620135d6a2ae,

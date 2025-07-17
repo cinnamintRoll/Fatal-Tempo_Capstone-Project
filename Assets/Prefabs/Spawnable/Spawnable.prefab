@@ -453,6 +453,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5387360569300292437}
     m_Modifications:
+    - target: {fileID: 1085558668431940042, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1176214412402599945, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
       propertyPath: m_IsActive
@@ -526,7 +531,12 @@ PrefabInstance:
     - target: {fileID: 7478235805562224435, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserRange
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7532698144016295763, guid: 10779f3466d8a9b4b9fff935c1b94178,
         type: 3}
@@ -588,11 +598,52 @@ PrefabInstance:
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 8512368455037900012}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserRange
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: shootBeamColor.b
+      value: 0.019583702
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: shootBeamColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserColorCharged.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserColorCharged.g
+      value: 0.9618751
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: laserColorCharged.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9142632260907914972, guid: 10779f3466d8a9b4b9fff935c1b94178,
+        type: 3}
+      propertyPath: OnDeflect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 796313373787748153}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10779f3466d8a9b4b9fff935c1b94178, type: 3}
+--- !u!95 &796313373787748153 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3914979519483791961, guid: 10779f3466d8a9b4b9fff935c1b94178,
+    type: 3}
+  m_PrefabInstance: {fileID: 4420810706283150688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2287958805562769490 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2493210250661592370, guid: 10779f3466d8a9b4b9fff935c1b94178,

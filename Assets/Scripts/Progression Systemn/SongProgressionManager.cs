@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,17 @@ public class SongProgressionManager : MonoBehaviour
     private readonly List<string> gradeOrder = new List<string> { "F", "C", "B", "A", "S", "SS" };
     private const string requiredGrade = "B";
     private bool demoMode = false;
-    private void Start()
+    private void OnEnable()
     {
         demoMode = PlayerPrefs.GetInt("DemoMode", 0) == 1;
+        StartCoroutine(WaitForSongSelectedThenApply());
+    }
+
+    private IEnumerator WaitForSongSelectedThenApply()
+    {
+        while (levelSelector == null || levelSelector.CurrentAlbum == null)
+            yield return null;
+
         ApplyProgression();
     }
 
@@ -45,9 +54,6 @@ public class SongProgressionManager : MonoBehaviour
             bool unlocked = IsGradeSufficient(previousSong.letterGrade);
             songs[i].locked = !unlocked;
         }
-
-        // Refresh UI visuals
-        levelSelector.SelectAlbum(levelSelector.CurrentAlbum);
     }
 
     private bool IsGradeSufficient(string grade)

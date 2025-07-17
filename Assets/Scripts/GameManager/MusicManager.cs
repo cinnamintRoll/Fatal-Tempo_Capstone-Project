@@ -191,7 +191,9 @@ public class MusicManager : MonoBehaviour
 
             lastSongIntervalTime = 0f;
 
-            double delay = Mathf.Max(0f, startDelay + musicOffset);
+            // If we are resuming from a specific time, skip the start delay
+            bool skipDelay = startAtTime > 0f;
+            double delay = skipDelay ? musicOffset : Mathf.Max(0f, startDelay + musicOffset);
             dspStartTime = AudioSettings.dspTime + delay;
 
             if (startAtTime > 0f)
@@ -205,6 +207,7 @@ public class MusicManager : MonoBehaviour
             OnIntervalPassed.Invoke();
         }
     }
+
 
     public void StopMusic()
     {

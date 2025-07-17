@@ -10,11 +10,13 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - inpin hongmengti
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 69893ecbaf235e749a360f1cbe6c2015, type: 3}
+  - {fileID: 12800000, guid: 9476336cb84f50444a213be4963d6295, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
-  useLegacyBoundsCalculation: 0
+  useLegacyBoundsCalculation: 1
   shouldRoundAdvanceValue: 1
   userData: 
   assetBundleName: 
