@@ -7065,7 +7065,7 @@ PrefabInstance:
     - target: {fileID: 7455053185730016642, guid: 12706eaf8e331a94d81127fbf497d883,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7547590610384784519, guid: 12706eaf8e331a94d81127fbf497d883,
         type: 3}
@@ -7182,7 +7182,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4269192357627096578}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3527741502116160062, guid: 12706eaf8e331a94d81127fbf497d883,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4133982492288099279, guid: 12706eaf8e331a94d81127fbf497d883,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 12706eaf8e331a94d81127fbf497d883, type: 3}
 --- !u!224 &709513209 stripped
 RectTransform:

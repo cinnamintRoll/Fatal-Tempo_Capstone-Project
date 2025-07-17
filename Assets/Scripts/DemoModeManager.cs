@@ -1,37 +1,28 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class DemoModeManager : MonoBehaviour
 {
-    [SerializeField] GameObject checkVisual;
+    [SerializeField] List<GameObject> checkVisuals;
     [SerializeField] string DemoKey = "DemoMode";
 
     private void OnEnable()
     {
         bool demo = PlayerPrefs.GetInt(DemoKey, 0) == 1;
-        if (checkVisual != null) { 
-            checkVisual.SetActive(demo);
-        }
+        UpdateVisuals(demo);
     }
 
     public void EnableDemoMode()
     {
-        if (checkVisual != null)
-        {
-            checkVisual.SetActive(true);
-        }
+        UpdateVisuals(true);
         PlayerPrefs.SetInt(DemoKey, 1);
         PlayerPrefs.Save();
         Debug.Log("Demo Mode Enabled");
-       
     }
 
     public void DisableDemoMode()
     {
-        if (checkVisual != null)
-        {
-            checkVisual.SetActive(false);
-        }
+        UpdateVisuals(false);
         PlayerPrefs.SetInt(DemoKey, 0);
         PlayerPrefs.Save();
         Debug.Log("Demo Mode Disabled");
@@ -40,14 +31,24 @@ public class DemoModeManager : MonoBehaviour
     public void ToggleDemo()
     {
         bool demo = PlayerPrefs.GetInt(DemoKey, 0) == 1;
-
         if (demo)
         {
-            DisableDemoMode(); 
+            DisableDemoMode();
         }
         else
         {
             EnableDemoMode();
+        }
+    }
+
+    private void UpdateVisuals(bool active)
+    {
+        if (checkVisuals == null) return;
+
+        foreach (var obj in checkVisuals)
+        {
+            if (obj != null)
+                obj.SetActive(active);
         }
     }
 }

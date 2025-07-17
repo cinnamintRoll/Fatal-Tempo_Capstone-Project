@@ -475,12 +475,16 @@ public class EnemyAI : MonoBehaviour
 
     bool IsEnemyBehindPlayer()
     {
-        Transform baseTransform = GameManager.Instance.BaseTransform;
-        Vector3 directionToEnemy = (transform.position - baseTransform.position).normalized;
-        float distanceToEnemy = Vector3.Distance(transform.position, baseTransform.position);
-        float dotProduct = Vector3.Dot(baseTransform.forward, directionToEnemy);
-        return dotProduct < 0 && distanceToEnemy > behindDistanceThreshold;
+        Transform player = GameManager.Instance.BaseTransform;
+        Vector3 toEnemy = transform.position - player.position;
+
+        // Check if enemy is behind (dot product < 0)
+        bool isBehind = Vector3.Dot(player.forward, toEnemy) < 0;
+
+        // Optionally check distance
+        return isBehind && toEnemy.sqrMagnitude > behindDistanceThreshold * behindDistanceThreshold;
     }
+
 
     public void Idle()
     {
