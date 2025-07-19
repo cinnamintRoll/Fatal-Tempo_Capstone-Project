@@ -11,6 +11,7 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private GameObject _LevelSelect;
     [SerializeField] private LevelSelectManager _LevelSelectManager;
     [SerializeField] private RotatingLevelSelector _RotationSelector;
+    [SerializeField] private DailyAchievementsScreen dailyAchievementsScreen;
     private SongData _SelectedSong;
 
     [Header("Song Info UI")]
@@ -49,7 +50,7 @@ public class ScoreScreen : MonoBehaviour
             int totalHits = PlayerPrefs.GetInt("TotalHits");
             int bestCombo = PlayerPrefs.GetInt("BestCombo");
             int totalMaxPoints = PlayerPrefs.GetInt("TotalMaxPoints");
-
+            int totalMaxCombo = PlayerPrefs.GetInt("TotalMaxCombo");
             int totalCollected = PlayerPrefs.GetInt("TotalCollected");
             int maxCollected = PlayerPrefs.GetInt("MaxCollected");
 
@@ -102,6 +103,10 @@ public class ScoreScreen : MonoBehaviour
         yield return AnimateNumber(CalorieTrackerManager.Instance.GetCalories(), 1.5f, caloriesText);
         string finalGrade = CalculateGrade(playerScore, totalMaxPoints);
 
+        PlayerPrefs.SetString("LetterGrade", finalGrade);
+
+        dailyAchievementsScreen?.EvaluateAchievements();
+        dailyAchievementsScreen?.DisplayAchievements();
         if (_SelectedSong != null)
         {
             if (playerScore > _SelectedSong.playerScore)
@@ -132,7 +137,9 @@ public class ScoreScreen : MonoBehaviour
         PlayerPrefs.DeleteKey("TotalHits");
         PlayerPrefs.DeleteKey("BestCombo");
         PlayerPrefs.DeleteKey("TotalMaxPoints");
+        PlayerPrefs.DeleteKey("TotalMaxCombo");
         PlayerPrefs.DeleteKey("TotalCollected");
+        PlayerPrefs.DeleteKey("LetterGrade");
         PlayerPrefs.DeleteKey("MaxCollected");
         PlayerPrefs.DeleteKey("EnemiesKilled");
         PlayerPrefs.DeleteKey("TotalEnemies");

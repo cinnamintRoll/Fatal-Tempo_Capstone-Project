@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
         CalorieTrackerManager.Instance?.SaveCalories();
 
         PlayerPrefs.SetInt("TotalMaxPoints", GetTotalSongScore());
+        PlayerPrefs.SetInt("TotalMaxCombo", GetTotalEnemiesKilled() + GetTotalCollectiblesCollected());
         PlayerPrefs.SetInt("FullCombo", GetTotalCombo());
         scoringSystem.SaveScore();
     }
