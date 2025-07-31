@@ -101,7 +101,6 @@ public class DailyAchievementsScreen : MonoBehaviour
             (availableIndexes[i], availableIndexes[j]) = (availableIndexes[j], availableIndexes[i]);
         }
 
-        // Pick up to 3
         int count = Mathf.Min(3, availableIndexes.Count);
         for (int i = 0; i < count; i++)
             saveData.dailyIndexes.Add(availableIndexes[i]);
@@ -111,6 +110,9 @@ public class DailyAchievementsScreen : MonoBehaviour
     {
         foreach (var achievement in dailyAchievements)
         {
+            if (achievement.IsCompleted)
+                continue; 
+
             float currentValue = GetStatValue(achievement.playerPrefKey);
             float requiredValue = GetStatValue(achievement.requiredValue);
             bool conditionMet = false;
@@ -151,6 +153,7 @@ public class DailyAchievementsScreen : MonoBehaviour
         SaveAchievements();
     }
 
+
     public void DisplayAchievements()
     {
         for (int i = 0; i < achievementTexts.Length && i < dailyAchievements.Count; i++)
@@ -170,7 +173,7 @@ public class DailyAchievementsScreen : MonoBehaviour
                     !(Mathf.Approximately(currentValue, 0) && requiredValue == 1))
                 {
                     displayProgress = conditionMet
-                        ? "\n<color=green>? Completed</color>"
+                        ? "\n<color=green>Completed</color>"
                         : $"\nProgress: {currentValue}/{requiredValue}";
                 }
                 else
@@ -183,7 +186,7 @@ public class DailyAchievementsScreen : MonoBehaviour
                 if (!(Mathf.Approximately(ach.progress, 0) && (ach.targetCount <= 1 || ach.targetCount == 0)))
                 {
                     displayProgress = completed
-                        ? "\n<color=green>? Completed</color>"
+                        ? "\n<color=green>Completed</color>"
                         : $"\nProgress: {ach.progress}/{ach.targetCount}";
                 }
 
@@ -241,10 +244,10 @@ public class DailyAchievementsScreen : MonoBehaviour
 
     private List<Achievement> GetDefaultAchievements() => new()
     {
-        new Achievement { title = "Scorer", description = "Score more than 100000 points", playerPrefKey = "SongScore", comparison = ">", requiredValue = "100000" },
+        new Achievement { title = "Scorer", description = "Score more than 10000 points", playerPrefKey = "SongScore", comparison = ">", requiredValue = "10000" },
         new Achievement { title = "Combo Master", description = "Get a Full Combo", playerPrefKey = "BestCombo", comparison = "=", requiredValue = "TotalMaxCombo" },
         new Achievement { title = "Hit Machine", description = "Get more than 500 total hits", playerPrefKey = "TotalHits", comparison = ">", requiredValue = "500", isAccumulative = true, isEventBased = false, targetCount = 500 },
-        new Achievement { title = "Combo King", description = "Best Combo over 300", playerPrefKey = "BestCombo", comparison = ">", requiredValue = "300" },
+        new Achievement { title = "Combo King", description = "Best Combo over 20", playerPrefKey = "BestCombo", comparison = ">", requiredValue = "20" },
         new Achievement { title = "Collector", description = "Collect all notes in a song", playerPrefKey = "TotalCollected", comparison = "=", requiredValue = "MaxCollected" },
         new Achievement { title = "Enemy Slayer", description = "Kill all enemies in a song", playerPrefKey = "EnemiesKilled", comparison = "=", requiredValue = "TotalEnemies" },
         new Achievement { title = "Straight A's", description = "Get an A grade or better in 2 songs", playerPrefKey = "LetterGrade", comparison = ">=", requiredValue = "A", isAccumulative = true, isEventBased = true, targetCount = 2 },
